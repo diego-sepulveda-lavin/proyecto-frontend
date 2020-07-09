@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const FooterLanding = () => {
+
+const FooterLogin = () => {
     return (
         <>
-            <footer className="footer footer-default">
+            <footer className="footer">
                 <div className=" container ">
                     <nav>
                         <ul>
@@ -28,4 +29,4 @@ const FooterLanding = () => {
     )
 }
 
-export default FooterLanding
+export default FooterLogin
