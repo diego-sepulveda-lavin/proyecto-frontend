@@ -13,7 +13,7 @@ const Login = () => {
             <div className="login-page sidebar-collapse">
                 <NavbarLogin />
                 <div className="page-header clear-filter" filter-color="orange">
-                    <div className="page-header-image" style={{"backgroundImage":"url(../assets/img/login.jpg)"}}></div>
+                    <div className="page-header-image" style={{"backgroundImage":"url(../assets/img/login.png)"}}></div>
                     <LoginForm />
                     <FooterLogin />
                 </div>

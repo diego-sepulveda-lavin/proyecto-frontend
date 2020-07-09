@@ -10,7 +10,7 @@ const LoginForm = () => {
                             <form className="form" method="" action="">
                                 <div className="card-header text-center">
                                     <div className="logo-container">
-                                        <img src="../assets/img/now-logo.png" alt="" />
+                                        <img src="../assets/img/new-logo.png" alt="" />
                                     </div>
                                 </div>
                                 <div className="card-body">
@@ -33,14 +33,9 @@ const LoginForm = () => {
                                 </div>
                                 <div className="card-footer text-center">
                                     <a href="#pablo" className="btn btn-primary btn-round btn-lg btn-block">Login</a>
-                                    <div className="pull-left">
+                                    <div className="mt-2">
                                         <h6>
-                                            <a href="#pablo" className="link">Create Account</a>
-                                        </h6>
-                                    </div>
-                                    <div className="pull-right">
-                                        <h6>
-                                            <a href="#pablo" className="link">Need Help?</a>
+                                            <a href="#pablo" className="link">Crear Cuenta</a>
                                         </h6>
                                     </div>
                                 </div>
