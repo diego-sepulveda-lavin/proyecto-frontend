@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import injectContext from './store/appContext';
 
@@ -9,6 +9,7 @@ import GeneralStock from './views/GeneralStock'
 import CrearSku from './views/CrearSKU';
 import IngresarFactura from './views/IngresarFactura';
 import ModificarSku from './views/ModificarSku';
+import VentaUsuario from './views/ventaPrincipal';
 
 
 const App = props => {
@@ -21,6 +22,7 @@ const App = props => {
         <Route path='/crear-sku' exact component={CrearSku}></Route>
         <Route path='/ingresar-factura' exact component={IngresarFactura}></Route>
         <Route path='/modificar-sku' exact component={ModificarSku}></Route>
+        <Route exact path="/ventaUsuario" component={VentaUsuario}></Route>
 
       </Switch>
     </BrowserRouter>
