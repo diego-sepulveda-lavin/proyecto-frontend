@@ -12,6 +12,7 @@ import IngresarFactura from './views/IngresarFactura';
 import ModificarSku from './views/ModificarSku';
 import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser'
+import ModificarUser from './views/ModificarUser'
 
 
 const App = props => {
@@ -27,6 +28,7 @@ const App = props => {
         <Route path='/modificar-sku' exact component={ModificarSku}></Route>
         <Route exact path="/ventaUsuario" component={VentaUsuario}></Route>
         <Route exact path="/CreateUser" component={CreateUser}></Route>
+        <Route exact path="/ModificarUser" component={ModificarUser}></Route>
       </Switch>
     </BrowserRouter>
   )
