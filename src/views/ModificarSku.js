@@ -11,7 +11,8 @@ const ModificarSku = () => {
             <MenuLateral />
                 <div className="main-panel" id="main-panel">
                     {/* <!-- Navbar --> */} 
-                     <NavBar />{/* <!-- End Navbar --> */}
+                     <NavBar />
+                     {/* <!-- End Navbar --> */}
                     <div className="panel-header panel-header-md">
                     </div>
                     <div className="content mt-2">
