@@ -5,6 +5,10 @@ import injectContext from './store/appContext';
 
 import Dashboard from './views/Dashboard'
 import LandingPage from './views/LandingPage'
+import GeneralStock from './views/GeneralStock'
+import CrearSku from './views/CrearSKU';
+import IngresarFactura from './views/IngresarFactura';
+import ModificarSku from './views/ModificarSku';
 
 
 const App = props => {
@@ -13,6 +17,10 @@ const App = props => {
       <Switch>
         <Route path='/' exact component={LandingPage}></Route>
         <Route path='/dashboard' exact component={Dashboard}></Route>
+        <Route path='/general-stock' exact component={GeneralStock}></Route>
+        <Route path='/crear-sku' exact component={CrearSku}></Route>
+        <Route path='/ingresar-factura' exact component={IngresarFactura}></Route>
+        <Route path='/modificar-sku' exact component={ModificarSku}></Route>
 
       </Switch>
     </BrowserRouter>
