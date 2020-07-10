@@ -21,7 +21,7 @@ const CrearSku = () => {
                                     </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
-                                    <table className="table">
+                                    <table className="table table-hover">
                                         <thead className=" text-primary">
                                             <th className="align-middle text-center">
                                                 N°

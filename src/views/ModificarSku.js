@@ -44,7 +44,7 @@ const ModificarSku = () => {
                                     <div className="card-body">
                                         <div class="form-group">
                                             <div className="table-responsive">
-                                                <table className="table">
+                                                <table className="table table-hover">
                                                     <thead className=" text-primary">
                                                         <th className="align-middle text-center">
                                                             SKU

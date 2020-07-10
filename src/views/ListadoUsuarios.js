@@ -43,7 +43,7 @@ const ListadoUsuarios = () => {
                                     </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
-                                    <table className="table" >
+                                    <table className="table table-hover" >
                                         <thead className=" text-primary ">
                                             <th className="align-middle text-center">
                                                 Nombre
@@ -91,10 +91,14 @@ const ListadoUsuarios = () => {
                                                     Si
                                                         </td>
                                                 <td className="align-middle text-center">
-                                                    <i className="now-ui-icons ui-2_settings-90"></i>
+                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                                    </button>
                                                 </td>
                                                 <td className="align-middle text-center">
-                                                    <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                    </button>
                                                 </td>
 
                                             </tr>
@@ -121,10 +125,14 @@ const ListadoUsuarios = () => {
                                                     Si
                                                         </td>
                                                 <td className="align-middle text-center">
-                                                    <i className="now-ui-icons ui-2_settings-90"></i>
+                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                                    </button>
                                                 </td>
                                                 <td className="align-middle text-center">
-                                                    <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </tbody>
