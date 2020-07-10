@@ -21,10 +21,11 @@ const AbrirCaja = props => {
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header col-md-5">
+                                <div class="card-header col-md-8">
                                     <div class="alert alert-info rounded">
-                                        <h5 class="title">Atención!</h5>
-                                        <p>blablabla? si bla bla blu? bla bla</p>
+                                        <h5 class="title">Precaución!</h5>
+                                        <p>Recuerde que al abrir caja logeado con su ID, se hace responsable por el monto inicial y los
+                                            movimientos que tenga durante el periodo de trabajo.</p>
                                     </div>
 
 
@@ -38,14 +39,24 @@ const AbrirCaja = props => {
                                                     <input type="text" class="form-control" placeholder="" />
                                                 </div>
                                             </div>
-
-
+                                            <div class="col-md-4 offset-md-3">
+                                                <div class="form-group">
+                                                    <label>Administrador</label>
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Hora Inicio</label>
                                                     <input type="time" class="form-control" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 offset-md-3">
+                                                <div class="form-group">
+                                                    <label>Clave</label>
+                                                    <input type="password" class="form-control" placeholder="" />
                                                 </div>
                                             </div>
 
@@ -57,6 +68,7 @@ const AbrirCaja = props => {
                                                     <input type="date" class="form-control" />
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
@@ -68,6 +80,14 @@ const AbrirCaja = props => {
                                                         </div>
                                                         <input type="text" class="form-control" aria-describedby="basic-addon1" />
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Clave Usuario</label>
+                                                    <input type="password" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
