@@ -12,7 +12,9 @@ import IngresarFactura from './views/IngresarFactura';
 import ModificarSku from './views/ModificarSku';
 import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser';
+import ModificarUser from './views/ModificarUser'
 import AbrirCaja from './views/abrirCaja';
+
 
 
 const App = props => {
@@ -28,7 +30,8 @@ const App = props => {
         <Route exact path='/modificar-sku' component={ModificarSku}></Route>
         <Route exact path="/ventaUsuario" component={VentaUsuario}></Route>
         <Route exact path="/CreateUser" component={CreateUser}></Route>
-        <Route exact path="/abrirCaja" component={AbrirCaja}></Route>
+        <Route exact path="/ModificarUser" component={ModificarUser}></Route>
+        <Route exact path="/abrirCaja" component = {AbrirCaja}></Route>
       </Switch>
     </BrowserRouter>
   )
