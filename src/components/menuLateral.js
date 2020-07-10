@@ -28,11 +28,11 @@ const MenuLateral = props => {
                         </Link>
 
                         <div id="ventas" class="collapse">                            
-                            <li className="ml-5"><Link to={"/ventaUsuario"}><p>Ingresar Ventas</p></Link></li>
-                            <li className="ml-5"><Link to={"/abrirCaja"}><p>Abrir Caja</p></Link></li>
-                            <li className="ml-5"><Link><p>Cierre de Caja</p></Link></li>
-                            <li className="ml-5"><Link><p>Anular Venta</p></Link></li>
-                            <li className="ml-5"><Link><p>Cuadrar Caja</p></Link></li>                            
+                            <li className="ml-5 mt-2"><Link to={"/ventaUsuario"}><p>Ingresar Ventas</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/abrirCaja"}><p>Abrir Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Cierre de Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Anular Venta</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Cuadrar Caja</p></Link></li>                            
                         </div>
                     </li>
                     <li>
