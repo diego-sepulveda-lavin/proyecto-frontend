@@ -19,6 +19,7 @@ import CerrarCaja from './views/cerrarCaja';
 import Footer from './components/footer';
 import NavBar from './components/navBar';
 import MenuLateral from './components/menuLateral';
+import AnularVentaUsuario from './views/anularVenta';
 
 
 
@@ -50,6 +51,7 @@ const App = props => {
             <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
             <Route exact path="/listado-Usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
+            <Route exact path="/anular-Venta" component={AnularVentaUsuario}></Route>
 
 
             <Footer />
