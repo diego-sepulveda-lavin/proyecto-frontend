@@ -28,11 +28,10 @@ const MenuLateral = props => {
                         </Link>
 
                         <div id="ventas" class="collapse">                            
-                            <li className="ml-5 mt-2"><Link to={"/ventaUsuario"}><p>Ingresar Ventas</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/abrirCaja"}><p>Abrir Caja</p></Link></li>
-                            <li className="ml-5 mt-2"><Link><p>Cierre de Caja</p></Link></li>
-                            <li className="ml-5 mt-2"><Link><p>Anular Venta</p></Link></li>
-                            <li className="ml-5 mt-2"><Link><p>Cuadrar Caja</p></Link></li>                            
+                            <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/abrir-caja"}><p>Abrir Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/cerrar-Caja"}><p>Cierre de Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Anular Venta</p></Link></li>                          
                         </div>
                     </li>
                     <li>
@@ -54,8 +53,8 @@ const MenuLateral = props => {
                         </Link>
                         
                         <div id="administrador" class="collapse">                            
-                            <li className="ml-5 mt-2"><Link to={""}><p>Ver Usuarios</p></Link></li>
-                            <li className="ml-5 mt-2"><Link><p>Crear Usuarios</p></Link></li>                     
+                            <li className="ml-5 mt-2"><Link to={"/listado-Usuarios"}><p>Ver Usuarios</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/create-user"}><p>Crear Usuarios</p></Link></li>                     
                         </div>
                     </li>
                    

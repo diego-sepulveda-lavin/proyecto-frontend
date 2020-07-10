@@ -7,12 +7,6 @@ import NavBar from '../components/navBar';
 const ModificarSku = () => {
     return (
         <>
-            <div className="wrapper ">
-            <MenuLateral />
-                <div className="main-panel" id="main-panel">
-                    {/* <!-- Navbar --> */} 
-                     <NavBar />
-                     {/* <!-- End Navbar --> */}
                     <div className="panel-header panel-header-md">
                     <h1 className="text-warning text-center">Stock</h1>
                     <h3 className="text-info text-center">Modificar SKU</h3>
@@ -132,11 +126,7 @@ const ModificarSku = () => {
 
                         </div>
                     </div>
-                    <Footer/>
-                </div>
-            </div>
-
         </>
     )
 }
-export default ModificarSku
+export default ModificarSku;
