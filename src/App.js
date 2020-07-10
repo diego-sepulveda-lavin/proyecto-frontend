@@ -14,6 +14,7 @@ import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser';
 import ModificarUser from './views/ModificarUser'
 import AbrirCaja from './views/abrirCaja';
+import ListadoUsuarios from './views/ListadoUsuarios';
 
 
 
@@ -32,6 +33,7 @@ const App = props => {
         <Route exact path="/CreateUser" component={CreateUser}></Route>
         <Route exact path="/ModificarUser" component={ModificarUser}></Route>
         <Route exact path="/abrirCaja" component = {AbrirCaja}></Route>
+        <Route exact path="/ListadoUsuarios" component = {ListadoUsuarios}></Route>
       </Switch>
     </BrowserRouter>
   )
