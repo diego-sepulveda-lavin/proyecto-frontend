@@ -6,10 +6,10 @@ const MenuLateral = props => {
         <div className="sidebar" data-color="orange">
             {/* <!--Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"--> */}
             <div className="logo">
-                <a href="http://www.creative-tim.com" className="simple-text logo-mini">
+                <a href="#" className="simple-text logo-mini">
                     CT
             </a>
-                <a href="http://www.creative-tim.com" className="simple-text logo-normal">
+                <a href="#" className="simple-text logo-normal">
                     DHSL
             </a>
             </div>
@@ -28,11 +28,11 @@ const MenuLateral = props => {
                         </Link>
 
                         <div id="ventas" class="collapse">                            
-                            <li className="ml-5"><Link to={"/ventaUsuario"}><p>Ingresar Ventas</p></Link></li>
-                            <li className="ml-5"><Link><p>Abrir Caja</p></Link></li>
-                            <li className="ml-5"><Link><p>Cierre de Caja</p></Link></li>
-                            <li className="ml-5"><Link><p>Anular Venta</p></Link></li>
-                            <li className="ml-5"><Link><p>Cuadrar Caja</p></Link></li>                            
+                            <li className="ml-5 mt-2"><Link to={"/ventaUsuario"}><p>Ingresar Ventas</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Abrir Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Cierre de Caja</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Anular Venta</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Cuadrar Caja</p></Link></li>                            
                         </div>
                     </li>
                     <li>
@@ -41,10 +41,10 @@ const MenuLateral = props => {
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
                         </Link>
                         <div id="stock" class="collapse">                            
-                            <li className="ml-5"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
-                            <li className="ml-5"><Link to={"/crear-sku"}><p>Crear SKU</p></Link></li>
-                            <li className="ml-5"><Link to={"/modificar-sku"}><p>Modificar SKU</p></Link></li>
-                            <li className="ml-5"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>                          
+                            <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear SKU</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar SKU</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>                          
                         </div>
                     </li>
                     <li>
@@ -54,8 +54,8 @@ const MenuLateral = props => {
                         </Link>
                         
                         <div id="administrador" class="collapse">                            
-                            <li className="ml-5"><Link to={""}><p>Ver Usuarios</p></Link></li>
-                            <li className="ml-5"><Link><p>Crear Usuarios</p></Link></li>                     
+                            <li className="ml-5 mt-2"><Link to={""}><p>Ver Usuarios</p></Link></li>
+                            <li className="ml-5 mt-2"><Link><p>Crear Usuarios</p></Link></li>                     
                         </div>
                     </li>
                    
