@@ -23,8 +23,8 @@ const NavbarLanding = () => {
                         </div>
                     </div>
                     <div className="navbar-translate">
-                        <a className="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-                            Now Ui Kit
+                        <a className="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" data-placement="bottom" target="_blank">
+                            Menu
                             </a>
                         <button className="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-bar top-bar"></span>

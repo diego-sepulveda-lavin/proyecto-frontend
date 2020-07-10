@@ -6,7 +6,7 @@ const TeamMember = (props) => {
             <div className="col-md-6 col-lg-3">
                 <div className="team-player">
                     <img src={props.foto} alt="Thumbnail Image" className="rounded-circle img-fluid img-raised" />
-                    <h4 className="title">{props.name}</h4>
+                    <h4>{props.nombre}</h4>
                     <p className="category text-primary">{props.actividad}</p>
                     <p className="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some
                                             <a href="#">links</a> for people to be able to follow them outside the site.</p>
