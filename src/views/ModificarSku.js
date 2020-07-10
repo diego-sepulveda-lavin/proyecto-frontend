@@ -14,6 +14,8 @@ const ModificarSku = () => {
                      <NavBar />
                      {/* <!-- End Navbar --> */}
                     <div className="panel-header panel-header-md">
+                    <h1 className="text-warning text-center">Stock</h1>
+                    <h3 className="text-info text-center">Modificar SKU</h3>
                     </div>
                     <div className="content mt-2">
                         <div className="row">
@@ -23,7 +25,8 @@ const ModificarSku = () => {
                                         <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" />
                                         <div className="input-group-append">
                                             <div className="input-group-text bg-light">
-                                                <i className="now-ui-icons ui-1_zoom-bold"></i>
+                                                <i className="now-ui-icons ui-1_zoom-bold"></i> 
+                                                
                                             </div>
                                         </div>
                                     </div>
