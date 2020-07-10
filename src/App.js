@@ -19,11 +19,8 @@ import CerrarCaja from './views/cerrarCaja';
 import Footer from './components/footer';
 import NavBar from './components/navBar';
 import MenuLateral from './components/menuLateral';
-<<<<<<< HEAD
 import AnularVentaUsuario from './views/anularVenta';
-=======
 import CerrarVenta from './views/cerrarVenta';
->>>>>>> caab186061ecf160faea0b3416d20a387a778379
 
 
 
@@ -55,13 +52,10 @@ const App = props => {
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path="/listado-Usuarios" component={ListadoUsuarios}></Route>
-<<<<<<< HEAD
             <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
             <Route exact path="/anular-Venta" component={AnularVentaUsuario}></Route>
-=======
             <Route exact path="/create-user" component={CreateUser}></Route>
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
->>>>>>> caab186061ecf160faea0b3416d20a387a778379
 
 
             {/* END Users Components */}
