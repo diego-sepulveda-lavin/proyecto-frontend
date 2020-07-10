@@ -1,7 +1,5 @@
-import React from 'react'
-import '../css/now-ui-dashboard.css'
-import MenuLateral from '../components/menuLateral'
-import NavBar from '../components/navBar'
+import React from 'react';
+import '../css/now-ui-dashboard.css';
 
 const Dashboard = () => {
     return (

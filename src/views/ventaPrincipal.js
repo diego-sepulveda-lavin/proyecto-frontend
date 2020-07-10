@@ -1,9 +1,5 @@
-import React from 'react'
-import '../css/now-ui-dashboard.css'
-import "../css/ventaPrincipal.css"
-import Footer from '../components/footer'
-import NavBar from '../components/navBar'
-import MenuLateral from '../components/menuLateral'
+import React from 'react';
+import "../css/ventaPrincipal.css";
 
 const VentaUsuario = () => {
 

@@ -1,7 +1,4 @@
 import React from "react"
-import NavBar from "../components/navBar";
-import MenuLateral from "../components/menuLateral";
-import Footer from "../components/footer";
 
 
 const AbrirCaja = props => {

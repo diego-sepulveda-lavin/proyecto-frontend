@@ -1,8 +1,4 @@
 import React from 'react';
-import '../css/now-ui-dashboard.css'
-import Footer from '../components/footer';
-import MenuLateral from '../components/menuLateral';
-import NavBar from '../components/navBar';
 
 const GeneralStock = () => {
     return (

@@ -1,5 +1,5 @@
-import React from 'react'
-import '../css/now-ui-dashboard.css'
+import React from 'react';
+
 const ModificarUser = () => {
     return (
         <>
