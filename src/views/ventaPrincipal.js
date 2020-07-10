@@ -7,8 +7,6 @@ import MenuLateral from '../components/menuLateral'
 
 const VentaUsuario = () => {
 
-
-
     return (
         <>
             <div className="wrapper ">

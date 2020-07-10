@@ -30,101 +30,101 @@ const IngresarFactura = () => {
                                             <div className="table-responsive">
                                                 <table className="table">
                                                     <thead className=" text-primary">
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             SKU
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Descripción
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Código de Barra
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Cantidad
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Unidad de Entrega
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Costo Unitario
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Costo Total
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Precio de Venta
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Margen de Contribución
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Categoría
                                                     </th>
 
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 651651
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Super 8
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 6546556
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Unidad
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 <input type="text" class="form-control" placeholder="Costo Unitario" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 $30.000
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 $400
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 33%
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Confites
                                                             </td>
 
                                                         </tr>
                                                         <tr>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 454545
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Coca Cola 500cc
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 23443
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Unidad
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 <input type="text" class="form-control" placeholder="Costo Unitario" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 $360.000
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 $600
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 20%
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Bebidas
                                                             </td>
                                                         </tr>

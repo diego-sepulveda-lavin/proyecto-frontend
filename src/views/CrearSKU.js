@@ -29,66 +29,66 @@ const CrearSku = () => {
                                         <div className="table-responsive">
                                             <table className="table">
                                                 <thead className=" text-primary">
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         N°
                                                     </th>
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         SKU
                                                     </th>
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         Descripción
                                                     </th>
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         Código de Barra
                                                     </th>
                                                     
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         Unidad de Entrega
                                                     </th>
-                                                    <th>
+                                                    <th className="align-middle text-center">
                                                         Categoría
                                                     </th>
 
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             1
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             651651
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Super 8
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             6546556
                                                         </td>
                                                         
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Unidad
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Confites
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             2
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             454545
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Coca Cola 500cc
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             23443
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Unidad
                                                         </td>
-                                                        <td>
+                                                        <td className="align-middle text-center">
                                                             Bebidas
                                                         </td>
                                                     </tr>
