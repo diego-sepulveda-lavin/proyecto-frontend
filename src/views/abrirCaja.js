@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 
 const AbrirCaja = props => {
     return (
-        <div className="wrapper ">
+        <div className="wrapper">
             <MenuLateral />
             <div className="main-panel" id="main-panel">
                 {/* <!-- Navbar --> */}
@@ -18,56 +18,76 @@ const AbrirCaja = props => {
                 </div>
                 <div className="content mt-2">
 
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header col-md-5">
-                                    <div class="alert alert-info rounded">
-                                        <h5 class="title">Atención!</h5>
-                                        <p>blablabla? si bla bla blu? bla bla</p>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="card">
+                                <div className="card-header col-md-8">
+                                    <div className="alert alert-info rounded">
+                                        <h5 className="title p-1">Precaución!</h5>
+                                        <p>Recuerde que al abrir caja logeado con su ID, se hace responsable por el monto inicial y los
+                                            movimientos que tenga durante el periodo de trabajo.</p>
                                     </div>
 
 
                                 </div>
-                                <div class="card-body">
+                                <div className="card-body">
                                     <form>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <div className="form-group">
                                                     <label>Nombre de usuario</label>
-                                                    <input type="text" class="form-control" placeholder="" />
+                                                    <input type="text" className="form-control" placeholder="" />
                                                 </div>
                                             </div>
-
-
+                                            <div className="col-md-4 offset-md-3">
+                                                <div className="form-group">
+                                                    <label>Administrador</label>
+                                                    <input type="text" className="form-control" placeholder="" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <div className="form-group">
                                                     <label>Hora Inicio</label>
-                                                    <input type="time" class="form-control" placeholder="" />
+                                                    <input type="time" className="form-control" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-4 offset-md-3">
+                                                <div className="form-group">
+                                                    <label>Clave</label>
+                                                    <input type="password" className="form-control" placeholder="" />
                                                 </div>
                                             </div>
 
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <div className="form-group">
                                                     <label>Fecha</label>
-                                                    <input type="date" class="form-control" />
+                                                    <input type="date" className="form-control" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <div className="form-group">
+                                                    <label>Monto inicial</label>
+                                                    <div className="input-group mb-3">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text" id="basic-addon1">$</span>
+                                                        </div>
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label>Monto inicial</label>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">$</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" />
-                                                    </div>
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <div className="form-group">
+                                                    <label>Clave Usuario</label>
+                                                    <input type="password" className="form-control" />
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +95,7 @@ const AbrirCaja = props => {
                                     </form>
                                 </div>
                                 <div className="card-footer">
-                                    <button type="button" class="btn btn-success btn-block">Abrir Caja</button>
+                                    <button type="button" className="btn btn-success btn-block">Abrir Caja</button>
                                 </div>
                             </div>
                         </div>
