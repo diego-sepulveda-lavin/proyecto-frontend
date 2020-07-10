@@ -100,7 +100,7 @@ const VentaUsuario = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg-7 col-md-6">
+                    <div className="col-lg-7 col-md-6 mb-0">
                         <div className="card card-chart">
                             <div className="card-header">
                                 <h4 className="card-title text-center">Detalle Productos</h4>
@@ -202,22 +202,22 @@ const VentaUsuario = () => {
                             <div className="card-body">
                                 <table class="table">
                                     <thead>
-                                        <tr className=" table-hover">
+                                        <tr>
                                             <th scope="col">Total venta neto</th>
                                             <th scope="col">$10000</th>
                                         </tr>
-                                        <tr className=" table-hover">
+                                        <tr>
                                             <th scope="col">IVA 19%</th>
                                             <th scope="col">$10000</th>
                                         </tr>
                                         <div class="dropdown-divider"></div>
-                                        <tr className=" table-hover">
+                                        <tr>
                                             <th scope="col">Total a pagar</th>
                                             <th scope="col">$200</th>
                                         </tr>
                                     </thead>
                                 </table>
-                                <button type="button" class="btn btn-success btn-lg btn-block font-weight-bold h4">Ir a Pagar</button>
+                                <button type="button" class="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</button>
                             </div>
                         </div>
                     </div>

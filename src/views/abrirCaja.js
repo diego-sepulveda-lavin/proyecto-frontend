@@ -14,9 +14,9 @@ const AbrirCaja = props => {
             <div className="content mt-2">
 
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header col-md-8">
+                            <div className="card-header col-md-12">
                                 <div className="alert alert-info rounded">
                                     <h5 className="title p-1">Precaución!</h5>
                                     <p>Recuerde que al abrir caja logeado con su ID, se hace responsable por el monto inicial y los
@@ -78,14 +78,7 @@ const AbrirCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-md-3">
-                                            <div className="form-group">
-                                                <label>Clave Usuario</label>
-                                                <input type="password" className="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
 
                                 </form>
                             </div>

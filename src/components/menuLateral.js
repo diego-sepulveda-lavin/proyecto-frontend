@@ -54,7 +54,8 @@ const MenuLateral = props => {
                         
                         <div id="administrador" class="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/listado-Usuarios"}><p>Ver Usuarios</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/create-user"}><p>Crear Usuarios</p></Link></li>                     
+                            <li className="ml-5 mt-2"><Link to={"/create-user"}><p>Crear Usuarios</p></Link></li>  
+                            <li className="ml-5 mt-2"><Link to={"/modificar-user"}><p>Modificar Usuarios</p></Link></li>                    
                         </div>
                     </li>
                    

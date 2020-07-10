@@ -41,7 +41,7 @@ const CreateUser = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 d-flex justify-content-center">
-                                        <img src="https://picsum.photos/id/237/200/300"></img>
+                                        <img className="rounded-circle img-fluid img-raised" src="https://picsum.photos/id/237/300/300"></img>
                                     </div>
                                     <div className="col-md-8">
                                         <div className="row">
