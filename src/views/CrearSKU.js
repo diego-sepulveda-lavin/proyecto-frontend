@@ -100,6 +100,7 @@ const CrearSku = () => {
                                 </div>
                             </div>
                             <div className="col-12 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mr-3">Agregar línea de producto</button>
                             <button type="button" class="btn btn-success">Crear SKU's</button>
                             </div>
                         </div>
