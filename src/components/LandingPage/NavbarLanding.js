@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 
 const NavbarLanding = () => {
     return (
@@ -23,7 +25,7 @@ const NavbarLanding = () => {
                         </div>
                     </div>
                     <div className="navbar-translate">
-                        <a className="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" data-placement="bottom" target="_blank">
+                        <a className="navbar-brand" rel="tooltip" data-placement="bottom">
                             Menu
                             </a>
                         <button className="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,25 +37,22 @@ const NavbarLanding = () => {
                     <div className="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="../index.html">Back to Kit</a>
+                                <Link className="nav-link" to="/login">Login</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">Have an issue?</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                                <a className="nav-link" rel="tooltip" title="Síguenos en Twitter" data-placement="bottom" href="#">
                                     <i className="fab fa-twitter"></i>
                                     <p className="d-lg-none d-xl-none">Twitter</p>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                                <a className="nav-link" rel="tooltip" title="Danos me gusta en Facebook" data-placement="bottom" href="#">
                                     <i className="fab fa-facebook-square"></i>
                                     <p className="d-lg-none d-xl-none">Facebook</p>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                                <a className="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="#">
                                     <i className="fab fa-instagram"></i>
                                     <p className="d-lg-none d-xl-none">Instagram</p>
                                 </a>

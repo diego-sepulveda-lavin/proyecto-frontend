@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const FooterLanding = () => {
+const FooterLanding = (props) => {
     return (
         <>
-            <footer className="footer footer-default">
+            <footer className={props.estilo}>
                 <div className=" container ">
                     <nav>
                         <ul>

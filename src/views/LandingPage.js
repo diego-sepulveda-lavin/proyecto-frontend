@@ -18,7 +18,7 @@ const LandingPage = () => {
                     <AboutUs />
                     <Team />
                     <ContactUs />
-                    <FooterLanding />
+                    <FooterLanding estilo="footer footer-default" />
                 </div>
             </div>
         </>
