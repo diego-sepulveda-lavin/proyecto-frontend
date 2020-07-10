@@ -27,18 +27,19 @@ const App = props => {
 
     <BrowserRouter>
       <Switch>
+        {/* FrontPage components */}
         <Route exact path='/' component={LandingPage}></Route>
         <Route exact path='/login' component={LoginPage}></Route>
+        {/* END FrontPage components */}
+
 
         <div className="wrapper">
           <MenuLateral />
           <div className="main-panel" id="main-panel">
-            {/* <!-- Navbar --> */}
             <NavBar />
-            {/* <!-- End Navbar --> */}
 
 
-
+            {/* Users Components */}
             <Route exact path='/dashboard' component={Dashboard}></Route>
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearSku}></Route>
@@ -52,6 +53,7 @@ const App = props => {
             <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
 
 
+            {/* END Users Components */}
             <Footer />
           </div>
         </div>
