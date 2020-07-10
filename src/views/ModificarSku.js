@@ -48,68 +48,68 @@ const ModificarSku = () => {
                                             <div className="table-responsive">
                                                 <table className="table">
                                                     <thead className=" text-primary">
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             SKU
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Descripción
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Código de Barra
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Cantidad
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Unidad de Entrega
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Costo Unitario
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Costo Total
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Precio de Venta
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Margen de Contribución
                                                     </th>
-                                                        <th>
+                                                        <th className="align-middle text-center">
                                                             Categoría
                                                     </th>
 
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 651651
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                             <input type="text" value="Super8" class="form-control" placeholder="Descripción" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 6546556
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                             <input type="text" value="500" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 Unidad
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 500
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 $30.000
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                             <input type="text" value="$400" class="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                                 33%
                                                             </td>
-                                                            <td>
+                                                            <td className="align-middle text-center">
                                                             <input type="text" value="Confites" class="form-control" placeholder="Categoría" aria-label="Username" aria-describedby="basic-addon1" />
                                                             </td>
 
