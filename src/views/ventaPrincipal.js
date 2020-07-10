@@ -1,5 +1,6 @@
 import React from 'react';
 import "../css/ventaPrincipal.css";
+import { Link } from 'react-router-dom';
 
 const VentaUsuario = () => {
 
@@ -213,7 +214,7 @@ const VentaUsuario = () => {
                                         </tr>
                                     </thead>
                                 </table>
-                                <button type="button" class="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</button>
+                                <Link to="/cerrar-venta" type="button" class="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</Link>
                             </div>
                         </div>
                     </div>
