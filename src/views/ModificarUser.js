@@ -1,5 +1,5 @@
-import React from 'react'
-import '../css/now-ui-dashboard.css'
+import React from 'react';
+
 const ModificarUser = () => {
     return (
         <>
@@ -41,7 +41,8 @@ const ModificarUser = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 d-flex justify-content-center">
-                                        <img src="https://picsum.photos/id/102/200/300"></img>
+                                        <img className="rounded-circle img-fluid img-raised" src="https://picsum.photos/id/102/300/300"></img>
+                                        
                                     </div>
                                     <div className="col-md-8">
                                         <div className="row">

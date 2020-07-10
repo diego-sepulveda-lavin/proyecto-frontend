@@ -1,8 +1,4 @@
 import React from 'react';
-import '../css/now-ui-dashboard.css'
-import Footer from '../components/footer';
-import MenuLateral from '../components/menuLateral';
-import NavBar from '../components/navBar';
 
 const CrearSku = () => {
     return (
@@ -11,7 +7,7 @@ const CrearSku = () => {
                 <h1 className="text-warning text-center">Stock</h1>
                 <h3 className="text-info text-center">Crear SKU</h3>
             </div>
-            <div className="content mt-2">
+            <div className="content">
                 <div className="row">
 
                     <div className="col-md-12">
@@ -21,7 +17,7 @@ const CrearSku = () => {
                                     </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
-                                    <table className="table">
+                                    <table className="table table-hover">
                                         <thead className=" text-primary">
                                             <th className="align-middle text-center">
                                                 N°

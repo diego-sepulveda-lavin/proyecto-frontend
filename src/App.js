@@ -19,7 +19,11 @@ import CerrarCaja from './views/cerrarCaja';
 import Footer from './components/footer';
 import NavBar from './components/navBar';
 import MenuLateral from './components/menuLateral';
+<<<<<<< HEAD
 import AnularVentaUsuario from './views/anularVenta';
+=======
+import CerrarVenta from './views/cerrarVenta';
+>>>>>>> caab186061ecf160faea0b3416d20a387a778379
 
 
 
@@ -28,32 +32,39 @@ const App = props => {
 
     <BrowserRouter>
       <Switch>
+        {/* FrontPage components */}
         <Route exact path='/' component={LandingPage}></Route>
         <Route exact path='/login' component={LoginPage}></Route>
+        {/* END FrontPage components */}
+
 
         <div className="wrapper">
           <MenuLateral />
           <div className="main-panel" id="main-panel">
-            {/* <!-- Navbar --> */}
             <NavBar />
-            {/* <!-- End Navbar --> */}
 
 
-
+            {/* Users Components */}
             <Route exact path='/dashboard' component={Dashboard}></Route>
+            <Route exact path="/venta-usuario" component={VentaUsuario}></Route>
+            <Route exact path="/cerrar-venta" component={CerrarVenta}></Route>
+            <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
+            <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearSku}></Route>
-            <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
-            <Route exact path="/venta-usuario" component={VentaUsuario}></Route>
-            <Route exact path="/create-user" component={CreateUser}></Route>
-            <Route exact path="/modifica-user" component={ModificarUser}></Route>
-            <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
+            <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path="/listado-Usuarios" component={ListadoUsuarios}></Route>
+<<<<<<< HEAD
             <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
             <Route exact path="/anular-Venta" component={AnularVentaUsuario}></Route>
+=======
+            <Route exact path="/create-user" component={CreateUser}></Route>
+            <Route exact path="/modificar-user" component={ModificarUser}></Route>
+>>>>>>> caab186061ecf160faea0b3416d20a387a778379
 
 
+            {/* END Users Components */}
             <Footer />
           </div>
         </div>

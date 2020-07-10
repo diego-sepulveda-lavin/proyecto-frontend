@@ -1,8 +1,4 @@
 import React from 'react';
-import '../css/now-ui-dashboard.css'
-import Footer from '../components/footer';
-import MenuLateral from '../components/menuLateral';
-import NavBar from '../components/navBar';
 
 const GeneralStock = () => {
     return (
@@ -43,7 +39,7 @@ const GeneralStock = () => {
                                     </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
-                                    <table className="table" >
+                                    <table className="table table-hover" >
                                         <thead className=" text-primary ">
                                             <th className="align-middle text-center">
                                                 SKU

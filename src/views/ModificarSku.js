@@ -1,8 +1,5 @@
 import React from 'react';
-import '../css/now-ui-dashboard.css'
-import Footer from '../components/footer';
-import MenuLateral from '../components/menuLateral';
-import NavBar from '../components/navBar';
+
 
 const ModificarSku = () => {
     return (
@@ -44,7 +41,7 @@ const ModificarSku = () => {
                                     <div className="card-body">
                                         <div class="form-group">
                                             <div className="table-responsive">
-                                                <table className="table">
+                                                <table className="table table-hover">
                                                     <thead className=" text-primary">
                                                         <th className="align-middle text-center">
                                                             SKU
