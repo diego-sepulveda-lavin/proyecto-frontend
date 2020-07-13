@@ -19,6 +19,8 @@ import CerrarCaja from './views/cerrarCaja';
 import Footer from './components/footer';
 import NavBar from './components/navBar';
 import MenuLateral from './components/menuLateral';
+import AnularVentaUsuario from './views/anularVenta';
+import CerrarVenta from './views/cerrarVenta';
 
 
 
@@ -42,6 +44,7 @@ const App = props => {
             {/* Users Components */}
             <Route exact path='/dashboard' component={Dashboard}></Route>
             <Route exact path="/venta-usuario" component={VentaUsuario}></Route>
+            <Route exact path="/cerrar-venta" component={CerrarVenta}></Route>
             <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
             <Route exact path="/cerrar-caja" component={CerrarCaja}></Route>
             <Route exact path='/general-stock' component={GeneralStock}></Route>
@@ -49,6 +52,8 @@ const App = props => {
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
+            <Route exact path="/cerrar-caja" component={CerrarCaja}></Route>
+            <Route exact path="/anular-venta" component={AnularVentaUsuario}></Route>
             <Route exact path="/create-user" component={CreateUser}></Route>
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
 
