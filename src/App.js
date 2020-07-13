@@ -43,12 +43,12 @@ const App = props => {
             <Route exact path='/dashboard' component={Dashboard}></Route>
             <Route exact path="/venta-usuario" component={VentaUsuario}></Route>
             <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
-            <Route exact path="/cerrar-Caja" component={CerrarCaja}></Route>
+            <Route exact path="/cerrar-caja" component={CerrarCaja}></Route>
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearSku}></Route>
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
-            <Route exact path="/listado-Usuarios" component={ListadoUsuarios}></Route>
+            <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/create-user" component={CreateUser}></Route>
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
 
