@@ -7,23 +7,6 @@ const NavbarLanding = () => {
         <>
             <nav className="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
                 <div className="container">
-                    <div className="dropdown button-dropdown">
-                        <a href="#pablo" className="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                            <span className="button-bar"></span>
-                            <span className="button-bar"></span>
-                            <span className="button-bar"></span>
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-header">Dropdown header</a>
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">Separated link</a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">One more separated link</a>
-                        </div>
-                    </div>
                     <div className="navbar-translate">
                         <a className="navbar-brand" rel="tooltip" data-placement="bottom">
                             Menu
