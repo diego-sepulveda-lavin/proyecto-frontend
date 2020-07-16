@@ -115,7 +115,7 @@ const ModificarSku = () => {
                                         </div>
                                         
                                         <div className="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-danger">Modificar SKU</button>
+                                            <button type="submit" class="btn btn-primary">Modificar SKU</button>
                                         </div>
                                     </div>
                                 </div>

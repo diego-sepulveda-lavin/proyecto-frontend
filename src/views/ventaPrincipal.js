@@ -12,7 +12,7 @@ const VentaUsuario = () => {
             </div>
             <div className="content mt-2">
                 <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-5">
                         <div className="card">
                             <div className="card-header">
                                 <h4 className="card-title"><input type="text" placeholder="Buscar Producto" className="border-0" /></h4>

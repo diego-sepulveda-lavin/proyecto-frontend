@@ -1,9 +1,5 @@
-import React from 'react'
-import '../css/now-ui-dashboard.css'
-import "../css/anularVenta.css"
-import Footer from '../components/footer'
-import NavBar from '../components/navBar'
-import MenuLateral from '../components/menuLateral'
+import React from 'react';
+import "../css/anularVenta.css";
 
 const AnularVentaUsuario = () => {
 
@@ -22,16 +18,8 @@ const AnularVentaUsuario = () => {
 
 
                                     <div className="col-md-4">
-<<<<<<< HEAD
-                                       
-                                            <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </input>
-                                            <small>Boleta</small>
-                                        
-=======
                                         <label class="form-check-label p-0 align-middle " for="exampleRadios1">Boleta</label>
                                         <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
->>>>>>> 35a0e175bc154c3c6d602187c032c4b765409220
                                     </div>
                                     <div className="col-md-4">
 
