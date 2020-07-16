@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Context } from '../store/appContext';
 
 const Empresas = () => {
+
+    const { store, actions } = useContext(Context);
+
+    useEffect(() => {
+        actions.getEmpresas() 
+    }, []);
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -59,57 +66,52 @@ const Empresas = () => {
                                                     </th>
                                         </thead>
                                         <tbody>
-                                            <tr >
-                                                <td className="align-middle text-center">
-                                                    Coca Cola Andina
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    96.783.569-9
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Coca Cola Andina S.A.
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Bebidas
-                                                        </td>
+                                            {
+                                                store.empresas !== null ?
+                                                    (
+                                                        store.empresas.map((elem, index, arr) => {
+                                                            return (
+                                                                <>
+                                                                    <tr>
+                                                                        <td className="align-middle text-center">
+                                                                            {elem.nombre}
+                                                                        </td>
+                                                                        <td className="align-middle text-center">
+                                                                            {elem.rut}
+                                                                        </td>
+                                                                        <td className="align-middle text-center">
+                                                                            {elem.razon_social}
+                                                                        </td>
+                                                                        <td className="align-middle text-center">
+                                                                            {elem.rubro}
+                                                                        </td>
 
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                                    </button>
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                    </button>
-                                                </td>
+                                                                        <td className="align-middle text-center">
+                                                                            <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                        <td className="align-middle text-center">
+                                                                            <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                                <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                            </button>
+                                                                        </td>
 
-                                            </tr>
-                                            <tr >
-                                                <td className="align-middle text-center">
-                                                    Coca Cola Andina
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    96.783.569-9
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Coca Cola Andina S.A.
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Bebidas
-                                                        </td>
+                                                                    </tr>
+                                                                </>
+                                                            )
+                                                        })
 
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                                    </button>
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                                    ) : (
+                                                        <tr className="align-middle text-center">
+                                                            <th colspan="6">No hay empresas registradas</th>
+                                                        </tr>
+
+
+                                                    )
+                                            }
+
+
                                         </tbody>
                                     </table>
                                 </div>
