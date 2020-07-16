@@ -51,10 +51,13 @@ const ListadoUsuarios = () => {
                                                 RUT
                                                     </th>
                                             <th className="align-middle text-center">
-                                                User ID
+                                                Codigo Usuario
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Puesto
+                                                Rol
+                                                    </th>
+                                            <th className="align-middle text-center">
+                                                E-mail
                                                     </th>
                                             <th className="align-middle text-center">
                                                 Fecha de Registro
@@ -79,6 +82,9 @@ const ListadoUsuarios = () => {
                                                         </td>
                                                 <td className="align-middle text-center">
                                                     CFO
+                                                        </td>
+                                                <td className="align-middle text-center">
+                                                    email@email.com
                                                         </td>
                                                 <td className="align-middle text-center">
                                                     10/07/2020
@@ -113,6 +119,9 @@ const ListadoUsuarios = () => {
                                                         </td>
                                                 <td className="align-middle text-center">
                                                     CSS especialist
+                                                        </td>
+                                                <td className="align-middle text-center">
+                                                    emailmaslargo@emaillargo.com
                                                         </td>
                                                 <td className="align-middle text-center">
                                                     10/07/2020

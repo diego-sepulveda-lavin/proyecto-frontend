@@ -13,19 +13,9 @@ const CreateUser = () => {
                         <div className="card card-chart">
                             <div className="card-header">
 
-                                <div className="row d-flex justify-content-around">
-                                    <div class="input-group col-md-6 ">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Fecha de Registro</span>
-                                        </div>
-                                        <input type="text" aria-label="First name" class="form-control" placeholder="aqui va la fecha" />
-                                    </div>
-                                    <div class="input-group col-md-4">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">User ID</span>
-                                        </div>
-                                        <input type="text" aria-label="First name" class="form-control" placeholder="aqui va el user ID" />
-                                    </div>
+                                <div className="row d-flex justify-content-around my-4">
+                                    
+                                   
                                     <div className="dropdown">
                                         <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                             <i className="now-ui-icons loader_gear"></i>
@@ -40,7 +30,7 @@ const CreateUser = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 d-flex justify-content-center">
-                                        <img className="rounded-circle img-fluid img-raised" src="https://picsum.photos/id/237/300/300"></img>
+                                        <img className="rounded-circle img-fluid img-raised" style={{height: "350px"}} src="https://picsum.photos/id/237/300/300"></img>
                                     </div>
                                     <div className="col-md-8">
                                         <div className="row">
@@ -67,10 +57,30 @@ const CreateUser = () => {
                                             <div className="input-group col-md-12">
 
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text">Puesto</span>
+                                                    <span class="input-group-text">Email</span>
+                                                </div>
+                                                <input type="email" aria-label="First name" class="form-control" placeholder="RUT" />
+                                            </div>
+                                            <div className="input-group col-md-12">
+
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Rol</span>
                                                 </div>
                                                 <input type="text" aria-label="First name" class="form-control" placeholder="PUESTO" />
                                             </div>
+                                            <div className="input-group col-md-12">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Password</span>
+                                                </div>
+                                                <input type="password" aria-label="First name" class="form-control" placeholder="RUT" />
+                                            </div>
+                                            <div className="input-group col-md-12">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Confirmación Password</span>
+                                                </div>
+                                                <input type="password" aria-label="First name" class="form-control" placeholder="RUT" />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
