@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import injectContext from './store/appContext';
 
-/* import Dashboard from './views/Dashboard' */
+import Dashboard from './views/Dashboard'
 import LandingPage from './views/LandingPage'
 import LoginPage from './views/LoginPage';
 import GeneralStock from './views/GeneralStock'
