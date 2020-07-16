@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Context } from '../store/appContext';
+import Spinner from '../components/spinner';
 
 const ListadoUsuarios = () => {
+    const { store, actions } = useContext(Context)
+
+    
+    const [state, setState] = useState({
+        buscarPor: null
+    })
+    
+    const seleccionadorBuscador = e =>{
+        console.log(e.target)
+        //setState({buscarPor: e.target.value})
+    }
+
+    useEffect(() => {
+        actions.getUsuarios();
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -24,11 +41,13 @@ const ListadoUsuarios = () => {
                     <div className=" col-md-6 p-0 mb-1">
                         <div class="form-check ml-3">
                             <label class="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios1"></input>
                             <label class="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
+                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios2"></input>
                             <label class="form-check-label align-middle" for="exampleRadios3">User ID</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios3"></input>
+                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios3"></input>
+                            <label class="form-check-label align-middle" for="exampleRadios3">aa</label>
+                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios3"></input>
                         </div>
 
                     </div>
@@ -67,79 +86,60 @@ const ListadoUsuarios = () => {
                                                     </th>
                                         </thead>
                                         <tbody>
-                                            <tr >
-                                                <td className="align-middle text-center">
-                                                    Leonardo
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Parra
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    17.668.976-3
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Parr001
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    CFO
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    email@email.com
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    10/07/2020
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Si
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                                    </button>
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                    </button>
-                                                </td>
+                                            {
+                                                store.usuarios == null ?
+                                                    <Spinner />
+                                                    :
+                                                    store.usuarios.map((usuario, indice) => {
+                                                        console.log(store.usuarios)
+                                                        return (
+                                                            <>
+                                                                <tr key={indice}>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.nombre}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.apellido}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.rut}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.codigo}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.rol}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.email}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.fecha_registro}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {usuario.status ==true? "Activo":"Inactivo"}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                            <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </>
+                                                        )
+                                                    })
 
-                                            </tr>
-                                            <tr>
-                                                <td className="align-middle text-center">
-                                                    Mister
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    L
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    17-346-888-0
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    MrL007
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    CSS especialist
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    emailmaslargo@emaillargo.com
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    10/07/2020
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Si
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                                    </button>
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            }
+
+
+
+
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -16,6 +16,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
             },
 
+
+            getUsuarios: async url =>{
+                const resp = await fetch("http://localhost:5000/api/usuarios/");
+                const data = await resp.json();
+                setStore({
+                    usuarios: data
+                })
+            }
+
         }
     }
 }
