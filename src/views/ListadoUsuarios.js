@@ -5,14 +5,29 @@ import Spinner from '../components/spinner';
 const ListadoUsuarios = () => {
     const { store, actions } = useContext(Context)
 
-    
+
     const [state, setState] = useState({
-        buscarPor: null
+        inputBuscador: "",
+        buscarPor: "nombre"
     })
-    
-    const seleccionadorBuscador = e =>{
-        console.log(e.target)
-        //setState({buscarPor: e.target.value})
+
+    const seleccionadorBuscador = e => {
+        console.log(e.target.value)
+        let data = {
+            buscarPor: e.target.value
+        }
+        setState((prevState) => {
+
+            return { ...prevState, ...data }
+        })
+    }
+    const inputBuscador = e => {
+        let data = { inputBuscador: e.target.value }
+        setState((prevState) => {
+
+            return { ...prevState, ...data }
+        })
+
     }
 
     useEffect(() => {
@@ -29,7 +44,7 @@ const ListadoUsuarios = () => {
                     <div className="col-md-6">
                         <form>
                             <div className="input-group no-border " >
-                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Usuario" />
+                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Usuario" onChange={e => inputBuscador(e)} />
                                 <div className="input-group-append">
                                     <div className="input-group-text bg-light">
                                         <i className="now-ui-icons ui-1_zoom-bold"></i>
@@ -39,15 +54,13 @@ const ListadoUsuarios = () => {
                         </form>
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
-                        <div class="form-check ml-3">
-                            <label class="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios1"></input>
-                            <label class="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios2"></input>
-                            <label class="form-check-label align-middle" for="exampleRadios3">User ID</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios3"></input>
-                            <label class="form-check-label align-middle" for="exampleRadios3">aa</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="exampleRadios3"></input>
+                        <div className="form-check ml-3">
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" id="rNombre" value="nombre" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="rRut" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label align-middle" for="exampleRadios3">Codigo Usuario</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="rUserid" value="codUsuario" onClick={e => seleccionadorBuscador(e)}></input>
                         </div>
 
                     </div>
@@ -90,12 +103,21 @@ const ListadoUsuarios = () => {
                                                 store.usuarios == null ?
                                                     <Spinner />
                                                     :
-                                                    store.usuarios.map((usuario, indice) => {
-                                                        console.log(store.usuarios)
+                                                    store.usuarios.filter((usuario) => {
+                                                        if (state.buscarPor == "nombre")
+                                                            return usuario.nombre.toLowerCase().includes(state.inputBuscador);
+
+                                                        if (state.buscarPor == "rut")
+                                                            return usuario.rut.includes(state.inputBuscador)
+
+                                                        if (state.buscarPor == "codUsuario")
+                                                            return usuario.codigo.includes(state.inputBuscador)
+
+                                                    }).map((usuario, indice) => {
                                                         return (
                                                             <>
-                                                                <tr key={indice}>
-                                                                    <td className="align-middle text-center">
+                                                                <tr>
+                                                                    <td key={indice} className="align-middle text-center">
                                                                         {usuario.nombre}
                                                                     </td>
                                                                     <td className="align-middle text-center">
@@ -117,15 +139,15 @@ const ListadoUsuarios = () => {
                                                                         {usuario.fecha_registro}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {usuario.status ==true? "Activo":"Inactivo"}
+                                                                        {usuario.status == true ? "Activo" : "Inactivo"}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
                                                                         </button>
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
                                                                             <i className="now-ui-icons ui-1_simple-remove"></i>
                                                                         </button>
                                                                     </td>
