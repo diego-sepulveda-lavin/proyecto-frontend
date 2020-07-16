@@ -22,11 +22,11 @@ const AnularVentaUsuario = () => {
 
 
                                     <div className="col-md-4">
-                                        <div class="input-group input-group-prepend input-group-text">
+                                       
                                             <input type="checkbox" aria-label="Checkbox for following text input">
                                             </input>
                                             <small>Boleta</small>
-                                        </div>
+                                        
                                     </div>
                                     <div className="col-md-4">
 
