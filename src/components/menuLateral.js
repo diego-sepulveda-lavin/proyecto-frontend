@@ -31,7 +31,7 @@ const MenuLateral = props => {
                             <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/abrir-caja"}><p>Abrir Caja</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/cerrar-Caja"}><p>Cierre de Caja</p></Link></li>
-                            <li className="ml-5 mt-2"><Link><p>Anular Venta</p></Link></li>                          
+                            <li className="ml-5 mt-2"><Link to={"/anular-Venta"}><p>Anular Venta</p></Link></li>                          
                         </div>
                     </li>
                     <li>

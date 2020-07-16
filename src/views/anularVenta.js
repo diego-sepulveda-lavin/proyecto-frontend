@@ -22,20 +22,22 @@ const AnularVentaUsuario = () => {
 
 
                                     <div className="col-md-4">
+<<<<<<< HEAD
                                        
                                             <input type="checkbox" aria-label="Checkbox for following text input">
                                             </input>
                                             <small>Boleta</small>
                                         
+=======
+                                        <label class="form-check-label p-0 align-middle " for="exampleRadios1">Boleta</label>
+                                        <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+>>>>>>> 35a0e175bc154c3c6d602187c032c4b765409220
                                     </div>
                                     <div className="col-md-4">
 
 
-                                        <div class="input-group input-group-prepend input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input">
-                                            </input>
-                                            <small>Factura</small>
-                                        </div>
+                                        <label class="form-check-label p-0 align-middle " for="exampleRadios1">Factura</label>
+                                        <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
 
 
                                     </div>
