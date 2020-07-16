@@ -2,6 +2,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             empresas: null,
+            usuarios:null,
+            usuario:null,
+            
         },
         actions: {
             getEmpresas: async url => {
