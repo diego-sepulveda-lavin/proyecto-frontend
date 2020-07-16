@@ -58,6 +58,17 @@ const MenuLateral = props => {
                             <li className="ml-5 mt-2"><Link to={"/modificar-user"}><p>Modificar Usuarios</p></Link></li>                    
                         </div>
                     </li>
+                    <li>
+                        <Link>
+                            <i className="now-ui-icons objects_spaceship"></i>
+                            <p data-toggle="collapse" data-target="#administrador-global">Administrador Global</p>
+                        </Link>
+                        
+                        <div id="administrador-global" class="collapse">                            
+                            <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
+                                         
+                        </div>
+                    </li>
                    
                    {/*  <li>
                         <a href="./typography.html">

@@ -21,6 +21,7 @@ import NavBar from './components/navBar';
 import MenuLateral from './components/menuLateral';
 import AnularVentaUsuario from './views/anularVenta';
 import CerrarVenta from './views/cerrarVenta';
+import Empresas from './views/GeneralEmpresas';
 
 
 
@@ -55,6 +56,7 @@ const App = props => {
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/create-user" component={CreateUser}></Route>
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
+            <Route exact path="/empresas" component={Empresas}></Route>
 
 
             {/* END Users Components */}
