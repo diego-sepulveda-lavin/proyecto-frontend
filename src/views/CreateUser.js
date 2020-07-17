@@ -2,6 +2,7 @@ import React from 'react';
 const CreateUser = () => {
     return (
         <>
+        <form>
             <div className="panel-header panel-header-md">
                 {/* <canvas id="bigDashboardChart"></canvas> */}
                 <h2 className="text-warning text-center">Administracion</h2>
@@ -93,6 +94,7 @@ const CreateUser = () => {
                     </div>
                 </div>
             </div>
+            </form>
         </>
     )
 }
