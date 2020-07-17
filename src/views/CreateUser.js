@@ -16,8 +16,8 @@ const CreateUser = () => {
                     <h3 className="text-info text-center">Crear Usuario</h3>
                 </div>
                 <div className="content">
-                    <div className="row">
-                        <div className="col-md-12">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-11 offset-md">
                             <form>
                                 <div className="card card-chart">
                                     <div className="card-body">
@@ -25,7 +25,6 @@ const CreateUser = () => {
                                             <div className="col-md-4 d-flex justify-content-center">
                                                 <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
                                                     src={store.imageURL !== null ? store.imageURL : "../user-icon-vector.jpg"}></img>
-
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="row">
@@ -96,6 +95,7 @@ const CreateUser = () => {
                             </form>
                         </div>
                     </div>
+
                 </div>
             </form>
         </>

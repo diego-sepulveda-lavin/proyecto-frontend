@@ -10,20 +10,20 @@ const ModificarSku = () => {
             </div>
             <div className="content mt-2">
                 <div className="row">
-                    <div className=" col-6 ">
-                        <form>
-                            <div className="input-group no-border " >
-                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" />
-                                <div className="input-group-append">
-                                    <div className="input-group-text bg-light">
-                                        <i className="now-ui-icons ui-1_zoom-bold"></i>
+                    <div className="col-6 ">
 
-                                    </div>
+                        <div className="input-group no-border " >
+                            <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" />
+                            <div className="input-group-append">
+                                <div className="input-group-text bg-light">
+                                    <i className="now-ui-icons ui-1_zoom-bold"></i>
+
                                 </div>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
-                    <div className=" col-6 ">
+                    <div className="col-6 ">
                         <div class="form-check ml-3">
                             <label class="form-check-label pl-3 pr-2" for="exampleRadios1">SKU</label>
                             <input type="radio" aria-label="Radio button for following text input"></input>
@@ -78,8 +78,8 @@ const ModificarSku = () => {
                                             <tbody>
                                                 <tr>
                                                     <td className="align-middle text-center">
-                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" disabled />
-                                                            </td>
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" disabled />
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Descripción" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
@@ -87,25 +87,25 @@ const ModificarSku = () => {
                                                         <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" disabled />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        <input type="text"  class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
+                                                        <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         Unidad
                                                             </td>
                                                     <td className="align-middle text-center">
-                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="C. Unit" />
-                                                            </td>
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="C. Unit" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="C. Total" />
-                                                            </td>
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="C. Total" />
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="M. Cont." />
-                                                            </td>
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="M. Cont." />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                    <select class="form-control">
+                                                        <select class="form-control">
                                                             <option>Seleccionar Categoria</option>
                                                         </select>
                                                     </td>
@@ -116,13 +116,15 @@ const ModificarSku = () => {
                                     </div>
                                 </div>
 
-                                <div className="col-12 d-flex justify-content-end">
+                               
+                            </div>
+                            <div className="card-footer">
+                            <div className="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Modificar SKU</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </>
