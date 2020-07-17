@@ -7,94 +7,101 @@ const CrearSku = () => {
                 <h1 className="text-warning text-center">Stock</h1>
                 <h3 className="text-info text-center">Crear SKU</h3>
             </div>
-            <div className="content">
-                <div className="row">
+            <form>
+                <div className="content">
+                    <div className="row">
 
-                    <div className="col-md-12">
-                        <div className="card">
-                            {/* <div className="card-header">
+                        <div className="col-md-12">
+                            <div className="card">
+                                {/* <div className="card-header">
                                         <h4 className="card-title"> </h4>
                                     </div> */}
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                    <table className="table table-hover">
-                                        <thead className=" text-primary">
-                                            <th className="align-middle text-center">
-                                                N°
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table className="table table-hover">
+                                            <thead className=" text-primary">
+                                                <th className="align-middle text-center">
+                                                    N°
                                                     </th>
-                                            <th className="align-middle text-center">
-                                                SKU
+                                                <th className="align-middle text-center">
+                                                    SKU
                                                     </th>
-                                            <th className="align-middle text-center">
-                                                Descripción
+                                                <th className="align-middle text-center">
+                                                    Descripción
                                                     </th>
-                                            <th className="align-middle text-center">
-                                                Código de Barra
-                                                    </th>
-
-                                            <th className="align-middle text-center">
-                                                Unidad de Entrega
-                                                    </th>
-                                            <th className="align-middle text-center">
-                                                Categoría
+                                                <th className="align-middle text-center">
+                                                    Código de Barra
                                                     </th>
 
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td className="align-middle text-center">
-                                                    1
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    651651
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Super 8
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    6546556
-                                                        </td>
+                                                <th className="align-middle text-center">
+                                                    Unidad de Entrega
+                                                    </th>
+                                                <th className="align-middle text-center">
+                                                    Categoría
+                                                    </th>
 
-                                                <td className="align-middle text-center">
-                                                    Unidad
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Confites
-                                                        </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="align-middle text-center">
-                                                    2
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    454545
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Coca Cola 500cc
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    23443
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Unidad
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Bebidas
-                                                        </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº" disabled />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Descripcion" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" />
+                                                    </td>
+
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <select class="form-control">
+                                                            <option>Seleccionar Categoria</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº" disabled />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Descripcion" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" />
+                                                    </td>
+
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <select class="form-control">
+                                                            <option>Seleccionar Categoria</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
                                 </div>
-
                             </div>
                         </div>
-                    </div>
-                    <div className="col-12 d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary mr-3">Agregar línea de producto</button>
-                        <button type="button" class="btn btn-success">Crear SKU's</button>
+                        <div className="col-12 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mr-3">Agregar línea de producto</button>
+                            <button type="button" class="btn btn-success">Crear SKU's</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </>
     )
 }

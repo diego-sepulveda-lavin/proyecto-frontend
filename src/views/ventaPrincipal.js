@@ -199,18 +199,17 @@ const VentaUsuario = () => {
                             <div className="card-body">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">Total venta neto</th>
-                                            <th scope="col">$10000</th>
+                                        <tr className=" table-hover">
+                                            <th scope="col">Total Neto</th>
+                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto Neto" /></th>
                                         </tr>
-                                        <tr>
+                                        <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col">$10000</th>
+                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="IVA" disabled /></th>
                                         </tr>
-                                        <div class="dropdown-divider"></div>
-                                        <tr>
+                                        <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
-                                            <th scope="col">$200</th>
+                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar" /></th>
                                         </tr>
                                     </thead>
                                 </table>
