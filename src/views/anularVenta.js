@@ -152,27 +152,28 @@ const AnularVentaUsuario = () => {
                 </div>
 
                 <div className="row">
-                    <div className="col-4 md-4 offset-md-7">
+                    <div className="col-md-5 offset-md-7">
                         <div className="card">
                             <div className="card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr className=" table-hover">
-                                            <th scope="col">Total venta neto</th>
-                                            <th scope="col">$10000</th>
-                                        </tr>
-                                        <tr className=" table-hover">
-                                            <th scope="col">IVA 19%</th>
-                                            <th scope="col">$10000</th>
-                                        </tr>
-                                        <div class="dropdown-divider"></div>
-                                        <tr className=" table-hover">
-                                            <th scope="col">Total a pagar</th>
-                                            <th scope="col">$200</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                <button type="button" class="btn btn-danger btn-lg btn-block font-weight-bold">Anular Documento</button>
+                                <form>
+                                    <table class="table">
+                                        <thead>
+                                            <tr className=" table-hover">
+                                                <th scope="col">Total Neto</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto Neto" /></th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">IVA 19%</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="IVA" /></th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">Total a pagar</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar" /></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <button type="button" class="btn btn-danger btn-lg btn-block font-weight-bold">Anular Documento</button>
+                                </form>
                             </div>
                         </div>
                     </div>

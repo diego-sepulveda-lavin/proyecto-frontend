@@ -55,68 +55,73 @@ const IngresarFactura = () => {
                                             <tbody>
                                                 <tr>
                                                     <td className="align-middle text-center">
-                                                        651651
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        Super 8
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        6546556
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Cod. Barra" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         Unidad
-                                                            </td>
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Costo Unitario" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        $30.000
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Costo Total" aria-label="Username" aria-describedby="basic-addon1" disabled />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        $400
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        33%
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Margen Contribucion" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        Confites
-                                                            </td>
+                                                        <select class="form-control form-control">
+                                                            <option>Cat</option>
+                                                        </select>
+                                                    </td>
 
                                                 </tr>
                                                 <tr>
                                                     <td className="align-middle text-center">
-                                                        454545
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        Coca Cola 500cc
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        23443
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Cod. Barra" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         Unidad
-                                                            </td>
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" class="form-control" placeholder="Costo Unitario" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        $360.000
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Costo Total" aria-label="Username" aria-describedby="basic-addon1" disabled />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        $600
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        20%
-                                                            </td>
+                                                        <input type="text" class="form-control" placeholder="Margen Contribucion" aria-label="Username" aria-describedby="basic-addon1" />
+                                                    </td>
                                                     <td className="align-middle text-center">
-                                                        Bebidas
-                                                            </td>
+                                                        <select class="form-control form-control">
+                                                            <option>Cat</option>
+                                                        </select>
+                                                    </td>
+
                                                 </tr>
                                             </tbody>
                                         </table>

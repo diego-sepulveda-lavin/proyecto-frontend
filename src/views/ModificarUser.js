@@ -3,12 +3,12 @@ import React from 'react';
 const ModificarUser = () => {
     return (
         <>
-        <form>
             <div className="panel-header panel-header-md">
                 {/* <canvas id="bigDashboardChart"></canvas> */}
                 <h2 className="text-warning text-center">Administracion</h2>
                 <h3 className="text-info text-center">Modificar Usuario</h3>
             </div>
+        <form>
             <div className="content">
                 <div className="row">
                     <div className="col-lg-12">

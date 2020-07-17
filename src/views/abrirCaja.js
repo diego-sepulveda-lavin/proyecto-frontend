@@ -22,8 +22,8 @@ const AbrirCaja = props => {
 
 
                             </div>
-                            <div className="card-body">
-                                <form>
+                            <form>
+                                <div className="card-body">
                                     <div className="row">
                                         <div className="col-md-3">
                                             <div className="form-group">
@@ -75,13 +75,13 @@ const AbrirCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    
 
-                                </form>
-                            </div>
-                            <div className="card-footer">
-                                <button type="button" className="btn btn-success btn-block">Abrir Caja</button>
-                            </div>
+
+                                </div>
+                                <div className="card-footer">
+                                    <button type="button" className="btn btn-success btn-block">Abrir Caja</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
