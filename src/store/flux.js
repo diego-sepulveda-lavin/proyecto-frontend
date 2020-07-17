@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             empresas: null,
             usuarios: null,
             usuario: null,
+            loadedToken: null,
 
         },
         actions: {
@@ -18,10 +19,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             postEmpresas: async (data) => {
                 try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token){
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
                     let bodyContent = JSON.stringify(data);
+
                     let requestOptions = {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: headersContent,
                         body: bodyContent,
                     };
                     const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
@@ -40,6 +47,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                     usuarios: data
                 })
             },
+            // metodo para taer token desde localStorage y almacenarlo en flux
+            loadFromLocalStorage: () => {
+                const token = localStorage.getItem('access_token')
+                setStore({
+                    loadedToken: token,
+                })
+            }
         }
     }
 }
