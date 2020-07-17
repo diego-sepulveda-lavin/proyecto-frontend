@@ -23,12 +23,25 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions: {
 
             getEmpresas: async url => {
-                const resp = await fetch("http://localhost:5000/api/empresas");
-                const data = await resp.json();
-                console.log(data);
+                try{
+                let headersContent = { 'Content-Type': 'application/json' };
+                const token = localStorage.getItem('access_token');
+                if (token){
+                    headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                } 
+                let requestOptions = {
+                    method: 'GET',
+                    headers: headersContent
+                };
+                const resp = await fetch("http://localhost:5000/api/empresas", requestOptions);
+                const result = await resp.json();
+               
                 setStore({
-                    empresas: data,
+                    empresas: result,
                 })
+            } catch (error) {
+                console.log(error)
+            }
             },
 
             postEmpresas: async (data) => {
@@ -47,8 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
                     const result = await resp.json()
-                    console.log(result)
-                    /*  setMensaje(result.msg) */
+                   
                 } catch (error) {
                     console.log(error)
                 }
@@ -63,11 +75,26 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             /* Zona Usuarios */
             getUsuarios: async url => {
-                const resp = await fetch("http://localhost:5000/api/usuarios/");
-                const data = await resp.json();
-                setStore({
-                    usuarios: data
-                })
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token){
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    } 
+                    let requestOptions = {
+                        method: 'GET',
+                        headers: headersContent
+                    };
+                    const resp = await fetch('http://localhost:5000/api/usuarios/', requestOptions)
+                    const result = await resp.json()
+                    setStore({
+                        usuarios: result
+                    })
+                   
+                } catch (error) {
+                    console.log(error)
+                }
+                
             },
 
             postUsuario: async (data) => {
