@@ -1,13 +1,45 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
+import { Link } from 'react-router-dom';
 
 const Empresas = () => {
 
     const { store, actions } = useContext(Context);
+    const [state, setState] = useState({
+    });
 
-    useEffect(() => {
-        actions.getEmpresas() 
-    }, []);
+    /* useEffect(() => {
+        actions.getEmpresas();
+        actions.getUsuarios()
+    }, []); */
+
+
+    const deleteEmpresas = (e) => {
+        if (store.usuarios != null) {
+            console.log(e.target.id)
+            let empresasConUsuarios = store.usuarios.filter(usuarios => usuarios.empresa_id === store.empresas[`${e.target.id}`].id)
+            if (empresasConUsuarios.length > 0) {
+                alert("Empresa tiene usuarios registrados")
+            } else {
+                console.log(store.empresas[`${e.target.id}`].id)
+                let idEmpresa = store.empresas[`${e.target.id}`].id
+                let requestOptions = {
+                    method: 'DELETE',
+                    redirect: 'follow'
+                };
+                fetch(`http://localhost:5000/api/empresas/${idEmpresa}`, requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .then(result => actions.getEmpresas())
+                    .catch(error => console.log('error', error));
+
+                alert("Empresa eliminada exitosamente")
+            }
+        }
+    }
+
+
+
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -29,11 +61,11 @@ const Empresas = () => {
                         </form>
                     </div>
                     <div className=" col-md-4 p-0 mb-1 d-flex justify-content-center">
-                        <div class="form-check ml-3">
-                            <label class="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
-                            <label class="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
+                        <div className="form-check ml-3">
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
                         </div>
 
                     </div>
@@ -87,13 +119,15 @@ const Empresas = () => {
                                                                         </td>
 
                                                                         <td className="align-middle text-center">
-                                                                            <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                                                            </button>
+                                                                            <Link to={`/empresas/${index}`}>
+                                                                                <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                                    <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                                </button>
+                                                                            </Link>
                                                                         </td>
                                                                         <td className="align-middle text-center">
-                                                                            <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                                                <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                            <button onClick={deleteEmpresas} id={index} type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral">
+                                                                               X
                                                                             </button>
                                                                         </td>
 
@@ -106,12 +140,8 @@ const Empresas = () => {
                                                         <tr className="align-middle text-center">
                                                             <th colspan="6">No hay empresas registradas</th>
                                                         </tr>
-
-
                                                     )
                                             }
-
-
                                         </tbody>
                                     </table>
                                 </div>

@@ -23,6 +23,7 @@ import AnularVentaUsuario from './views/anularVenta';
 import CerrarVenta from './views/cerrarVenta';
 import Empresas from './views/GeneralEmpresas';
 import CrearEmpresa from './views/CrearEmpresa';
+import EditarEmpresa from './views/EditarEmpresa';
 
 const App = props => {
   return (
@@ -57,6 +58,7 @@ const App = props => {
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
+            <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
 
 
             {/* END Users Components */}
