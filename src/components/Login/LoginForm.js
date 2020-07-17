@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 
 const LoginForm = (props) => {
-    console.log("AAAAAAAAAAAA");
-    console.log(props)
     
     //Inicializa objeto para contener datos de login
     const [loginCredentials, setLoginCredentials] = useState({})
@@ -87,11 +85,6 @@ const LoginForm = (props) => {
                                 </div>
                                 <div className="card-footer text-center">
                                     <button className="btn btn-primary btn-round btn-lg btn-block">Login</button>
-                                    <div className="mt-2">
-                                        <h6>
-                                            <a href="#pablo" className="link">Crear Cuenta</a>
-                                        </h6>
-                                    </div>
                                 </div>
                             </form>
                         </div>
