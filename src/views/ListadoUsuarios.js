@@ -4,35 +4,30 @@ import Spinner from '../components/spinner';
 
 const ListadoUsuarios = () => {
     const { store, actions } = useContext(Context)
-
-
     const [state, setState] = useState({
         inputBuscador: "",
         buscarPor: "nombre"
     })
-
     const seleccionadorBuscador = e => {
         console.log(e.target.value)
         let data = {
             buscarPor: e.target.value
         }
         setState((prevState) => {
-
             return { ...prevState, ...data }
         })
     }
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
-
             return { ...prevState, ...data }
         })
-
     }
 
     useEffect(() => {
         actions.getUsuarios();
     }, [])
+    
     return (
         <>
             <div className="panel-header panel-header-md">
