@@ -2,9 +2,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             empresas: null,
-            usuarios:null,
-            usuario:null,
-            
+            usuarios: null,
+            usuario: null,
+
         },
         actions: {
             getEmpresas: async url => {
@@ -16,17 +16,31 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
             },
 
+            postEmpresas: async (data) => {
+                try {
+                    let bodyContent = JSON.stringify(data);
+                    let requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: bodyContent,
+                    };
+                    const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
+                    const result = await resp.json()
+                    console.log(result)
+                    /*  setMensaje(result.msg) */
+                } catch (error) {
+                    console.log(error)
+                }
+            },
 
-            getUsuarios: async url =>{
+            getUsuarios: async url => {
                 const resp = await fetch("http://localhost:5000/api/usuarios/");
                 const data = await resp.json();
                 setStore({
                     usuarios: data
                 })
-            }
-
+            },
         }
     }
 }
-
 export default getState;
