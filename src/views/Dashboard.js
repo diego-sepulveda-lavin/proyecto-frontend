@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import '../css/now-ui-dashboard.css';
 import Chart from 'chart.js'
+import { Context } from '../store/appContext';
+import { withRouter } from 'react-router-dom';
 
 
-const Dashboard = () => {
-
+const Dashboard = (props) => {
     useEffect(() => {
         initDashboardPageCharts()
+        if (!localStorage.getItem('access_token')){
+            props.history.push("/login")
+        }
+
     }, [])
 
     function hexToRGB(hex, alpha) {
@@ -589,4 +594,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
