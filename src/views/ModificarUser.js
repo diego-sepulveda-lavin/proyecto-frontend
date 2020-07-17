@@ -47,7 +47,7 @@ const ModificarUser = () => {
                                             <label class="input-group-text" for="inputGroupSelect01">Estado</label>
                                         </div>
                                         <select class="custom-select border-0" id="inputGroupSelect01">
-                                            <option value="1" selected>Activo</option>
+                                            <option value="1" defaultValue>Activo</option>
                                             <option value="2">Inactivo</option>
                                         </select>
                                     </div>

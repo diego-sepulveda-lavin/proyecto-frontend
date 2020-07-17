@@ -27,10 +27,10 @@ const NavBar = props =>{
                                             <i className="now-ui-icons users_single-02"></i>                                           
                                         </a>
                                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                            <a className="dropdown-item" href="#">Action</a>
-                                            <a className="dropdown-item" href="#">Another action</a>
+                                            <a className="dropdown-item" >Action</a>
+                                            <a className="dropdown-item">Another action</a>
                                             <div class="dropdown-divider"></div>
-                                            <a className="dropdown-item" href="#">Logout</a>
+                                            <a className="dropdown-item" >Logout</a>
                                         </div>
                                     </li>
                                 
