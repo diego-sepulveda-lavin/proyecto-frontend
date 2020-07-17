@@ -16,6 +16,23 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
             },
 
+            postEmpresas: async (data) => {
+                try {
+                    let bodyContent = JSON.stringify(data);
+                    let requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: bodyContent,
+                    };
+                    const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
+                    const result = await resp.json()
+                    console.log(result)
+                   /*  setMensaje(result.msg) */
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+
         }
     }
 }

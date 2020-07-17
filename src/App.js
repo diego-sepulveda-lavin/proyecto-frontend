@@ -22,8 +22,7 @@ import MenuLateral from './components/menuLateral';
 import AnularVentaUsuario from './views/anularVenta';
 import CerrarVenta from './views/cerrarVenta';
 import Empresas from './views/GeneralEmpresas';
-
-
+import CrearEmpresa from './views/CrearEmpresa';
 
 const App = props => {
   return (
@@ -57,6 +56,7 @@ const App = props => {
             <Route exact path="/create-user" component={CreateUser}></Route>
             <Route exact path="/modificar-user" component={ModificarUser}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
+            <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
 
 
             {/* END Users Components */}
