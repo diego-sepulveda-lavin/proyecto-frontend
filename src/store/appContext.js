@@ -10,13 +10,13 @@ const injectContext = PassedComponent => {
             getActions: () => state.actions,
             setStore: updateStore => setState({
                 store: Object.assign(state.store, updateStore),
-                actions: {...state.actions}
+                actions: { ...state.actions }
             })
         }));
 
         useEffect(() => {
-        
-            
+            state.actions.getEmpresas();
+            state.actions.getUsuarios();
         }, []);
 
         return (

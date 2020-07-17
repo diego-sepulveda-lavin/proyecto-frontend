@@ -1,32 +1,53 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../store/appContext';
+import React, { useState } from 'react';
 
 const CrearEmpresa = () => {
 
-    const { store, actions } = useContext(Context);
     const [state, setState] = useState({
-
     });
-    useEffect(() => {
 
-    }, []);
+    const postEmpresas = async (data) => {
+        try {
+            let bodyContent = JSON.stringify(data);
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: bodyContent,
+            };
+            const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
+            const result = await resp.json()
+            console.log(result)
+            alert(`Empresa ${state.nombre} creada correctamente`)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleChange = (e) => {
-        console.log(e.target.value);
         let data = {
-            [e.target.name]: e.target.value
-        }
+            [e.target.name]: e.target.value,
+        };
         setState(prevState => {
             return { ...prevState, ...data }
         })
     }
-    
-    const handleClick = e => {
-        if(!state.nombre || !state.rut || !state.razon_social || !state.rubro){
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        if (!state.nombre || !state.rut || !state.razon_social || !state.rubro) {
             console.log("Faltan datos para realizar Fetch")
+            alert("Faltan datos para crear empresa")
         } else {
-            actions.postEmpresas(state)
-            console.log(state)
+            postEmpresas(state)
+            let data = {
+                nombre: "",
+                rut: "",
+                razon_social: "",
+                rubro: "",
+            }
+            setState(prevState => {
+                return { ...prevState, ...data }
+            })
         }
     }
 
@@ -39,7 +60,8 @@ const CrearEmpresa = () => {
             <div className="content mt-2">
                 <div className="row ">
                     <div className="col-md-12">
-                        <form onSubmit={(e) => e.preventDefault()} >
+
+                        <form onSubmit={handleSubmit} >
                             <div className="card">
                                 <div className="card-body">
                                     <div className="table-responsive">
@@ -62,25 +84,24 @@ const CrearEmpresa = () => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={state.nombre} type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" onChange={handleChange} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={state.rut} type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" onChange={handleChange} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={state.razon_social} type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" onChange={handleChange} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={state.rubro} type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" onChange={handleChange} />
                                                         </td>
                                                     </tr>
                                                 </>
                                             </tbody>
                                         </table>
                                         <div className="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary" name="Crear_Empresa" onClick={handleClick}>Crear Empresa</button>
+                                            <button class="btn btn-primary" name="Crear_Empresa">Crear Empresa</button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
