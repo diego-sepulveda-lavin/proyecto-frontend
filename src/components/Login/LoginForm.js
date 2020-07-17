@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+    console.log("AAAAAAAAAAAA");
+    console.log(props)
     
     //Inicializa objeto para contener datos de login
     const [loginCredentials, setLoginCredentials] = useState({})
@@ -39,6 +42,7 @@ const LoginForm = () => {
             const result = await resp.json()
             if (result.access_token) {
                 localStorage.setItem('access_token', result.access_token);
+                props.history.push("/dashboard")
             }
             setMensaje(result.msg)
 
@@ -98,4 +102,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default withRouter(LoginForm);

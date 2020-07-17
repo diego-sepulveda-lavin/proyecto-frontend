@@ -4,35 +4,30 @@ import Spinner from '../components/spinner';
 
 const ListadoUsuarios = () => {
     const { store, actions } = useContext(Context)
-
-
     const [state, setState] = useState({
         inputBuscador: "",
         buscarPor: "nombre"
     })
-
     const seleccionadorBuscador = e => {
         console.log(e.target.value)
         let data = {
             buscarPor: e.target.value
         }
         setState((prevState) => {
-
             return { ...prevState, ...data }
         })
     }
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
-
             return { ...prevState, ...data }
         })
-
     }
 
     useEffect(() => {
         actions.getUsuarios();
     }, [])
+    
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -104,55 +99,55 @@ const ListadoUsuarios = () => {
                                                     <Spinner />
                                                     :
                                                     store.usuarios.filter((usuario) => {
-                                                        if (state.buscarPor == "nombre")
+                                                        if (state.buscarPor === "nombre")
                                                             return usuario.nombre.toLowerCase().includes(state.inputBuscador);
 
-                                                        if (state.buscarPor == "rut")
+                                                        if (state.buscarPor === "rut")
                                                             return usuario.rut.includes(state.inputBuscador)
 
-                                                        if (state.buscarPor == "codUsuario")
+                                                        if (state.buscarPor === "codUsuario")
                                                             return usuario.codigo.includes(state.inputBuscador)
 
                                                     }).map((usuario, indice) => {
                                                         return (
-                                                            <>
-                                                                <tr>
-                                                                    <td key={indice} className="align-middle text-center">
-                                                                        {usuario.nombre}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.apellido}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.rut}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.codigo}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.rol}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.email}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.fecha_registro}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        {usuario.status == true ? "Activo" : "Inactivo"}
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                    <td className="align-middle text-center">
-                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                                            <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            </>
+
+                                                            <tr key={indice}>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.nombre}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.apellido}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.rut}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.codigo}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.rol}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.email}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.fecha_registro}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {usuario.status === true ? "Activo" : "Inactivo"}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                    </button>
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
                                                         )
                                                     })
 
