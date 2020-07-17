@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-const LoginForm = () => {
 
+const LoginForm = () => {
+    
     //Inicializa objeto para contener datos de login
     const [loginCredentials, setLoginCredentials] = useState({})
     const [mensaje, setMensaje] = useState("Ingresa tus credenciales")
@@ -36,7 +37,9 @@ const LoginForm = () => {
 
             const resp = await fetch('http://localhost:5000/api/login', requestOptions)
             const result = await resp.json()
-            console.log(result)
+            if (result.access_token) {
+                localStorage.setItem('access_token', result.access_token);
+            }
             setMensaje(result.msg)
 
         } catch (error) {

@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             empresas: null,
             usuarios: null,
             usuario: null,
+            loadedToken: null,
 
         },
         actions: {
@@ -40,6 +41,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                     usuarios: data
                 })
             },
+
+            loadFromLocalStorage: () => {
+                const token = localStorage.getItem('access_token')
+                setStore({
+                    loadedToken: token,
+                })
+            }
         }
     }
 }
