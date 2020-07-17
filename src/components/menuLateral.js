@@ -66,7 +66,7 @@ const MenuLateral = props => {
                         
                         <div id="administrador-global" class="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
-                                         
+                            <li className="ml-5 mt-2"><Link to={"/crear-empresa"}><p>Crear Empresa</p></Link></li>   
                         </div>
                     </li>
                    
