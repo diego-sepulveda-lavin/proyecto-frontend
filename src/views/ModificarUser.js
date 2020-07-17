@@ -5,7 +5,7 @@ const ModificarUser = () => {
         <>
             <div className="panel-header panel-header-md">
                 {/* <canvas id="bigDashboardChart"></canvas> */}
-                <h2 className="text-warning text-center">Administracion</h2>
+                <h1 className="text-warning text-center">Administracion</h1>
                 <h3 className="text-info text-center">Modificar Usuario</h3>
             </div>
         <form>
