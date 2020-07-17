@@ -23,32 +23,32 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions: {
 
             getEmpresas: async url => {
-                try{
-                let headersContent = { 'Content-Type': 'application/json' };
-                const token = localStorage.getItem('access_token');
-                if (token){
-                    headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-                } 
-                let requestOptions = {
-                    method: 'GET',
-                    headers: headersContent
-                };
-                const resp = await fetch("http://localhost:5000/api/empresas", requestOptions);
-                const result = await resp.json();
-               
-                setStore({
-                    empresas: result,
-                })
-            } catch (error) {
-                console.log(error)
-            }
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'GET',
+                        headers: headersContent
+                    };
+                    const resp = await fetch("http://localhost:5000/api/empresas", requestOptions);
+                    const result = await resp.json();
+
+                    setStore({
+                        empresas: result,
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
             },
 
             postEmpresas: async (data) => {
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
                     const token = localStorage.getItem('access_token');
-                    if (token){
+                    if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
                     let bodyContent = JSON.stringify(data);
@@ -60,12 +60,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
                     const result = await resp.json()
-                   
+
                 } catch (error) {
                     console.log(error)
                 }
             },
-        
+
             // metodo para taer token desde localStorage y almacenarlo en flux
             loadFromLocalStorage: () => {
                 const token = localStorage.getItem('access_token')
@@ -78,9 +78,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
                     const token = localStorage.getItem('access_token');
-                    if (token){
+                    if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-                    } 
+                    }
                     let requestOptions = {
                         method: 'GET',
                         headers: headersContent
@@ -90,11 +90,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                     setStore({
                         usuarios: result
                     })
-                   
+
                 } catch (error) {
                     console.log(error)
                 }
-                
+
             },
 
             postUsuario: async (data) => {
@@ -107,10 +107,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data.email);
                 formData.append("password", data.password);
                 formData.append("foto", data.foto);
+
                 try {
+                    let headersContent = ""
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Authorization': 'Bearer ' + token }
+                    }
                     let requestOptions = {
                         method: 'POST',
-                        //headers: { 'Content-Type': 'multipart/form-data' },
+                        headers: headersContent,
                         body: formData,
                     };
                     const resp = await fetch("http://localhost:5000/api/usuarios/", requestOptions);
