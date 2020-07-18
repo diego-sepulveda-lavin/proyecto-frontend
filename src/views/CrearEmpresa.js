@@ -3,60 +3,37 @@ import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
 const CrearEmpresa = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
     }, [])
 
 
     const [state, setState] = useState({
+        nombre: "",
+        rut: "",
+        razon_social: "",
+        rubro: ""
     });
 
-    const postEmpresas = async (data) => {
-        try {
-            let bodyContent = JSON.stringify(data);
-            let requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: bodyContent,
-            };
-            const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
-            const result = await resp.json()
-            console.log(result)
-            alert(`Empresa ${state.nombre} creada correctamente`)
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
 
-    const handleChange = (e) => {
+
+
+    const getDatos = e => {
         let data = {
-            [e.target.name]: e.target.value,
-        };
+            [e.target.name]: e.target.value
+        }
         setState(prevState => {
             return { ...prevState, ...data }
         })
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        if (!state.nombre || !state.rut || !state.razon_social || !state.rubro) {
-            console.log("Faltan datos para realizar Fetch")
-            alert("Faltan datos para crear empresa")
-        } else {
-            postEmpresas(state)
-            let data = {
-                nombre: "",
-                rut: "",
-                razon_social: "",
-                rubro: "",
-            }
-            setState(prevState => {
-                return { ...prevState, ...data }
-            })
-        }
+    const postData = e => {
+        e.preventDefault();
+        actions.postFetch("/empresas", state, setState, "Empresa")
+        actions.getFetch("/empresas", "empresas");
     }
+
 
     return (
         <>
@@ -68,7 +45,7 @@ const CrearEmpresa = (props) => {
                 <div className="row ">
                     <div className="col-md-12">
 
-                        <form onSubmit={handleSubmit} >
+                        <form onSubmit={postData}>
                             <div className="card">
                                 <div className="card-body">
                                     <div className="table-responsive">
@@ -91,16 +68,16 @@ const CrearEmpresa = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input value={state.nombre} type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={`${state != "" ? state.nombre : ""}`} type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={state.rut} type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={`${state != "" ? state.rut : ""}`} type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={state.razon_social} type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={`${state != "" ? state.razon_social : ""}`} type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={state.rubro} type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" onChange={handleChange} />
+                                                            <input value={`${state != "" ? state.rubro : ""}`} type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" onChange={getDatos} />
                                                         </td>
                                                     </tr>
                                                 </>

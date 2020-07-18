@@ -239,6 +239,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
+                    console.log(resp)
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
@@ -247,23 +248,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     } else {
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Empresa eliminada exitosamente.',
+                            icon: 'error',
+                            title: 'Algo salió mal',
                             text: result.msg
                         })
                         setInfo({
 
                             "msg": result.msg,
-                            "empresa": result
+
                         })
                     }
 
                 } catch (error) {
                     console.log(error);
                 }
-            }
+            },
             /* /Zona DELETE */
 
+            /* Zona POST*/
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta) => {
+                let store = getStore()
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'POST',
+                        headers: headersContent,
+                        body: JSON.stringify(data_a_enviar)
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    console.log(resp)
+                    if (!result.msg) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: mensajeAlerta + ' creada exitosamente.'
+                        })
+                        data_a_enviar=""
+                        console.log(limpiarInput({ data_a_enviar }))
+                        limpiarInput(data_a_enviar)
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo salió mal.',
+                            text: result.msg
+                        })
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            /* /Zona POST */
 
 
 
