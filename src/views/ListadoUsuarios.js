@@ -26,7 +26,6 @@ const ListadoUsuarios = (props) => {
     }
 
     useEffect(() => {
-        actions.getUsuarios();
         actions.validaLogin(props)
     }, [])
     

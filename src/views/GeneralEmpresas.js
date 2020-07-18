@@ -6,7 +6,8 @@ const Empresas = (props) => {
 
     const {store, actions} = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)   
+        actions.getFetch("/empresas/")  
     }, [])
 
 
