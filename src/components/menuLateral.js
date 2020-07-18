@@ -6,28 +6,28 @@ const MenuLateral = props => {
         <div className="sidebar" data-color="orange">
             {/* <!--Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"--> */}
             <div className="logo">
-                <a href="#" className="simple-text logo-mini">
+                <a className="simple-text logo-mini">
                     CT
             </a>
-                <a href="#" className="simple-text logo-normal">
+                <a className="simple-text logo-normal">
                     DHSL
             </a>
             </div>
             <div className="sidebar-wrapper" id="sidebar-wrapper">
                 <ul className="nav">
                     
-                    <li className={props.location.pathname=="/dashboard"?"active":""}>
+                    <li className={props.location.pathname==="/dashboard"?"active":""}>
                         <Link to={"/dashboard"}>
                             <i className="now-ui-icons design_app"></i>
                             <p>Dashboard</p>
                         </Link>
                     </li>
                     <li className={
-                        props.location.pathname=="/venta-usuario" || 
-                        props.location.pathname=="/abrir-caja" ||
-                        props.location.pathname=="/cerrar-caja" ||
-                        props.location.pathname=="/cerrar-venta" ||
-                        props.location.pathname=="/anular-venta" ? "active":""}>
+                        props.location.pathname==="/venta-usuario" || 
+                        props.location.pathname==="/abrir-caja" ||
+                        props.location.pathname==="/cerrar-caja" ||
+                        props.location.pathname==="/cerrar-venta" ||
+                        props.location.pathname==="/anular-venta" ? "active":""}>
                         <Link>
                             <i className="now-ui-icons text_caps-small"></i>
                             <p data-toggle="collapse" data-target="#ventas">Ventas</p>
@@ -41,10 +41,10 @@ const MenuLateral = props => {
                         </div>
                     </li>
                     <li className={
-                        props.location.pathname=="/general-stock" || 
-                        props.location.pathname=="/crear-sku" ||
-                        props.location.pathname=="/modificar-sku" ||
-                        props.location.pathname=="/ingresar-factura" ? "active":""}>
+                        props.location.pathname==="/general-stock" || 
+                        props.location.pathname==="/crear-sku" ||
+                        props.location.pathname==="/modificar-sku" ||
+                        props.location.pathname==="/ingresar-factura" ? "active":""}>
                         <Link>
                             <i className="now-ui-icons location_map-big"></i>
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
@@ -57,9 +57,9 @@ const MenuLateral = props => {
                         </div>
                     </li>
                     <li className={
-                        props.location.pathname=="/listado-usuarios" || 
-                        props.location.pathname=="/create-user" ||
-                        props.location.pathname=="/modificar-user" ? "active":""}>
+                        props.location.pathname==="/listado-usuarios" || 
+                        props.location.pathname==="/create-user" ||
+                        props.location.pathname==="/modificar-user" ? "active":""}>
                         <Link>
                             <i className="now-ui-icons ui-1_bell-53"></i>
                             <p data-toggle="collapse" data-target="#administrador">Administrador</p>
@@ -72,8 +72,8 @@ const MenuLateral = props => {
                         </div>
                     </li>
                     <li className={
-                        props.location.pathname=="/empresas" ||
-                        props.location.pathname=="/crear-empresa" ? "active":""}>
+                        props.location.pathname==="/empresas" ||
+                        props.location.pathname==="/crear-empresa" ? "active":""}>
                         <Link>
                             <i className="now-ui-icons objects_spaceship"></i>
                             <p data-toggle="collapse" data-target="#administrador-global">Administrador Global</p>
@@ -85,13 +85,7 @@ const MenuLateral = props => {
                         </div>
                     </li>
                    
-                   {/*  <li>
-                        <a href="./typography.html">
-                            <i className="now-ui-icons text_caps-small"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li> */}
-                  
+  
                 </ul>
             </div>
         </div>

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import Spinner from '../components/spinner';
+import { withRouter } from 'react-router-dom';
 
-const ListadoUsuarios = () => {
+const ListadoUsuarios = (props) => {
     const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         inputBuscador: "",
@@ -25,7 +26,7 @@ const ListadoUsuarios = () => {
     }
 
     useEffect(() => {
-        actions.getUsuarios();
+        actions.validaLogin(props)
     }, [])
     
     return (
@@ -168,4 +169,4 @@ const ListadoUsuarios = () => {
         </>
     )
 }
-export default ListadoUsuarios;
+export default withRouter(ListadoUsuarios);

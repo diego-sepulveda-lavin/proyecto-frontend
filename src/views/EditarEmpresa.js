@@ -1,12 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const EditarEmpresa = (props) => {
-    const { store, actions } = useContext(Context);
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
+
     const [state, setState] = useState({
     });
-
+   
     const putEmpresa = (data) => {
         let raw = JSON.stringify(data);
         let requestOptions = {
@@ -137,4 +141,4 @@ const EditarEmpresa = (props) => {
 }
 
 
-export default EditarEmpresa;
+export default withRouter(EditarEmpresa);

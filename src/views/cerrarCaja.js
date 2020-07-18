@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { withRouter } from "react-router-dom";
 
 
 const CerrarCaja = props => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -251,4 +257,4 @@ const CerrarCaja = props => {
     )
 }
 
-export default CerrarCaja;
+export default withRouter(CerrarCaja);

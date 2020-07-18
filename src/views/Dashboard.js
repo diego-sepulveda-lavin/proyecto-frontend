@@ -6,11 +6,11 @@ import { withRouter } from 'react-router-dom';
 
 
 const Dashboard = (props) => {
+    const {store, actions} = useContext(Context)
     useEffect(() => {
         initDashboardPageCharts()
-        if (!localStorage.getItem('access_token')){
-            props.history.push("/login")
-        }
+        actions.validaLogin(props)
+      
 
     }, [])
 

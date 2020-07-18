@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
-const CrearSku = () => {
+const CrearSku = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -9,14 +15,10 @@ const CrearSku = () => {
             </div>
             <form>
                 <div className="content">
-                    <div className="row">
-
-                        <div className="col-md-12">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-11 ">
                             <div className="card">
-                                {/* <div className="card-header">
-                                        <h4 className="card-title"> </h4>
-                                    </div> */}
-                                <div className="card-body">
+                               <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table table-hover">
                                             <thead className=" text-primary">
@@ -91,13 +93,14 @@ const CrearSku = () => {
                                             </tbody>
                                         </table>
                                     </div>
-
+                                </div>
+                                <div className="card-footer">
+                                    <div className="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary mr-3">Agregar línea de producto</button>
+                                        <button type="button" class="btn btn-success">Crear SKU's</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-12 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary mr-3">Agregar línea de producto</button>
-                            <button type="button" class="btn btn-success">Crear SKU's</button>
                         </div>
                     </div>
                 </div>
@@ -105,4 +108,4 @@ const CrearSku = () => {
         </>
     )
 }
-export default CrearSku;
+export default withRouter(CrearSku);

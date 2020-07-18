@@ -3,6 +3,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
+            urlBase: "http://localhost:5000/api",
             loadedToken: null,
             empresas: null,
             usuarios: null,
@@ -21,27 +22,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         },
         actions: {
-            getEmpresas: async url => {
-                try {
-                    let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
-                    if (token) {
-                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-                    }
-                    let requestOptions = {
-                        method: 'GET',
-                        headers: headersContent
-                    };
-                    const resp = await fetch("http://localhost:5000/api/empresas", requestOptions);
-                    const result = await resp.json();
-
-                    setStore({
-                        empresas: result,
-                    })
-                } catch (error) {
-                    console.log(error)
+            validaLogin: (props) => {
+                if (!localStorage.getItem('access_token')){
+                    props.history.push("/login");
                 }
             },
+           
 
             /*   postEmpresas: async (data) => {
                   try {
@@ -65,12 +51,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                   }
               },
    */
-            // metodo para taer token desde localStorage y almacenarlo en flux
-            loadFromLocalStorage: () => {
-                const token = localStorage.getItem('access_token')
-            },
-            /* Zona Usuarios */
-            getUsuarios: async url => {
+
+            /* Zona GET */
+            getFetch: async (urlPag, data) => {
+                let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
                     const token = localStorage.getItem('access_token');
@@ -81,16 +65,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                         method: 'GET',
                         headers: headersContent
                     };
-                    const resp = await fetch('http://localhost:5000/api/usuarios/', requestOptions)
-                    const result = await resp.json()
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
                     setStore({
-                        usuarios: result
+                        [data]: result
                     })
-
                 } catch (error) {
-                    console.log(error)
+                    console.log(error);
                 }
-
             },
 
             postUsuario: async (data) => {

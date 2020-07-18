@@ -15,8 +15,8 @@ const injectContext = PassedComponent => {
         }));
 
         useEffect(() => {
-            state.actions.getEmpresas();
-            state.actions.getUsuarios();
+            state.actions.getFetch("/usuarios", "usuarios");
+            state.actions.getFetch("/empresas", "empresas");
         }, []);
 
         return (
