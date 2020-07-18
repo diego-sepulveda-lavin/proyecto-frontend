@@ -21,6 +21,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         },
         actions: {
+            validaLogin: (props) => {
+                if (!localStorage.getItem('access_token')){
+                    props.history.push("/login");
+                }
+            },
             getEmpresas: async url => {
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };

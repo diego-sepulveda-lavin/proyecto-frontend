@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import "../css/ventaPrincipal.css";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
-const VentaUsuario = () => {
+const VentaUsuario = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)    
+}, [])
 
     return (
         <>
@@ -223,4 +228,4 @@ const VentaUsuario = () => {
     )
 }
 
-export default VentaUsuario;
+export default withRouter(VentaUsuario);

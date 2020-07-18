@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 
 const LoginForm = (props) => {
-    console.log("AAAAAAAAAAAA");
-    console.log(props)
     
     //Inicializa objeto para contener datos de login
     const [loginCredentials, setLoginCredentials] = useState({})

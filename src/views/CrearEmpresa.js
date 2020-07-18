@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { Context } from '../store/appContext';
+import { withRouter } from 'react-router-dom';
 
-const CrearEmpresa = () => {
+const CrearEmpresa = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
+
 
     const [state, setState] = useState({
     });
@@ -112,4 +119,4 @@ const CrearEmpresa = () => {
         </>
     )
 }
-export default CrearEmpresa;
+export default withRouter(CrearEmpresa);

@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
-const CreateUser = () => {
-
-    const { store, actions } = useContext(Context)
+import { withRouter } from 'react-router-dom';
+const CreateUser = (props) => {
+    
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
 
 
 
@@ -102,4 +106,4 @@ const CreateUser = () => {
     )
 }
 
-export default CreateUser;
+export default withRouter(CreateUser);

@@ -1,17 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../store/appContext';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const Empresas = () => {
+const Empresas = (props) => {
 
-    const { store, actions } = useContext(Context);
-    const [state, setState] = useState({
-    });
-
-    /* useEffect(() => {
-        actions.getEmpresas();
-        actions.getUsuarios()
-    }, []); */
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
 
 
     const deleteEmpresas = (e) => {
@@ -153,4 +149,4 @@ const Empresas = () => {
         </>
     )
 }
-export default Empresas;
+export default withRouter(Empresas);

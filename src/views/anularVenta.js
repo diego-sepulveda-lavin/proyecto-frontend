@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import "../css/anularVenta.css";
+import { Context } from '../store/appContext';
+import { withRouter } from 'react-router-dom';
 
-const AnularVentaUsuario = () => {
-
+const AnularVentaUsuario = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -183,4 +188,4 @@ const AnularVentaUsuario = () => {
     )
 }
 
-export default AnularVentaUsuario;
+export default withRouter(AnularVentaUsuario);

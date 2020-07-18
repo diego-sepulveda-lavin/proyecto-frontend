@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 
-const ModificarSku = () => {
+const ModificarSku = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -130,4 +136,4 @@ const ModificarSku = () => {
         </>
     )
 }
-export default ModificarSku;
+export default withRouter(ModificarSku);

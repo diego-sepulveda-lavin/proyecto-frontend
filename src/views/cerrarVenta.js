@@ -1,8 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 const CerrarVenta = props => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -109,4 +114,4 @@ const CerrarVenta = props => {
     )
 }
 
-export default CerrarVenta;
+export default withRouter(CerrarVenta);
