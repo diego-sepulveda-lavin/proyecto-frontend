@@ -67,9 +67,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     setInfo({
-                        [data]:result
+                        [data]: result
                     })
-                    
+
                 } catch (error) {
                     console.log(error);
                 }
@@ -185,7 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* Zona PUT */
             putFetch: async (urlPag, setInfo, data_a_enviar) => {
                 let store = getStore()
-                
+
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
                     const token = localStorage.getItem('access_token');
@@ -195,33 +195,74 @@ const getState = ({ getStore, getActions, setStore }) => {
                     let requestOptions = {
                         method: 'PUT',
                         headers: headersContent,
-                        body:JSON.stringify(data_a_enviar)
+                        body: JSON.stringify(data_a_enviar)
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
-                    if (!result.msg){
+                    if (!result.msg) {
                         Swal.fire({
                             icon: 'success',
                             title: 'Empresa modificada exitosamente.'
                         })
-                    }else{
+                    } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Algo salió mal.',
-                            text:result.msg
+                            text: result.msg
                         })
                     }
                     setInfo({
-                        
-                        "msg":result.msg,
+
+                        "msg": result.msg,
                         "empresa": result
                     })
-                    
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            /* /Zona PUT */
+
+            /* Zona DELETE */
+            deleteFetch: async (urlPag, setInfo) => {
+                let store = getStore()
+
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'DELETE',
+                        headers: headersContent
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    if (resp.status == 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Empresa eliminada exitosamente.'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Empresa eliminada exitosamente.',
+                            text: result.msg
+                        })
+                        setInfo({
+
+                            "msg": result.msg,
+                            "empresa": result
+                        })
+                    }
+
                 } catch (error) {
                     console.log(error);
                 }
             }
-            /* /Zona PUT */ 
+            /* /Zona DELETE */
 
 
 

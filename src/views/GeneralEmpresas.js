@@ -4,13 +4,15 @@ import { Link, withRouter } from 'react-router-dom';
 
 const Empresas = (props) => {
 
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props) 
+        actions.validaLogin(props)
     }, [])
 
-
-    const deleteEmpresas = (e) => {
+    const [msg, setMsg] = useState({
+        msg: ""
+    })
+    /* const deleteEmpresas = (e) => {
         if (store.usuarios != null) {
             console.log(e.target.id)
             let empresasConUsuarios = store.usuarios.filter(usuarios => usuarios.empresa_id === store.empresas[`${e.target.id}`].id)
@@ -26,13 +28,20 @@ const Empresas = (props) => {
                 fetch(`http://localhost:5000/api/empresas/${idEmpresa}`, requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
-                    .then(result => actions.getEmpresas())
+                    .then(result =>   actions.getFetch("/empresas", "empresas"))
                     .catch(error => console.log('error', error));
 
                 alert("Empresa eliminada exitosamente")
+
             }
         }
     }
+ */
+
+      const deleteEmpresas = (id) => {
+         actions.deleteFetch("/empresas/" + id, setMsg);
+         actions.getFetch("/empresas", "empresas");
+      }
 
 
 
@@ -122,8 +131,9 @@ const Empresas = (props) => {
                                                                             </Link>
                                                                         </td>
                                                                         <td className="align-middle text-center">
-                                                                            <button onClick={deleteEmpresas} id={index} type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral">
-                                                                               X
+
+                                                                            <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                                <i className="now-ui-icons ui-1_simple-remove" onClick={()=>deleteEmpresas(empresa.id)}></i>
                                                                             </button>
                                                                         </td>
 
