@@ -8,16 +8,12 @@ const CrearEmpresa = (props) => {
         actions.validaLogin(props)
     }, [])
 
-
     const [state, setState] = useState({
         nombre: "",
         rut: "",
         razon_social: "",
         rubro: ""
     });
-
-
-
 
     const getDatos = e => {
         let data = {
@@ -33,7 +29,6 @@ const CrearEmpresa = (props) => {
         actions.postFetch("/empresas", state, setState, "Empresa")
         actions.getFetch("/empresas", "empresas");
     }
-
 
     return (
         <>
