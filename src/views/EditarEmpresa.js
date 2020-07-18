@@ -3,46 +3,45 @@ import { Context } from '../store/appContext';
 import { Link, withRouter } from 'react-router-dom';
 
 const EditarEmpresa = (props) => {
-    const {store, actions} = useContext(Context)
+
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
+        actions.getFetchID("/empresas/" + props.match.params.index, setState, "empresa",)
     }, [])
 
     const [state, setState] = useState({
+        empresa: null
+
     });
-   
-    const putEmpresa = (data) => {
-        let raw = JSON.stringify(data);
-        let requestOptions = {
-            method: 'PUT',
-            body: raw,
-            headers : {
-                "content-type" : "application/json"
-            }
-        };
 
-        fetch(`http://localhost:5000/api/empresas/${store.empresas[props.match.params.index].id}`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .then(result => actions.getEmpresas())
-            .catch(error => console.log('error', error));
-    }
+    const [msg, setMsg] = useState({
+        msg: ""
+    })
 
-    const handleChange = (e) => {
+
+    const valorInput = e => {
+        let update = {
+            [e.target.name]: e.target.value
+        }
         let data = {
-            [e.target.name]: e.target.value,
-        };
+            empresa: Object.assign(state.empresa, update),
+        }
         setState(prevState => {
             return { ...prevState, ...data }
         })
     }
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        putEmpresa(state)
+        actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa)
+        
+        actions.getFetch("/empresas", "empresas");
+        
     }
 
-    if (store.empresas != null) {
+    if (state.empresa != null) {
 
         return (
             <>
@@ -78,36 +77,37 @@ const EditarEmpresa = (props) => {
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
-                                                                placeholder={store.empresas[props.match.params.index].nombre}
+                                                                value={state.empresa.nombre}
                                                                 name="nombre"
                                                                 aria-describedby="basic-addon1"
-                                                                onChange={handleChange} />
+                                                                onChange={valorInput}
+                                                            />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input
 
                                                                 type="text" class="form-control"
-                                                                placeholder={store.empresas[props.match.params.index].rut}
+                                                                value={state.empresa.rut}
                                                                 name="rut"
-                                                                aria-describedby="basic-addon1" 
-                                                             onChange={handleChange} />
+                                                                aria-describedby="basic-addon1"
+                                                                onChange={valorInput} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
-                                                                placeholder={store.empresas[props.match.params.index].razon_social}
+                                                                value={state.empresa.razon_social}
                                                                 name="razon_social"
                                                                 aria-describedby="basic-addon1"
-                                                                onChange={handleChange} />
+                                                                onChange={valorInput} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text" class="form-control"
-                                                                placeholder={store.empresas[props.match.params.index].rubro}
+                                                                value={state.empresa.rubro}
                                                                 name="rubro"
                                                                 aria-describedby="basic-addon1"
-                                                                onChange={handleChange} />
+                                                                onChange={valorInput} />
                                                         </td>
                                                     </tr>
                                                 </tbody>

@@ -6,8 +6,7 @@ const Empresas = (props) => {
 
     const {store, actions} = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)   
-        actions.getFetch("/empresas/")  
+        actions.validaLogin(props) 
     }, [])
 
 
@@ -98,25 +97,25 @@ const Empresas = (props) => {
                                             {
                                                 store.empresas !== null ?
                                                     (
-                                                        store.empresas.map((elem, index, arr) => {
+                                                        store.empresas.map((empresa, index, arr) => {
                                                             return (
                                                                 <>
                                                                     <tr>
                                                                         <td className="align-middle text-center">
-                                                                            {elem.nombre}
+                                                                            {empresa.nombre}
                                                                         </td>
                                                                         <td className="align-middle text-center">
-                                                                            {elem.rut}
+                                                                            {empresa.rut}
                                                                         </td>
                                                                         <td className="align-middle text-center">
-                                                                            {elem.razon_social}
+                                                                            {empresa.razon_social}
                                                                         </td>
                                                                         <td className="align-middle text-center">
-                                                                            {elem.rubro}
+                                                                            {empresa.rubro}
                                                                         </td>
 
                                                                         <td className="align-middle text-center">
-                                                                            <Link to={`/empresas/${index}`}>
+                                                                            <Link to={`/empresas/${empresa.id}`}>
                                                                                 <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                                     <i className="now-ui-icons ui-2_settings-90"></i>
                                                                                 </button>
