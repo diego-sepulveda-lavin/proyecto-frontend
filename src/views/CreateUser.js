@@ -10,48 +10,61 @@ const CreateUser = (props) => {
 
 
     const [state, setState] = useState({
-        creacionUsuario: {
+        /* creacionUsuario: {
             nombre: "",
             apellido: "",
             rut: "",
             email: "",
+            rut: "",
             rol: "",
             password: "",
             repassword: "",
-            foto: "",
-        },
+            foto: ""
+        }, */
+        nombre: "",
+        apellido: "",
+        rut: "",
+        email: "",
+        rut: "",
+        rol: "",
+        password: "",
+        repassword: "",
+        foto: "",
         imageURL: null,
-    })
+        MensajesRecibidos: []
+
+    });
 
 
-
-
-    const getDataUsuarioFoto = e => {
+    const getInformacionFoto = e => {
         console.log(e.target.files[0])
 
-       /*  //const { creacionUsuario } = store;
-        const creacionUsuario = state;
         state.foto = e.target.files[0]
 
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onloadend = function (e) {
-            setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
-        };
-        setStore({ creacionUsuario: creacionUsuario })
-        //{ ...prevState, ...data } Esto con el state, arriba con el contextapp */
-    }
 
+            setState(prevState => {
+                return { ...prevState, ...{ imageURL: [reader.result] } }
+            })
 
-    const getInformacion = e =>{
-        let update = {[e.target.name] : e.target.value}
-        let data = { creacionUsuario: Object.assign(state, update)}
-        setState(data)
+        }
+    };
+
+    const getInformacion = e => {
+        let data = {
+            [e.target.name]: e.target.value
+        }
+
+        setState(prevState => {
+            return { ...prevState, ...data }
+        })
     }
 
     const enviarFormulario = e => {
         e.preventDefault()
-        actions.postUsuario("/usuarios", state, setState, "Usuario")
+        actions.postUsuario("/usuarios", state.creacionUsuario, setState, "Usuario")
         actions.getFetch("/usuarios", "Usuario")
     }
 
@@ -73,7 +86,7 @@ const CreateUser = (props) => {
                                         <div className="row">
                                             <div className="col-md-4 d-flex justify-content-center">
                                                 <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
-                                                    src={store.imageURL !== null ? store.imageURL : "../user-icon-vector.jpg"}></img>
+                                                    src={state.imageURL !== null ? state.imageURL : "../user-icon-vector.jpg"}></img>
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="row">
@@ -129,7 +142,7 @@ const CreateUser = (props) => {
                                             <div className="row">
                                                 <div className="col-md-5 offset-md-5">
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={() => getDataUsuarioFoto} />
+                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={() => getInformacionFoto} />
                                                         <label class="custom-file-label" for="inputGroupFile03">File</label>
                                                     </div>
                                                 </div>
