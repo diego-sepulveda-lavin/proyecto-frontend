@@ -9,8 +9,6 @@ const Empresas = (props) => {
     useEffect(() => {
         actions.validaLogin(props)
     }, [])
-
-
     const [state, setState] = useState({
         buscador: "",
         buscarPor: "nombre",
@@ -18,26 +16,26 @@ const Empresas = (props) => {
     })
 
 
-    const deleteEmpresas = (id) => {
-        actions.deleteFetch("/empresas/" + id, setState);
-        actions.getFetch("/empresas", "empresas");
-    }
+
     const getValorBuscador = e => {
         let data = {
             [e.target.name]: e.target.value
         }
-        setState(prevBuscador => {
-            return { ...prevBuscador, ...data }
+        setState(prevState => {
+            return { ...prevState, ...data }
         })
     }
     const seleccionadorBuscador = e => {
-        console.log(e.target.value)
         let data = {
-            buscarPor: e.target.value
+            [e.target.name]: e.target.value
         }
         setState((prevState) => {
             return { ...prevState, ...data }
         })
+    }
+    const deleteEmpresas = (id) => {
+        actions.deleteFetch("/empresas/" + id, setState, "Empresa");
+        actions.getFetch("/empresas", "empresas");
     }
 
 
@@ -65,9 +63,9 @@ const Empresas = (props) => {
                     <div className=" col-md-4 p-0 mb-1 d-flex justify-content-center">
                         <div className="form-check ml-3">
                             <label className="form-check-label p-0 align-middle" for="exampleRadios1">Nombre</label>
-                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="opcionBuscador" value="nombre" onClick={seleccionadorBuscador}></input>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="buscarPor" value="nombre" onClick={seleccionadorBuscador}></input>
                             <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="opcionBuscador" value="rut" onClick={seleccionadorBuscador} ></input>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="buscarPor" value="rut" onClick={seleccionadorBuscador} ></input>
                         </div>
 
                     </div>
@@ -105,7 +103,7 @@ const Empresas = (props) => {
                                                     )
                                                     :
                                                     (
-                                                        store.empresas.lenght === 0 ?
+                                                        store.empresas.length === 0 ?
                                                             (
                                                                 <tr className="align-middle text-center">
                                                                     <th colspan="6">No hay empresas registradas</th>
@@ -120,10 +118,10 @@ const Empresas = (props) => {
                                                                     if (state.buscarPor === "rut")
                                                                         return empresa.rut.includes(state.buscador)
 
-                                                                }).map((empresa, index, arr) => {
+                                                                }).map((empresa, indice,) => {
                                                                     return (
                                                                         <>
-                                                                            <tr>
+                                                                            <tr key={indice}>
                                                                                 <td className="align-middle text-center">
                                                                                     {empresa.nombre}
                                                                                 </td>
@@ -138,10 +136,10 @@ const Empresas = (props) => {
                                                                                 </td>
 
                                                                                 <td className="align-middle text-center">
-                                                                                    <Link to={`/empresas/${empresa.id}`}>
-                                                                                        <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                                        </button>
+
+                                                                                    <Link to={`/empresas/${empresa.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
+
                                                                                     </Link>
                                                                                 </td>
                                                                                 <td className="align-middle text-center">
