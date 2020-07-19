@@ -7,7 +7,7 @@ const EditarEmpresa = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
-        actions.getFetchID("/empresas/" + props.match.params.index, setState, "empresa",)
+        actions.getFetchID("/empresas/" + props.match.params.index, setState, "empresa")
     }, [])
 
     const [state, setState] = useState({

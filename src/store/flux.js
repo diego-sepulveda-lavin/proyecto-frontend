@@ -17,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 repassword: "",
                 foto: "",
             },
-            imageURL: null
+            imageURL: null,
+            MensajesRecibidos:[]
 
         },
         actions: {
@@ -224,7 +225,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona PUT */
 
             /* Zona DELETE */
-            deleteFetch: async (urlPag, setInfo) => {
+            deleteFetch: async (urlPag, setInfo,mensajeAlerta) => {
                 let store = getStore()
 
                 try {
@@ -243,7 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Empresa eliminada exitosamente.'
+                            title: mensajeAlerta+' eliminada exitosamente.'
                         })
 
                     } else {
@@ -253,9 +254,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             text: result.msg
                         })
                         setInfo({
-
                             "msg": result.msg,
-
                         })
                     }
 
@@ -288,7 +287,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
                         data_a_enviar=""
-                        console.log(limpiarInput({ data_a_enviar }))
                         limpiarInput(data_a_enviar)
                     } else {
                         Swal.fire({
