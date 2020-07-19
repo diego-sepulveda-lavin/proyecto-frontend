@@ -18,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 foto: "",
             },
             imageURL: null,
-            MensajesRecibidos:[]
+            MensajesRecibidos: []
 
         },
         actions: {
@@ -107,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data.email);
                 formData.append("password", data.password);
                 formData.append("foto", data.foto);
-                console.log(formData)
+
                 try {
                     let headersContent = ""
                     const token = localStorage.getItem('access_token');
@@ -185,10 +185,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             /* Zona PUT */
             putUsuario: async (urlPag, setInfo, data_a_enviar) => {
-              
-              
+
+
                 let store = getStore()
                 let formData = new FormData()
+                /* Probar cambiando todos los append por variables = formData.get("algo") y luego pasarla por el body como json/string */
+
                 formData.append("nombre", data_a_enviar.nombre);
                 formData.append("apellido", data_a_enviar.apellido);
                 formData.append("rut", data_a_enviar.rut);
@@ -196,23 +198,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data_a_enviar.email);
                 formData.append("password", data_a_enviar.password);
                 formData.append("foto", data_a_enviar.foto);
-                console.log(formData.rut)
-                console.log(formData)
+
                 try {
                     let headersContent = ""
                     const token = localStorage.getItem('access_token');
                     if (token) {
-                        headersContent = { 'Authorization': 'Bearer ' + token }
+                        headersContent = {
+                            "Access-Control-Allow-Origin": "*",
+                            'Authorization': 'Bearer ' + token,
+                        }
                     }
                     let requestOptions = {
                         method: 'PUT',
                         headers: headersContent,
                         body: formData,
                     };
-                    console.log("body",requestOptions.body)
+
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
-                    console.log("resp",resp)
+                    console.log("resp", resp)
                     const result = await resp.json();
+                    console.log(result)
                     if (result.msg == null) {
                         Swal.fire({
                             icon: 'success',
@@ -231,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
 
                     }
-                    
+
                 } catch (error) {
                     console.log(error);
                 }
@@ -277,7 +282,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona PUT */
 
             /* Zona DELETE */
-            deleteFetch: async (urlPag, setInfo,mensajeAlerta) => {
+            deleteFetch: async (urlPag, setInfo, mensajeAlerta) => {
                 let store = getStore()
 
                 try {
@@ -296,7 +301,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
-                            title: mensajeAlerta+' eliminada exitosamente.'
+                            title: mensajeAlerta + ' eliminada exitosamente.'
                         })
 
                     } else {
@@ -338,7 +343,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             icon: 'success',
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
-                        data_a_enviar=""
+                        data_a_enviar = ""
                         limpiarInput(data_a_enviar)
                     } else {
                         Swal.fire({

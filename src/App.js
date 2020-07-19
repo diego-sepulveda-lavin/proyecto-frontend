@@ -25,6 +25,7 @@ import Empresas from './views/GeneralEmpresas';
 import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
 import Spinner from './components/spinner';
+import modificarUserSinID from './views/modificarUserSinID';
 
 const App = props => {
   return (
@@ -57,7 +58,7 @@ const App = props => {
             <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/crear-usuario" component={CreateUser}></Route>
-            <Route exact path="/modificar-usuario/" component={ModificarUser}></Route>
+            <Route exact path="/modificar-usuario/" component={modificarUserSinID}></Route>
             <Route exact path="/modificar-usuario/:index" component={ModificarUser}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>

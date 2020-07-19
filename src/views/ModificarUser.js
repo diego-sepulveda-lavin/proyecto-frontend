@@ -7,7 +7,9 @@ const ModificarUser = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
-        actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
+          actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
+        
+        
     }, [])
 
     const [state, setState] = useState({
