@@ -10,27 +10,26 @@ const CreateUser = (props) => {
 
 
     const [state, setState] = useState({
-        nombre: "",
-        apellido: "",
-        rut: "",
-        email: "",
-        rut: "",
-        rol: "",
-        password: "",
-        repassword: "",
-        foto:""
+        creacionUsuario: {
+            nombre: "",
+            apellido: "",
+            rut: "",
+            email: "",
+            rol: "",
+            password: "",
+            repassword: "",
+            foto: "",
+        },
+        imageURL: null,
     })
 
-    const[imagen, setImagen] = useState={
-        imageURL: null,
-        MensajesRecibidos: []
-    }
 
 
-    getDataUsuarioFoto: e => {
+
+    const getDataUsuarioFoto = e => {
         console.log(e.target.files[0])
-       
-        //const { creacionUsuario } = store;
+
+       /*  //const { creacionUsuario } = store;
         const creacionUsuario = state;
         state.foto = e.target.files[0]
 
@@ -40,17 +39,14 @@ const CreateUser = (props) => {
             setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
         };
         setStore({ creacionUsuario: creacionUsuario })
-        //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-    },
+        //{ ...prevState, ...data } Esto con el state, arriba con el contextapp */
+    }
 
 
-    const getInformacion = e => {
-        let data = {
-            [e.target.name]: e.target.value
-        }
-        setState(prevState => {
-            return { ...prevState, ...data }
-        })
+    const getInformacion = e =>{
+        let update = {[e.target.name] : e.target.value}
+        let data = { creacionUsuario: Object.assign(state, update)}
+        setState(data)
     }
 
     const enviarFormulario = e => {
@@ -85,47 +81,47 @@ const CreateUser = (props) => {
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Nombre</span>
                                                         </div>
-                                                        <input type="text" name="nombre" class="form-control" value={`${state != "" ? state.nombre : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="nombre" class="form-control"  onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Apellido</span>
                                                         </div>
-                                                        <input type="text" name="apellido" class="form-control" value={`${state != "" ? state.apellido : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="apellido" class="form-control" value={`${state != "" ? state.creacionUsuario.apellido : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${state != "" ? state.rut : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${state != "" ? state.creacionUsuario.rut : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Email</span>
                                                         </div>
-                                                        <input type="email" name="email" class="form-control" value={`${state != "" ? state.email : ""}`} onChange={getInformacion} />
+                                                        <input type="email" name="email" class="form-control" value={`${state != "" ? state.creacionUsuario.email : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Rol</span>
                                                         </div>
-                                                        <input type="text" name="rol" class="form-control" value={`${state != "" ? state.rol : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rol" class="form-control" value={`${state != "" ? state.creacionUsuario.rol : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Password</span>
                                                         </div>
-                                                        <input type="password" name="password" class="form-control" value={`${state != "" ? state.password : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="password" class="form-control" value={`${state != "" ? state.creacionUsuario.password : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Confirmación Password</span>
                                                         </div>
-                                                        <input type="password" name="repassword" class="form-control" value={`${state != "" ? state.repassword : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="repassword" class="form-control" value={`${state != "" ? state.creacionUsuario.repassword : ""}`} onChange={getInformacion} />
                                                     </div>
 
                                                 </div>
@@ -133,7 +129,7 @@ const CreateUser = (props) => {
                                             <div className="row">
                                                 <div className="col-md-5 offset-md-5">
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={getInformacionFoto} />
+                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={() => getDataUsuarioFoto} />
                                                         <label class="custom-file-label" for="inputGroupFile03">File</label>
                                                     </div>
                                                 </div>
