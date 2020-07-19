@@ -29,29 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
 
-            /*   postEmpresas: async (data) => {
-                  try {
-                      let headersContent = { 'Content-Type': 'application/json' };
-                      const token = localStorage.getItem('access_token');
-                      if (token) {
-                          headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-                      }
-                      let bodyContent = JSON.stringify(data);
-  
-                      let requestOptions = {
-                          method: 'POST',
-                          headers: headersContent,
-                          body: bodyContent,
-                      };
-                      const resp = await fetch('http://localhost:5000/api/empresas', requestOptions)
-                      const result = await resp.json()
-  
-                  } catch (error) {
-                      console.log(error)
-                  }
-              },
-   */
-
+     
             /* Zona GET */
             getFetchID: async (urlPag, setInfo, data) => {
                 let store = getStore()
@@ -97,16 +75,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            postUsuario: async (data) => {
+            postUsuario: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta) => {
                 let store = getStore()
                 let formData = new FormData()
-                formData.append("nombre", data.nombre);
-                formData.append("apellido", data.apellido);
-                formData.append("rut", data.rut);
-                formData.append("rol", data.rol);
-                formData.append("email", data.email);
-                formData.append("password", data.password);
-                formData.append("foto", data.foto);
+                formData.append("nombre", data_a_enviar.nombre);
+                formData.append("apellido", data_a_enviar.apellido);
+                formData.append("rut", data_a_enviar.rut);
+                formData.append("rol", data_a_enviar.rol);
+                formData.append("email", data_a_enviar.email);
+                formData.append("password", data_a_enviar.password);
+                formData.append("foto", data_a_enviar.foto);
 
                 try {
                     let headersContent = ""
@@ -119,24 +97,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                         headers: headersContent,
                         body: formData,
                     };
-                    const resp = await fetch("http://localhost:5000/api/usuarios/", requestOptions);
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
                     const result = await resp.json();
                     if (result.msg == null) {
-                        let data = {
-                            nombre: "",
-                            apellido: "",
-                            rut: "",
-                            email: "",
-                            rol: "",
-                            password: "",
-                            repassword: "",
-                            foto: ""
-                        }
+                       
                         Swal.fire({
                             icon: 'success',
-                            title: 'Usuario creado exitosamente'
+                            title: `${mensajeAlerta} creado exitosamente`
                         })
-                        setStore({ creacionUsuario: data, imageURL: null })
+                        data_a_enviar = ""
+                        limpiarInput(data_a_enviar)
+                        //setStore({ creacionUsuario: data, imageURL: null })
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -151,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            getDataUsuario: e => {
+            /* getDataUsuario: e => {
                 const store = getStore();
                 //const { creacionUsuario } = store;
                 const creacionUsuario = store.creacionUsuario;
@@ -160,8 +131,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 //setStore({creacionUsuario})
                 //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
 
-            },
-            getDataUsuarioFoto: e => {
+            }, */
+           /*  getDataUsuarioFoto: e => {
                 console.log(e.target.files[0])
                 const store = getStore();
                 //const { creacionUsuario } = store;
@@ -175,13 +146,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                 };
                 setStore({ creacionUsuario: creacionUsuario })
                 //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-            },
+            }, */
 
-            enviarFormulario: e => {
+           /*  enviarFormulario: e => {
                 e.preventDefault();
                 const store = getStore();
                 getActions().postUsuario(store.creacionUsuario);
-            },
+            }, */
 
             /* Zona PUT */
             putUsuario: async (urlPag, setInfo, data_a_enviar) => {
