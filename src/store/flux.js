@@ -100,13 +100,23 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
                     const result = await resp.json();
                     if (result.msg == null) {
-                       
+                        let data = {
+                            nombre: "",
+                            apellido: "",
+                            rut: "",
+                            email: "",
+                            rol: "",
+                            password: "",
+                            repassword: "",
+                            foto: ""
+                        }
                         Swal.fire({
                             icon: 'success',
                             title: `${mensajeAlerta} creado exitosamente`
                         })
-                        data_a_enviar = ""
-                        limpiarInput(data_a_enviar)
+                        /* data_a_enviar = "" */
+                        limpiarInput({ creacionUsuario: data, imageURL: null })
+                        
                         //setStore({ creacionUsuario: data, imageURL: null })
                     } else {
                         Swal.fire({

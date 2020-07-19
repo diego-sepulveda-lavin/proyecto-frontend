@@ -36,9 +36,7 @@ const EditarEmpresa = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa)
-        
         actions.getFetch("/empresas", "empresas");
-        
     }
 
     if (state.empresa != null) {

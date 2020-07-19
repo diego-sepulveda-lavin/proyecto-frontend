@@ -10,6 +10,17 @@ const CreateUser = (props) => {
 
 
     const [state, setState] = useState({
+        /* creacionUsuario: {
+            nombre: "",
+            apellido: "",
+            rut: "",
+            email: "",
+            rut: "",
+            rol: "",
+            password: "",
+            repassword: "",
+            foto: ""
+        }, */
         nombre: "",
         apellido: "",
         rut: "",
@@ -18,36 +29,34 @@ const CreateUser = (props) => {
         rol: "",
         password: "",
         repassword: "",
-        foto:""
-    })
-
-    const[imagen, setImagen] = useState={
+        foto: "",
         imageURL: null,
         MensajesRecibidos: []
-    }
+
+    });
 
 
-    getDataUsuarioFoto: e => {
+    const getInformacionFoto = e => {
         console.log(e.target.files[0])
-       
-        //const { creacionUsuario } = store;
-        const creacionUsuario = state;
+
         state.foto = e.target.files[0]
 
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onloadend = function (e) {
-            setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
-        };
-        setStore({ creacionUsuario: creacionUsuario })
-        //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-    },
 
+            setState(prevState => {
+                return { ...prevState, ...{ imageURL: [reader.result] } }
+            })
+
+        }
+    };
 
     const getInformacion = e => {
         let data = {
             [e.target.name]: e.target.value
         }
+
         setState(prevState => {
             return { ...prevState, ...data }
         })
@@ -55,7 +64,7 @@ const CreateUser = (props) => {
 
     const enviarFormulario = e => {
         e.preventDefault()
-        actions.postUsuario("/usuarios", state, setState, "Usuario")
+        actions.postUsuario("/usuarios", state.creacionUsuario, setState, "Usuario")
         actions.getFetch("/usuarios", "Usuario")
     }
 
@@ -77,7 +86,7 @@ const CreateUser = (props) => {
                                         <div className="row">
                                             <div className="col-md-4 d-flex justify-content-center">
                                                 <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
-                                                    src={store.imageURL !== null ? store.imageURL : "../user-icon-vector.jpg"}></img>
+                                                    src={state.imageURL !== null ? state.imageURL : "../user-icon-vector.jpg"}></img>
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="row">
