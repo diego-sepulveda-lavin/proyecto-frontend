@@ -13,14 +13,14 @@ const CrearSku = (props) => {
                 <h1 className="text-warning text-center">Stock</h1>
                 <h3 className="text-info text-center">Crear SKU</h3>
             </div>
-            <form>
                 <div className="content">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-11 ">
+            <form>
                             <div className="card">
                                <div className="card-body">
                                     <div className="table-responsive">
-                                        <table className="table table-hover">
+                                        <table className="table">
                                             <thead className=" text-primary">
                                                 <th className="align-middle text-center">
                                                     N°
@@ -101,10 +101,10 @@ const CrearSku = (props) => {
                                     </div>
                                 </div>
                             </div>
+            </form>
                         </div>
                     </div>
                 </div>
-            </form>
         </>
     )
 }

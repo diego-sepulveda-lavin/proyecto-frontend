@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import Spinner from '../components/spinner';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 const ListadoUsuarios = (props) => {
     const { store, actions } = useContext(Context)
@@ -28,7 +28,7 @@ const ListadoUsuarios = (props) => {
     useEffect(() => {
         actions.validaLogin(props)
     }, [])
-    
+
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -138,9 +138,9 @@ const ListadoUsuarios = (props) => {
                                                                     {usuario.status === true ? "Activo" : "Inactivo"}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                    <Link to={`/modificar-user/${usuario.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                    </button>
+                                                                    </Link>
                                                                 </td>
                                                                 <td className="align-middle text-center">
                                                                     <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">

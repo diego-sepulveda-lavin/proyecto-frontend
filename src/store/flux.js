@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             urlBase: "http://localhost:5000/api",
-            loadedToken: null,
             empresas: null,
             usuarios: null,
             usuario: null,
@@ -18,16 +17,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                 repassword: "",
                 foto: "",
             },
-            imageURL: null
+            imageURL: null,
+            MensajesRecibidos:[]
 
         },
         actions: {
             validaLogin: (props) => {
-                if (!localStorage.getItem('access_token')){
+                if (!localStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
             },
-           
+
 
             /*   postEmpresas: async (data) => {
                   try {
@@ -53,6 +53,28 @@ const getState = ({ getStore, getActions, setStore }) => {
    */
 
             /* Zona GET */
+            getFetchID: async (urlPag, setInfo, data) => {
+                let store = getStore()
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'GET',
+                        headers: headersContent
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    setInfo({
+                        [data]: result
+                    })
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             getFetch: async (urlPag, data) => {
                 let store = getStore()
                 try {
@@ -118,7 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     } else {
                         Swal.fire({
                             icon: 'error',
-                            title: "Algo salio mal",
+                            title: "Algo salió mal",
                             text: result.msg
                         })
 
@@ -161,6 +183,123 @@ const getState = ({ getStore, getActions, setStore }) => {
                 getActions().postUsuario(store.creacionUsuario);
             },
 
+            /* Zona PUT */
+            putFetch: async (urlPag, setInfo, data_a_enviar) => {
+                let store = getStore()
+
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'PUT',
+                        headers: headersContent,
+                        body: JSON.stringify(data_a_enviar)
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    if (!result.msg) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Empresa modificada exitosamente.'
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo salió mal.',
+                            text: result.msg
+                        })
+                    }
+                    setInfo({
+
+                        "msg": result.msg,
+                        "empresa": result
+                    })
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            /* /Zona PUT */
+
+            /* Zona DELETE */
+            deleteFetch: async (urlPag, setInfo,mensajeAlerta) => {
+                let store = getStore()
+
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'DELETE',
+                        headers: headersContent
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    console.log(resp)
+                    if (resp.status == 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: mensajeAlerta+' eliminada exitosamente.'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo salió mal',
+                            text: result.msg
+                        })
+                        setInfo({
+                            "msg": result.msg,
+                        })
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            /* /Zona DELETE */
+
+            /* Zona POST*/
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta) => {
+                let store = getStore()
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'POST',
+                        headers: headersContent,
+                        body: JSON.stringify(data_a_enviar)
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    console.log(resp)
+                    if (!result.msg) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: mensajeAlerta + ' creada exitosamente.'
+                        })
+                        data_a_enviar=""
+                        limpiarInput(data_a_enviar)
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo salió mal.',
+                            text: result.msg
+                        })
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            /* /Zona POST */
 
 
 

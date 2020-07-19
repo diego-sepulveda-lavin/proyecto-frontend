@@ -1,12 +1,41 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
 const ModificarUser = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
+        actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
     }, [])
+
+    const [state, setState] = useState({
+        codUser: "",
+    })
+    const [algo, setAlgo] = useState({
+
+    })
+
+    const getDataUsuario = e => {
+
+        let data = {
+            [e.target.name]: e.target.value
+        }
+        setState(prevState => {
+            return { ...prevState, ...data }
+        })
+
+
+    }
+    const filtro = (e) => {
+        if (e.key === "Enter") {
+            let data = store.usuarios.filter((usuario) => usuario.codigo == state.codUser)
+            setAlgo(prevState => {
+                return { ...prevState, ...data }
+            })
+        }
+    }
+
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -16,7 +45,7 @@ const ModificarUser = (props) => {
             </div>
             <form>
                 <div className="content">
-                <div className="row d-flex justify-content-center">
+                    <div className="row d-flex justify-content-center">
                         <div className="col-md-11 offset-md">
                             <div className="card card-chart">
                                 <div className="card-header">
@@ -32,7 +61,7 @@ const ModificarUser = (props) => {
                                             <div className="input-group-prepend">
                                                 <span className="input-group-text">User ID</span>
                                             </div>
-                                            <input type="text" aria-label="First name" className="form-control" placeholder="aqui va el user ID" />
+                                            <input name="codUser" type="text" aria-label="First name" className="form-control" placeholder="aqui va el user ID" onChange={e => getDataUsuario(e)} onKeyPress={filtro} />
                                         </div>
 
                                         <div className="dropdown">
@@ -50,7 +79,6 @@ const ModificarUser = (props) => {
                                     <div className="row d-flex justify-content-center">
                                         <div className="input-group col-md-2">
 
-                                           
                                             <select className="form-control">
                                                 <option value="1" defaultValue>Activo</option>
                                                 <option value="2">Inactivo</option>
