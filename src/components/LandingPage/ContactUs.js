@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
+import Spinner from '../spinner'
 
 const ContactUs = () => {
 
-    const [datosAEnviar, setDatosAEnviar] = useState({})
-    const [mensaje, setMensaje] = useState("")
+    const [datosAEnviar, setDatosAEnviar] = useState({
+        nombre: "",
+        email: "",
+        consulta: ""
+    })
+    const [mensaje, setMensaje] = useState({
+        msg: null
+    })
 
     const handleChange = e => {
         let capturaDatos = {
@@ -33,7 +40,16 @@ const ContactUs = () => {
             const resp = await fetch('http://localhost:5000/api/email', requestOptions)
             const result = await resp.json()
 
-            setMensaje(result.msg)
+            setMensaje(prevState =>{
+                return {...prevState, ...result}
+            })
+            if (resp.status == 200){
+                setDatosAEnviar({
+                    nombre: "",
+                    email: "",
+                    consulta: ""
+                })
+            }
 
         } catch (error) {
             console.log(error)
@@ -55,7 +71,7 @@ const ContactUs = () => {
                                             <i className="now-ui-icons users_circle-08"></i>
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" name="nombre" onChange={handleChange} placeholder="Nombre Completo" />
+                                    <input type="text" className="form-control" name="nombre" value={datosAEnviar.nombre} onChange={handleChange} placeholder="Nombre Completo" />
                                 </div>
                                 <div className="input-group input-lg">
                                     <div className="input-group-prepend">
@@ -63,14 +79,17 @@ const ContactUs = () => {
                                             <i className="now-ui-icons ui-1_email-85"></i>
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" name="email" onChange={handleChange} placeholder="Email" />
+                                    <input type="text" className="form-control" name="email" value={datosAEnviar.email} onChange={handleChange} placeholder="Email" />
                                 </div>
                                 <div className="textarea-container">
-                                    <textarea className="form-control" rows="4" cols="80" name="consulta" onChange={handleChange} placeholder="Escríbenos tu consulta.."></textarea>
+                                    <textarea className="form-control" rows="4" cols="80" name="consulta" value={datosAEnviar.consulta}onChange={handleChange} placeholder="Escríbenos tu consulta.."></textarea>
                                 </div>
                                 <div className="send-button">
                                     <button className="btn btn-primary btn-round btn-block btn-lg">Enviar Mensaje</button>  
-                                    <p>{mensaje}</p>                
+                                    {
+                                        !!mensaje.msg?(<p>{mensaje}</p> ):(<Spinner />)
+                                    }
+                                                   
                                 </div>
                             </form>
                         </div>
