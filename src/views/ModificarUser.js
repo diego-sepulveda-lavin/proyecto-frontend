@@ -3,9 +3,9 @@ import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
 const ModificarUser = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
     }, [])
     return (
         <>
@@ -16,7 +16,7 @@ const ModificarUser = (props) => {
             </div>
             <form>
                 <div className="content">
-                <div className="row d-flex justify-content-center">
+                    <div className="row d-flex justify-content-center">
                         <div className="col-md-11 offset-md">
                             <div className="card card-chart">
                                 <div className="card-header">
@@ -50,7 +50,6 @@ const ModificarUser = (props) => {
                                     <div className="row d-flex justify-content-center">
                                         <div className="input-group col-md-2">
 
-                                           
                                             <select className="form-control">
                                                 <option value="1" defaultValue>Activo</option>
                                                 <option value="2">Inactivo</option>
