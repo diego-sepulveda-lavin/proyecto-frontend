@@ -26,7 +26,7 @@ const ModificarUser = (props) => {
 const enviarFormulario=(e)=>{
     e.preventDefault();
     actions.putUsuario("/usuarios/"+state.usuario.id, setState, state.usuario)
-    //actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa)
+    actions.getFetch("/usuarios", "usuario");
     
 
 }

@@ -226,7 +226,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setInfo({
 
                             "msg": result.msg,
-                            "empresa": result
+                            "usuario": result
                         })
                     } else {
                         Swal.fire({
