@@ -56,8 +56,9 @@ const App = props => {
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
-            <Route exact path="/create-user" component={CreateUser}></Route>
-            <Route exact path="/modificar-user" component={ModificarUser}></Route>
+            <Route exact path="/crear-usuario" component={CreateUser}></Route>
+            <Route exact path="/modificar-usuario/" component={ModificarUser}></Route>
+            <Route exact path="/modificar-usuario/:index" component={ModificarUser}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>

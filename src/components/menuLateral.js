@@ -58,8 +58,8 @@ const MenuLateral = props => {
                     </li>
                     <li className={
                         props.location.pathname==="/listado-usuarios" || 
-                        props.location.pathname==="/create-user" ||
-                        props.location.pathname==="/modificar-user" ? "active":""}>
+                        props.location.pathname==="/crear-usuario" ||
+                        props.location.pathname==="/modificar-usuario" ? "active":""}>
                         <Link>
                             <i className="now-ui-icons ui-1_bell-53"></i>
                             <p data-toggle="collapse" data-target="#administrador">Administrador</p>
@@ -67,8 +67,8 @@ const MenuLateral = props => {
                         
                         <div id="administrador" class="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/listado-usuarios"}><p>Ver Usuarios</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/create-user"}><p>Crear Usuarios</p></Link></li>  
-                            <li className="ml-5 mt-2"><Link to={"/modificar-user"}><p>Modificar Usuarios</p></Link></li>                    
+                            <li className="ml-5 mt-2"><Link to={"/crear-usuario"}><p>Crear Usuarios</p></Link></li>  
+                            <li className="ml-5 mt-2"><Link to={"/modificar-usuario"}><p>Modificar Usuarios</p></Link></li>                    
                         </div>
                     </li>
                     <li className={

@@ -107,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data.email);
                 formData.append("password", data.password);
                 formData.append("foto", data.foto);
-
+                console.log(formData)
                 try {
                     let headersContent = ""
                     const token = localStorage.getItem('access_token');
@@ -184,6 +184,58 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             /* Zona PUT */
+            putUsuario: async (urlPag, setInfo, data_a_enviar) => {
+              
+              
+                let store = getStore()
+                let formData = new FormData()
+                formData.append("nombre", data_a_enviar.nombre);
+                formData.append("apellido", data_a_enviar.apellido);
+                formData.append("rut", data_a_enviar.rut);
+                formData.append("rol", data_a_enviar.rol);
+                formData.append("email", data_a_enviar.email);
+                formData.append("password", data_a_enviar.password);
+                formData.append("foto", data_a_enviar.foto);
+                console.log(formData.rut)
+                console.log(formData)
+                try {
+                    let headersContent = ""
+                    const token = localStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'PUT',
+                        headers: headersContent,
+                        body: formData,
+                    };
+                    console.log("body",requestOptions.body)
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    console.log("resp",resp)
+                    const result = await resp.json();
+                    if (result.msg == null) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Usuario Modificado exitosamente.'
+                        })
+                        setInfo({
+
+                            "msg": result.msg,
+                            "empresa": result
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: "Algo salió mal",
+                            text: result.msg
+                        })
+
+                    }
+                    
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             putFetch: async (urlPag, setInfo, data_a_enviar) => {
                 let store = getStore()
 

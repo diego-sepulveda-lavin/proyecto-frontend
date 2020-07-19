@@ -138,26 +138,14 @@ const ListadoUsuarios = (props) => {
                                                                     {usuario.status === true ? "Activo" : "Inactivo"}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-user/${usuario.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                    <Link to={`/modificar-usuario/${usuario.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
                                                                     </Link>
                                                                 </td>
-                                                                <td className="align-middle text-center">
-                                                                    <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                                    </button>
-                                                                </td>
                                                             </tr>
-
                                                         )
                                                     })
-
                                             }
-
-
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
