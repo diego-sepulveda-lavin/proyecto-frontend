@@ -24,6 +24,7 @@ import CerrarVenta from './views/cerrarVenta';
 import Empresas from './views/GeneralEmpresas';
 import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
+import Spinner from './components/spinner';
 
 const App = props => {
   return (
@@ -43,6 +44,7 @@ const App = props => {
 
 
             {/* Users Components */}
+            <Route exact path="/spinner" component={Spinner}></Route>
             <Route exact path="/cerrar-venta" component={CerrarVenta}></Route>
             <Route exact path='/dashboard' component={Dashboard}></Route>
             <Route exact path="/venta-usuario" component={VentaUsuario}></Route>

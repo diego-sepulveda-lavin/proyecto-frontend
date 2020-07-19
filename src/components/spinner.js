@@ -2,9 +2,11 @@ import React from "react";
 
 const Spinner = props => {
     return (
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+        <>
+            <div className="spinner-border text-warning bg-warning" role="status">
+                <span className="sr-only h1">Loading...</span>
+            </div>
+        </>
     )
 }
 
