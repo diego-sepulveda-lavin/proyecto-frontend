@@ -4,10 +4,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
 const VentaUsuario = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)    
-}, [])
+        actions.validaLogin(props)
+    }, [])
 
     return (
         <>
