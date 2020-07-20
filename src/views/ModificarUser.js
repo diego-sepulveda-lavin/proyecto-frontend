@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../components/spinner';
 
 const ModificarUser = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
         actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
-        
+
     }, [])
-    
+
     const [state, setState] = useState({
         usuario: null,
-       
+
     })
 
     const getInformacion = e => {
@@ -36,7 +35,7 @@ const ModificarUser = (props) => {
 
     const enviarFormulario = (e) => {
         e.preventDefault();
-        actions.putUsuario("/usuarios/"+ state.usuario.id, setState, state.usuario)
+        actions.putUsuario("/usuarios/" + state.usuario.id, setState, state.usuario)
         actions.getFetch("/usuarios", "usuario");
     }
 
@@ -93,8 +92,17 @@ const ModificarUser = (props) => {
 
                                         <div className="row">
                                             <div className="col-md-4 d-flex justify-content-center">
-                                                <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }} src={state.usuario.foto? `http://localhost:5000/api/images/${state.usuario.foto}` : "../user-icon-vector.jpg"}></img>
-
+                                                {!!state.usuario.foto ?
+                                                    (
+                                                        <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
+                                                            src={`http://localhost:5000/api/images/${state.usuario.foto}`} />
+                                                    )
+                                                    :
+                                                    (
+                                                        <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
+                                                            src={"../user-icon-vector.jpg"} />
+                                                    )
+                                                }
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="row">

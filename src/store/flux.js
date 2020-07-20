@@ -53,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-            getFetch: async (urlPag, data) => {
+            getFetch: async (urlPag, data="") => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
@@ -118,7 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             })
                             /* data_a_enviar = "" */
                             limpiarInput({ state: data, imageURL: null })
-
+                            getActions().getFetch("/usuarios", "usuarios");
                             //setStore({ creacionUsuario: data, imageURL: null })
                         } else {
                             Swal.fire({
