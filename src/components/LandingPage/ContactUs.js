@@ -89,19 +89,13 @@ const ContactUs = () => {
                                 <div className="send-button">
                                     <button className="btn btn-primary btn-round btn-block btn-lg">Enviar Mensaje</button>
                                     {
+                                        //1.- Pregunto si flag esta en true
+                                        //2.- Pregunto si mensaje.msg es igual a null, si es asi muestro el icono, sino, el mensaje.msg
                                         flag ? mensaje.msg === null ?
-                                            (
-                                            <i class="now-ui-icons loader_refresh spin"></i>
-                                            )
+                                            (<i class="now-ui-icons loader_refresh spin fa-2x"></i>)
                                             :
-                                            (
-                                                <p>{mensaje.msg}</p>
-                                            )
-                                            :
-                                            (
-                                                ""
-                                            )
-
+                                            (<p>{mensaje.msg}</p>)
+                                            : ("")
                                     }
                                 </div>
                             </form>
