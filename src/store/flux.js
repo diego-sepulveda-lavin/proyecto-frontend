@@ -6,6 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             urlBase: "http://localhost:5000/api",
             empresas: null,
             usuarios: null,
+            categorias: null,
+            productos: null,
             usuario: null,
             creacionUsuario: {
                 nombre: "",
@@ -53,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-            getFetch: async (urlPag, data="") => {
+            getFetch: async (urlPag, data = "") => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
@@ -312,6 +314,24 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     return false;
                 }
+
+            },
+            validaCategoria: (categoria_id) => {
+                let store = getStore()
+                let nombre_categoria = store.categorias.filter((categoria) => {
+                    return categoria.id === categoria_id
+                })
+                return nombre_categoria[0].nombre
+
+                /* let a=store.categorias.filter((categoria) => {
+                    return categoria.id === categoria_id
+                }).map((categ) => {
+                    console.log("map",categ.nombre)
+                    return categ.nombre
+                })
+                return a[0] */
+
+
 
             }
             /* /Zona Valida */
