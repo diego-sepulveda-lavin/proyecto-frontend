@@ -14,14 +14,11 @@ const Footer = props => {
                             <li>
                                 <Link to="/dashboard">Dashboard</Link>
                             </li>
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
                         </ul>
                     </nav>
                     <div className="copyright" id="copyright">
-                        &copy; {new Date().getFullYear()} Diseñado y Desarrollado por DSHL
-                            </div>
+                        &copy; {new Date().getFullYear()} Desarrollado por DSHL
+                    </div>
                 </div>
             </footer>
         </>

@@ -6,16 +6,10 @@ const MenuLateral = props => {
         <div className="sidebar" data-color="orange">
             {/* <!--Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"--> */}
             <div className="logo">
-                <a className="simple-text logo-mini">
-                    CT
-            </a>
-                <a className="simple-text logo-normal">
-                    DHSL
-            </a>
+                <img src="../assets/img/new-logo.png" alt="" />
             </div>
             <div className="sidebar-wrapper" id="sidebar-wrapper">
                 <ul className="nav">
-                    
                     <li className={props.location.pathname==="/dashboard"?"active":""}>
                         <Link to={"/dashboard"}>
                             <i className="now-ui-icons design_app"></i>
@@ -33,7 +27,7 @@ const MenuLateral = props => {
                             <p data-toggle="collapse" data-target="#ventas">Ventas</p>
                         </Link>
 
-                        <div id="ventas" class="collapse">                            
+                        <div id="ventas" className="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/abrir-caja"}><p>Abrir Caja</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/cerrar-caja"}><p>Cierre de Caja</p></Link></li>
@@ -49,7 +43,7 @@ const MenuLateral = props => {
                             <i className="now-ui-icons location_map-big"></i>
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
                         </Link>
-                        <div id="stock" class="collapse">                            
+                        <div id="stock" className="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear SKU</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar SKU</p></Link></li>
@@ -65,7 +59,7 @@ const MenuLateral = props => {
                             <p data-toggle="collapse" data-target="#administrador">Administrador</p>
                         </Link>
                         
-                        <div id="administrador" class="collapse">                            
+                        <div id="administrador" className="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/listado-usuarios"}><p>Ver Usuarios</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/crear-usuario"}><p>Crear Usuarios</p></Link></li>  
                             <li className="ml-5 mt-2"><Link to={"/modificar-usuario"}><p>Modificar Usuarios</p></Link></li>                    
@@ -79,13 +73,11 @@ const MenuLateral = props => {
                             <p data-toggle="collapse" data-target="#administrador-global">Administrador Global</p>
                         </Link>
                         
-                        <div id="administrador-global" class="collapse">                            
+                        <div id="administrador-global" className="collapse">                            
                             <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/crear-empresa"}><p>Crear Empresa</p></Link></li>   
                         </div>
                     </li>
-                   
-  
                 </ul>
             </div>
         </div>
