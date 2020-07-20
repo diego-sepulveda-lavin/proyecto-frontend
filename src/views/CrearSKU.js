@@ -22,9 +22,7 @@ const CrearSku = (props) => {
                                     <div className="table-responsive">
                                         <table className="table">
                                             <thead className=" text-primary">
-                                                <th className="align-middle text-center">
-                                                    N°
-                                                    </th>
+                                               
                                                 <th className="align-middle text-center">
                                                     SKU
                                                     </th>
@@ -45,9 +43,7 @@ const CrearSku = (props) => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº" disabled />
-                                                    </td>
+                                                    
                                                     <td className="align-middle text-center">
                                                         <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" />
                                                     </td>
@@ -67,30 +63,7 @@ const CrearSku = (props) => {
                                                         </select>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº" disabled />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Descripcion" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" />
-                                                    </td>
-
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <select class="form-control">
-                                                            <option>Seleccionar Categoria</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                               </tbody>
                                         </table>
                                     </div>
                                 </div>

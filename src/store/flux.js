@@ -118,8 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             })
                             /* data_a_enviar = "" */
                             limpiarInput({ state: data, imageURL: null })
-                            getActions().getFetch(urlPag, "usuarios");
-
+                            getActions().getFetch("/usuarios", "usuarios");
                             //setStore({ creacionUsuario: data, imageURL: null })
                         } else {
                             Swal.fire({
