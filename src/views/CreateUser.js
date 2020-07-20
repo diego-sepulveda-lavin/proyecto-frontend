@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 const CreateUser = (props) => {
 
     const { store, actions } = useContext(Context)
@@ -50,8 +51,9 @@ const CreateUser = (props) => {
 
     const enviarFormulario = e => {
         e.preventDefault()
-        actions.postUsuario("/usuarios", state.creacionUsuario, setState, "Usuario")
-        actions.getFetch("/usuarios", "Usuario")
+
+        actions.postUsuario("/usuarios", state, setState, "Usuario");
+        actions.getFetch("/usuarios", "Usuario");
     }
 
 
@@ -80,47 +82,47 @@ const CreateUser = (props) => {
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Nombre</span>
                                                         </div>
-                                                        <input type="text" name="nombre" class="form-control" value={`${state != "" ? state.nombre : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="nombre" class="form-control" value={`${!state.nombre ? "" : state.nombre}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Apellido</span>
                                                         </div>
-                                                        <input type="text" name="apellido" class="form-control" value={`${state != "" ? state.apellido : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="apellido" class="form-control" value={`${!state.apellido ? "" : state.apellido}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${state != "" ? state.rut : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${!state.rut ? "" : state.rut}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Email</span>
                                                         </div>
-                                                        <input type="email" name="email" class="form-control" value={`${state != "" ? state.email : ""}`} onChange={getInformacion} />
+                                                        <input type="email" name="email" class="form-control" value={`${!state.email ? "" : state.email}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Rol</span>
                                                         </div>
-                                                        <input type="text" name="rol" class="form-control" value={`${state != "" ? state.rol : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rol" class="form-control" value={`${!state.rol ? "" : state.rol}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Password</span>
                                                         </div>
-                                                        <input type="password" name="password" class="form-control" value={`${state != "" ? state.password : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="password" class="form-control" value={`${!state.password ? "" : state.password}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Confirmación Password</span>
                                                         </div>
-                                                        <input type="password" name="repassword" class="form-control" value={`${state != "" ? state.repassword : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="repassword" class="form-control" value={`${!state.repassword ? "" : state.repassword}`} onChange={getInformacion} />
                                                     </div>
 
                                                 </div>

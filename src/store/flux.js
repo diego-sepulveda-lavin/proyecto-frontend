@@ -85,51 +85,54 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data_a_enviar.email);
                 formData.append("password", data_a_enviar.password);
                 formData.append("foto", data_a_enviar.foto);
+                let validaPass = getActions().validaPassword(data_a_enviar.password, data_a_enviar.repassword)
+                if (validaPass != false) {
 
-                try {
-                    let headersContent = ""
-                    const token = localStorage.getItem('access_token');
-                    if (token) {
-                        headersContent = { 'Authorization': 'Bearer ' + token }
-                    }
-                    let requestOptions = {
-                        method: 'POST',
-                        headers: headersContent,
-                        body: formData,
-                    };
-                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
-                    const result = await resp.json();
-                    if (result.msg == null) {
-                        let data = {
-                            nombre: "",
-                            apellido: "",
-                            rut: "",
-                            email: "",
-                            rol: "",
-                            password: "",
-                            repassword: "",
-                            foto: ""
+                    try {
+                        let headersContent = ""
+                        const token = localStorage.getItem('access_token');
+                        if (token) {
+                            headersContent = { 'Authorization': 'Bearer ' + token }
                         }
-                        Swal.fire({
-                            icon: 'success',
-                            title: `${mensajeAlerta} creado exitosamente`
-                        })
-                        /* data_a_enviar = "" */
-                        limpiarInput({ creacionUsuario: data, imageURL: null })
+                        let requestOptions = {
+                            method: 'POST',
+                            headers: headersContent,
+                            body: formData,
+                        };
+                        const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
+                        const result = await resp.json();
+                        if (result.msg == null) {
+                            let data = {
+                                nombre: "",
+                                apellido: "",
+                                rut: "",
+                                email: "",
+                                rol: "",
+                                password: "",
+                                repassword: "",
+                                foto: ""
+                            }
+                            Swal.fire({
+                                icon: 'success',
+                                title: `${mensajeAlerta} creado exitosamente`
+                            })
+                            /* data_a_enviar = "" */
+                            limpiarInput({ state: data, imageURL: null })
 
-                        //setStore({ creacionUsuario: data, imageURL: null })
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: "Algo salió mal",
-                            text: result.msg
-                        })
+                            //setStore({ creacionUsuario: data, imageURL: null })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: "Algo salió mal",
+                                text: result.msg
+                            })
 
+                        }
+                    } catch (error) {
+                        console.log(error);
                     }
-                    console.log(store)
-                } catch (error) {
-                    console.log(error);
                 }
+
             },
 
             /* getDataUsuario: e => {
@@ -277,7 +280,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         headers: headersContent
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
-                    
+
                     const result = await resp.json();
                     console.log(resp)
                     if (resp.status == 200) {
@@ -339,7 +342,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
             /* /Zona POST */
+            /* Zona Valida */
+            validaPassword: (password1, password2) => {
+                if (password1 !== password2) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Contraseñas deben ser la misma.',
+                    })
+                    return false;
+                }
 
+            }
+            /* /Zona Valida */
 
 
 
