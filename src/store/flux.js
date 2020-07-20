@@ -290,6 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
                         data_a_enviar = ""
                         limpiarInput(data_a_enviar)
+                        //getActions().getFetch()
                     } else {
                         Swal.fire({
                             icon: 'error',
