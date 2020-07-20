@@ -93,7 +93,7 @@ const ModificarUser = (props) => {
 
                                         <div className="row">
                                             <div className="col-md-4 d-flex justify-content-center">
-                                                <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }} src={state.usuario.foto? `http://localhost:5000/api/images/${state.usuario.foto}` : "../user-icon-vector.jpg"}></img>
+                                                <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }} src= {`http://localhost:5000/api/images/${state.usuario.foto}`}></img>
 
                                             </div>
                                             <div className="col-md-8">

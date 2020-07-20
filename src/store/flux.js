@@ -118,7 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             })
                             /* data_a_enviar = "" */
                             limpiarInput({ state: data, imageURL: null })
-                            getActions().getFetch(urlPag);
+                            getActions().getFetch(urlPag, "usuarios");
 
                             //setStore({ creacionUsuario: data, imageURL: null })
                         } else {
