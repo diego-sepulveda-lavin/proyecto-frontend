@@ -132,46 +132,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            /* getDataUsuario: e => {
-                const store = getStore();
-                //const { creacionUsuario } = store;
-                const creacionUsuario = store.creacionUsuario;
-                creacionUsuario[e.target.name] = e.target.value
-                setStore({ creacionUsuario: creacionUsuario })
-                //setStore({creacionUsuario})
-                //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-
-            }, */
-            /*  getDataUsuarioFoto: e => {
-                 console.log(e.target.files[0])
-                 const store = getStore();
-                 //const { creacionUsuario } = store;
-                 const creacionUsuario = store.creacionUsuario;
-                 creacionUsuario[e.target.name] = e.target.files[0]
- 
-                 let reader = new FileReader();
-                 reader.readAsDataURL(e.target.files[0]);
-                 reader.onloadend = function (e) {
-                     setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
-                 };
-                 setStore({ creacionUsuario: creacionUsuario })
-                 //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-             }, */
-
-            /*  enviarFormulario: e => {
-                 e.preventDefault();
-                 const store = getStore();
-                 getActions().postUsuario(store.creacionUsuario);
-             }, */
-
             /* Zona PUT */
             putUsuario: async (urlPag, setInfo, data_a_enviar) => {
 
-
                 let store = getStore()
                 let formData = new FormData()
-                /* Probar cambiando todos los append por variables = formData.get("algo") y luego pasarla por el body como json/string */
-
                 formData.append("nombre", data_a_enviar.nombre);
                 formData.append("apellido", data_a_enviar.apellido);
                 formData.append("rut", data_a_enviar.rut);
@@ -196,16 +161,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
 
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
-                    console.log("resp", resp)
                     const result = await resp.json();
-                    console.log(result)
                     if (result.msg == null) {
                         Swal.fire({
                             icon: 'success',
                             title: 'Usuario Modificado exitosamente.'
                         })
                         setInfo({
-
                             "msg": result.msg,
                             "usuario": result
                         })
