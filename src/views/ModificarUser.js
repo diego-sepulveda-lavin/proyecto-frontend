@@ -7,35 +7,38 @@ const ModificarUser = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
-          actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
-        
+        actions.getFetchID("/usuarios/" + props.match.params.index, setState, "usuario")
         
     }, [])
-
+    
     const [state, setState] = useState({
-        usuario: null
+        usuario: null,
+       
     })
 
-    const getInformacion = e =>{
-        let update = {[e.target.name] : e.target.value}
-        let data = { usuario: Object.assign(state.usuario, update)}
+    const getInformacion = e => {
+        let update = { [e.target.name]: e.target.value }
+        let data = { usuario: Object.assign(state.usuario, update) }
         setState(data)
     }
 
+    const getInformacionFoto = e => {
+        console.log(e.target.files[0])
+        state.usuario.foto = e.target.files[0]
+        let reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onloadend = function (e) {
+            let update = { imageURL: [reader.result] }
+            let data = { usuario: Object.assign(state.usuario, update) }
+            setState(data)
+        }
+    };
 
-const enviarFormulario=(e)=>{
-    e.preventDefault();
-    actions.putUsuario("/usuarios/"+state.usuario.id, setState, state.usuario)
-    actions.getFetch("/usuarios", "usuario");
-    
-
-}
-
-
-
-
-
-
+    const enviarFormulario = (e) => {
+        e.preventDefault();
+        actions.putUsuario("/usuarios/"+ state.usuario.id, setState, state.usuario)
+        actions.getFetch("/usuarios", "usuario");
+    }
 
     if (state.usuario != null) {
         return (
@@ -81,16 +84,16 @@ const enviarFormulario=(e)=>{
                                         <div className="row d-flex justify-content-center">
                                             <div className="input-group col-md-3">
 
-                                                <select className="form-control">
-                                                    <option value="1" defaultValue>{state.usuario.status == true ? "Activo" : "Inactivo"}</option>
-                                                    <option value="2">{!state.usuario.status?"Activo":"Inactivo"}</option>
+                                                <select className="form-control">  {/* corregir */}
+                                                    {/*  <option value="1" defaultValue>{state.usuario.status == true ? "Activo" : "Inactivo"}</option>
+                                                    <option value="2">{!state.usuario.status ? "Activo" : "Inactivo"}</option> */}
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div className="row">
                                             <div className="col-md-4 d-flex justify-content-center">
-                                                <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }} src="https://picsum.photos/id/102/300/300"></img>
+                                                <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }} src={state.usuario.foto? `http://localhost:5000/api/images/${state.usuario.foto}` : "../user-icon-vector.jpg"}></img>
 
                                             </div>
                                             <div className="col-md-8">
@@ -99,14 +102,14 @@ const enviarFormulario=(e)=>{
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">Nombre</span>
                                                         </div>
-                                                        <input type="text" name ="nombre" aria-label="First name" className="form-control" value={state.usuario.nombre} onChange={getInformacion} />
+                                                        <input type="text" name="nombre" aria-label="First name" className="form-control" value={state.usuario.nombre} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">Apellido</span>
                                                         </div>
-                                                        <input type="text" name="apellido" aria-label="First name" className="form-control" value={state.usuario.apellido}  onChange={getInformacion} />
+                                                        <input type="text" name="apellido" aria-label="First name" className="form-control" value={state.usuario.apellido} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
@@ -134,7 +137,7 @@ const enviarFormulario=(e)=>{
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">Password</span>
                                                         </div>
-                                                        <input type="password" name="password" aria-label="First name" className="form-control" onChange={getInformacion}/>
+                                                        <input type="password" name="password" aria-label="First name" className="form-control" onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
@@ -144,6 +147,12 @@ const enviarFormulario=(e)=>{
                                                         <input type="password" name="rePassword" aria-label="First name" className="form-control" onChange={getInformacion} />
                                                     </div>
 
+                                                </div>
+                                            </div>
+                                            <div className="col-md-4 ">
+                                                <div className="custom-file">
+                                                    <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={getInformacionFoto} />
+                                                    <label class="custom-file-label" for="inputGroupFile03">Actualizar foto de perfil?</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,14 +169,24 @@ const enviarFormulario=(e)=>{
             </>
         )
     } else {
-
         return (
             <>
-                <Spinner />
-
+                <div className="panel-header panel-header-md">
+                    {/* <canvas id="bigDashboardChart"></canvas> */}
+                    <h1 className="text-warning text-center">Administracion</h1>
+                    <h3 className="text-info text-center">Modificar Usuario</h3>
+                </div>
+                <div className="content">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-11 offset-md">
+                            <i class="now-ui-icons loader_refresh spin"></i>
+                        </div>
+                    </div>
+                </div>
             </>
         )
     }
+
 }
 
 export default withRouter(ModificarUser);
