@@ -102,8 +102,8 @@ const ListadoUsuarios = (props) => {
                                                     :
                                                     store.usuarios.filter((usuario) => {
                                                         if (state.buscarPor === "nombre")
-                                                            return usuario.nombre.toLowerCase().includes(state.inputBuscador);
-
+                                                           return usuario.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
+                                                           
                                                         if (state.buscarPor === "rut")
                                                             return usuario.rut.includes(state.inputBuscador)
 
