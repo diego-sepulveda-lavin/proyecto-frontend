@@ -8,8 +8,9 @@ const ContactUs = () => {
         consulta: ""
     })
     const [mensaje, setMensaje] = useState({
-        msg: null
+        msg: null,
     })
+    const [flag, setFlag] = useState(false)
 
     const handleChange = e => {
         let capturaDatos = {
@@ -27,6 +28,7 @@ const ContactUs = () => {
     }
 
     const enviarMail = async () => {
+        setFlag(true)
         try {
             let bodyContent = JSON.stringify(datosAEnviar);
 
@@ -40,10 +42,10 @@ const ContactUs = () => {
             const result = await resp.json()
 
             setMensaje(prevState => {
-                return {...result}
+                return { ...result }
             })
 
-            if (resp.status == 200){
+            if (resp.status == 200) {
                 setDatosAEnviar({
                     nombre: "",
                     email: "",
@@ -85,8 +87,22 @@ const ContactUs = () => {
                                     <textarea className="form-control" rows="4" cols="80" name="consulta" value={datosAEnviar.consulta} onChange={handleChange} placeholder="Escríbenos tu consulta.."></textarea>
                                 </div>
                                 <div className="send-button">
-                                    <button className="btn btn-primary btn-round btn-block btn-lg">Enviar Mensaje</button>  
-                                    <p>{mensaje.msg}</p>
+                                    <button className="btn btn-primary btn-round btn-block btn-lg">Enviar Mensaje</button>
+                                    {
+                                        flag ? mensaje.msg === null ?
+                                            (
+                                            <i class="now-ui-icons loader_refresh spin"></i>
+                                            )
+                                            :
+                                            (
+                                                <p>{mensaje.msg}</p>
+                                            )
+                                            :
+                                            (
+                                                ""
+                                            )
+
+                                    }
                                 </div>
                             </form>
                         </div>
