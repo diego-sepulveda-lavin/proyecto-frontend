@@ -94,41 +94,7 @@ const IngresarFactura = (props) => {
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Cod. Barra" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        Unidad
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Costo Unitario" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Costo Total" aria-label="Username" aria-describedby="basic-addon1" disabled />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" class="form-control" placeholder="Margen Contribucion" aria-label="Username" aria-describedby="basic-addon1" />
-                                                    </td>
-                                                    <td className="align-middle text-center">
-                                                        <select class="form-control form-control">
-                                                            <option>Cat</option>
-                                                        </select>
-                                                    </td>
-
-                                                </tr>
+                                           
                                             </tbody>
                                         </table>
                                     </div>
