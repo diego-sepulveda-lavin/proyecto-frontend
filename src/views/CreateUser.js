@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
 const CreateUser = (props) => {
 
     const { store, actions } = useContext(Context)
@@ -128,9 +127,7 @@ const CreateUser = (props) => {
                                                     <label class="custom-file-label" for="inputGroupFile03">Ingrese foto perfil.</label>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                     </div>
                                     <div className="card-footer d-flex justify-content-end">
                                         <button class="btn btn-success ">Crear Usuario</button>
