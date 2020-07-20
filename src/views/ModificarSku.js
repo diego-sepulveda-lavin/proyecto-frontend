@@ -110,9 +110,9 @@ const ModificarSku = (props) => {
                                                     <td className="align-middle text-center">
                                                         <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="M. Cont." />
                                                     </td>
-                                                    <td className="align-middle text-center">
+                                                    <td className="align-middle text-center" style={{"width":"143px"}}>
                                                         <select class="form-control">
-                                                            <option>Seleccionar Categoria</option>
+                                                            <option>Seleccionar</option>
                                                         </select>
                                                     </td>
 

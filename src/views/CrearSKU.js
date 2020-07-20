@@ -13,7 +13,7 @@ const CrearSku = (props) => {
                 <h1 className="text-warning text-center">Stock</h1>
                 <h3 className="text-info text-center">Crear SKU</h3>
             </div>
-                <div className="content">
+                <div className="content mt-2">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-11 ">
             <form>
