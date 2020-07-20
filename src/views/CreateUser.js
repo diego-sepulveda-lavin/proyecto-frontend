@@ -46,7 +46,7 @@ const CreateUser = (props) => {
     const enviarFormulario = e => {
         e.preventDefault()
         actions.postUsuario("/usuarios", state, setState, "Usuario");
-        actions.getFetch("/usuarios", "Usuario");
+        
     }
 
 
