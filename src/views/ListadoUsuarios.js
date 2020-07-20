@@ -102,17 +102,15 @@ const ListadoUsuarios = (props) => {
                                                     :
                                                     store.usuarios.filter((usuario) => {
                                                         if (state.buscarPor === "nombre")
-                                                           return usuario.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
-                                                           
+                                                            return usuario.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
+
                                                         if (state.buscarPor === "rut")
                                                             return usuario.rut.includes(state.inputBuscador)
 
                                                         if (state.buscarPor === "codUsuario")
                                                             return usuario.codigo.includes(state.inputBuscador)
-
                                                     }).map((usuario, indice) => {
                                                         return (
-
                                                             <tr key={indice}>
                                                                 <td className="align-middle text-center">
                                                                     {usuario.nombre}
