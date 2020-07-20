@@ -10,17 +10,6 @@ const CreateUser = (props) => {
 
 
     const [state, setState] = useState({
-        /* creacionUsuario: {
-            nombre: "",
-            apellido: "",
-            rut: "",
-            email: "",
-            rut: "",
-            rol: "",
-            password: "",
-            repassword: "",
-            foto: ""
-        }, */
         nombre: "",
         apellido: "",
         rut: "",
@@ -32,7 +21,6 @@ const CreateUser = (props) => {
         foto: "",
         imageURL: null,
         MensajesRecibidos: []
-
     });
 
 
@@ -48,7 +36,6 @@ const CreateUser = (props) => {
             setState(prevState => {
                 return { ...prevState, ...{ imageURL: [reader.result] } }
             })
-
         }
     };
 
@@ -56,7 +43,6 @@ const CreateUser = (props) => {
         let data = {
             [e.target.name]: e.target.value
         }
-
         setState(prevState => {
             return { ...prevState, ...data }
         })
@@ -94,47 +80,47 @@ const CreateUser = (props) => {
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Nombre</span>
                                                         </div>
-                                                        <input type="text" name="nombre" class="form-control"  onChange={getInformacion} />
+                                                        <input type="text" name="nombre" class="form-control" value={`${state != "" ? state.nombre : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Apellido</span>
                                                         </div>
-                                                        <input type="text" name="apellido" class="form-control" value={`${state != "" ? state.creacionUsuario.apellido : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="apellido" class="form-control" value={`${state != "" ? state.apellido : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${state != "" ? state.creacionUsuario.rut : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${state != "" ? state.rut : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Email</span>
                                                         </div>
-                                                        <input type="email" name="email" class="form-control" value={`${state != "" ? state.creacionUsuario.email : ""}`} onChange={getInformacion} />
+                                                        <input type="email" name="email" class="form-control" value={`${state != "" ? state.email : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Rol</span>
                                                         </div>
-                                                        <input type="text" name="rol" class="form-control" value={`${state != "" ? state.creacionUsuario.rol : ""}`} onChange={getInformacion} />
+                                                        <input type="text" name="rol" class="form-control" value={`${state != "" ? state.rol : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Password</span>
                                                         </div>
-                                                        <input type="password" name="password" class="form-control" value={`${state != "" ? state.creacionUsuario.password : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="password" class="form-control" value={`${state != "" ? state.password : ""}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Confirmación Password</span>
                                                         </div>
-                                                        <input type="password" name="repassword" class="form-control" value={`${state != "" ? state.creacionUsuario.repassword : ""}`} onChange={getInformacion} />
+                                                        <input type="password" name="repassword" class="form-control" value={`${state != "" ? state.repassword : ""}`} onChange={getInformacion} />
                                                     </div>
 
                                                 </div>
@@ -142,7 +128,7 @@ const CreateUser = (props) => {
                                             <div className="row">
                                                 <div className="col-md-5 offset-md-5">
                                                     <div className="custom-file">
-                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={() => getInformacionFoto} />
+                                                        <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={getInformacionFoto} />
                                                         <label class="custom-file-label" for="inputGroupFile03">File</label>
                                                     </div>
                                                 </div>
