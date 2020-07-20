@@ -28,6 +28,7 @@ const CrearEmpresa = (props) => {
         e.preventDefault();
         actions.postFetch("/empresas", state, setState, "Empresa")
         actions.getFetch("/empresas", "empresas");
+
     }
 
     return (
@@ -63,16 +64,16 @@ const CrearEmpresa = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input value={`${state != "" ? state.nombre : ""}`} type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={`${state != "" ? state.rut : ""}`} type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={`${state != "" ? state.razon_social : ""}`} type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input value={`${state != "" ? state.rubro : ""}`} type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
                                                         </td>
                                                     </tr>
                                                 </>

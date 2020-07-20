@@ -34,8 +34,8 @@ const Empresas = (props) => {
         })
     }
     const deleteEmpresas = (id) => {
-        actions.deleteFetch("/empresas/" + id, setState, "Empresa");
-        actions.getFetch("/empresas", "empresas");
+        actions.deleteFetch("/empresas", id, setState, "Empresa", "empresas");
+        //actions.getFetch("/empresas", "empresas");
     }
 
 

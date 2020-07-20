@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
 
-     
+
             /* Zona GET */
             getFetchID: async (urlPag, setInfo, data) => {
                 let store = getStore()
@@ -85,50 +85,51 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("email", data_a_enviar.email);
                 formData.append("password", data_a_enviar.password);
                 formData.append("foto", data_a_enviar.foto);
+                let validaPass = getActions().validaPassword(data_a_enviar.password, data_a_enviar.repassword)
+                if (validaPass != false) {
 
-                try {
-                    let headersContent = ""
-                    const token = localStorage.getItem('access_token');
-                    if (token) {
-                        headersContent = { 'Authorization': 'Bearer ' + token }
-                    }
-                    let requestOptions = {
-                        method: 'POST',
-                        headers: headersContent,
-                        body: formData,
-                    };
-                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
-                    const result = await resp.json();
-                    if (result.msg == null) {
-                        let data = {
-                            nombre: "",
-                            apellido: "",
-                            rut: "",
-                            email: "",
-                            rol: "",
-                            password: "",
-                            repassword: "",
-                            foto: ""
+                    try {
+                        let headersContent = ""
+                        const token = localStorage.getItem('access_token');
+                        if (token) {
+                            headersContent = { 'Authorization': 'Bearer ' + token }
                         }
-                        Swal.fire({
-                            icon: 'success',
-                            title: `${mensajeAlerta} creado exitosamente`
-                        })
-                        /* data_a_enviar = "" */
-                        limpiarInput({ creacionUsuario: data, imageURL: null })
-                        
-                        //setStore({ creacionUsuario: data, imageURL: null })
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: "Algo salió mal",
-                            text: result.msg
-                        })
+                        let requestOptions = {
+                            method: 'POST',
+                            headers: headersContent,
+                            body: formData,
+                        };
+                        const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions);
+                        const result = await resp.json();
+                        if (result.msg == null) {
+                            let data = {
+                                nombre: "",
+                                apellido: "",
+                                rut: "",
+                                email: "",
+                                rol: "",
+                                password: "",
+                                repassword: "",
+                                foto: ""
+                            }
+                            Swal.fire({
+                                icon: 'success',
+                                title: `${mensajeAlerta} creado exitosamente`
+                            })
+                            /* data_a_enviar = "" */
+                            limpiarInput({ state: data, imageURL: null })
 
+                            //setStore({ creacionUsuario: data, imageURL: null })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: "Algo salió mal",
+                                text: result.msg
+                            })
+                        }
+                    } catch (error) {
+                        console.log(error);
                     }
-                    console.log(store)
-                } catch (error) {
-                    console.log(error);
                 }
             },
 
@@ -142,27 +143,27 @@ const getState = ({ getStore, getActions, setStore }) => {
                 //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
 
             }, */
-           /*  getDataUsuarioFoto: e => {
-                console.log(e.target.files[0])
-                const store = getStore();
-                //const { creacionUsuario } = store;
-                const creacionUsuario = store.creacionUsuario;
-                creacionUsuario[e.target.name] = e.target.files[0]
+            /*  getDataUsuarioFoto: e => {
+                 console.log(e.target.files[0])
+                 const store = getStore();
+                 //const { creacionUsuario } = store;
+                 const creacionUsuario = store.creacionUsuario;
+                 creacionUsuario[e.target.name] = e.target.files[0]
+ 
+                 let reader = new FileReader();
+                 reader.readAsDataURL(e.target.files[0]);
+                 reader.onloadend = function (e) {
+                     setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
+                 };
+                 setStore({ creacionUsuario: creacionUsuario })
+                 //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
+             }, */
 
-                let reader = new FileReader();
-                reader.readAsDataURL(e.target.files[0]);
-                reader.onloadend = function (e) {
-                    setStore({ creacionUsuario: creacionUsuario, imageURL: [reader.result] })
-                };
-                setStore({ creacionUsuario: creacionUsuario })
-                //{ ...prevState, ...data } Esto con el state, arriba con el contextapp
-            }, */
-
-           /*  enviarFormulario: e => {
-                e.preventDefault();
-                const store = getStore();
-                getActions().postUsuario(store.creacionUsuario);
-            }, */
+            /*  enviarFormulario: e => {
+                 e.preventDefault();
+                 const store = getStore();
+                 getActions().postUsuario(store.creacionUsuario);
+             }, */
 
             /* Zona PUT */
             putUsuario: async (urlPag, setInfo, data_a_enviar) => {
@@ -263,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona PUT */
 
             /* Zona DELETE */
-            deleteFetch: async (urlPag, setInfo, mensajeAlerta) => {
+            deleteFetch: async (urlPag, id, setInfo, mensajeAlerta, data) => {
                 let store = getStore()
 
                 try {
@@ -276,7 +277,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                         method: 'DELETE',
                         headers: headersContent
                     };
-                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
+
                     const result = await resp.json();
                     console.log(resp)
                     if (resp.status == 200) {
@@ -284,7 +286,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             icon: 'success',
                             title: mensajeAlerta + ' eliminada exitosamente.'
                         })
-
+                        getActions().getFetch(`${urlPag}`, data);
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -338,7 +340,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
             /* /Zona POST */
+            /* Zona Valida */
+            validaPassword: (password1, password2) => {
+                if (password1 !== password2) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Contraseñas deben ser la misma.',
+                    })
+                    return false;
+                }
 
+            }
+            /* /Zona Valida */
 
 
 
