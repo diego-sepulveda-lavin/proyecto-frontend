@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
-import Spinner from '../components/spinner';
 import { withRouter, Link } from 'react-router-dom';
 
 const ListadoUsuarios = (props) => {
@@ -97,7 +96,9 @@ const ListadoUsuarios = (props) => {
                                         <tbody>
                                             {
                                                 store.usuarios == null ?
-                                                    <Spinner />
+                                                    <tr className="align-middle text-center">
+                                                        <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
+                                                    </tr>
                                                     :
                                                     store.usuarios.filter((usuario) => {
                                                         if (state.buscarPor === "nombre")
