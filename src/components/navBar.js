@@ -12,7 +12,7 @@ const NavBar = props =>{
                                         <span className="navbar-toggler-bar bar3"></span>
                                     </button>
                                 </div>
-                             {/*    <a className="navbar-brand" href="#pablo">Dashboard</a> */}
+                             {/*    <a className="navbar-brand" href="#">Dashboard</a> */}
                             </div>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-bar navbar-kebab"></span>

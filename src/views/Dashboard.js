@@ -379,17 +379,17 @@ const Dashboard = (props) => {
                     <div className="col-lg-4">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">Global Sales</h5>
-                                <h4 className="card-title">Shipped Products</h4>
+                                <h5 className="card-category">Ventas totales</h5>
+                                <h4 className="card-title">Productos enviados</h4>
                                 <div className="dropdown">
                                     <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                         <i className="now-ui-icons loader_gear"></i>
                                     </button>
                                     <div className="dropdown-menu dropdown-menu-right">
-                                        <a className="dropdown-item" href="#">Action</a>
-                                        <a className="dropdown-item" href="#">Another action</a>
-                                        <a className="dropdown-item" href="#">Something else here</a>
-                                        <a className="dropdown-item text-danger" href="#">Remove Data</a>
+                                        <a className="dropdown-item" href="#">Acción</a>
+                                        <a className="dropdown-item" href="#">Otra acción</a>
+                                        <a className="dropdown-item" href="#">Algo más aquí</a>
+                                        <a className="dropdown-item text-danger" href="#">Remover Data</a>
                                     </div>
                                 </div>
                             </div>
@@ -400,25 +400,25 @@ const Dashboard = (props) => {
                             </div>
                             <div className="card-footer">
                                 <div className="stats">
-                                    <i className="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                                        </div>
+                                    <i className="now-ui-icons arrows-1_refresh-69"></i>Recién actualizado
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">2018 Sales</h5>
-                                <h4 className="card-title">All products</h4>
+                                <h5 className="card-category">Ventas 2020</h5>
+                                <h4 className="card-title">Todos los productos</h4>
                                 <div className="dropdown">
                                     <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                         <i className="now-ui-icons loader_gear"></i>
                                     </button>
                                     <div className="dropdown-menu dropdown-menu-right">
-                                        <a className="dropdown-item" href="#">Action</a>
-                                        <a className="dropdown-item" href="#">Another action</a>
-                                        <a className="dropdown-item" href="#">Something else here</a>
-                                        <a className="dropdown-item text-danger" href="#">Remove Data</a>
+                                        <a className="dropdown-item" href="#">Acción</a>
+                                        <a className="dropdown-item" href="#">Otra acción</a>
+                                        <a className="dropdown-item" href="#">Algo más aquí</a>
+                                        <a className="dropdown-item text-danger" href="#">Remover Data</a>
                                     </div>
                                 </div>
                             </div>
@@ -429,16 +429,16 @@ const Dashboard = (props) => {
                             </div>
                             <div className="card-footer">
                                 <div className="stats">
-                                    <i className="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                                        </div>
+                                    <i className="now-ui-icons arrows-1_refresh-69"></i>Recién actualizado
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">Statistics</h5>
-                                <h4 className="card-title">24 Hours Performance</h4>
+                                <h5 className="card-category">Estadísticas</h5>
+                                <h4 className="card-title">Performance 24 horas</h4>
                             </div>
                             <div className="card-body">
                                 <div className="chart-area">
@@ -447,8 +447,8 @@ const Dashboard = (props) => {
                             </div>
                             <div className="card-footer">
                                 <div className="stats">
-                                    <i className="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-                                        </div>
+                                    <i className="now-ui-icons ui-2_time-alarm"></i>Últimos 7 días
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -458,7 +458,7 @@ const Dashboard = (props) => {
                         <div className="card  card-tasks">
                             <div className="card-header ">
                                 <h5 className="card-category">Backend development</h5>
-                                <h4 className="card-title">Tasks</h4>
+                                <h4 className="card-title">Tareas</h4>
                             </div>
                             <div className="card-body ">
                                 <div className="table-full-width table-responsive">
@@ -529,26 +529,26 @@ const Dashboard = (props) => {
                             <div className="card-footer ">
                                 <hr />
                                 <div className="stats">
-                                    <i className="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                                        </div>
+                                    <i className="now-ui-icons loader_refresh spin"></i>Actualizado hace 3 minutos
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h5 className="card-category">All Persons List</h5>
-                                <h4 className="card-title"> Employees Stats</h4>
+                                <h5 className="card-category">Lista de todas las personas</h5>
+                                <h4 className="card-title">Estadísticas de los empleados</h4>
                             </div>
                             <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table">
                                         <thead className=" text-primary">
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Country</th>
-                                                <th>City</th>
-                                                <th className="text-right">Salary</th>
+                                                <th>Nombre</th>
+                                                <th>Pais</th>
+                                                <th>Ciudad</th>
+                                                <th className="text-right">Salario</th>
                                             </tr>
                                         </thead>
                                         <tbody>
