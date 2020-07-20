@@ -14,13 +14,10 @@ const FooterLanding = (props) => {
                             <li>
                                 <Link to="/dashboard">Dashboard</Link>
                             </li>
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
                         </ul>
                     </nav>
                     <div className="copyright" id="copyright">
-                        &copy; {new Date().getFullYear()} Diseñado y Desarrollado por DSHL
+                        &copy; {new Date().getFullYear()} Desarrollado por DSHL
                     </div>
                 </div>
             </footer>

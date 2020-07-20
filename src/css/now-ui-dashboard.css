@@ -385,6 +385,8 @@ Copyright (c) 2015 Daniel Eden
   border-color: #979797;
 }
 
+
+
 .btn:not([data-action]):not([class*="btn-outline-"]):hover,
 .navbar .navbar-nav>a.btn:not([data-action]):not([class*="btn-outline-"]):hover {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);
@@ -466,6 +468,10 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
   opacity: 1;
   filter: alpha(opacity=100);
   outline: 0 !important;
+}
+
+.navbar-nav:hover{
+  cursor: pointer;
 }
 
 .btn:active,
@@ -2041,6 +2047,10 @@ body {
 .main {
   position: relative;
   background: #FFFFFF;
+}
+
+.logo img{
+  width: 40%;
 }
 
 /* Animations */
