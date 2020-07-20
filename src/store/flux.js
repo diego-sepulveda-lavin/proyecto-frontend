@@ -126,13 +126,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 title: "Algo salió mal",
                                 text: result.msg
                             })
-
                         }
                     } catch (error) {
                         console.log(error);
                     }
                 }
-
             },
 
             /* getDataUsuario: e => {
