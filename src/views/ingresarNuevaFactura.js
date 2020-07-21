@@ -9,13 +9,9 @@ const IngresarNuevaFactura = (props) => {
     }, [])
 
     const [state, setState] = useState({
-        nombre: "",
-        rut: "",
-        razon_social: "",
-        rubro: "",
         factura: {
             id: 0,
-            folio: 1,
+            folio: null,
             fecha_emision: "",
             fecha_recepcion: "",
             monto_neto: 0,
@@ -39,12 +35,30 @@ const IngresarNuevaFactura = (props) => {
         }
     });
 
-    const getDatos = e => {
-        let data = {
+    const getDatosFactura = e => {
+        let update = {
             [e.target.name]: e.target.value
         }
+
+        let data = { factura: Object.assign(state.factura, update) } 
+
         setState(prevState => {
-            return { ...prevState, ...data }
+            return { ...prevState, ...data}
+        })
+
+    }
+
+    
+
+    const getDatosDetalle = e => {
+        let update = {
+            [e.target.name]: e.target.value
+        }
+
+        let data = { factura: Object.assign(state.factura, update) } 
+
+        setState(prevState => {
+            return { ...prevState, ...data}
         })
     }
 
@@ -102,16 +116,24 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="folio" name="folio" aria-describedby="basic-addon1" value={state.factura.folio ? state.factura.folio : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Fecha emision" name="fecha_emision" aria-describedby="basic-addon1" value={state.factura.fecha_emision ? state.factura.fecha_emision : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Fecha recepcion" name="fecha_recepcion" aria-describedby="basic-addon1" value={state.factura.fecha_recepcion ? state.factura.fecha_recepcion : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
+                                                            <select className="form-control" name="proveedor_id" value={!state.factura.proveedor_id ? "" : state.factura.proveedor_id} onChange={getDatosFactura}>
+                                                                <option value="" disabled>Seleccionar</option>
+                                                                {
+                                                                    !!store.proveedores &&
+                                                                    store.proveedores.map((proveedor) => {
+                                                                        return <option value={proveedor.id} key={proveedor.id}>{proveedor.razon_social}</option>
+                                                                    })
+                                                                }
+                                                            </select>
                                                         </td>
                                                     </tr>
                                                 </>
@@ -138,16 +160,16 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                     </tr>
                                                 </>
@@ -185,16 +207,16 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} /* onChange={getDatos} */ />
                                                         </td>
                                                         <td><button className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 

@@ -28,6 +28,7 @@ import modificarUserSinID from './views/modificarUserSinID';
 import Facturas from './views/facturas';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
+import CrearProveedor from './views/CrearProveedor';
 
 const App = props => {
   return (
@@ -67,6 +68,8 @@ const App = props => {
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
+            <Route exact path="/crear-proveedor" component={CrearProveedor}></Route>
+
 
 
             {/* END Users Components */}

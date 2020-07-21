@@ -88,6 +88,21 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
+                    <li className={
+                        props.location.pathname === "/proveedores" ||
+                            props.location.pathname === "/crear-proveedor" ? "active" : ""}>
+                        <Link to="#">
+                            <i className="now-ui-icons objects_spaceship"></i>
+                            <p data-toggle="collapse" data-target="#proveedores">Proveedores</p>
+                        </Link>
+
+                        <div id="proveedores" className="collapse">
+                        <ul className="p-0" style={{ "listStyleType": "none" }}>
+                            <li className="ml-5 mt-2"><Link to={"/proveedores"}><p>Ver Proveedores</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/crear-proveedor"}><p>Crear Proveedor</p></Link></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
