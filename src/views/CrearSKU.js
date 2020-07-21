@@ -85,7 +85,6 @@ const CrearSku = (props) => {
                                     <div className="table-responsive">
                                         <table className="table">
                                             <thead className=" text-primary">
-                                                <tr>
                                                     <th className="align-middle text-center">
                                                         SKU
                                                     </th>
@@ -102,7 +101,6 @@ const CrearSku = (props) => {
                                                     <th className="align-middle text-center">
                                                         Categoría
                                                     </th>
-                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
@@ -121,7 +119,7 @@ const CrearSku = (props) => {
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         <select className="form-control" name="categoria_id" value={!state.categoria_id ? "" : state.categoria_id} onChange={getInformacion}>
-                                                            <option value="">Seleccionar</option>
+                                                            <option value="" disabled>Seleccionar</option>
                                                             {
                                                                 !!store.categorias &&
                                                                 store.categorias.map((categoria) => {

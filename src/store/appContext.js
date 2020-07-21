@@ -19,6 +19,8 @@ const injectContext = PassedComponent => {
             state.actions.getFetch("/empresas", "empresas");
             state.actions.getFetch("/categorias", "categorias");
             state.actions.getFetch("/productos", "productos");
+            state.actions.getFetch("/proveedores", "proveedores");
+
 
 /*             state.actions.getFetch("/entradas-inventario", "entradaStock");
             state.actions.getFetch("/salidas-inventario", "ventaProductos"); */

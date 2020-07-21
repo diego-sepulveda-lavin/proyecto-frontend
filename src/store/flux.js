@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             usuarios: null,
             categorias: null,
             productos: null,
+            proveedores: null,
             usuario: null,
             creacionUsuario: {
                 nombre: "",
@@ -331,6 +332,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return a;
                 
             }
+                
+            
             /* /Zona Valida */
 
 
