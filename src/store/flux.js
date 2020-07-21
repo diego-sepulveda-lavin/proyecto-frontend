@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             categorias: null,
             productos: null,
             proveedores: null,
-            usuario: null,
+            usuarioActivo: null,
             creacionUsuario: {
                 nombre: "",
                 apellido: "",
@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (!localStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
+                setStore({usuarioActivo:JSON.parse(localStorage.getItem('user'))})
             },
 
 
@@ -331,7 +332,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 return a;
                 
-            }
+            },
+            usuarioAuth: (usuario) => {
+                setStore({usuarioActivo:usuario})
+
+            },
                 
             
             /* /Zona Valida */

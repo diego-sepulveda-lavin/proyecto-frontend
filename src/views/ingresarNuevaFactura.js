@@ -3,14 +3,27 @@ import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
 const IngresarNuevaFactura = (props) => {
+
     const { store, actions } = useContext(Context)
+
     useEffect(() => {
         actions.validaLogin(props)
+        const idUsuario = !!store.usuarioActivo ? store.usuarioActivo.id : null;
+        setUsuarioId(idUsuario)
+
     }, [])
 
+    const setUsuarioId = (idUsuario) => {
+        const detalleEntrada = state.detalleEntrada;
+
+        detalleEntrada['usuario_id'] = idUsuario
+
+        setState(prevState => {
+            return { ...prevState, detalleEntrada }
+        })
+    }
     const [state, setState] = useState({
         factura: {
-            id: 0,
             folio: null,
             fecha_emision: "",
             fecha_recepcion: "",
@@ -19,46 +32,61 @@ const IngresarNuevaFactura = (props) => {
             monto_otros_impuestos: 0,
             monto_total: 0,
             proveedor_id: 2,
-            entrada_inventario: [
-                {
-                    id: 0,
-                    cantidad: 1,
-                    precio_costo_unitario: 100,
-                    costo_total: 100,
-                    fecha_registro: "2020-07-01",
-                    usuario_id: 1,
-                    factura_compra_id: 1,
-                    producto_id: 1
-                }
+            entradas_inventario: [
+               
             ]
 
+        },
+        detalleEntrada: {
+            cantidad: null,
+            precio_costo_unitario: null,
+            costo_total: null,
+            usuario_id: null,
+            producto_id: null
         }
     });
 
-    const getDatosFactura = e => {
-        let update = {
-            [e.target.name]: e.target.value
-        }
 
-        let data = { factura: Object.assign(state.factura, update) } 
+    const getDatosFactura = e => {
+        const factura = state.factura;
+
+        factura[e.target.name] = e.target.value
 
         setState(prevState => {
-            return { ...prevState, ...data}
+            return { ...prevState, factura }
         })
-
     }
 
-    
+    const getDetalleEntrada = e => {
+        const detalleEntrada = state.detalleEntrada;
 
-    const getDatosDetalle = e => {
-        let update = {
-            [e.target.name]: e.target.value
-        }
-
-        let data = { factura: Object.assign(state.factura, update) } 
+        detalleEntrada[e.target.name] = e.target.value
 
         setState(prevState => {
-            return { ...prevState, ...data}
+            return { ...prevState, detalleEntrada }
+        })
+    }
+
+
+
+
+    const addDetalleEntrada = e => {
+        const { factura, detalleEntrada } = state;
+
+        factura['entradas_inventario'].push(detalleEntrada);
+
+        const detalle = {
+            cantidad: null,
+            precio_costo_unitario: null,
+            costo_total: null,
+            usuario_id: detalleEntrada.usuario_id,
+            producto_id: null
+        }
+
+
+
+        setState(prevState => {
+            return { ...prevState, factura, detalleEntrada: detalle }
         })
     }
 
@@ -116,7 +144,7 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="folio" name="folio" aria-describedby="basic-addon1" value={state.factura.folio ? state.factura.folio : ""} onChange={getDatosFactura} />
+                                                            <input type="text" class="form-control" placeholder="Folio" name="folio" aria-describedby="basic-addon1" value={state.factura.folio ? state.factura.folio : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input type="text" class="form-control" placeholder="Fecha emision" name="fecha_emision" aria-describedby="basic-addon1" value={state.factura.fecha_emision ? state.factura.fecha_emision : ""} onChange={getDatosFactura} />
@@ -160,16 +188,16 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
                                                         </td>
                                                     </tr>
                                                 </>
@@ -207,18 +235,18 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Producto" name="producto_id" aria-describedby="basic-addon1" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} /* onChange={getDatos} */ />
+                                                            <input type="text" class="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                         </td>
-                                                        <td><button className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
+                                                        <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
                                                     </tr>
                                                 </>
@@ -260,36 +288,40 @@ const IngresarNuevaFactura = (props) => {
 
                                                 </thead>
                                                 <tbody>
+                                                    {
+                                                        state.factura.entradas_inventario.map((producto, index) => {
+                                                            return (
+                                                                <tr key={index}>
+                                                                    <td className="align-middle text-center">
+                                                                        {index + 1}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.producto_id}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.cantidad}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.precio_costo_unitario}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.costo_total}
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                            <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        })
+                                                    }
 
-                                                    <tr>
-                                                        <td className="align-middle text-center">
-                                                            1
-                                                        </td>
-                                                        <td className="align-middle text-center">
-                                                            454545
-                                                        </td>
-                                                        <td className="align-middle text-center">
-                                                            Coca Cola 500cc
-                                                        </td>
-                                                        <td className="align-middle text-center">
-                                                            23443
-                                                        </td>
-                                                        <td className="align-middle text-center">
-                                                            23443
-                                                        </td>
-
-
-                                                        <td>
-                                                            <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                                <i className="now-ui-icons ui-1_simple-remove"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div className="col-12 d-flex justify-content-end">
-                                            <button class="btn btn-primary" name="Crear_Factura">Crear Factura</button>
+                                            <button class="btn btn-primary" name="Crear_Factura">Ingresar Factura</button>
                                         </div>
                                     </div>
                                 </div>
