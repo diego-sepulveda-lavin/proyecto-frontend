@@ -62,14 +62,25 @@ const IngresarNuevaFactura = (props) => {
                 <h3 className="text-info text-center">Ingresar Nueva Factura</h3>
             </div>
             <div className="content mt-2">
-                <div className="row ">
+                <div className="row">
                     <div className="col-md-12">
 
                         <form onSubmit={postData}>
                             <div className="card">
                                 <div className="card-body">
                                     <div className="table-responsive">
-                                        <h4>Factura</h4>
+                                        <div className="row">
+                                            <div className="col-md-4 mx-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} />
+                                            </div>
+                                            <div className="col-md-3">
+                                                <h3 className="text-center">Factura</h3>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} />
+                                            </div>
+                                        </div>
+
                                         <table className="table" >
                                             <thead className=" text-primary ">
 
@@ -142,11 +153,18 @@ const IngresarNuevaFactura = (props) => {
                                                 </>
                                             </tbody>
                                         </table>
-                                        <hr />
 
+                                        <div className="row">
+                                            <div className="col-md-4 mx-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} /></div>
+                                            <div className="col-md-3">
+                                                <h3 className="text-center">Detalle</h3>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} />
+                                            </div>
+                                        </div>
 
-
-                                        <h4 className>Detalle Factura</h4>
                                         <table className="table" >
                                             <thead className=" text-primary ">
                                                 <th className="align-middle text-center">
@@ -184,11 +202,23 @@ const IngresarNuevaFactura = (props) => {
                                                 </>
                                             </tbody>
                                         </table>
-                                        <hr />
+
+                                        <div className="row">
+                                            <div className="col-md-4 mx-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} /></div>
+                                            <div className="col-md-3">
+                                                <h3 className="text-center">Listado Producto</h3>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <hr className="text-success" style={{ "border": " 3px solid", "borderRadius": "5px" }} />
+                                            </div>
+                                        </div>
+
+
                                         <div className="table-responsive">
                                             <table className="table table-hover" >
                                                 <thead className=" text-primary ">
-                                                <th className="align-middle text-center">
+                                                    <th className="align-middle text-center">
                                                         N°
                                                     </th>
                                                     <th className="align-middle text-center">
@@ -203,14 +233,14 @@ const IngresarNuevaFactura = (props) => {
                                                     <th className="align-middle text-center">
                                                         Costo Total
                                                     </th>
-                                                   
+
                                                     <th>&nbsp;</th>
 
                                                 </thead>
                                                 <tbody>
-                                                  
+
                                                     <tr>
-                                                    <td className="align-middle text-center">
+                                                        <td className="align-middle text-center">
                                                             1
                                                         </td>
                                                         <td className="align-middle text-center">
@@ -225,8 +255,8 @@ const IngresarNuevaFactura = (props) => {
                                                         <td className="align-middle text-center">
                                                             23443
                                                         </td>
-                                                       
-                                                      
+
+
                                                         <td>
                                                             <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
                                                                 <i className="now-ui-icons ui-1_simple-remove"></i>
