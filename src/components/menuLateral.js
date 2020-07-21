@@ -30,9 +30,9 @@ const MenuLateral = props => {
                         <div id="ventas" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/anular-venta"}><p>Anular Venta</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/abrir-caja"}><p>Abrir Caja</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/cerrar-caja"}><p>Cierre de Caja</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/anular-venta"}><p>Anular Venta</p></Link></li>
                             </ul>
                         </div>
                     </li>
@@ -46,13 +46,13 @@ const MenuLateral = props => {
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
                         </Link>
                         <div id="stock" className="collapse">
-                        <ul className="p-0" style={{ "listStyleType": "none" }}>
-                            <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear SKU</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar SKU</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Facturas Compras</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/editar-factura"}><p>Editar Factura</p></Link></li>
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
+                                <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Producto</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Producto</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Listar Facturas</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/editar-factura"}><p>Editar Factura</p></Link></li>
                             </ul>
                         </div>
                     </li>
@@ -66,10 +66,26 @@ const MenuLateral = props => {
                         </Link>
 
                         <div id="administrador" className="collapse">
-                        <ul className="p-0" style={{ "listStyleType": "none" }}>
-                            <li className="ml-5 mt-2"><Link to={"/listado-usuarios"}><p>Ver Usuarios</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/crear-usuario"}><p>Crear Usuarios</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/modificar-usuario"}><p>Modificar Usuarios</p></Link></li>
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
+                                <li className="ml-5 mt-2"><Link to={"/listado-usuarios"}><p>Ver Usuarios</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-usuario"}><p>Crear Usuarios</p></Link></li>
+                                {/* <li className="ml-5 mt-2"><Link to={"/modificar-usuario"}><p>Modificar Usuarios</p></Link></li> */}
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li className={
+                        props.location.pathname === "/proveedores" ||
+                            props.location.pathname === "/crear-proveedor" ? "active" : ""}>
+                        <Link to="#">
+                            <i className="now-ui-icons objects_spaceship"></i>
+                            <p data-toggle="collapse" data-target="#proveedores">Proveedores</p>
+                        </Link>
+
+                        <div id="proveedores" className="collapse">
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
+                                <li className="ml-5 mt-2"><Link to={"/listar-proveedores"}><p>Ver Proveedores</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-proveedor"}><p>Crear Proveedor</p></Link></li>
                             </ul>
                         </div>
                     </li>
@@ -82,24 +98,9 @@ const MenuLateral = props => {
                         </Link>
 
                         <div id="administrador-global" className="collapse">
-                        <ul className="p-0" style={{ "listStyleType": "none" }}>
-                            <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/crear-empresa"}><p>Crear Empresa</p></Link></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li className={
-                        props.location.pathname === "/proveedores" ||
-                            props.location.pathname === "/crear-proveedor" ? "active" : ""}>
-                        <Link to="#">
-                            <i className="now-ui-icons objects_spaceship"></i>
-                            <p data-toggle="collapse" data-target="#proveedores">Proveedores</p>
-                        </Link>
-
-                        <div id="proveedores" className="collapse">
-                        <ul className="p-0" style={{ "listStyleType": "none" }}>
-                            <li className="ml-5 mt-2"><Link to={"/proveedores"}><p>Ver Proveedores</p></Link></li>
-                            <li className="ml-5 mt-2"><Link to={"/crear-proveedor"}><p>Crear Proveedor</p></Link></li>
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
+                                <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-empresa"}><p>Crear Empresa</p></Link></li>
                             </ul>
                         </div>
                     </li>

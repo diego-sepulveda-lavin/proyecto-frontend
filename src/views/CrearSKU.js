@@ -74,7 +74,7 @@ const CrearSku = (props) => {
         <>
             <div className="panel-header panel-header-md">
                 <h1 className="text-warning text-center">Stock</h1>
-                <h3 className="text-info text-center">Crear SKU</h3>
+                <h3 className="text-info text-center">Crear Producto</h3>
             </div>
             <div className="content mt-2">
                 <div className="row d-flex justify-content-center">
@@ -136,8 +136,8 @@ const CrearSku = (props) => {
                                 </div>
                                 <div className="card-footer">
                                     <div className="col-12 d-flex justify-content-end">
-                                        <button type="button" className="btn btn-primary mr-3" onClick={agregarFila}>Agregar línea de producto</button>
-                                        <button className="btn btn-success">Crear SKU's</button>
+                                      {/*   <button type="button" className="btn btn-primary mr-3" onClick={agregarFila}>Agregar línea de producto</button> */}
+                                        <button className="btn btn-success">Crear Producto</button>
                                     </div>
                                 </div>
                             </div>

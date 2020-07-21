@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 const IngresarNuevaFactura = (props) => {
 
@@ -32,10 +33,7 @@ const IngresarNuevaFactura = (props) => {
             monto_otros_impuestos: 0,
             monto_total: 0,
             proveedor_id: 2,
-            entradas_inventario: [
-               
-            ]
-
+            entradas_inventario: []
         },
         detalleEntrada: {
             cantidad: null,
@@ -71,23 +69,29 @@ const IngresarNuevaFactura = (props) => {
 
 
     const addDetalleEntrada = e => {
-        const { factura, detalleEntrada } = state;
+        if (state.detalleEntrada != null) {
+            if (state.detalleEntrada.producto_id === null || state.detalleEntrada.cantidad === null || state.detalleEntrada.precio_costo_unitario === null) {
+                Swal.fire({
+                    icon: 'error',
+                    title: "Faltan campos por completar.",
+                })
+            } else {
+                const { factura, detalleEntrada } = state;
+                factura['entradas_inventario'].push(detalleEntrada);
+                const detalle = {
+                    cantidad: null,
+                    precio_costo_unitario: null,
+                    costo_total: null,
+                    usuario_id: detalleEntrada.usuario_id,
+                    producto_id: null
+                }
+                setState(prevState => {
+                    return { ...prevState, factura, detalleEntrada: detalle }
+                })
+            }
 
-        factura['entradas_inventario'].push(detalleEntrada);
-
-        const detalle = {
-            cantidad: null,
-            precio_costo_unitario: null,
-            costo_total: null,
-            usuario_id: detalleEntrada.usuario_id,
-            producto_id: null
         }
 
-
-
-        setState(prevState => {
-            return { ...prevState, factura, detalleEntrada: detalle }
-        })
     }
 
     const postData = e => {
@@ -238,13 +242,13 @@ const IngresarNuevaFactura = (props) => {
                                                             <input type="text" class="form-control" placeholder="Producto" name="producto_id" aria-describedby="basic-addon1" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 

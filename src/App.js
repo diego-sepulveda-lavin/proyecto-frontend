@@ -29,6 +29,8 @@ import Facturas from './views/facturas';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
+import VerProveedores from './views/verProveedores';
+import EditarProveedores from './views/EditarProveedores';
 
 const App = props => {
   return (
@@ -69,6 +71,8 @@ const App = props => {
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
             <Route exact path="/crear-proveedor" component={CrearProveedor}></Route>
+            <Route exact path="/listar-proveedores" component={VerProveedores}></Route>
+            <Route exact path="/modificar-proveedores" component={EditarProveedores}></Route>
 
 
 
