@@ -50,7 +50,9 @@ const MenuLateral = props => {
                             <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear SKU</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar SKU</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Facturas Compras</p></Link></li>
                             <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
+                            <li className="ml-5 mt-2"><Link to={"/editar-factura"}><p>Editar Factura</p></Link></li>
                             </ul>
                         </div>
                     </li>

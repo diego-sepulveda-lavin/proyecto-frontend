@@ -8,7 +8,6 @@ import LandingPage from './views/LandingPage'
 import LoginPage from './views/LoginPage';
 import GeneralStock from './views/GeneralStock'
 import CrearSku from './views/CrearSKU';
-import IngresarFactura from './views/IngresarFactura';
 import ModificarSku from './views/ModificarSku';
 import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser';
@@ -26,6 +25,9 @@ import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
 import Spinner from './components/spinner';
 import modificarUserSinID from './views/modificarUserSinID';
+import Facturas from './views/facturas';
+import IngresarNuevaFactura from './views/ingresarNuevaFactura';
+import EditarFactura from './views/editarFactura';
 
 const App = props => {
   return (
@@ -55,7 +57,9 @@ const App = props => {
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearSku}></Route>
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
-            <Route exact path='/ingresar-factura' component={IngresarFactura}></Route>
+            <Route exact path='/listar-facturas' component={Facturas}></Route>
+            <Route exact path='/editar-factura' component={EditarFactura}></Route>
+            <Route exact path='/ingresar-factura' component={IngresarNuevaFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/crear-usuario" component={CreateUser}></Route>
             <Route exact path="/modificar-usuario/" component={modificarUserSinID}></Route>

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
+import SelectSearch from 'react-select-search';
 
-const IngresarFactura = (props) => {
+const Facturas = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
@@ -41,7 +42,7 @@ const IngresarFactura = (props) => {
         <>
             <div className="panel-header panel-header-md">
                 <h1 className="text-warning text-center">Stock</h1>
-                <h3 className="text-info text-center">Ingresar Factura</h3>
+                <h3 className="text-info text-center">Facturas Compras</h3>
             </div>
             <div className="content mt-2">
                 <div className="row">
@@ -188,4 +189,4 @@ const IngresarFactura = (props) => {
         </>
     )
 }
-export default withRouter(IngresarFactura);
+export default withRouter(Facturas);
