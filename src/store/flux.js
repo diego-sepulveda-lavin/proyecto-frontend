@@ -318,21 +318,18 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             validaCategoria: (categoria_id) => {
                 let store = getStore()
-                let nombre_categoria = store.categorias.filter((categoria) => {
+                /*let nombre_categoria = store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
                 })
-                return nombre_categoria[0].nombre
+                return nombre_categoria[0].nombre */
 
-                /* let a=store.categorias.filter((categoria) => {
+                let a= store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
-                }).map((categ) => {
-                    console.log("map",categ.nombre)
+                }).map(categ => {
                     return categ.nombre
                 })
-                return a[0] */
-
-
-
+                return a;
+                
             }
             /* /Zona Valida */
 

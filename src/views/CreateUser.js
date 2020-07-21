@@ -61,7 +61,7 @@ const CreateUser = (props) => {
                 <div className="content">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-11 offset-md">
-                            <form>
+                            
                                 <div className="card card-chart">
                                     <div className="card-body">
                                         <div className="row">
@@ -133,7 +133,7 @@ const CreateUser = (props) => {
                                         <button class="btn btn-success ">Crear Usuario</button>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
 

@@ -31,7 +31,7 @@ const NavbarLanding = () => {
             <nav className="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
                 <div className="container">
                     <div className="navbar-translate">
-                        <a className="navbar-brand" rel="tooltip" data-placement="bottom">
+                        <a href="#" className="navbar-brand" rel="tooltip" data-placement="bottom">
                             Menu
                             </a>
                         <button className="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
