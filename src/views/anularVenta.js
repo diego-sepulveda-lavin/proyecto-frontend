@@ -1,0 +1,191 @@
+import React, { useContext, useEffect } from 'react';
+import "../css/anularVenta.css";
+import { Context } from '../store/appContext';
+import { withRouter } from 'react-router-dom';
+
+const AnularVentaUsuario = (props) => {
+    const {store, actions} = useContext(Context)
+    useEffect(() => {
+        actions.validaLogin(props)     
+    }, [])
+    return (
+        <>
+            <div className="panel-header panel-header-md">
+                <h1 className="text-warning text-center">Ventas</h1>
+                <h3 className="text-info text-center">Anular Venta</h3>
+            </div>
+            <div className="container mt-2">
+                <div className="row">
+                    <div className="col-md-5">
+                        <div className="card">
+                            <div className="card-header">
+                                <div className="row d-flex justify-content-start">
+
+
+                                    <div className="col-md-4">
+                                        <label class="form-check-label p-0 align-middle " for="exampleRadios1">Boleta</label>
+                                        <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+                                    </div>
+                                    <div className="col-md-4">
+
+
+                                        <label class="form-check-label p-0 align-middle " for="exampleRadios1">Factura</label>
+                                        <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+
+
+                                    </div>
+
+                                </div>
+                                <h5 className="card-title"><input type="text" placeholder="Buscar Documento" className="border-0" /></h5>
+                            </div>
+
+                            <div className="card-body productos">
+                                <div className="chart-area">
+                                    <table className="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">N° Documento</th>
+                                                <th scope="col">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>55412</td>
+                                                <td className="text-center">100.000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>5235245</td>
+                                                <td className="text-center">25.000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-7">
+                        <div className="card card-chart">
+                            <div className="card-header">
+                                <div className="row d-flex justify-content-between">
+                                    <div className="input-group col-md-4">
+                                        <input type="text" aria-label="First name" class="input-group-prepend form-control" placeholder="Documento" />
+                                    </div>
+                                    <div className="input-group col-md-4">
+                                        <input type="text" aria-label="First name" class="input-group-prepend form-control" placeholder="Fecha Emision" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="detalleProductos card-body">
+                                <table className="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col" className="text-center">Producto</th>
+                                            <th scope="col" className="text-center">Cantidad</th>
+                                            <th scope="col" className="text-center">Precio Unitario</th>
+                                            <th scope="col" className="text-center">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td className="text-center">SuperOcho</td>
+                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
+                                            <td className="text-center">100</td>
+                                            <td className="text-center">200</td>
+                                            <td className="text-center"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-md-5 offset-md-7">
+                        <div className="card">
+                            <div className="card-body">
+                                <form>
+                                    <table class="table">
+                                        <thead>
+                                            <tr className=" table-hover">
+                                                <th scope="col">Total Neto</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto Neto" /></th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">IVA 19%</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="IVA" /></th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">Total a pagar</th>
+                                                <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar" /></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <button type="button" class="btn btn-danger btn-lg btn-block font-weight-bold">Anular Documento</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default withRouter(AnularVentaUsuario);

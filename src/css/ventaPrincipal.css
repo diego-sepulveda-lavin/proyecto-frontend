@@ -1,0 +1,8 @@
+.productos{
+    height: 300px;
+    overflow-y: scroll;
+}
+.detalleProductos{
+    height: 310px;
+    overflow-y: scroll;
+}

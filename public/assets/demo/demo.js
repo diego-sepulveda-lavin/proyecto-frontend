@@ -104,7 +104,7 @@ demo = {
     });
   },
 
-  initDashboardPageCharts: function() {
+ /*  initDashboardPageCharts: function() {
 
     chartColor = "#FFFFFF";
 
@@ -443,7 +443,7 @@ demo = {
     };
 
     var viewsChart = new Chart(e, a);
-  },
+  }, */
 
   initGoogleMaps: function() {
     var myLatlng = new google.maps.LatLng(40.748817, -73.985428);

@@ -3579,7 +3579,7 @@ h6,
 
 p {
   line-height: 1.61em;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.2em;
 }
 
@@ -3605,7 +3605,7 @@ p {
 .card-description,
 .footer-big p {
   color: #9A9A9A;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .category {
@@ -3619,7 +3619,7 @@ p {
 }
 
 .text-info {
-  color: #2CA8FF !important;
+  color: white !important;
 }
 
 .text-success {
@@ -3627,7 +3627,7 @@ p {
 }
 
 .text-warning {
-  color: #FFB236 !important;
+  color: #f5c951 !important;
 }
 
 .text-danger {
@@ -5493,20 +5493,20 @@ img {
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
-.card .card-header {
+/* .card .card-header {
   background-color: transparent;
   border-bottom: 0;
   background-color: transparent;
   border-radius: 0;
   padding: 0;
-}
+} */
 
-.card .card-footer {
+/* .card .card-footer {
   padding: 0;
   margin-top: 15px;
   background-color: transparent;
   border: 0;
-}
+} */
 
 .card[data-background-color="orange"] {
   background-color: #f96332;
@@ -5826,7 +5826,7 @@ img {
 }
 
 .login-page .card-login .logo-container {
-  width: 65px;
+  width: 100px;
   margin: 0 auto;
   margin-bottom: 55px;
 }
@@ -7323,3 +7323,18 @@ img {
 }
 
 /*# sourceMappingURL=kit-free.css.map */
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 10px;
+}
