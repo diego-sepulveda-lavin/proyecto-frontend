@@ -85,7 +85,7 @@ const CrearSku = (props) => {
                                     <div className="table-responsive">
                                         <table className="table">
                                             <thead className=" text-primary">
-                                                <tr>
+                                                
                                                     <th className="align-middle text-center">
                                                         SKU
                                                     </th>
@@ -102,7 +102,7 @@ const CrearSku = (props) => {
                                                     <th className="align-middle text-center">
                                                         Categoría
                                                     </th>
-                                                </tr>
+                                                
                                             </thead>
                                             <tbody>
                                                 <tr>
