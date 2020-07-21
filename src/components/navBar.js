@@ -17,6 +17,8 @@ const NavBar = props => {
 
     const removeAuth = () => {
         localStorage.removeItem('access_token');
+        localStorage.removeItem('user');
+
         setIsAuth(false)
     }
 

@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
+import { Context } from '../../store/appContext';
+
 
 
 const LoginForm = (props) => {
+
+    const { store, actions } = useContext(Context)
+
     
     //Inicializa objeto para contener datos de login
     const [loginCredentials, setLoginCredentials] = useState({})
@@ -39,7 +44,9 @@ const LoginForm = (props) => {
             const resp = await fetch('http://localhost:5000/api/login', requestOptions)
             const result = await resp.json()
             if (result.access_token) {
-                localStorage.setItem('access_token', result.access_token);
+                localStorage.setItem('access_token', result.access_token)
+                localStorage.setItem('user', JSON.stringify(result.user));
+                actions.usuarioAuth(result.user)
                 props.history.push("/dashboard")
             }
             setMensaje(result.msg)
