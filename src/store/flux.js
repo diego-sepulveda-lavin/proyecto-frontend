@@ -73,8 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     setStore({
-                        [data]: result,
-                        msg: result.msg
+                        [data]: result
                     })
                 } catch (error) {
                     console.log(error);

@@ -59,7 +59,7 @@ const EditarFactura = (props) => {
         <>
             <div className="panel-header panel-header-md">
                 <h1 className="text-warning text-center">Stock</h1>
-                <h3 className="text-info text-center">Editar Factura</h3>
+                <h3 className="text-info text-center">Esto tiene que ser igual que el ingresar factura</h3>
             </div>
             <div className="content mt-2">
                 <div className="row ">

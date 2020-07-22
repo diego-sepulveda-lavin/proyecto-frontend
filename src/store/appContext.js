@@ -15,16 +15,17 @@ const injectContext = PassedComponent => {
         }));
 
         useEffect(() => {
-            state.actions.getFetch("/usuarios", "usuarios");
-            state.actions.getFetch("/empresas", "empresas");
-            state.actions.getFetch("/categorias", "categorias");
-            state.actions.getFetch("/productos", "productos");
-            state.actions.getFetch("/proveedores", "proveedores");
-            state.actions.getFetch("/facturas-compras", "facturas");
+            if (state.store.usuarioActivo !== null) {
+                state.actions.getFetch("/usuarios", "usuarios");
+                state.actions.getFetch("/empresas", "empresas");
+                state.actions.getFetch("/categorias", "categorias");
+                state.actions.getFetch("/productos", "productos");
+                state.actions.getFetch("/proveedores", "proveedores");
+                state.actions.getFetch("/facturas-compras", "facturas");
+            }
 
-
-/*             state.actions.getFetch("/entradas-inventario", "entradaStock");
-            state.actions.getFetch("/salidas-inventario", "ventaProductos"); */
+            /*             state.actions.getFetch("/entradas-inventario", "entradaStock");
+                        state.actions.getFetch("/salidas-inventario", "ventaProductos"); */
         }, []);
 
         return (

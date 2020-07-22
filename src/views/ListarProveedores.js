@@ -100,7 +100,6 @@ const ListarProveedores = (props) => {
                                                     </tr>
                                                     :
                                                     store.proveedores.filter((proveedor) => {
-
                                                         if (state.buscarPor === "rut")
                                                             return proveedor.rut.toLowerCase().includes(state.inputBuscador.toLowerCase())
 
@@ -131,11 +130,13 @@ const ListarProveedores = (props) => {
                                                                 <td className="align-middle text-center">
                                                                     {proveedor.banco}
                                                                 </td>
-                                                               
+
                                                                 <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                    <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
                                                                     </Link>
+
+
                                                                 </td>
                                                             </tr>
                                                         )
