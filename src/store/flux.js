@@ -321,11 +321,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             validaCategoria: (categoria_id) => {
                 let store = getStore();
-                /*let nombre_categoria = store.categorias.filter((categoria) => {
-                    return categoria.id === categoria_id
-                })
-                return nombre_categoria[0].nombre */
-
                 let a = store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
                 }).map(categ => {
@@ -334,6 +329,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return a;
 
             },
+
             validaProducto: (prod_id) => {
                 let store = getStore();
                 let nuevoValor = store.productos.filter((ele) => {
@@ -343,20 +339,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 return nuevoValor;
             },
-            validaFactura: (factura_id, prove) => {
-                let valorProv = prove.filter(ele => {
-                    return ele.id == factura_id
-                }).map(ele=>{
-                    return ele.nombre
+            validaFactura: (factura_id) => {
+                let store = getStore()
+                let valorProv = store.proveedores.filter(proveedor => {
+                    return proveedor.id == factura_id
+                }).map(proveedor => {
+                    return proveedor.nombre
                 })
                 return valorProv;
-
-
             },
 
             usuarioAuth: (usuario) => {
                 setStore({ usuarioActivo: usuario })
-
             },
 
 

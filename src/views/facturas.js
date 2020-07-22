@@ -133,7 +133,7 @@ const Facturas = (props) => {
                                                                     {factura.monto_total}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {actions.validaFactura(factura.proveedor_id, store.proveedores)}
+                                                                    {actions.validaFactura(factura.proveedor_id)}
                                                                 </td>
                                                                 <td className="align-middle text-center">
                                                                     <Link to={`/modificar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
