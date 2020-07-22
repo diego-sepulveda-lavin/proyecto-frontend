@@ -45,6 +45,7 @@ const IngresarNuevaFactura = (props) => {
     });
 
 
+
     const getDatosFactura = e => {
         const factura = state.factura;
 
@@ -54,17 +55,17 @@ const IngresarNuevaFactura = (props) => {
             return { ...prevState, factura }
         })
     }
-
+    let multiplicacion = 0;
     const getDetalleEntrada = e => {
         const detalleEntrada = state.detalleEntrada;
-
         detalleEntrada[e.target.name] = e.target.value
+        multiplicacion = state.detalleEntrada.cantidad * state.detalleEntrada.precio_costo_unitario;
+        detalleEntrada.costo_total = multiplicacion
 
         setState(prevState => {
             return { ...prevState, detalleEntrada }
         })
     }
-
 
 
 
@@ -110,7 +111,6 @@ const IngresarNuevaFactura = (props) => {
             <div className="content mt-2">
                 <div className="row">
                     <div className="col-md-12">
-
                         <form onSubmit={postData}>
                             <div className="card">
                                 <div className="card-body">
@@ -239,7 +239,18 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Producto" name="producto_id" aria-describedby="basic-addon1" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} />
+
+
+                                                            <select className="form-control" name="producto_id" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} >
+                                                                <option value="" disabled>Seleccionar</option>
+                                                                {
+                                                                    !!store.productos &&
+                                                                    store.productos.map((producto) => {
+                                                                        return <option value={producto.id} key={producto.id}>{producto.descripcion}</option>
+                                                                    })
+                                                                }
+                                                            </select>
+
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
@@ -300,7 +311,12 @@ const IngresarNuevaFactura = (props) => {
                                                                         {index + 1}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {producto.producto_id}
+                                                                        {/* {actions.validaProducto(producto.producto_id) */}
+                                                                        {store.productos?store.productos.filter((ele)=>{
+                                                                            let a= ele.id === producto.producto_id
+                                                                            console.log(a)
+                                                                            return a[0].descripcion
+                                                                        }):""}
                                                                     </td>
                                                                     <td className="align-middle text-center">
                                                                         {producto.cantidad}

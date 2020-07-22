@@ -333,6 +333,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return a;
                 
             },
+            validaProducto: (id) => {
+                console.log("aaaaaaaaaaaaa")
+                console.log("AAAAAAAAAAAAAA")
+                console.log(id)
+             
+                
+            },
             usuarioAuth: (usuario) => {
                 setStore({usuarioActivo:usuario})
 
