@@ -23,7 +23,6 @@ const CreateUser = (props) => {
     });
 
     const getInformacionFoto = e => {
-        console.log(e.target.files[0])
         state.foto = e.target.files[0]
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);

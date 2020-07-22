@@ -9,7 +9,6 @@ const ListarProveedores = (props) => {
         buscarPor: "rut"
     })
     const seleccionadorBuscador = e => {
-        console.log(e.target.value)
         let data = {
             buscarPor: e.target.value
         }

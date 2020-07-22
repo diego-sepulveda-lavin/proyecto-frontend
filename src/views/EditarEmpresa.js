@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const EditarEmpresa = (props) => {
 
@@ -35,7 +35,7 @@ const EditarEmpresa = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa)
+        actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa, "Empresa")
         actions.getFetch("/empresas", "empresas");
     }
 

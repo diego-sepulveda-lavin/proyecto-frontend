@@ -205,7 +205,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
-                    if (!result.msg) {
+                    if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
                             title:  mensajeAlerta+ ' modificado exitosamente.'
@@ -246,7 +246,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
 
                     const result = await resp.json();
-                    console.log(resp)
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',

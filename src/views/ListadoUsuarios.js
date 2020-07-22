@@ -9,7 +9,6 @@ const ListadoUsuarios = (props) => {
         buscarPor: "nombre"
     })
     const seleccionadorBuscador = e => {
-        console.log(e.target.value)
         let data = {
             buscarPor: e.target.value
         }
