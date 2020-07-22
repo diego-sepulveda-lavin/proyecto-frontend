@@ -89,10 +89,10 @@ const Empresas = (props) => {
                                                 Rubro
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Editar
+                                                &nbsp;
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Eliminar
+                                                &nbsp;
                                                     </th>
                                         </thead>
                                         <tbody>
