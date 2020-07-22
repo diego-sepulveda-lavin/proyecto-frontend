@@ -3,7 +3,7 @@ import { Context } from '../store/appContext';
 import { withRouter, Link } from 'react-router-dom';
 
 
-const Facturas = (props) => {
+const ListarFacturas = (props) => {
     const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         inputBuscador: "",
@@ -33,7 +33,7 @@ const Facturas = (props) => {
         <>
             <div className="panel-header panel-header-md">
                 <h1 className="text-warning text-center">Stock</h1>
-                <h3 className="text-info text-center">Facturas</h3>
+                <h3 className="text-info text-center">Ver Facturas</h3>
             </div>
             <div className="content mt-2">
                 <div className="row">
@@ -102,46 +102,51 @@ const Facturas = (props) => {
                                                         <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.facturas/* .filter((factura) => {
-
-                                                        if (state.buscarPor === "folio"  && state.inputBuscador =="")
-                                                        
-                                                            return factura.folio == state.inputBuscador
-
-
-                                            }) */.map((factura, indice) => {
+                                                    store.facturas.filter((factura) => {
+                                                        if (state.buscarPor == "folio") {
+                                                            if (state.inputBuscador == "") return factura.folio
+                                                            else {
+                                                                //Busco por el folio en concreto o parecidos?
+                                                                return factura.folio >= state.inputBuscador
+                                                            }
+                                                        }
+                                                        if (state.buscarPor == "proveedor") {
+                                                            let [valor] = actions.validaFactura(factura.proveedor_id)
+                                                            return valor.toLowerCase().includes(state.inputBuscador.toLowerCase())
+                                                        }
+                                                    }).map((factura, indice) => {
                                                         return (
                                                             <tr key={indice}>
-                                                <td className="align-middle text-center">
-                                                    {factura.folio}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {new Date(factura.fecha_emision).toLocaleString("es-CL", { dateStyle: 'short' })}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {new Date(factura.fecha_recepcion).toLocaleString("es-CL", { dateStyle: 'short' })}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {factura.monto_neto}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {factura.monto_iva}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {factura.monto_otros_impuestos}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {factura.monto_total}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    {actions.validaFactura(factura.proveedor_id)}
-                                                </td>
-                                                <td className="align-middle text-center">
-                                                    <Link to={`/modificar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                        <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Link>
-                                                </td>
-                                            </tr>
+                                                                <td className="align-middle text-center">
+                                                                    {factura.folio}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {new Date(factura.fecha_emision).toLocaleString("es-CL", { dateStyle: 'short' })}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {new Date(factura.fecha_recepcion).toLocaleString("es-CL", { dateStyle: 'short' })}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {factura.monto_neto}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {factura.monto_iva}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {factura.monto_otros_impuestos}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {factura.monto_total}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {actions.validaFactura(factura.proveedor_id)}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    <Link to={`/modificar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                    </Link>
+                                                                </td>
+                                                            </tr>
                                                         )
                                                     })
                                             }
@@ -156,4 +161,4 @@ const Facturas = (props) => {
         </>
     )
 }
-export default withRouter(Facturas);
+export default withRouter(ListarFacturas);

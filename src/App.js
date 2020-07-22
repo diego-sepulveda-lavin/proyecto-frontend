@@ -24,7 +24,6 @@ import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
 import Spinner from './components/spinner';
 import modificarUserSinID from './views/modificarUserSinID';
-import Facturas from './views/facturas';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
@@ -34,6 +33,7 @@ import ListarCategorias from './views/ListarCategorias';
 import ListarProveedores from './views/ListarProveedores';
 import ModificarUsuario from './views/ModificarUsuario';
 import ModificarProveedor from './views/ModificarProveedor';
+import ListarFacturas from './views/ListarFacturas';
 
 const App = props => {
   return (
@@ -63,7 +63,7 @@ const App = props => {
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearSku}></Route>
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
-            <Route exact path='/listar-facturas' component={Facturas}></Route>
+            <Route exact path='/listar-facturas' component={ListarFacturas}></Route>
             <Route exact path='/editar-factura' component={EditarFactura}></Route>
             <Route exact path='/ingresar-factura' component={IngresarNuevaFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
