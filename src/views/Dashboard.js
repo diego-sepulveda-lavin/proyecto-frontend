@@ -577,7 +577,7 @@ const Dashboard = (props) => {
                                                 <td className="text-right">$63,542</td>
                                             </tr>
                                             <tr>
-                                                <td>Mason Porter</td>
+                                                <td>Luis J. Rodriguez Z.</td>
                                                 <td>Chile</td>
                                                 <td>Gloucester</td>
                                                 <td className="text-right">$78,615</td>

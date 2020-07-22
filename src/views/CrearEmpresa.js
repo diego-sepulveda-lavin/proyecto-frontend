@@ -67,7 +67,7 @@ const CrearEmpresa = (props) => {
                                                             <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" maxlength="13" value={state.rut ? state.rut : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />

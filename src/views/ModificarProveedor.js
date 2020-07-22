@@ -1,17 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const EditarEmpresa = (props) => {
+const ModificarProveedor = (props) => {
 
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
-        actions.getFetchID("/empresas/" + props.match.params.index, setState, "empresa")
+        actions.getFetchID("/proveedores/" + props.match.params.index, setState, "proveedor")
     }, [])
 
     const [state, setState] = useState({
-        empresa: null
+        proveedor: null
 
     });
 
@@ -25,27 +25,26 @@ const EditarEmpresa = (props) => {
             [e.target.name]: e.target.value
         }
         let data = {
-            empresa: Object.assign(state.empresa, update),
+            proveedor: Object.assign(state.proveedor, update)
         }
-        setState(prevState => {
-            return { ...prevState, ...data }
-        })
+        setState(data)
+
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        actions.putFetch("/empresas/" + props.match.params.index, setMsg, state.empresa, "Empresa")
-        actions.getFetch("/empresas", "empresas");
+        actions.putFetch("/proveedores/" + props.match.params.index, setMsg, state.proveedor, "proveedor")
+        actions.getFetch("/proveedores", "proveedor");
     }
 
-    if (state.empresa != null) {
+    if (state.proveedor != null) {
 
         return (
             <>
                 <div className="panel-header panel-header-md">
-                    <h1 className="text-warning text-center">Empresas</h1>
-                    <h3 className="text-info text-center">Editar Empresa</h3>
+                    <h1 className="text-warning text-center">Proveedores</h1>
+                    <h3 className="text-info text-center">Modificar Proveedor</h3>
                 </div>
                 <div className="content mt-2">
                     <div className="row ">
@@ -68,6 +67,16 @@ const EditarEmpresa = (props) => {
                                                     <th className="align-middle text-center">
                                                         Rubro
                                                         </th>
+                                                    <th className="align-middle text-center">
+                                                        Dirección
+                                                        </th>
+                                                    <th className="align-middle text-center">
+                                                        Cuenta Corriente
+                                                        </th>
+
+                                                    <th className="align-middle text-center">
+                                                        Banco
+                                                        </th>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -75,7 +84,7 @@ const EditarEmpresa = (props) => {
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
-                                                                value={state.empresa.nombre}
+                                                                value={state.proveedor.nombre}
                                                                 name="nombre"
                                                                 aria-describedby="basic-addon1"
                                                                 onChange={valorInput}
@@ -85,17 +94,16 @@ const EditarEmpresa = (props) => {
                                                             <input
 
                                                                 type="text" class="form-control"
-                                                                value={state.empresa.rut}
+                                                                value={state.proveedor.rut}
                                                                 name="rut"
                                                                 aria-describedby="basic-addon1"
-                                                                maxlength="13"
                                                                 onChange={valorInput} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
-                                                                value={state.empresa.razon_social}
+                                                                value={state.proveedor.razon_social}
                                                                 name="razon_social"
                                                                 aria-describedby="basic-addon1"
                                                                 onChange={valorInput} />
@@ -103,16 +111,53 @@ const EditarEmpresa = (props) => {
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text" class="form-control"
-                                                                value={state.empresa.rubro}
+                                                                value={state.proveedor.rubro}
                                                                 name="rubro"
                                                                 aria-describedby="basic-addon1"
                                                                 onChange={valorInput} />
+                                                        </td>
+                                                        <td className="align-middle text-center">
+                                                            <input
+                                                                type="text" class="form-control"
+                                                                value={state.proveedor.direccion}
+                                                                name="direccion"
+                                                                aria-describedby="basic-addon1"
+                                                                onChange={valorInput} />
+                                                        </td>
+                                                        <td className="align-middle text-center">
+                                                            <input
+                                                                type="text" class="form-control"
+                                                                value={state.proveedor.cuenta_corriente}
+                                                                name="cuenta_corriente"
+                                                                aria-describedby="basic-addon1"
+                                                                onChange={valorInput} />
+                                                        </td>
+                                                        <td className="align-middle text-center">
+                                                           
+                                                                <select className="form-control" name="banco" value={!state.banco ?state.banco : ""} onChange={valorInput}>
+                                                                    <option value="" disabled>Seleccionar</option>
+                                                                    <option value="Banco de Chile">Banco de Chile</option>
+                                                                    <option value="Banco Internacional">Banco Internacional</option>
+                                                                    <option value="Scotiabank Chile">Scotiabank Chile</option>
+                                                                    <option value="Banco de Credito e Inversiones">Banco de Credito e Inversiones</option>
+                                                                    <option value="Banco Bice">Banco Bice</option>
+                                                                    <option value="HSBC Banc">HSBC Banc</option>
+                                                                    <option value="Banco Santander">Banco Santander</option>
+                                                                    <option value="ITAÚ Corpbanca">ITAÚ Corpbanca</option>
+                                                                    <option value="Banco Security">Banco Security</option>
+                                                                    <option value="Banco Falabella">Banco Falabella</option>
+                                                                    <option value="Banco Ripley">Banco Ripley</option>
+                                                                    <option value="Banco Consorcio">Banco Consorcio</option>
+                                                                    <option value="Scotiabank Azul">Scotiabank Azul</option>
+
+                                                                </select>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <div className="col-12 d-flex justify-content-end">
-                                                <button class="btn btn-primary" name="Editar_Empresa">Editar Empresa</button>
+                                                <button class="btn btn-primary" name="Editar_Empresa">Editar Proveedor</button>
                                             </div>
                                         </div>
                                     </div>
@@ -140,4 +185,4 @@ const EditarEmpresa = (props) => {
 }
 
 
-export default withRouter(EditarEmpresa);
+export default withRouter(ModificarProveedor);

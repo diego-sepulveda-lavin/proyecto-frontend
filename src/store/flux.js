@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             categorias: null,
             productos: null,
             proveedores: null,
+            facturas: null,
             usuarioActivo: null,
             creacionUsuario: {
                 nombre: "",
@@ -29,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (!localStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
-                setStore({usuarioActivo:JSON.parse(localStorage.getItem('user'))})
+                setStore({ usuarioActivo: JSON.parse(localStorage.getItem('user')) })
             },
 
 
@@ -72,7 +73,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     setStore({
-                        [data]: result
+                        [data]: result,
+                        msg: result.msg
                     })
                 } catch (error) {
                     console.log(error);
@@ -189,7 +191,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-            putFetch: async (urlPag, setInfo, data_a_enviar) => {
+            putFetch: async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
                 let store = getStore()
 
                 try {
@@ -205,10 +207,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
-                    if (!result.msg) {
+                    if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Empresa modificada exitosamente.'
+                            title: mensajeAlerta + ' modificado exitosamente.'
                         })
                     } else {
                         Swal.fire({
@@ -246,7 +248,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
 
                     const result = await resp.json();
-                    console.log(resp)
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
@@ -319,26 +320,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             },
             validaCategoria: (categoria_id) => {
-                let store = getStore()
-                /*let nombre_categoria = store.categorias.filter((categoria) => {
-                    return categoria.id === categoria_id
-                })
-                return nombre_categoria[0].nombre */
-
-                let a= store.categorias.filter((categoria) => {
+                let store = getStore();
+                let a = store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
                 }).map(categ => {
                     return categ.nombre
                 })
                 return a;
-                
-            },
-            usuarioAuth: (usuario) => {
-                setStore({usuarioActivo:usuario})
 
             },
-                
-            
+
+            validaProducto: (prod_id) => {
+                let store = getStore();
+                let nuevoValor = store.productos.filter((ele) => {
+                    return ele.id == prod_id
+                }).map((ele) => {
+                    return ele.descripcion
+                })
+                return nuevoValor;
+            },
+            validaFactura: (factura_id) => {
+                let store = getStore()
+                let valorProv = store.proveedores.filter(proveedor => {
+                    return proveedor.id == factura_id
+                }).map(proveedor => {
+                    return proveedor.nombre
+                })
+                return valorProv;
+            },
+
+            usuarioAuth: (usuario) => {
+                setStore({ usuarioActivo: usuario })
+            },
+
+
             /* /Zona Valida */
 
 

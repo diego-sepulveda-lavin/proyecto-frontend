@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 const IngresarNuevaFactura = (props) => {
 
@@ -32,10 +33,7 @@ const IngresarNuevaFactura = (props) => {
             monto_otros_impuestos: 0,
             monto_total: 0,
             proveedor_id: 2,
-            entradas_inventario: [
-               
-            ]
-
+            entradas_inventario: []
         },
         detalleEntrada: {
             cantidad: null,
@@ -47,6 +45,7 @@ const IngresarNuevaFactura = (props) => {
     });
 
 
+
     const getDatosFactura = e => {
         const factura = state.factura;
 
@@ -56,11 +55,12 @@ const IngresarNuevaFactura = (props) => {
             return { ...prevState, factura }
         })
     }
-
+    let multiplicacion = 0;
     const getDetalleEntrada = e => {
         const detalleEntrada = state.detalleEntrada;
-
         detalleEntrada[e.target.name] = e.target.value
+        multiplicacion = state.detalleEntrada.cantidad * state.detalleEntrada.precio_costo_unitario;
+        detalleEntrada.costo_total = multiplicacion
 
         setState(prevState => {
             return { ...prevState, detalleEntrada }
@@ -69,25 +69,30 @@ const IngresarNuevaFactura = (props) => {
 
 
 
-
     const addDetalleEntrada = e => {
-        const { factura, detalleEntrada } = state;
+        if (state.detalleEntrada != null) {
+            if (state.detalleEntrada.producto_id === null || state.detalleEntrada.cantidad === null || state.detalleEntrada.precio_costo_unitario === null) {
+                Swal.fire({
+                    icon: 'error',
+                    title: "Faltan campos por completar.",
+                })
+            } else {
+                const { factura, detalleEntrada } = state;
+                factura['entradas_inventario'].push(detalleEntrada);
+                const detalle = {
+                    cantidad: null,
+                    precio_costo_unitario: null,
+                    costo_total: null,
+                    usuario_id: detalleEntrada.usuario_id,
+                    producto_id: null
+                }
+                setState(prevState => {
+                    return { ...prevState, factura, detalleEntrada: detalle }
+                })
+            }
 
-        factura['entradas_inventario'].push(detalleEntrada);
-
-        const detalle = {
-            cantidad: null,
-            precio_costo_unitario: null,
-            costo_total: null,
-            usuario_id: detalleEntrada.usuario_id,
-            producto_id: null
         }
 
-
-
-        setState(prevState => {
-            return { ...prevState, factura, detalleEntrada: detalle }
-        })
     }
 
     const postData = e => {
@@ -95,6 +100,29 @@ const IngresarNuevaFactura = (props) => {
         actions.postFetch("/empresas", state, setState, "Empresa")
         actions.getFetch("/empresas", "empresas");
 
+    }
+
+    /*  const eliminarRegistro = (indice) => {
+         let { entradas_inventario } = state.factura;
+         console.log("aaa", entradas_inventario)
+         let nuevoArray = state.factura.entradas_inventario.filter((ele, index) => {
+             return index != indice
+         })
+         console.log("nuevo array", nuevoArray)
+         setState(prevState => {
+             return { ...prevState, entradas_inventario: nuevoArray }
+         })
+ 
+     } */
+
+
+
+    const deleteProducto = e => {
+        let data = state.factura.entradas_inventario;
+        data.splice(e.target.id, 1);
+        setState(prevState => {
+            return { ...prevState, entradas_inventario: data }
+        });
     }
 
     return (
@@ -106,7 +134,6 @@ const IngresarNuevaFactura = (props) => {
             <div className="content mt-2">
                 <div className="row">
                     <div className="col-md-12">
-
                         <form onSubmit={postData}>
                             <div className="card">
                                 <div className="card-body">
@@ -235,16 +262,27 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Producto" name="producto_id" aria-describedby="basic-addon1" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} />
+
+
+                                                            <select className="form-control" name="producto_id" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} >
+                                                                <option value="" disabled>Seleccionar</option>
+                                                                {
+                                                                    !!store.productos &&
+                                                                    store.productos.map((producto) => {
+                                                                        return <option value={producto.id} key={producto.id}>{producto.descripcion}</option>
+                                                                    })
+                                                                }
+                                                            </select>
+
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" class="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
@@ -296,7 +334,8 @@ const IngresarNuevaFactura = (props) => {
                                                                         {index + 1}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {producto.producto_id}
+                                                                        {actions.validaProducto(producto.producto_id)}
+
                                                                     </td>
                                                                     <td className="align-middle text-center">
                                                                         {producto.cantidad}
@@ -308,7 +347,7 @@ const IngresarNuevaFactura = (props) => {
                                                                         {producto.costo_total}
                                                                     </td>
                                                                     <td>
-                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
                                                                             <i className="now-ui-icons ui-1_simple-remove"></i>
                                                                         </button>
                                                                     </td>

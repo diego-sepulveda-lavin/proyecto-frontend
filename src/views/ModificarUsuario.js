@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
-const ModificarUser = (props) => {
+const ModificarUsuario = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
@@ -22,7 +22,6 @@ const ModificarUser = (props) => {
     }
 
     const getInformacionFoto = e => {
-        console.log(e.target.files[0])
         state.usuario.foto = e.target.files[0]
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
@@ -124,7 +123,7 @@ const ModificarUser = (props) => {
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" aria-label="First name" className="form-control" value={state.usuario.rut} onChange={getInformacion} />
+                                                        <input type="text" name="rut" maxlength="13" aria-label="First name" className="form-control" value={state.usuario.rut} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
@@ -197,4 +196,4 @@ const ModificarUser = (props) => {
 
 }
 
-export default withRouter(ModificarUser);
+export default withRouter(ModificarUsuario);
