@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter, Link } from 'react-router-dom';
 
-const VerProveedores = (props) => {
+const ListarProveedores = (props) => {
     const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         inputBuscador: "",
-        buscarPor: "nombre"
+        buscarPor: "rut"
     })
     const seleccionadorBuscador = e => {
         console.log(e.target.value)
@@ -50,12 +50,11 @@ const VerProveedores = (props) => {
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
                         <div className="form-check ml-3">
-                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Nombre</label>
-                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" id="rNombre" value="nombre" onClick={e => seleccionadorBuscador(e)}></input>
-                            <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="rRut" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
-                            <label className="form-check-label align-middle" for="exampleRadios3">Codigo Usuario</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="rUserid" value="codUsuario" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">RUT</label>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">Razon Social</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" value="razon_social" onClick={e => seleccionadorBuscador(e)}></input>
+
                         </div>
 
                     </div>
@@ -72,72 +71,69 @@ const VerProveedores = (props) => {
                                                 Nombre
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Apellido
-                                                    </th>
-                                            <th className="align-middle text-center">
                                                 RUT
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Codigo Usuario
+                                                Razon Social
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Rol
+                                                Rubro
                                                     </th>
                                             <th className="align-middle text-center">
-                                                E-mail
+                                                Dirección
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Fecha de Registro
+                                                Cuenta Corriente
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Activo
+                                                Banco
                                                     </th>
+                                            <th className="align-middle text-center">
+                                                &nbsp;
+                                            </th>
                                         </thead>
                                         <tbody>
                                             {
-                                                store.usuarios == null ?
+                                                store.proveedores == null ?
                                                     <tr className="align-middle text-center">
                                                         <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.usuarios.filter((usuario) => {
-                                                        if (state.buscarPor === "nombre")
-                                                            return usuario.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
+                                                    store.proveedores.filter((proveedor) => {
 
                                                         if (state.buscarPor === "rut")
-                                                            return usuario.rut.includes(state.inputBuscador)
+                                                            return proveedor.rut.includes(state.inputBuscador)
 
-                                                        if (state.buscarPor === "codUsuario")
-                                                            return usuario.codigo.includes(state.inputBuscador)
-                                                    }).map((usuario, indice) => {
+                                                        if (state.buscarPor === "razon_social")
+                                                            return proveedor.razon_social.toLowerCase().includes(state.inputBuscador.toLowerCase())
+
+                                                    }).map((proveedor, indice) => {
                                                         return (
                                                             <tr key={indice}>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.nombre}
+                                                                    {proveedor.nombre}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.apellido}
+                                                                    {proveedor.rut}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.rut}
+                                                                    {proveedor.razon_social}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.codigo}
+                                                                    {proveedor.rubro}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.rol}
+                                                                    {proveedor.direccion}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.email}
+                                                                    {proveedor.cuenta_corriente}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.fecha_registro}
+                                                                    {proveedor.banco}
                                                                 </td>
+                                                               
                                                                 <td className="align-middle text-center">
-                                                                    {usuario.status === true ? "Activo" : "Inactivo"}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-usuario/${usuario.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                    <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
                                                                     </Link>
                                                                 </td>
@@ -156,4 +152,4 @@ const VerProveedores = (props) => {
         </>
     )
 }
-export default withRouter(VerProveedores);
+export default withRouter(ListarProveedores);

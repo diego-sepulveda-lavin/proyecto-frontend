@@ -29,11 +29,11 @@ import Facturas from './views/facturas';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
-import VerProveedores from './views/verProveedores';
 import EditarProveedores from './views/EditarProveedores';
 import CrearCategoria from './views/CrearCategoria';
 import ModificarCategoria from './views/ModificarCategoria';
 import ListarCategorias from './views/ListarCategorias';
+import ListarProveedores from './views/ListarProveedores';
 
 const App = props => {
   return (
@@ -74,7 +74,7 @@ const App = props => {
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
             <Route exact path="/crear-proveedor" component={CrearProveedor}></Route>
-            <Route exact path="/listar-proveedores" component={VerProveedores}></Route>
+            <Route exact path="/listar-proveedores" component={ListarProveedores}></Route>
             <Route exact path="/modificar-proveedores" component={EditarProveedores}></Route>
             
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
