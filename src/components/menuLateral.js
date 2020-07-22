@@ -38,8 +38,8 @@ const MenuLateral = props => {
                     </li>
                     <li className={
                         props.location.pathname === "/listar-categorias" ||
-                            props.location.pathname === "/crear-sku" ||
                             props.location.pathname === "/crear-categoria" ||
+                           
                             props.location.pathname === "/modificar-categoria" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons shopping_box"></i>
