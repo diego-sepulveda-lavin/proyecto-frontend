@@ -37,13 +37,13 @@ const MenuLateral = props => {
                         </div>
                     </li>
                     <li className={
-                        props.location.pathname === "/general-stock" ||
+                        props.location.pathname === "/listar-categorias" ||
                             props.location.pathname === "/crear-sku" ||
-                            props.location.pathname === "/modificar-sku" ||
-                            props.location.pathname === "/ingresar-factura" ? "active" : ""}>
+                            props.location.pathname === "/crear-categoria" ||
+                            props.location.pathname === "/modificar-categoria" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons location_map-big"></i>
-                            <p data-toggle="collapse" data-target="#stock">Stock</p>
+                            <p data-toggle="collapse" data-target="#stock">Categorías</p>
                         </Link>
                         <div id="stock" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
@@ -54,14 +54,6 @@ const MenuLateral = props => {
                         </div>
                     </li>
 
-
-
-
-
-
-
-
-
                     <li className={
                         props.location.pathname === "/general-stock" ||
                             props.location.pathname === "/crear-sku" ||
@@ -69,13 +61,13 @@ const MenuLateral = props => {
                             props.location.pathname === "/ingresar-factura" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons location_map-big"></i>
-                            <p data-toggle="collapse" data-target="#stock">Categoria</p>
+                            <p data-toggle="collapse" data-target="#stock">Stock</p>
                         </Link>
                         <div id="stock" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
-                                <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Categoria</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Categoria</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Categoria</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Producto</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Producto</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Listar Facturas</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/editar-factura"}><p>Editar Factura</p></Link></li>
