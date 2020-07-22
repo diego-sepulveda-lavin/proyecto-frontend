@@ -76,7 +76,7 @@ const MenuLateral = props => {
                     </li>        
 
                     <li className={
-                        props.location.pathname === "/proveedores" ||
+                        props.location.pathname === "/listar-proveedores" ||
                             props.location.pathname === "/crear-proveedor" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons shopping_delivery-fast"></i>
