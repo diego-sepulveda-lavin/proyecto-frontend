@@ -22,7 +22,6 @@ const ModificarUser = (props) => {
     }
 
     const getInformacionFoto = e => {
-        console.log(e.target.files[0])
         state.usuario.foto = e.target.files[0]
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);

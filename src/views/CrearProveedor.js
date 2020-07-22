@@ -106,20 +106,20 @@ const CrearProveedor = (props) => {
                                                     <td className="align-middle text-center">
                                                         <select className="form-control" name="banco" value={!state.banco ? "" : state.banco} onChange={getInformacion}>
                                                             <option value="" disabled>Seleccionar</option>
-                                                            <option value="BANCO DE CHILE">BANCO DE CHILE</option>
-                                                            <option value="BANCO INTERNACIONAL">BANCO INTERNACIONAL</option>
-                                                            <option value="SCOTIABANK CHILE">SCOTIABANK CHILE</option>
-                                                            <option value="BANCO DE CREDITO E INVERSIONES">BANCO DE CREDITO E INVERSIONES</option> 
-                                                            <option value="BANCO BICE">BANCO BICE</option>
+                                                            <option value="Banco De Chile">Banco De Chile</option>
+                                                            <option value="Banco Internacional">Banco Internacional</option>
+                                                            <option value="Scotiabank Chile">Scotiabank Chile</option>
+                                                            <option value="Banco De Credito e Inversiones">Banco De Credito e Inversiones</option> 
+                                                            <option value="Banco BICE">Banco BICE</option>
                                                             <option value="HSBC BANK">HSBC BANK</option>
-                                                            <option value="BANCO SANTANDER-CHILE">BANCO SANTANDER-CHILE</option>
-                                                            <option value="ITAÚ CORPBANCA">ITAÚ CORPBANCA</option>
-                                                            <option value="BANCO SECURITY">BANCO SECURITY</option>
-                                                            <option value="BANCO FALABELLA">BANCO FALABELLA</option>
-                                                            <option value="BANCO RIPLEY">BANCO RIPLEY</option>
-                                                            <option value="BANCO CONSORCIO">BANCO CONSORCIO</option>
-                                                            <option value="SCOTIABANK AZUL">SCOTIABANK AZUL</option>
-                                                            <option value="BANCO BTG PACTUAL CHILE">BANCO BTG PACTUAL CHILE</option>
+                                                            <option value="Banco Santander Chile">Banco Santander Chile</option>
+                                                            <option value="Itaú Corpbanca">Itaú Corpbanca</option>
+                                                            <option value="Banco Security">Banco Security</option>
+                                                            <option value="Banco Falabella">Banco Falabella</option>
+                                                            <option value="Banco Ripley">Banco Ripley</option>
+                                                            <option value="Banco Consorcio">Banco Consorcio</option>
+                                                            <option value="Scotiabank Azul">Scotiabank Azul</option>
+                                                            <option value="Banco BTG Pactual Chile">Banco BTG Pactual Chile</option>
                                                         </select>
                                                     </td>
                                                 </tr>
