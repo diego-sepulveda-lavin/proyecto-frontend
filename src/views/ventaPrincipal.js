@@ -27,73 +27,73 @@ const VentaUsuario = (props) => {
                                 <div className="chart-area">
                                     <table className="table table-hover">
                                         <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Producto</th>
-                                                <th scope="col">Precio Unitario</th>
+                                            <tr>align-middle text-center
+                                                <th className="align-middle text-center" scope="col">#</th>
+                                                <th className="align-middle text-center" scope="col">Producto</th>
+                                                <th className="align-middle text-center" scope="col">Precio Unitario</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Super Ocho</td>
-                                                <td className="text-center">100</td>
+                                                <th className="align-middle text-center"scope="row">1</th>
+                                                <td className="align-middle text-center">Super Ocho</td>
+                                                <td className="align-middle text-center">100</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocman</td>
+                                                <th className="align-middle text-center" scope="row">2</th>
+                                                <td className="align-middle text-center">Chocman</td>
+                                                <td className="align-middle text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-middle text-center" scope="row">3</th>
+                                                <td className="align-middle text-center">Negrita</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">3</th>
-                                                <td>Negrita</td>
+                                                <th className="align-middle text-center" scope="row">4</th>
+                                                <td className="align-middle text-center">Prestigio</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">4</th>
-                                                <td>Prestigio</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">5</th>
-                                                <td>
+                                                <th className="align-middle text-center" scope="row">5</th>
+                                                <td className="align-middle text-center">
                                                     Chocapic
                                                 </td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">5</th>
-                                                <td>Zucaritas</td>
+                                                <th className="align-middle text-center" scope="row">5</th>
+                                                <td className="align-middle text-center">Zucaritas</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">6</th>
-                                                <td>Chocolate Trencito</td>
+                                                <th className="align-middle text-center" scope="row">6</th>
+                                                <td className="align-middle text-center">Chocolate Trencito</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">7</th>
-                                                <td>Rolls</td>
+                                                <th className="align-middle text-center" scope="row">7</th>
+                                                <td className="align-middle text-center">Rolls</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">8</th>
-                                                <td>Chubi</td>
+                                                <th className="align-middle text-center" scope="row">8</th>
+                                                <td className="align-middle text-center">Chubi</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">9</th>
-                                                <td>Coca Cola</td>
+                                                <th className="align-middle text-center" scope="row">9</th>
+                                                <td className="align-middle text-center">Coca Cola</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">10</th>
-                                                <td>Fanta</td>
+                                                <th className="align-middle text-center" scope="row">10</th>
+                                                <td className="align-middle text-center">Fanta</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>
-                                                <td>Sprite</td>
+                                                <th className="align-middle text-center" scope="row">11</th>
+                                                <td className="align-middle text-center">Sprite</td>
                                                 <td className="text-center">250</td>
                                             </tr>
 
@@ -132,8 +132,8 @@ const VentaUsuario = (props) => {
                                             </button></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
+                                            <th scope="row">2</th>
+                                            <td className="text-center">Chocman</td>
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
@@ -142,8 +142,8 @@ const VentaUsuario = (props) => {
                                             </button></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
+                                            <th scope="row">3</th>
+                                            <td className="text-center">Chocolate Trencito</td>
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
@@ -152,8 +152,8 @@ const VentaUsuario = (props) => {
                                             </button></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
+                                            <th scope="row">4</th>
+                                            <td className="text-center">Zucaritas</td>
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
@@ -162,8 +162,8 @@ const VentaUsuario = (props) => {
                                             </button></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
+                                            <th scope="row">5</th>
+                                            <td className="text-center">Coca Cola</td>
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
@@ -171,27 +171,7 @@ const VentaUsuario = (props) => {
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
-                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
-                                            <td className="text-center">100</td>
-                                            <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                                            </button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td className="text-center">SuperOcho</td>
-                                            <td><input type="text" className="border-0 text-center" value="2" /></td>
-                                            <td className="text-center">100</td>
-                                            <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                                            </button></td>
-                                        </tr>
-
+                                     
                                     </tbody>
                                 </table>
                             </div>
@@ -201,7 +181,7 @@ const VentaUsuario = (props) => {
                 </div>
 
                 <div className="row">
-                    <div className="col-4 md-4 offset-md-7">
+                    <div className="col-12 col-md-7 offset-md-5">
                         <div className="card">
                             <div className="card-body">
                                 <table class="table">
@@ -216,7 +196,7 @@ const VentaUsuario = (props) => {
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
-                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar" /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar"  /> </th>
                                         </tr>
                                     </thead>
                                 </table>
