@@ -88,6 +88,7 @@ const EditarEmpresa = (props) => {
                                                                 value={state.empresa.rut}
                                                                 name="rut"
                                                                 aria-describedby="basic-addon1"
+                                                                maxlength="13"
                                                                 onChange={valorInput} />
                                                         </td>
                                                         <td className="align-middle text-center">

@@ -88,7 +88,7 @@ const CreateUser = (props) => {
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" class="form-control" placeholder="17355681-2" value={`${!state.rut ? "" : state.rut}`} onChange={getInformacion} />
+                                                        <input type="text" name="rut" maxlength="13" class="form-control" placeholder="17355681-2" value={`${!state.rut ? "" : state.rut}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 

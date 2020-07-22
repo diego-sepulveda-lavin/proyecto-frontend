@@ -96,8 +96,8 @@ const ModificarSku = (props) => {
                                                         <input type="text" class="form-control" placeholder="Cantidad" aria-label="Username" aria-describedby="basic-addon1" />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        Unidad
-                                                            </td>
+                                                        <input type="text" class="form-control" value="Unidad" aria-label="Username" aria-describedby="basic-addon1" disabled />
+                                                    </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="C. Unit" />
                                                     </td>

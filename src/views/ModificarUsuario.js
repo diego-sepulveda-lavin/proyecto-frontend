@@ -123,7 +123,7 @@ const ModificarUsuario = (props) => {
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">RUT</span>
                                                         </div>
-                                                        <input type="text" name="rut" aria-label="First name" className="form-control" value={state.usuario.rut} onChange={getInformacion} />
+                                                        <input type="text" name="rut" maxlength="13" aria-label="First name" className="form-control" value={state.usuario.rut} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 

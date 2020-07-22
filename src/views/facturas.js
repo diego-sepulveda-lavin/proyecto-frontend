@@ -117,10 +117,10 @@ const Facturas = (props) => {
                                                                     {factura.folio}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {new Date(factura.fecha_emision).toLocaleString()}
+                                                                    {new Date(factura.fecha_emision).toLocaleString("es-CL",{ dateStyle: 'short'})}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {new Date(factura.fecha_recepcion).toLocaleString()}
+                                                                    {new Date(factura.fecha_recepcion).toLocaleString("es-CL",{ dateStyle: 'short'})}
                                                                 </td>
                                                                 <td className="align-middle text-center">
                                                                     {factura.monto_neto}

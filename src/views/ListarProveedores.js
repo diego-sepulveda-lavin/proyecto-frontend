@@ -101,7 +101,7 @@ const ListarProveedores = (props) => {
                                                     store.proveedores.filter((proveedor) => {
 
                                                         if (state.buscarPor === "rut")
-                                                            return proveedor.rut.includes(state.inputBuscador)
+                                                            return proveedor.rut.toLowerCase().includes(state.inputBuscador.toLocaleLowerCase())
 
                                                         if (state.buscarPor === "razon_social")
                                                             return proveedor.razon_social.toLowerCase().includes(state.inputBuscador.toLowerCase())
