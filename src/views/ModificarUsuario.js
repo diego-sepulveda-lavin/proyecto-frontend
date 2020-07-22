@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
-const ModificarUser = (props) => {
+const ModificarUsuario = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
@@ -197,4 +197,4 @@ const ModificarUser = (props) => {
 
 }
 
-export default withRouter(ModificarUser);
+export default withRouter(ModificarUsuario);

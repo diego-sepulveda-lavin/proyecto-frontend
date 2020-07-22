@@ -11,7 +11,6 @@ import CrearSku from './views/CrearSKU';
 import ModificarSku from './views/ModificarSku';
 import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser';
-import ModificarUser from './views/ModificarUser'
 import AbrirCaja from './views/abrirCaja';
 import ListadoUsuarios from './views/ListadoUsuarios';
 import CerrarCaja from './views/cerrarCaja';
@@ -29,11 +28,12 @@ import Facturas from './views/facturas';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
-import EditarProveedores from './views/EditarProveedores';
 import CrearCategoria from './views/CrearCategoria';
 import ModificarCategoria from './views/ModificarCategoria';
 import ListarCategorias from './views/ListarCategorias';
 import ListarProveedores from './views/ListarProveedores';
+import ModificarUsuario from './views/ModificarUsuario';
+import ModificarProveedor from './views/ModificarProveedor';
 
 const App = props => {
   return (
@@ -69,14 +69,13 @@ const App = props => {
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/crear-usuario" component={CreateUser}></Route>
             <Route exact path="/modificar-usuario/" component={modificarUserSinID}></Route>
-            <Route exact path="/modificar-usuario/:index" component={ModificarUser}></Route>
+            <Route exact path="/modificar-usuario/:index" component={ModificarUsuario}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
             <Route exact path="/crear-proveedor" component={CrearProveedor}></Route>
             <Route exact path="/listar-proveedores" component={ListarProveedores}></Route>
-            <Route exact path="/modificar-proveedores" component={EditarProveedores}></Route>
-            
+            <Route exact path="/modificar-proveedor/:index" component={ModificarProveedor}></Route>            
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
             <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>

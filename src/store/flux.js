@@ -189,7 +189,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-            putFetch: async (urlPag, setInfo, data_a_enviar) => {
+            putFetch: async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
                 let store = getStore()
 
                 try {
@@ -208,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (!result.msg) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Empresa modificada exitosamente.'
+                            title:  mensajeAlerta+ ' modificado exitosamente.'
                         })
                     } else {
                         Swal.fire({
