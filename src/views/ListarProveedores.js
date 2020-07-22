@@ -25,6 +25,7 @@ const ListarProveedores = (props) => {
 
     useEffect(() => {
         actions.validaLogin(props)
+        actions.getFetch("/proveedores", "proveedores");
     }, [])
 
     return (

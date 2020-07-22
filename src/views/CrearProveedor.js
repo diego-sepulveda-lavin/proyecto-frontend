@@ -40,6 +40,7 @@ const CrearProveedor = (props) => {
     const handleSubmit = e => {
         e.preventDefault()
         actions.postFetch("/proveedores", state, setState, "Proveedor")
+        actions.getFetch("/proveedores", "proveedores");
 
     }
 
