@@ -36,62 +36,64 @@ const VentaUsuario = (props) => {
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>SuperOcho</td>
+                                                <td>Super Ocho</td>
                                                 <td className="text-center">100</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td>Chocamn</td>
+                                                <td>Chocman</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Negrita</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>Prestigio</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td>
+                                                    Chocapic
+                                                </td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td>Zucaritas</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td>Chocolate Trencito</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">7</th>
+                                                <td>Rolls</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">8</th>
+                                                <td>Chubi</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td>Coca Cola</td>
+                                                <td className="text-center">250</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td>Fanta</td>
                                                 <td className="text-center">250</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
-                                                <td className="text-center">250</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chocamn</td>
+                                                <td>Sprite</td>
                                                 <td className="text-center">250</td>
                                             </tr>
 
