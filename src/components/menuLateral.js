@@ -12,7 +12,7 @@ const MenuLateral = props => {
                 <ul className="nav">
                     <li className={props.location.pathname === "/dashboard" ? "active" : ""}>
                         <Link to={"/dashboard"}>
-                            <i className="now-ui-icons design_app"></i>
+                            <i className="now-ui-icons business_chart-bar-32"></i>
                             <p>Dashboard</p>
                         </Link>
                     </li>
@@ -23,7 +23,7 @@ const MenuLateral = props => {
                             props.location.pathname === "/cerrar-venta" ||
                             props.location.pathname === "/anular-venta" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons text_caps-small"></i>
+                            <i className="now-ui-icons business_money-coins"></i>
                             <p data-toggle="collapse" data-target="#ventas">Ventas</p>
                         </Link>
 
@@ -42,7 +42,7 @@ const MenuLateral = props => {
                             props.location.pathname === "/modificar-sku" ||
                             props.location.pathname === "/ingresar-factura" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons location_map-big"></i>
+                            <i className="now-ui-icons shopping_box"></i>
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
                         </Link>
                         <div id="stock" className="collapse">
@@ -105,7 +105,7 @@ const MenuLateral = props => {
                             props.location.pathname === "/crear-usuario" ||
                             props.location.pathname === "/modificar-usuario" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons ui-1_bell-53"></i>
+                            <i className="now-ui-icons ui-2_settings-90"></i>
                             <p data-toggle="collapse" data-target="#administrador">Administrador</p>
                         </Link>
 
@@ -122,7 +122,7 @@ const MenuLateral = props => {
                         props.location.pathname === "/proveedores" ||
                             props.location.pathname === "/crear-proveedor" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons objects_spaceship"></i>
+                            <i className="now-ui-icons shopping_delivery-fast"></i>
                             <p data-toggle="collapse" data-target="#proveedores">Proveedores</p>
                         </Link>
 
