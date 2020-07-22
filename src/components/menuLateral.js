@@ -47,15 +47,59 @@ const MenuLateral = props => {
                         </Link>
                         <div id="stock" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
-                                <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Producto</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Producto</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/listar-categorias"}><p>Ver Categorias</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-categoria"}><p>Crear Categoria</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/modificar-categoria"}><p>Modificar Categoria</p></Link></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+
+
+
+
+                    <li className={
+                        props.location.pathname === "/general-stock" ||
+                            props.location.pathname === "/crear-sku" ||
+                            props.location.pathname === "/modificar-sku" ||
+                            props.location.pathname === "/ingresar-factura" ? "active" : ""}>
+                        <Link to="#">
+                            <i className="now-ui-icons location_map-big"></i>
+                            <p data-toggle="collapse" data-target="#stock">Categoria</p>
+                        </Link>
+                        <div id="stock" className="collapse">
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
+                                <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Categoria</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Categoria</p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Categoria</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Listar Facturas</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/editar-factura"}><p>Editar Factura</p></Link></li>
                             </ul>
                         </div>
                     </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <li className={
                         props.location.pathname === "/listado-usuarios" ||
                             props.location.pathname === "/crear-usuario" ||

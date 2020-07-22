@@ -137,8 +137,8 @@ const Empresas = (props) => {
 
                                                                                 <td className="align-middle text-center">
 
-                                                                                    <Link to={`/empresas/${empresa.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" >
-                                                                                        <i className="now-ui-icons ui-2_settings-90" data-original-title="Editar?"></i>
+                                                                                    <Link to={`/empresas/${empresa.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
 
                                                                                     </Link>
                                                                                 </td>

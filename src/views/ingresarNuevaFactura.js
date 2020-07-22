@@ -102,6 +102,29 @@ const IngresarNuevaFactura = (props) => {
 
     }
 
+    /*  const eliminarRegistro = (indice) => {
+         let { entradas_inventario } = state.factura;
+         console.log("aaa", entradas_inventario)
+         let nuevoArray = state.factura.entradas_inventario.filter((ele, index) => {
+             return index != indice
+         })
+         console.log("nuevo array", nuevoArray)
+         setState(prevState => {
+             return { ...prevState, entradas_inventario: nuevoArray }
+         })
+ 
+     } */
+
+
+
+    const deleteProducto = e => {
+        let data = state.factura.entradas_inventario;
+        data.splice(e.target.id, 1);
+        setState(prevState => {
+            return { ...prevState, entradas_inventario: data }
+        });
+    }
+
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -311,12 +334,8 @@ const IngresarNuevaFactura = (props) => {
                                                                         {index + 1}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {/* {actions.validaProducto(producto.producto_id) */}
-                                                                        {store.productos?store.productos.filter((ele)=>{
-                                                                            let a= ele.id === producto.producto_id
-                                                                            console.log(a)
-                                                                            return a[0].descripcion
-                                                                        }):""}
+                                                                        {actions.validaProducto(producto.producto_id)}
+
                                                                     </td>
                                                                     <td className="align-middle text-center">
                                                                         {producto.cantidad}
@@ -328,7 +347,7 @@ const IngresarNuevaFactura = (props) => {
                                                                         {producto.costo_total}
                                                                     </td>
                                                                     <td>
-                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
                                                                             <i className="now-ui-icons ui-1_simple-remove"></i>
                                                                         </button>
                                                                     </td>

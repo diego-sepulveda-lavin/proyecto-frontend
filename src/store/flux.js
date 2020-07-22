@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (!localStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
-                setStore({usuarioActivo:JSON.parse(localStorage.getItem('user'))})
+                setStore({ usuarioActivo: JSON.parse(localStorage.getItem('user')) })
             },
 
 
@@ -319,33 +319,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             },
             validaCategoria: (categoria_id) => {
-                let store = getStore()
+                let store = getStore();
                 /*let nombre_categoria = store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
                 })
                 return nombre_categoria[0].nombre */
 
-                let a= store.categorias.filter((categoria) => {
+                let a = store.categorias.filter((categoria) => {
                     return categoria.id === categoria_id
                 }).map(categ => {
                     return categ.nombre
                 })
                 return a;
-                
-            },
-            validaProducto: (id) => {
-                console.log("aaaaaaaaaaaaa")
-                console.log("AAAAAAAAAAAAAA")
-                console.log(id)
-             
-                
-            },
-            usuarioAuth: (usuario) => {
-                setStore({usuarioActivo:usuario})
 
             },
-                
-            
+            validaProducto: (prod_id) => {
+                let store = getStore();
+                let nuevoValor = store.productos.filter((ele) => {
+                    return ele.id == prod_id
+                }).map((ele) => {
+                    return ele.descripcion
+                })
+                return nuevoValor;
+            },
+
+            usuarioAuth: (usuario) => {
+                setStore({ usuarioActivo: usuario })
+
+            },
+
+
             /* /Zona Valida */
 
 
