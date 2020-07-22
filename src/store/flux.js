@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             categorias: null,
             productos: null,
             proveedores: null,
+            facturas: null,
             usuarioActivo: null,
             creacionUsuario: {
                 nombre: "",
@@ -72,7 +73,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     setStore({
-                        [data]: result
+                        [data]: result,
+                        msg: result.msg
                     })
                 } catch (error) {
                     console.log(error);
@@ -208,7 +210,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
-                            title:  mensajeAlerta+ ' modificado exitosamente.'
+                            title: mensajeAlerta + ' modificado exitosamente.'
                         })
                     } else {
                         Swal.fire({
@@ -340,6 +342,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return ele.descripcion
                 })
                 return nuevoValor;
+            },
+            validaFactura: (factura_id, prove) => {
+                let valorProv = prove.filter(ele => {
+                    return ele.id == factura_id
+                }).map(ele=>{
+                    return ele.nombre
+                })
+                return valorProv;
+
+
             },
 
             usuarioAuth: (usuario) => {

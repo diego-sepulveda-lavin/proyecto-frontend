@@ -7,7 +7,7 @@ const Facturas = (props) => {
     const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         inputBuscador: "",
-        buscarPor: ""
+        buscarPor: "folio"
     })
     const seleccionadorBuscador = e => {
         console.log(e.target.value)
@@ -96,19 +96,17 @@ const Facturas = (props) => {
                                                     </th>
                                         </thead>
                                         <tbody>
-                                            {
+                                        {
                                                 store.facturas == null ?
                                                     <tr className="align-middle text-center">
                                                         <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.facturas/* .filter((factura) => {
-                                                        if (state.buscarPor === "folio")
-                                                        return factura.folio.includes(state.inputBuscador)
-                                                           
+                                                    store.facturas/*. filter((factura) => {
 
-                                                        if (state.buscarPor === "proveedor")
-                                                            return factura.proveedor_id.includes(state.inputBuscador)
+                                                        if (state.buscarPor === "folio")
+                                                            return factura.folio.includes(state.inputBuscador.toLowerCase())
+
 
                                                     }) */.map((factura, indice) => {
                                                         return (
@@ -135,7 +133,7 @@ const Facturas = (props) => {
                                                                     {factura.monto_total}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    {factura.proveedor_id}
+                                                                    {actions.validaFactura(factura.proveedor_id, store.proveedores)}
                                                                 </td>
                                                                 <td className="align-middle text-center">
                                                                     <Link to={`/modificar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
