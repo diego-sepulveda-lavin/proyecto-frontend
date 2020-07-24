@@ -96,7 +96,7 @@ const ListarFacturas = (props) => {
                                             {
                                                 store.facturas == null ?
                                                     <tr className="align-middle text-center">
-                                                        <th colspan="8"><i clasname="now-ui-icons loader_refresh spin"></i></th>
+                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
                                                     store.facturas.filter((factura) => {

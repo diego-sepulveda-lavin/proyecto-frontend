@@ -39,7 +39,6 @@ const MenuLateral = props => {
                     <li className={
                         props.location.pathname === "/listar-categorias" ||
                             props.location.pathname === "/crear-categoria" ||
-                           
                             props.location.pathname === "/modificar-categoria" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons shopping_box"></i>
@@ -57,9 +56,7 @@ const MenuLateral = props => {
                     <li className={
                         props.location.pathname === "/general-stock" ||
                             props.location.pathname === "/crear-sku" ||
-                            props.location.pathname === "/modificar-sku" ||
-                            props.location.pathname === "/ingresar-factura" ||
-                            props.location.pathname === "/listar-facturas"? "active" : ""}>
+                            props.location.pathname === "/modificar-sku" ? "active" : ""}>
                         <Link to="#">
                             <i className="now-ui-icons shopping_basket"></i>
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
@@ -69,11 +66,37 @@ const MenuLateral = props => {
                                 <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Producto</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Producto</p></Link></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+                    <li className={
+                        props.location.pathname === "/ingresar-factura" ||
+                            props.location.pathname === "/listar-facturas" ? "active" : ""}>
+                        <Link to="#">
+                            <i className="now-ui-icons shopping_basket"></i>
+                            <p data-toggle="collapse" data-target="#factura">Facturas</p>
+                        </Link>
+                        <div id="factura" className="collapse">
+                            <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/listar-facturas"}><p>Listar Facturas</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/ingresar-factura"}><p>Ingresar Factura</p></Link></li>
-                                             </ul>
+                            </ul>
                         </div>
-                    </li>        
+                    </li>
+
+
+
+
+
+
+
+
+
 
                     <li className={
                         props.location.pathname === "/listar-proveedores" ||
