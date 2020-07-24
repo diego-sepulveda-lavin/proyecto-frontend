@@ -19,9 +19,16 @@ const VentaUsuario = (props) => {
                 <div className="row">
                     <div className="col-lg-5">
                         <div className="card">
-                            <div className="card-header d-flex justify-content-center">
-                                <h4 className="card-title"><input type="text" placeholder="Buscar Producto" className="border-1" /></h4>
-                            </div>
+                            <h5 className="card-title m-2">
+                                <div className="input-group no-border " >
+                                    <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Categoría" />
+                                    <div className="input-group-append">
+                                        <div className="input-group-text bg-light">
+                                            <i className="now-ui-icons ui-1_zoom-bold"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h5>
 
                             <div className="card-body productos">
                                 <div className="chart-area">
@@ -115,7 +122,7 @@ const VentaUsuario = (props) => {
                                         <tr>
                                             <th className="align-middle text-center font-weight-bold" scope="col">#</th>
                                             <th className="align-middle text-center font-weight-bold" scope="col">Producto</th>
-                                            <th  className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
+                                            <th className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
                                             <th className="align-middle text-center font-weight-bold" scope="col">Precio Unitario</th>
                                             <th className="align-middle text-center font-weight-bold" scope="col">Total</th>
                                         </tr>

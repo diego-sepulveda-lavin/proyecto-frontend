@@ -4,9 +4,9 @@ import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 
 const AnularVentaUsuario = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
     }, [])
     return (
         <>
@@ -29,7 +29,16 @@ const AnularVentaUsuario = (props) => {
                                         <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
                                     </div>
                                 </div>
-                                <h5 className="card-title"><input type="text" placeholder="Buscar Documento" className="border-1" /></h5>
+                                <h5 className="card-title">
+                                    <div className="input-group no-border " >
+                                        <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Categoría" />
+                                        <div className="input-group-append">
+                                            <div className="input-group-text bg-light">
+                                                <i className="now-ui-icons ui-1_zoom-bold"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h5>
                             </div>
                             <div className="card-body productos">
                                 <div className="chart-area">
@@ -62,10 +71,10 @@ const AnularVentaUsuario = (props) => {
                         <div className="card card-chart">
                             <div className="card-header">
                                 <div className="row d-flex justify-content-between">
-                                    <div className="input-group col-md-4">
+                                    <div className="input-group col-md-5">
                                         <input type="text" aria-label="First name" className="input-group-prepend form-control" placeholder="Documento" />
                                     </div>
-                                    <div className="input-group col-md-4">
+                                    <div className="input-group col-md-5">
                                         <input type="text" aria-label="First name" className="input-group-prepend form-control" placeholder="Fecha Emision" />
                                     </div>
                                 </div>
@@ -88,7 +97,7 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            
+
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
