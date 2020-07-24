@@ -128,7 +128,7 @@ const VentaUsuario = (props) => {
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
                                             <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
                                         <tr>
