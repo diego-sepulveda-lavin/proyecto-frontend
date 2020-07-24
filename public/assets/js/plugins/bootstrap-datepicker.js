@@ -824,10 +824,10 @@
       var dowCnt = this.o.weekStart,
         html = '<tr>';
       if (this.o.calendarWeeks) {
-        html += '<th className="cw">&#160;</th>';
+        html += '<th class="cw">&#160;</th>';
       }
       while (dowCnt < this.o.weekStart + 7) {
-        html += '<th className="dow';
+        html += '<th class="dow';
         if ($.inArray(dowCnt, this.o.daysOfWeekDisabled) !== -1)
           html += ' disabled';
         html += '">' + dates[this.o.language].daysMin[(dowCnt++) % 7] + '</th>';
@@ -842,7 +842,7 @@
       var focused;
       for (var i = 0; i < 12; i++) {
         focused = localDate && localDate.getMonth() === i ? ' focused' : '';
-        html += '<span className="month' + focused + '">' + dates[this.o.language].monthsShort[i] + '</span>';
+        html += '<span class="month' + focused + '">' + dates[this.o.language].monthsShort[i] + '</span>';
       }
       this.picker.find('.datepicker-months td').html(html);
     },
@@ -957,7 +957,7 @@
           }
         }
 
-        html += '<span className="' + classes.join(' ') + '"' + (tooltip ? ' title="' + tooltip + '"' : '') + '>' + currVal + '</span>';
+        html += '<span class="' + classes.join(' ') + '"' + (tooltip ? ' title="' + tooltip + '"' : '') + '>' + currVal + '</span>';
       }
 
       view.find('.datepicker-switch').text(startVal + '-' + endVal);
@@ -1019,7 +1019,7 @@
               yth = new Date(Number(yth = UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay()) % 7 * 864e5),
               // Calendar week: ms between thursdays, div ms per day, div 7 days
               calWeek = (th - yth) / 864e5 / 7 + 1;
-            html.push('<td className="cw">' + calWeek + '</td>');
+            html.push('<td class="cw">' + calWeek + '</td>');
           }
         }
         clsName = this.getClassNames(prevMonth);
@@ -1054,7 +1054,7 @@
         }
 
         // Creative Tim - we added a div inside each td for design purposes
-        html.push('<td className="' + clsName.join(' ') + '"' + (tooltip ? ' title="' + tooltip + '"' : '') + (this.o.dateCells ? ' data-date="' + prevMonth.getTime().toString() + '"' : '') + '><div>' + prevMonth.getUTCDate() + '</div></td>');
+        html.push('<td class="' + clsName.join(' ') + '"' + (tooltip ? ' title="' + tooltip + '"' : '') + (this.o.dateCells ? ' data-date="' + prevMonth.getTime().toString() + '"' : '') + '><div>' + prevMonth.getUTCDate() + '</div></td>');
         tooltip = null;
         if (weekDay === this.o.weekEnd) {
           html.push('</tr>');
@@ -1955,55 +1955,55 @@
     },
     headTemplate: '<thead>' +
       '<tr>' +
-      '<th colspan="7" className="datepicker-title"></th>' +
+      '<th colspan="7" class="datepicker-title"></th>' +
       '</tr>' +
       '<tr>' +
-      '<th className="prev">&laquo;</th>' +
-      '<th colspan="5" className="datepicker-switch"></th>' +
-      '<th className="next">&raquo;</th>' +
+      '<th class="prev">&laquo;</th>' +
+      '<th colspan="5" class="datepicker-switch"></th>' +
+      '<th class="next">&raquo;</th>' +
       '</tr>' +
       '</thead>',
     contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
     footTemplate: '<tfoot>' +
       '<tr>' +
-      '<th colspan="7" className="today"></th>' +
+      '<th colspan="7" class="today"></th>' +
       '</tr>' +
       '<tr>' +
-      '<th colspan="7" className="clear"></th>' +
+      '<th colspan="7" class="clear"></th>' +
       '</tr>' +
       '</tfoot>'
   };
-  DPGlobal.template = '<div className="datepicker">' +
-    '<div className="datepicker-days">' +
-    '<table className="table-condensed">' +
+  DPGlobal.template = '<div class="datepicker">' +
+    '<div class="datepicker-days">' +
+    '<table class="table-condensed">' +
     DPGlobal.headTemplate +
     '<tbody></tbody>' +
     DPGlobal.footTemplate +
     '</table>' +
     '</div>' +
-    '<div className="datepicker-months">' +
-    '<table className="table-condensed">' +
+    '<div class="datepicker-months">' +
+    '<table class="table-condensed">' +
     DPGlobal.headTemplate +
     DPGlobal.contTemplate +
     DPGlobal.footTemplate +
     '</table>' +
     '</div>' +
-    '<div className="datepicker-years">' +
-    '<table className="table-condensed">' +
+    '<div class="datepicker-years">' +
+    '<table class="table-condensed">' +
     DPGlobal.headTemplate +
     DPGlobal.contTemplate +
     DPGlobal.footTemplate +
     '</table>' +
     '</div>' +
-    '<div className="datepicker-decades">' +
-    '<table className="table-condensed">' +
+    '<div class="datepicker-decades">' +
+    '<table class="table-condensed">' +
     DPGlobal.headTemplate +
     DPGlobal.contTemplate +
     DPGlobal.footTemplate +
     '</table>' +
     '</div>' +
-    '<div className="datepicker-centuries">' +
-    '<table className="table-condensed">' +
+    '<div class="datepicker-centuries">' +
+    '<table class="table-condensed">' +
     DPGlobal.headTemplate +
     DPGlobal.contTemplate +
     DPGlobal.footTemplate +
