@@ -39,7 +39,7 @@ $(document).ready(function() {
   $('[data-toggle="popover"]').each(function() {
     color_class = $(this).data('color');
     $(this).popover({
-      template: '<div class="popover popover-' + color_class + '" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+      template: '<div className="popover popover-' + color_class + '" role="tooltip"><div className="arrow"></div><h3 className="popover-header"></h3><div className="popover-body"></div></div>'
     });
   });
 
@@ -88,8 +88,8 @@ $(document).ready(function() {
   $('.date-picker').each(function() {
     $(this).datepicker({
       templates: {
-        leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
-        rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
+        leftArrow: '<i className="now-ui-icons arrows-1_minimal-left"></i>',
+        rightArrow: '<i className="now-ui-icons arrows-1_minimal-right"></i>'
       }
     }).on('show', function() {
       $('.datepicker').addClass('open');
