@@ -146,6 +146,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("nombre", data_a_enviar.nombre);
                 formData.append("apellido", data_a_enviar.apellido);
                 formData.append("rut", data_a_enviar.rut);
+                /* formData.append("status", data_a_enviar.status); */
                 formData.append("rol", data_a_enviar.rol);
                 formData.append("email", data_a_enviar.email);
                 formData.append("password", data_a_enviar.password);
@@ -183,13 +184,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                             title: "Algo salió mal",
                             text: result.msg
                         })
-
                     }
-
                 } catch (error) {
                     console.log(error);
                 }
             },
+
             putFetch: async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
                 let store = getStore()
 

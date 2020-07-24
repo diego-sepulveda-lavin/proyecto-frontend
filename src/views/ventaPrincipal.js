@@ -19,23 +19,23 @@ const VentaUsuario = (props) => {
                 <div className="row">
                     <div className="col-lg-5">
                         <div className="card">
-                            <div className="card-header">
-                                <h4 className="card-title"><input type="text" placeholder="Buscar Producto" className="border-0" /></h4>
+                            <div className="card-header d-flex justify-content-center">
+                                <h4 className="card-title"><input type="text" placeholder="Buscar Producto" className="border-1" /></h4>
                             </div>
 
                             <div className="card-body productos">
                                 <div className="chart-area">
                                     <table className="table table-hover">
                                         <thead>
-                                            <tr>align-middle text-center
-                                                <th className="align-middle text-center" scope="col">#</th>
-                                                <th className="align-middle text-center" scope="col">Producto</th>
-                                                <th className="align-middle text-center" scope="col">Precio Unitario</th>
+                                            <tr>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">#</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">Producto</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">Precio Unitario</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th className="align-middle text-center"scope="row">1</th>
+                                                <th className="align-middle text-center" scope="row">1</th>
                                                 <td className="align-middle text-center">Super Ocho</td>
                                                 <td className="align-middle text-center">100</td>
                                             </tr>
@@ -107,17 +107,17 @@ const VentaUsuario = (props) => {
                     <div className="col-lg-7 col-md-6 mb-0">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h4 className="card-title text-center">Detalle Productos</h4>
+                                <h4 className="card-title text-center font-weight-bold">Detalle Productos</h4>
                             </div>
                             <div className="detalleProductos card-body">
                                 <table className="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col" className="text-center">Producto</th>
-                                            <th scope="col" className="text-center">Cantidad</th>
-                                            <th scope="col" className="text-center">Precio Unitario</th>
-                                            <th scope="col" className="text-center">Total</th>
+                                            <th className="align-middle text-center font-weight-bold" scope="col">#</th>
+                                            <th className="align-middle text-center font-weight-bold" scope="col">Producto</th>
+                                            <th  className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
+                                            <th className="align-middle text-center font-weight-bold" scope="col">Precio Unitario</th>
+                                            <th className="align-middle text-center font-weight-bold" scope="col">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,7 +127,7 @@ const VentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
@@ -137,8 +137,8 @@ const VentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                <i className="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
                                         <tr>
@@ -147,8 +147,8 @@ const VentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                <i className="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
                                         <tr>
@@ -157,8 +157,8 @@ const VentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                <i className="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
                                         <tr>
@@ -167,11 +167,11 @@ const VentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                            <td className="text-center"> <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                <i className="now-ui-icons ui-1_simple-remove"></i>
                                             </button></td>
                                         </tr>
-                                     
+
                                     </tbody>
                                 </table>
                             </div>
@@ -184,23 +184,23 @@ const VentaUsuario = (props) => {
                     <div className="col-12 col-md-7 offset-md-5">
                         <div className="card">
                             <div className="card-body">
-                                <table class="table">
+                                <table className="table">
                                     <thead>
                                         <tr className=" table-hover">
                                             <th scope="col">Total Neto</th>
-                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto Neto" /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto Neto" /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="IVA" disabled /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA" disabled /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
-                                            <th scope="col"><input type="text" aria-label="First name" class="form-control" placeholder="Monto a Pagar"  /> </th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto a Pagar" /> </th>
                                         </tr>
                                     </thead>
                                 </table>
-                                <Link to="/cerrar-venta" type="button" class="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</Link>
+                                <Link to="/cerrar-venta" type="button" className="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</Link>
                             </div>
                         </div>
                     </div>

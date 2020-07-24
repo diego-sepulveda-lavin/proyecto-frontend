@@ -25,17 +25,16 @@ const EditarFactura = (props) => {
             proveedor_id: 2,
             entrada_inventario: [
                 {
-                    id:0,
-                    cantidad:1,
-                    precio_costo_unitario:100,
-                    costo_total:100,
-                    fecha_registro:"2020-07-01",
+                    id: 0,
+                    cantidad: 1,
+                    precio_costo_unitario: 100,
+                    costo_total: 100,
+                    fecha_registro: "2020-07-01",
                     usuario_id: 1,
                     factura_compra_id: 1,
                     producto_id: 1
                 }
             ]
-
         }
     });
 
@@ -52,7 +51,6 @@ const EditarFactura = (props) => {
         e.preventDefault();
         actions.postFetch("/empresas", state, setState, "Empresa")
         actions.getFetch("/empresas", "empresas");
-
     }
 
     return (
@@ -64,7 +62,6 @@ const EditarFactura = (props) => {
             <div className="content mt-2">
                 <div className="row ">
                     <div className="col-md-12">
-
                         <form onSubmit={postData}>
                             <div className="card">
                                 <div className="card-body">
@@ -88,23 +85,23 @@ const EditarFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" value={state.rut ? state.rut : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
                                                         </td>
                                                     </tr>
                                                 </>
                                             </tbody>
                                         </table>
-                                        <div className="col-12 d-flex justify-content-end">
-                                            <button class="btn btn-primary" name="Crear_Factura">Editar Factura</button>
+                                        <div className="col-12 pr-0 d-flex justify-content-end">
+                                            <button className="btn btn-primary" name="Crear_Factura">Editar Factura</button>
                                         </div>
                                     </div>
                                 </div>

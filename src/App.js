@@ -23,7 +23,6 @@ import Empresas from './views/GeneralEmpresas';
 import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
 import Spinner from './components/spinner';
-import modificarUserSinID from './views/modificarUserSinID';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
@@ -64,18 +63,17 @@ const App = props => {
             <Route exact path='/crear-sku' component={CrearSku}></Route>
             <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/listar-facturas' component={ListarFacturas}></Route>
-            <Route exact path='/editar-factura' component={EditarFactura}></Route>
+            <Route exact path='/editar-factura/:index' component={EditarFactura}></Route>
             <Route exact path='/ingresar-factura' component={IngresarNuevaFactura}></Route>
             <Route exact path="/listado-usuarios" component={ListadoUsuarios}></Route>
             <Route exact path="/crear-usuario" component={CreateUser}></Route>
-            <Route exact path="/modificar-usuario/" component={modificarUserSinID}></Route>
             <Route exact path="/modificar-usuario/:index" component={ModificarUsuario}></Route>
             <Route exact path="/empresas" component={Empresas}></Route>
             <Route exact path="/crear-empresa" component={CrearEmpresa}></Route>
             <Route exact path="/empresas/:index" component={EditarEmpresa}></Route>
             <Route exact path="/crear-proveedor" component={CrearProveedor}></Route>
             <Route exact path="/listar-proveedores" component={ListarProveedores}></Route>
-            <Route exact path="/modificar-proveedor/:index" component={ModificarProveedor}></Route>            
+            <Route exact path="/modificar-proveedor/:index" component={ModificarProveedor}></Route>
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
             <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>

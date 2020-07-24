@@ -8,14 +8,7 @@ const ListarCategorias = (props) => {
         inputBuscador: "",
         buscarPor: "nombre"
     })
-    const seleccionadorBuscador = e => {
-        let data = {
-            buscarPor: e.target.value
-        }
-        setState((prevState) => {
-            return { ...prevState, ...data }
-        })
-    }
+  
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
@@ -47,14 +40,11 @@ const ListarCategorias = (props) => {
                             </div>
                         </form>
                     </div>
-                    
-                        
+
+
                     <div className="col-md-12">
                         <div className="card">
-                            {/* <div className="card-header">
-                                        <h4 className="card-title"> </h4>
-                                    </div> */}
-                            <div className="card-body">
+                                                    <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table table-hover" >
                                         <thead className=" text-primary ">
@@ -72,7 +62,7 @@ const ListarCategorias = (props) => {
                                             {
                                                 store.categorias == null ?
                                                     <tr className="align-middle text-center">
-                                                        <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
+                                                        <th colspan="8"><i clasname="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
                                                     store.categorias.filter((categoria) => {
@@ -89,8 +79,10 @@ const ListarCategorias = (props) => {
                                                                     {categoria.id}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-categoria/${categoria.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                    <Link to={`/modificar-categoria/${categoria.id}`} >
+                                                                        <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                        </button>
                                                                     </Link>
                                                                 </td>
                                                             </tr>

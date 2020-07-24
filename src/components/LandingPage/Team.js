@@ -12,7 +12,7 @@ const Team = () => {
 
     return (
         <>
-            <div className="section section-team text-center">
+            <div className="section section-team text-center p-0">
                 <div className="container">
                     <h2 className="title">Nuestro Equipo</h2>
                     <div className="team">

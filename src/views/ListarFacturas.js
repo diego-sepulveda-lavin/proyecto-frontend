@@ -60,9 +60,6 @@ const ListarFacturas = (props) => {
                     </div>
                     <div className="col-md-12">
                         <div className="card">
-                            {/* <div className="card-header">
-                                        <h4 className="card-title"> </h4>
-                                    </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table table-hover" >
@@ -99,7 +96,7 @@ const ListarFacturas = (props) => {
                                             {
                                                 store.facturas == null ?
                                                     <tr className="align-middle text-center">
-                                                        <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
+                                                        <th colspan="8"><i clasname="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
                                                     store.facturas.filter((factura) => {
@@ -142,7 +139,7 @@ const ListarFacturas = (props) => {
                                                                     {actions.validaFactura(factura.proveedor_id)}
                                                                 </td>
                                                                 <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                    <Link to={`/editar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
                                                                     </Link>
                                                                 </td>

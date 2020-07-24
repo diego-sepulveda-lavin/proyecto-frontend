@@ -4,10 +4,12 @@ import { withRouter, Link } from 'react-router-dom';
 
 const ListarProveedores = (props) => {
     const { store, actions } = useContext(Context)
+
     const [state, setState] = useState({
         inputBuscador: "",
         buscarPor: "rut"
     })
+
     const seleccionadorBuscador = e => {
         let data = {
             buscarPor: e.target.value
@@ -16,6 +18,7 @@ const ListarProveedores = (props) => {
             return { ...prevState, ...data }
         })
     }
+
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
@@ -54,15 +57,10 @@ const ListarProveedores = (props) => {
                             <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
                             <label className="form-check-label align-middle " for="exampleRadios2">Razon Social</label>
                             <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" value="razon_social" onClick={e => seleccionadorBuscador(e)}></input>
-
                         </div>
-
                     </div>
                     <div className="col-md-12">
                         <div className="card">
-                            {/* <div className="card-header">
-                                        <h4 className="card-title"> </h4>
-                                    </div> */}
                             <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table table-hover" >
@@ -96,7 +94,7 @@ const ListarProveedores = (props) => {
                                             {
                                                 store.proveedores == null ?
                                                     <tr className="align-middle text-center">
-                                                        <th colspan="8"><i class="now-ui-icons loader_refresh spin"></i></th>
+                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
                                                     store.proveedores.filter((proveedor) => {
@@ -130,13 +128,10 @@ const ListarProveedores = (props) => {
                                                                 <td className="align-middle text-center">
                                                                     {proveedor.banco}
                                                                 </td>
-
                                                                 <td className="align-middle text-center">
                                                                     <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                         <i className="now-ui-icons ui-2_settings-90"></i>
                                                                     </Link>
-
-
                                                                 </td>
                                                             </tr>
                                                         )

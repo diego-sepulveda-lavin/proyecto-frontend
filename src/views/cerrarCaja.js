@@ -81,7 +81,7 @@ const CerrarCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div clasname="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>
@@ -139,7 +139,7 @@ const CerrarCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div clasname="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>
@@ -204,7 +204,7 @@ const CerrarCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div clasname="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>

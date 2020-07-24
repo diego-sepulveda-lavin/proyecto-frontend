@@ -20,26 +20,25 @@ const AnularVentaUsuario = (props) => {
                         <div className="card">
                             <div className="card-header">
                                 <div className="row d-flex justify-content-start">
-                                    <div className="col-md-4">
-                                        <label className="form-check-label p-0 align-middle " for="exampleRadios1">Boleta</label>
+                                    <div className="col-md-6 d-flex justify-content-center">
+                                        <label className="form-check-label p-0" for="exampleRadios1">Boleta</label>
                                         <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-6 d-flex justify-content-center">
                                         <label className="form-check-label p-0 align-middle " for="exampleRadios1">Factura</label>
                                         <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
                                     </div>
                                 </div>
-                                <h5 className="card-title"><input type="text" placeholder="Buscar Documento" className="border-0" /></h5>
+                                <h5 className="card-title"><input type="text" placeholder="Buscar Documento" className="border-1" /></h5>
                             </div>
-
                             <div className="card-body productos">
                                 <div className="chart-area">
                                     <table className="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th className="align-middle text-center" scope="col">#</th>
-                                                <th className="align-middle text-center" scope="col">N° Documento</th>
-                                                <th className="align-middle text-center" scope="col">Total</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">#</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">N° Documento</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,7 +58,6 @@ const AnularVentaUsuario = (props) => {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-md-7">
                         <div className="card card-chart">
                             <div className="card-header">
@@ -76,11 +74,11 @@ const AnularVentaUsuario = (props) => {
                                 <table className="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col" className="text-center">Producto</th>
-                                            <th scope="col" className="text-center">Cantidad</th>
-                                            <th scope="col" className="text-center">Precio Unitario</th>
-                                            <th scope="col" className="text-center">Total</th>
+                                            <th scope="col" className="align-middle text-center font-weight-bold">#</th>
+                                            <th scope="col" className="align-middle text-center font-weight-bold">Producto</th>
+                                            <th scope="col" className="align-middle text-center font-weight-bold">Cantidad</th>
+                                            <th scope="col" className="align-middle text-center font-weight-bold">Precio Unitario</th>
+                                            <th scope="col" className="align-middle text-center font-weight-bold">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,7 +96,6 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                          
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
@@ -106,7 +103,6 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                           
                                         </tr>
                                         <tr>
                                             <th scope="row">4</th>
@@ -114,7 +110,6 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                          
                                         </tr>
                                         <tr>
                                             <th scope="row">5</th>
@@ -122,7 +117,6 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                        
                                         </tr>
                                         <tr>
                                             <th scope="row">6</th>
@@ -130,7 +124,6 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                         
                                         </tr>
                                         <tr>
                                             <th scope="row">7</th>
@@ -138,9 +131,7 @@ const AnularVentaUsuario = (props) => {
                                             <td><input type="text" className="border-0 text-center" value="2" /></td>
                                             <td className="text-center">100</td>
                                             <td className="text-center">200</td>
-                                   
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>

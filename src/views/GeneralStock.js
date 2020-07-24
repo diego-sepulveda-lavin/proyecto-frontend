@@ -28,13 +28,13 @@ const GeneralStock = (props) => {
                         </form>
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
-                        <div class="form-check ml-3">
-                            <label class="form-check-label p-0 align-middle " for="exampleRadios1">SKU</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
-                            <label class="form-check-label align-middle " for="exampleRadios2">Descripción</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
-                            <label class="form-check-label align-middle" for="exampleRadios3">Código de Barras</label>
-                            <input class="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios3"></input>
+                        <div className="form-check ml-3">
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">SKU</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">Descripción</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
+                            <label className="form-check-label align-middle" for="exampleRadios3">Código de Barras</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios3"></input>
                         </div>
 
                     </div>
