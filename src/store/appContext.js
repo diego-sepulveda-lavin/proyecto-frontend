@@ -16,6 +16,7 @@ const injectContext = PassedComponent => {
 
         useEffect(() => {
             if (state.store.usuarioActivo !== null) {
+                console.log("entre")
                 state.actions.getFetch("/usuarios", "usuarios");
                 state.actions.getFetch("/empresas", "empresas");
                 state.actions.getFetch("/categorias", "categorias");
@@ -26,6 +27,18 @@ const injectContext = PassedComponent => {
 
             /*             state.actions.getFetch("/entradas-inventario", "entradaStock");
                         state.actions.getFetch("/salidas-inventario", "ventaProductos"); */
+        }, [state.store.usuarioActivo]);
+
+        useEffect(() => {
+            if (state.store.usuarioActivo !== null) {
+                console.log("entre")
+                state.actions.getFetch("/usuarios", "usuarios");
+                state.actions.getFetch("/empresas", "empresas");
+                state.actions.getFetch("/categorias", "categorias");
+                state.actions.getFetch("/productos", "productos");
+                state.actions.getFetch("/proveedores", "proveedores");
+                state.actions.getFetch("/facturas-compras", "facturas");
+            }
         }, []);
 
         return (

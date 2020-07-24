@@ -11,16 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             proveedores: null,
             facturas: null,
             usuarioActivo: null,
-            creacionUsuario: {
-                nombre: "",
-                apellido: "",
-                rut: "",
-                email: "",
-                rol: "",
-                password: "",
-                repassword: "",
-                foto: "",
-            },
+
             imageURL: null,
             MensajesRecibidos: []
 
