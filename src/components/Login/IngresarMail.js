@@ -83,9 +83,16 @@ const IngresarMail = (props) => {
                                             flag === null ? (<h6>{mensaje}</h6>)
                                                 :
                                                 flag ? (<i className="now-ui-icons loader_refresh spin"></i>) :
-                                                    <h6>{mensaje}</h6>
+                                                    <h6>{mensaje}</h6> 
+                                                    
+                                                    /*
+                                                    1.- Flag es null, muestra el mensaje por defecto
+                                                    2.- Flag es true, cambia el mensaje por el spinner
+                                                    3.- Flag es false, cambia el spinner por mensaje con un nuevo valor
+                                                     */
 
                                         }
+                                        
 
 
 
