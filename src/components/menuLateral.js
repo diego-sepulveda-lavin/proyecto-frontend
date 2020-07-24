@@ -12,7 +12,7 @@ const MenuLateral = props => {
                 <ul className="nav">
                     <li className={props.location.pathname === "/dashboard" ? "active" : ""}>
                         <Link to={"/dashboard"}>
-                            <i className={"now-ui-icons business_chart-bar-32"}></i>
+                            <i className="now-ui-icons business_chart-bar-32"></i>
                             <p>Dashboard</p>
                         </Link>
                     </li>

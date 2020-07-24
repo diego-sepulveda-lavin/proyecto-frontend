@@ -238,7 +238,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
 
                     const result = await resp.json();
-                    if (resp.status == 200) {
+                    if (resp.status === 200) {
                         Swal.fire({
                             icon: 'success',
                             title: mensajeAlerta + ' eliminada exitosamente.'
