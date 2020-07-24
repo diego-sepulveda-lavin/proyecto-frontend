@@ -33,6 +33,9 @@ import ListarProveedores from './views/ListarProveedores';
 import ModificarUsuario from './views/ModificarUsuario';
 import ModificarProveedor from './views/ModificarProveedor';
 import ListarFacturas from './views/ListarFacturas';
+import RecuperarPassword from './views/RecuperarPassword';
+import NuevaPassword from './views/NuevaPassword';
+
 
 const App = props => {
   return (
@@ -42,6 +45,10 @@ const App = props => {
         {/* FrontPage components */}
         <Route exact path='/' component={LandingPage}></Route>
         <Route exact path='/login' component={LoginPage}></Route>
+        <Route exact path='/recuperar-password' component={RecuperarPassword}></Route>
+        <Route exact path='/nueva-password/:token' component={NuevaPassword}></Route>
+
+
         {/* END FrontPage components */}
 
 
