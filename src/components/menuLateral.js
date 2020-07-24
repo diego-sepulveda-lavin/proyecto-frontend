@@ -12,7 +12,7 @@ const MenuLateral = props => {
                 <ul className="nav">
                     <li className={props.location.pathname === "/dashboard" ? "active" : ""}>
                         <Link to={"/dashboard"}>
-                            <i className="now-ui-icons business_chart-bar-32"></i>
+                            <i className={"now-ui-icons business_chart-bar-32"}></i>
                             <p>Dashboard</p>
                         </Link>
                     </li>
@@ -41,7 +41,7 @@ const MenuLateral = props => {
                             props.location.pathname === "/crear-categoria" ||
                             props.location.pathname === "/modificar-categoria" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons shopping_box"></i>
+                            <i className="now-ui-icons files_paper"></i>
                             <p data-toggle="collapse" data-target="#categoria">Categoria</p>
                         </Link>
                         <div id="categoria" className="collapse">
