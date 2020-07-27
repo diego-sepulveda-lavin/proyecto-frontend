@@ -23,6 +23,8 @@ const IngresarNuevaFactura = (props) => {
             return { ...prevState, detalleEntrada }
         })
     }
+
+
     const [state, setState] = useState({
         factura: {
             folio: null,
@@ -44,8 +46,6 @@ const IngresarNuevaFactura = (props) => {
         }
     });
 
-
-
     const getDatosFactura = e => {
         const factura = state.factura;
 
@@ -66,8 +66,6 @@ const IngresarNuevaFactura = (props) => {
             return { ...prevState, detalleEntrada }
         })
     }
-
-
 
     const addDetalleEntrada = e => {
         if (state.detalleEntrada != null) {
@@ -97,25 +95,9 @@ const IngresarNuevaFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-        actions.postFetch("/empresas", state, setState, "Empresa")
-        actions.getFetch("/empresas", "empresas");
+        actions.postFetch("/facturas-compras", state, setState, "Factura")
 
     }
-
-    /*  const eliminarRegistro = (indice) => {
-         let { entradas_inventario } = state.factura;
-         console.log("aaa", entradas_inventario)
-         let nuevoArray = state.factura.entradas_inventario.filter((ele, index) => {
-             return index != indice
-         })
-         console.log("nuevo array", nuevoArray)
-         setState(prevState => {
-             return { ...prevState, entradas_inventario: nuevoArray }
-         })
- 
-     } */
-
-
 
     const deleteProducto = e => {
         let data = state.factura.entradas_inventario;
@@ -174,14 +156,14 @@ const IngresarNuevaFactura = (props) => {
                                                             <input type="text" className="form-control" placeholder="Folio" name="folio" aria-describedby="basic-addon1" value={state.factura.folio ? state.factura.folio : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" className="form-control" placeholder="Fecha emision" name="fecha_emision" aria-describedby="basic-addon1" value={state.factura.fecha_emision ? state.factura.fecha_emision : ""} onChange={getDatosFactura} />
+                                                            <input type="date" className="form-control" placeholder="Fecha emision" name="fecha_emision" aria-describedby="basic-addon1" value={state.factura.fecha_emision ? state.factura.fecha_emision : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" className="form-control" placeholder="Fecha recepcion" name="fecha_recepcion" aria-describedby="basic-addon1" value={state.factura.fecha_recepcion ? state.factura.fecha_recepcion : ""} onChange={getDatosFactura} />
+                                                            <input type="date" className="form-control" placeholder="Fecha recepcion" name="fecha_recepcion" aria-describedby="basic-addon1" value={state.factura.fecha_recepcion ? state.factura.fecha_recepcion : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <select className="form-control" name="proveedor_id" value={!state.factura.proveedor_id ? "" : state.factura.proveedor_id} onChange={getDatosFactura}>
-                                                                <option value="" disabled>Seleccionar</option>
+                                                                <option selected="true" disabled="disabled">Seleccionar</option>
                                                                 {
                                                                     !!store.proveedores &&
                                                                     store.proveedores.map((proveedor) => {
