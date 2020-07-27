@@ -97,7 +97,7 @@ const IngresarNuevaFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-        actions.postFetch("/empresas", state, setState, "Empresa")
+        actions.postFetch("/facturas-compras", state, setState, "Factura")
         actions.getFetch("/empresas", "empresas");
 
     }
