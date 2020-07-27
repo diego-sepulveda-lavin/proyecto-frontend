@@ -24,8 +24,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ usuarioActivo: JSON.parse(localStorage.getItem('user')) })
             },
 
-
-
             /* Zona GET */
             getFetchID: async (urlPag, setInfo, data) => {
                 let store = getStore()
@@ -262,7 +260,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona DELETE */
 
             /* Zona POST*/
-            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1 = "", param2 = "") => {
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
@@ -283,10 +281,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                             icon: 'success',
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
-                        if (param1 || param2) {
-                            data_a_enviar[param1] = ""
-                            data_a_enviar[param2] = ""
-                            limpiarInput(data_a_enviar)
+
+                        if (param1) {
+                            console.log("if")
+                            param1 = ""
+                            console.log(data_a_enviar)
+                            limpiarInput({
+                                factura: {
+                                    folio: "",
+                                    fecha_emision: "",
+                                    fecha_recepcion: "",
+                                    monto_neto: "",
+                                    monto_iva: "",
+                                    monto_otros_impuestos: "",
+                                    monto_total: "",
+                                    proveedor_id: "",
+                                    entradas_inventario: []
+                                },
+                                detalleEntrada: {
+                                    cantidad: null,
+                                    precio_costo_unitario: null,
+                                    costo_total: null,
+                                    usuario_id: null,
+                                    producto_id: null
+                                }
+                            })
+
                         } else {
                             data_a_enviar = ""
                             limpiarInput(data_a_enviar)
