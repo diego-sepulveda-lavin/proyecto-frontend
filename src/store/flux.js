@@ -262,7 +262,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona DELETE */
 
             /* Zona POST*/
-            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta) => {
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1 = "", param2 = "") => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
@@ -278,13 +278,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     console.log(resp)
-                    if (!result.msg) {
+                    if (resp.status == 200 || resp.status == 201) {
                         Swal.fire({
                             icon: 'success',
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
-                        data_a_enviar = ""
-                        limpiarInput(data_a_enviar)
+                        if (param1 || param2) {
+                            data_a_enviar[param1] = ""
+                            data_a_enviar[param2] = ""
+                            limpiarInput(data_a_enviar)
+                        } else {
+                            data_a_enviar = ""
+                            limpiarInput(data_a_enviar)
+                        }
                         //getActions().getFetch()
                     } else {
                         Swal.fire({

@@ -27,14 +27,14 @@ const IngresarNuevaFactura = (props) => {
 
     const [state, setState] = useState({
         factura: {
-            folio: null,
+            folio: "",
             fecha_emision: "",
             fecha_recepcion: "",
             monto_neto: 0,
             monto_iva: 0,
             monto_otros_impuestos: 0,
             monto_total: 0,
-            proveedor_id: 2,
+            proveedor_id: null,
             entradas_inventario: []
         },
         detalleEntrada: {
@@ -95,7 +95,7 @@ const IngresarNuevaFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-        actions.postFetch("/facturas-compras", state, setState, "Factura")
+        actions.postFetch("/facturas-compras", state, setState, "Factura", "factura", "detalle_factura")
 
     }
 
@@ -107,7 +107,9 @@ const IngresarNuevaFactura = (props) => {
         });
     }
 
+   
     return (
+      
         <>
             <div className="panel-header panel-header-md">
                 <h1 className="text-warning text-center">Stock</h1>
@@ -163,7 +165,7 @@ const IngresarNuevaFactura = (props) => {
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <select className="form-control" name="proveedor_id" value={!state.factura.proveedor_id ? "" : state.factura.proveedor_id} onChange={getDatosFactura}>
-                                                                <option selected="true" disabled="disabled">Seleccionar</option>
+                                                                <option selected="true" value="" disabled="disabled">Seleccionar</option>
                                                                 {
                                                                     !!store.proveedores &&
                                                                     store.proveedores.map((proveedor) => {
@@ -197,16 +199,16 @@ const IngresarNuevaFactura = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
                                                         </td>
                                                     </tr>
                                                 </>
@@ -258,10 +260,10 @@ const IngresarNuevaFactura = (props) => {
 
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="number" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
+                                                            <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input type="number" className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
@@ -309,6 +311,7 @@ const IngresarNuevaFactura = (props) => {
                                                 </thead>
                                                 <tbody>
                                                     {
+                                                        state.factura.entradas_inventario &&
                                                         state.factura.entradas_inventario.map((producto, index) => {
                                                             return (
                                                                 <tr key={index}>
@@ -352,6 +355,7 @@ const IngresarNuevaFactura = (props) => {
                 </div>
             </div>
         </>
+        
     )
 }
 export default withRouter(IngresarNuevaFactura);
