@@ -16,6 +16,7 @@ const MenuLateral = props => {
                             <p>Dashboard</p>
                         </Link>
                     </li>
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/venta-usuario" ||
                             props.location.pathname === "/abrir-caja" ||
@@ -26,7 +27,6 @@ const MenuLateral = props => {
                             <i className="now-ui-icons business_money-coins"></i>
                             <p data-toggle="collapse" data-target="#ventas">Ventas</p>
                         </Link>
-
                         <div id="ventas" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
@@ -36,6 +36,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/listar-categorias" ||
                             props.location.pathname === "/crear-categoria" ||
@@ -52,7 +53,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
-
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/general-stock" ||
                             props.location.pathname === "/crear-sku" ||
@@ -70,10 +71,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
-
-
-
-
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/ingresar-factura" ||
                             props.location.pathname === "/listar-facturas" ? "active" : ""}>
@@ -88,16 +86,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
-
-
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/listar-proveedores" ||
                             props.location.pathname === "/crear-proveedor" ? "active" : ""}>
@@ -105,7 +94,6 @@ const MenuLateral = props => {
                             <i className="now-ui-icons shopping_delivery-fast"></i>
                             <p data-toggle="collapse" data-target="#proveedores">Proveedores</p>
                         </Link>
-
                         <div id="proveedores" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/listar-proveedores"}><p>Ver Proveedores</p></Link></li>
@@ -113,7 +101,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
-
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/listado-usuarios" ||
                             props.location.pathname === "/crear-usuario" ||
@@ -122,7 +110,6 @@ const MenuLateral = props => {
                             <i className="now-ui-icons ui-2_settings-90"></i>
                             <p data-toggle="collapse" data-target="#administrador">Administrador</p>
                         </Link>
-
                         <div id="administrador" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/listado-usuarios"}><p>Ver Usuarios</p></Link></li>
@@ -131,6 +118,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
+                    {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/empresas" ||
                             props.location.pathname === "/crear-empresa" ? "active" : ""}>
@@ -138,7 +126,6 @@ const MenuLateral = props => {
                             <i className="now-ui-icons objects_spaceship"></i>
                             <p data-toggle="collapse" data-target="#administrador-global">Administrador Global</p>
                         </Link>
-
                         <div id="administrador-global" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/empresas"}><p>Ver Empresas</p></Link></li>
@@ -146,6 +133,7 @@ const MenuLateral = props => {
                             </ul>
                         </div>
                     </li>
+                    {/* --- o --- */}
                 </ul>
             </div>
         </div>
