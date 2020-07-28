@@ -284,8 +284,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
                         if (param1 || param2) {
+                            console.log("if")
                             data_a_enviar[param1] = ""
                             data_a_enviar[param2] = ""
+                            console.log(data_a_enviar)
                             limpiarInput(data_a_enviar)
                         } else {
                             data_a_enviar = ""
