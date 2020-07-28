@@ -44,8 +44,8 @@ const LoginForm = (props) => {
             const resp = await fetch('http://localhost:5000/api/login', requestOptions)
             const result = await resp.json()
             if (result.access_token) {
-                localStorage.setItem('access_token', result.access_token)
-                localStorage.setItem('user', JSON.stringify(result.user));
+                sessionStorage.setItem('access_token', result.access_token)
+                sessionStorage.setItem('user', JSON.stringify(result.user));
                 actions.usuarioAuth(result.user)
                 props.history.push("/dashboard")
             }
