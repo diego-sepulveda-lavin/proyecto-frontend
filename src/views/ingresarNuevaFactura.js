@@ -92,13 +92,8 @@ const IngresarNuevaFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-<<<<<<< HEAD
-        actions.postFetch("/facturas-compras", state, setState, "Factura", "factura", "detalleEntrada")
-
-=======
         actions.postFetch("/facturas-compras", state, setState, "Factura", "factura")
         console.log("state", state)
->>>>>>> 1e01821922713736c7e6ddf51d7b03626153128c
     }
 
     const deleteProducto = e => {

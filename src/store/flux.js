@@ -281,14 +281,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                             icon: 'success',
                             title: mensajeAlerta + ' creada exitosamente.'
                         })
-<<<<<<< HEAD
-                        if (param1 || param2) {
-                            console.log("if")
-                            data_a_enviar[param1] = ""
-                            data_a_enviar[param2] = ""
-                            console.log(data_a_enviar)
-                            limpiarInput(data_a_enviar)
-=======
 
                         if (param1) {
                             console.log("if")
@@ -315,7 +307,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 }
                             })
 
->>>>>>> 1e01821922713736c7e6ddf51d7b03626153128c
                         } else {
                             data_a_enviar = ""
                             limpiarInput(data_a_enviar)
