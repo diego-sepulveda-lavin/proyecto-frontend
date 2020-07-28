@@ -46,9 +46,10 @@ const IngresarNuevaFactura = (props) => {
     });
 
     const getDatosFactura = e => {
-        const factura = state.factura;
-
-        factura[e.target.name] = e.target.value
+        const {factura} = state;
+        factura[e.target.name] = e.target.value       
+        factura.monto_iva = factura.monto_neto * (19/100)
+        factura.monto_total = parseInt(factura.monto_neto) + factura.monto_iva + parseInt(factura.monto_otros_impuestos)
 
         setState(prevState => {
             return { ...prevState, factura }
@@ -198,13 +199,13 @@ const IngresarNuevaFactura = (props) => {
                                                                 <input type="number" min="0" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
+                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
                                                                 <input type="number" min="0" className="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
+                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
                                                             </td>
                                                         </tr>
                                                     </>
@@ -260,7 +261,7 @@ const IngresarNuevaFactura = (props) => {
                                                                 <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
