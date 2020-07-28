@@ -24,6 +24,11 @@ const IngresarNuevaFactura = (props) => {
         })
     }
 
+     const validaMonedaChilena = num =>{
+         let numberFormat = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' }).format(num)
+         return numberFormat;
+     }
+
     const [state, setState] = useState({
         factura: {
             folio: "",
