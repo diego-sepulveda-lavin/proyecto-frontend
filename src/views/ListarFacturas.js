@@ -92,12 +92,17 @@ const ListarFacturas = (props) => {
                                                     </th>
                                         </thead>
                                         <tbody>
+
+                                            {/* 1.- En caso que facturas sea nulo, muestra un spinner, ya que esta cargando la info del back
+                                                2.- En caso de que lo que traiga del back sea mayor a 0 lo mapea, sino, no muestra nada porque significa que no hay facturas en la bd*/}
                                             {
                                                 store.facturas == null ?
-                                                    <tr className="align-middle text-center">
-                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
-                                                    </tr>
+                                                <tr className="align-middle text-center">
+                                                <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
+                                            </tr>
                                                     :
+                                                    /* Toda esta zona  */
+                                                    store.facturas.length>0 &&
                                                     store.facturas.filter((factura) => {
                                                         if (state.buscarPor == "folio") {
                                                             if (state.inputBuscador == "") return factura.folio
