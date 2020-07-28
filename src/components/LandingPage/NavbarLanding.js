@@ -8,7 +8,7 @@ const NavbarLanding = () => {
 
 
     const checkAuth = () =>{
-        const token = localStorage.getItem('access_token');
+        const token = sessionStorage.getItem('access_token');
         if (token){
             setIsAuth(true)
         } else {
@@ -17,8 +17,8 @@ const NavbarLanding = () => {
     }
 
     const removeAuth = () => {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('user')
+        sessionStorage.removeItem('access_token');
+        sessionStorage.removeItem('user')
         setIsAuth(false)
     }
 

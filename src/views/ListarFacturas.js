@@ -10,7 +10,6 @@ const ListarFacturas = (props) => {
         buscarPor: "folio"
     })
     const seleccionadorBuscador = e => {
-        console.log(e.target.value)
         let data = {
             buscarPor: e.target.value
         }

@@ -16,7 +16,6 @@ const injectContext = PassedComponent => {
 
         useEffect(() => {
             if (state.store.usuarioActivo !== null) {
-                console.log("entre")
                 state.actions.getFetch("/usuarios", "usuarios");
                 state.actions.getFetch("/empresas", "empresas");
                 state.actions.getFetch("/categorias", "categorias");
@@ -31,7 +30,6 @@ const injectContext = PassedComponent => {
 
         useEffect(() => {
             if (state.store.usuarioActivo !== null) {
-                console.log("entre")
                 state.actions.getFetch("/usuarios", "usuarios");
                 state.actions.getFetch("/empresas", "empresas");
                 state.actions.getFetch("/categorias", "categorias");

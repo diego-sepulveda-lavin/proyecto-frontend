@@ -18,10 +18,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         actions: {
             validaLogin: (props) => {
-                if (!localStorage.getItem('access_token')) {
+                if (!sessionStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
-                setStore({ usuarioActivo: JSON.parse(localStorage.getItem('user')) })
+                setStore({ usuarioActivo: JSON.parse(sessionStorage.getItem('user')) })
             },
 
             /* Zona GET */
@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -84,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     try {
                         let headersContent = ""
-                        const token = localStorage.getItem('access_token');
+                        const token = sessionStorage.getItem('access_token');
                         if (token) {
                             headersContent = { 'Authorization': 'Bearer ' + token }
                         }
@@ -143,7 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 try {
                     let headersContent = ""
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = {
                             "Access-Control-Allow-Origin": "*",
@@ -184,7 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -225,7 +225,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -264,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -275,7 +275,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
-                    console.log(resp)
                     if (resp.status == 200 || resp.status == 201) {
                         Swal.fire({
                             icon: 'success',
@@ -283,9 +282,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
 
                         if (param1) {
-                            console.log("if")
                             param1 = ""
-                            console.log(data_a_enviar)
                             limpiarInput({
                                 factura: {
                                     folio: "",
