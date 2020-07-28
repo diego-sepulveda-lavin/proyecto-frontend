@@ -9,7 +9,6 @@ import LoginPage from './views/LoginPage';
 import GeneralStock from './views/GeneralStock'
 import CrearSku from './views/CrearSKU';
 import ModificarSku from './views/ModificarSku';
-import VentaUsuario from './views/ventaPrincipal';
 import CreateUser from './views/CreateUser';
 import AbrirCaja from './views/abrirCaja';
 import ListadoUsuarios from './views/ListadoUsuarios';
@@ -35,6 +34,7 @@ import ModificarProveedor from './views/ModificarProveedor';
 import ListarFacturas from './views/ListarFacturas';
 import RecuperarPassword from './views/RecuperarPassword';
 import NuevaPassword from './views/NuevaPassword';
+import IngresarVenta from './views/IngresarVenta';
 
 
 const App = props => {
@@ -62,7 +62,7 @@ const App = props => {
             <Route exact path="/spinner" component={Spinner}></Route>
             <Route exact path="/cerrar-venta" component={CerrarVenta}></Route>
             <Route exact path='/dashboard' component={Dashboard}></Route>
-            <Route exact path="/venta-usuario" component={VentaUsuario}></Route>
+            <Route exact path="/venta-usuario" component={IngresarVenta}></Route>
             <Route exact path="/abrir-caja" component={AbrirCaja}></Route>
             <Route exact path="/cerrar-caja" component={CerrarCaja}></Route>
             <Route exact path="/anular-venta" component={AnularVentaUsuario}></Route>
