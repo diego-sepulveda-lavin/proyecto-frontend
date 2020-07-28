@@ -11,9 +11,12 @@ const IngresarVenta = (props) => {
 
     const [state, setState] = useState({
         buscador: "",
-        detalleProductos: [
-            { descripcion: "Lechuga", cantidad: 2, precio_venta_unitario: 420, total: 840 }
-        ]
+        detalleProductos: [],
+        datosVenta: {
+            monto_total : 0,
+            monto_neto : 0,
+            monto_iva : 0
+        }
     })
 
     const getInformacion = (e) => {
@@ -23,10 +26,9 @@ const IngresarVenta = (props) => {
         setState(prevState => {
             return { ...prevState, ...data }
         })
-
     }
 
-    const clickeo = (producto) => {
+    const agregarProducto = (producto) => {
         let { detalleProductos } = state
         let ProductoAgregado = {
             descripcion: producto.descripcion,
@@ -36,11 +38,38 @@ const IngresarVenta = (props) => {
         }
         detalleProductos.push(ProductoAgregado)
 
+        setState(prevState => {
+            return { ...prevState, detalleProductos }
+        })
+    }
+
+    const deleteProducto = e => {
+        let data = state.detalleProductos;
+        data.splice(e.target.id, 1);
+        setState(prevState => {
+            return { ...prevState, detalleProductos: data }
+        });
+    }
+
+    const getDatosProductos = e => {
+        const detalleProductos = state.detalleProductos;
+        detalleProductos[e.target.id].cantidad = e.target.value
+        detalleProductos[e.target.id].total = parseInt(detalleProductos[e.target.id].cantidad) * parseInt(detalleProductos[e.target.id].precio_venta_unitario)
 
         setState(prevState => {
             return { ...prevState, detalleProductos }
         })
     }
+/* 
+    const getDatosVenta = e => {
+        const datosVenta = state.datosVenta;
+        datosVenta.monto_total = e.target.value
+       
+        setState(prevState => {
+            return { ...prevState, datosVenta }
+        })
+    }
+ */
 
     return (
         <>
@@ -88,7 +117,7 @@ const IngresarVenta = (props) => {
                                                             return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
                                                         })
                                                             .map((producto, index) => {
-                                                                return <tr onClick={() => clickeo(producto)}>
+                                                                return <tr onClick={() => agregarProducto(producto)}>
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
@@ -96,16 +125,13 @@ const IngresarVenta = (props) => {
                                                             })
                                                     )
                                             }
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    {/* Productos Seleccionados */}
                     <div className="col-lg-7 col-md-6 mb-0">
                         <div className="card card-chart">
                             <div className="card-header">
@@ -130,20 +156,16 @@ const IngresarVenta = (props) => {
                                                         <tr>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
-                                                            <td><input type="text" className="border-0 text-center" value={producto.cantidad} /></td>
+                                                            <td><input type="text" className="border-0 text-center" onChange={getDatosProductos} value={producto.cantidad} id={index} /></td>
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
-                                                    <td className="text-center">{producto.total}</td>
-                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                            <td className="text-center" >{producto.total}</td>
+                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
                                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
                                                         </tr>
                                                     )
                                                 })
-
                                         }
-
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -151,7 +173,6 @@ const IngresarVenta = (props) => {
                         </div>
                     </div>
                 </div>
-
                 <div className="row">
                     <div className="col-12 col-md-7 offset-md-5">
                         <div className="card">
@@ -160,15 +181,15 @@ const IngresarVenta = (props) => {
                                     <thead>
                                         <tr className=" table-hover">
                                             <th scope="col">Total Neto</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto Neto" /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto Neto"  value={state.datosVenta.monto_neto = state.datosVenta.monto_total/1.19} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA" disabled /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA"  value={state.datosVenta.monto_iva = state.datosVenta.monto_net*0.19} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto a Pagar" /> </th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto a Pagar" /*  onChange={getDatosVenta} */ value={state.detalleProductos===null? 0 : state.datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0 )} /> </th>
                                         </tr>
                                     </thead>
                                 </table>
