@@ -2,11 +2,26 @@ import React, { useContext, useEffect, useState } from 'react';
 import "../css/ventaPrincipal.css";
 import { Link, withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 const IngresarVenta = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.validaLogin(props)
+        if (store.abrirCaja == false) {
+            console.log("si")
+
+            Swal.fire({
+                title: store.usuarioActivo.nombre,
+                text: "Debes abrir caja para poder Iniciar las ventas!",
+                icon: 'info',
+                allowOutsideClick: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ir a abrir Caja!'
+            }).then((result) => {
+                if (result.value) props.history.push("/abrir-caja")
+            })
+        }
     }, [])
 
     const [state, setState] = useState({

@@ -11,8 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             proveedores: null,
             facturas: null,
             usuarioActivo: null,
-
             imageURL: null,
+            abrirCaja: false,
+            cerrarCaja: null,
             MensajesRecibidos: []
 
         },
@@ -260,7 +261,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona DELETE */
 
             /* Zona POST*/
-            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1) => {
+
+
+
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1 = "") => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
@@ -365,6 +369,44 @@ const getState = ({ getStore, getActions, setStore }) => {
             usuarioAuth: (usuario) => {
                 setStore({ usuarioActivo: usuario })
             },
+
+            validaCaja: async (urlPag, data, props) => {
+                let store = getStore();
+                try {
+                    let headersContent = { 'Content-Type': 'application/json' };
+                    const token = sessionStorage.getItem('access_token');
+                    if (token) {
+                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                    }
+                    let requestOptions = {
+                        method: 'POST',
+                        headers: headersContent,
+                        body: JSON.stringify(data)
+                    };
+                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                    const result = await resp.json();
+                    if (resp.status == 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            title: result.msg
+                        })
+                        setStore({ abrirCaja: true })
+                        setTimeout(() => props.history.push("/venta-usuario"), 2000)
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo salió mal.',
+                            text: result.msg
+                        })
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
 
 
             /* /Zona Valida */
