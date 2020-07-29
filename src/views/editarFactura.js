@@ -36,8 +36,6 @@ const EditarFactura = (props) => {
         actions.validaLogin(props)
         const idUsuario = !!store.usuarioActivo ? store.usuarioActivo.id : null;
         setUsuarioId(idUsuario)
-        //actions.getFetchID("/facturas-compras/" + props.match.params.index, setState, "factura")
-
         getFetchID("/facturas-compras/" + props.match.params.index)
     }, [])
 
@@ -65,7 +63,7 @@ const EditarFactura = (props) => {
                     cantidad: null,
                     precio_costo_unitario: null,
                     costo_total: null,
-                    usuario_id: null,
+                    usuario_id: state.detalleEntrada.usuario_id,
                     producto_id: null
                 }
             })
@@ -406,7 +404,7 @@ const EditarFactura = (props) => {
                                                                             </td>
                                                                             <td>
                                                                                 <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
-                                                                                    <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                                    <i className="now-ui-icons ui-1_simple-remove" id={index}></i>
                                                                                 </button>
                                                                             </td>
                                                                         </tr>

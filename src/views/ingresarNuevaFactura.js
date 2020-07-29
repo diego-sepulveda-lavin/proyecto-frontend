@@ -333,7 +333,7 @@ const IngresarNuevaFactura = (props) => {
                                                                             </td>
                                                                             <td>
                                                                                 <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
-                                                                                    <i className="now-ui-icons ui-1_simple-remove"></i>
+                                                                                    <i className="now-ui-icons ui-1_simple-remove" id={index}></i>
                                                                                 </button>
                                                                             </td>
                                                                         </tr>
