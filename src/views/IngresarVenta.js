@@ -6,11 +6,21 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 const IngresarVenta = (props) => {
     const { store, actions } = useContext(Context)
+    const [state, setState] = useState({
+        buscador: "",
+        contadorTotal: 0,
+        contadorIva: 0,
+        contadorNeto: 0,
+        detalleProductos: [],
+        datosVenta: {
+            total_neto: null,
+            iva: null,
+            total_a_pagar: null
+        }
+    })
     useEffect(() => {
         actions.validaLogin(props)
-        if (store.abrirCaja == false) {
-            console.log("si")
-
+        if (sessionStorage.getItem("abrirCaja") == null) {
             Swal.fire({
                 title: store.usuarioActivo.nombre,
                 text: "Debes abrir caja para poder Iniciar las ventas!",
@@ -24,35 +34,6 @@ const IngresarVenta = (props) => {
         }
     }, [])
 
-    const [state, setState] = useState({
-        buscador: "",
-        detalleProductos: [],
-        datosVenta: {
-            total_neto: null,
-            iva: null,
-            total_a_pagar: null
-        }
-    })
-
-    const getDatosVentas = (e) => {
-        const { datosVenta } = state
-
-
-        datosVenta["total_neto"] = state.datosVenta.monto_total / (1.19).toFixed(2);
-        datosVenta["iva"] = state.datosVenta.monto_neto * (19 / 100).toFixed(2);
-        datosVenta["total_a_pagar"] = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
-
-
-        setState(prevState => {
-            return { ...prevState, datosVenta }
-        })
-        //state.datosVenta.monto_neto = (state.datosVenta.monto_total/1.19).toFixed(2)
-        //state.datosVenta.monto_iva = state.datosVenta.monto_neto*(19/100).toFixed(2)
-        //state.detalleProductos===null? 0 : state.datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0 )
-
-
-    }
-
     const getInformacion = (e) => {
         let data = {
             buscador: e.target.value
@@ -64,37 +45,31 @@ const IngresarVenta = (props) => {
 
     const agregarProducto = (producto) => {
         let { detalleProductos } = state
-        let ProductoAgregado = {
+        let productoAgregado = {
             descripcion: producto.descripcion,
             cantidad: 1,
             precio_venta_unitario: producto.precio_venta_unitario,
             total: producto.precio_venta_unitario
         }
-        detalleProductos.push(ProductoAgregado)
-
+        detalleProductos.push(productoAgregado)
         setState(prevState => {
             return { ...prevState, detalleProductos }
         })
 
 
-
         const { datosVenta } = state
         datosVenta.total_a_pagar = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
-        datosVenta.total_neto = Math.ceil(datosVenta["total_a_pagar"] / (1.19));
+        datosVenta.total_neto = Math.ceil(datosVenta.total_a_pagar / (1.19));
         datosVenta.iva = Math.ceil(datosVenta.total_neto * (19 / 100));
-
-
         setState(prevState => {
             return { ...prevState, datosVenta }
         })
-
-
-
     }
 
-    const deleteProducto = e => {
+    const deleteProducto = (index) => {
         let data = state.detalleProductos;
-        data.splice(e.target.id, 1);
+        console.log(data)
+        data.splice(index, 1);
         setState(prevState => {
             return { ...prevState, detalleProductos: data }
         });
@@ -102,23 +77,19 @@ const IngresarVenta = (props) => {
 
     const getDatosProductos = e => {
         const detalleProductos = state.detalleProductos;
-        detalleProductos[e.target.id].cantidad = e.target.value
+        detalleProductos[e.target.id].cantidad = parseInt(e.target.value)
         detalleProductos[e.target.id].total = parseInt(detalleProductos[e.target.id].cantidad) * parseInt(detalleProductos[e.target.id].precio_venta_unitario)
 
+        /* Este codigo se repite para que al momento de modificar una cantidad en los detalles de productos, se actualice el monto total, neto e iva */
+        const { datosVenta } = state
+        datosVenta.total_a_pagar = detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
+        datosVenta.total_neto = Math.ceil(datosVenta.total_a_pagar / (1.19));
+        datosVenta.iva = Math.ceil(datosVenta.total_neto * (19 / 100));
         setState(prevState => {
-            return { ...prevState, detalleProductos }
+            return { ...prevState, detalleProductos, datosVenta }
         })
     }
-    /* 
-        const getDatosVenta = e => {
-            const datosVenta = state.datosVenta;
-            datosVenta.monto_total = e.target.value
-           
-            setState(prevState => {
-                return { ...prevState, datosVenta }
-            })
-        }
-     */
+
 
     return (
         <>
@@ -205,11 +176,11 @@ const IngresarVenta = (props) => {
                                                         <tr>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
-                                                            <td><input type="text" className="border-0 text-center" onChange={getDatosProductos} id={index} value={state.detalleProductos.length > 0 ? state.detalleProductos.cantidad : ""} /></td>
+                                                            <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} defaultValue={producto.cantidad} /></td>
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
                                                             <td className="text-center" >{producto.total}</td>
-                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
-                                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={() => deleteProducto(index)} id={index}>
+                                                                <i id={index} className="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
                                                         </tr>
                                                     )
@@ -230,15 +201,15 @@ const IngresarVenta = (props) => {
                                     <thead>
                                         <tr className=" table-hover">
                                             <th scope="col">Total Neto</th>
-                                            <th scope="col"><input type="text" name="total_neto" aria-label="First name" className="form-control" placeholder="Monto Neto" onChange={getDatosVentas} value={state.datosVenta? state.datosVenta.total_neto:""} /></th>
+                                            <th scope="col"><input type="text" name="total_neto" aria-label="First name" className="form-control" placeholder="Monto Neto" value={state.datosVenta ? state.datosVenta.total_neto : ""} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" name="iva" aria-label="First name" className="form-control" placeholder="IVA" onChange={getDatosVentas} value={state.datosVenta?state.datosVenta.iva:""} /></th>
+                                            <th scope="col"><input type="text" name="iva" aria-label="First name" className="form-control" placeholder="IVA" value={state.datosVenta ? state.datosVenta.iva : ""} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
-                                            <th scope="col"><input type="text" name="total_a_pagar" aria-label="First name" className="form-control" placeholder="Monto a Pagar" onChange={getDatosVentas} value={state.datosVenta?state.datosVenta.total_a_pagar:""} /> </th>
+                                            <th scope="col"><input type="text" name="total_a_pagar" aria-label="First name" className="form-control" placeholder="Monto a Pagar" value={state.datosVenta ? state.datosVenta.total_a_pagar : ""} /> </th>
                                         </tr>
                                     </thead>
                                 </table>

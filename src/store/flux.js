@@ -400,6 +400,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 title: result.msg
                             })
                             setStore({ abrirCaja: true })
+                            sessionStorage.setItem("abrirCaja", true)
                             setTimeout(() => props.history.push("/venta-usuario"), 1000)
                         } else {
                             Swal.fire({

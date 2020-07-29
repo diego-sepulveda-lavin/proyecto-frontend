@@ -20,13 +20,13 @@ const CerrarCaja = props => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-1">
-                                <label className="font-weight-bold"><u>Nombre</u></label>
+                                <label className="font-weight-bold"><u>Nombre de usuario</u></label>
                             </div>
                             <div className="col-md-2">
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" value={store.usuarioActivo ? store.usuarioActivo.codigo : ""} />
                             </div>
                             <div className="col-md-1">
-                                <label className="font-weight-bold"><u>Hora Inicio</u></label>
+                                <label className="font-weight-bold"><u>Hora Cierre</u></label>
                             </div>
                             <div className="col-md-2">
                                 <input type="time" className="form-control" />
@@ -34,7 +34,7 @@ const CerrarCaja = props => {
                             <div className="col-md-1">
                                 <label className="font-weight-bold"><u>Fecha</u></label>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-3">
                                 <input type="date" className="form-control" />
                             </div>
                         </div>
