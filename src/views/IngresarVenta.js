@@ -177,7 +177,7 @@ const IngresarVenta = (props) => {
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
                                                             <td className="text-center" >{producto.total}</td>
                                                             <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
-                                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                                                <i id={index} className="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
                                                         </tr>
                                                     )
@@ -202,7 +202,7 @@ const IngresarVenta = (props) => {
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA"  value={state.datosVenta.monto_iva = state.datosVenta.monto_neto*(19/100).toFixed(2)} /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA"  value={state.datosVenta.monto_iva = (state.datosVenta.monto_neto*(19/100)).toFixed(2)} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>
