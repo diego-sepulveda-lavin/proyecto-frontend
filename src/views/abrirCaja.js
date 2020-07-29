@@ -9,7 +9,7 @@ const AbrirCaja = props => {
     useEffect(() => {
         actions.validaLogin(props)
 
-       
+
     }, [])
 
     const [state, setState] = useState({
@@ -34,9 +34,10 @@ const AbrirCaja = props => {
 
     const enviarFormulario = (e) => {
         e.preventDefault();
-        actions.validaCaja("/valida-Caja", state, props)
+        if (!state.hora_inicio || !state.fecha || !state.monto_inicial)
+            actions.validaCaja("/valida-Caja", state, props, false)
 
-
+        else actions.validaCaja("/valida-Caja", state, props)
     }
 
     return (

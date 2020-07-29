@@ -370,40 +370,48 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ usuarioActivo: usuario })
             },
 
-            validaCaja: async (urlPag, data, props) => {
-                let store = getStore();
-                try {
-                    let headersContent = { 'Content-Type': 'application/json' };
-                    const token = sessionStorage.getItem('access_token');
-                    if (token) {
-                        headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-                    }
-                    let requestOptions = {
-                        method: 'POST',
-                        headers: headersContent,
-                        body: JSON.stringify(data)
-                    };
-                    const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
-                    const result = await resp.json();
-                    if (resp.status == 200) {
-                        Swal.fire({
-                            icon: 'success',
-                            timer: 2000,
-                            timerProgressBar: true,
-                            title: result.msg
-                        })
-                        setStore({ abrirCaja: true })
-                        setTimeout(() => props.history.push("/venta-usuario"), 2000)
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Algo salió mal.',
-                            text: result.msg
-                        })
-                    }
+            validaCaja: async (urlPag, data, props, camposCompletos = true) => {
+                console.log(camposCompletos)
+                if (camposCompletos == false) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Faltan campos por llenar"
+                    })
+                } else {
+                    let store = getStore();
+                    try {
+                        let headersContent = { 'Content-Type': 'application/json' };
+                        const token = sessionStorage.getItem('access_token');
+                        if (token) {
+                            headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                        }
+                        let requestOptions = {
+                            method: 'POST',
+                            headers: headersContent,
+                            body: JSON.stringify(data)
+                        };
+                        const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                        const result = await resp.json();
+                        if (resp.status == 200) {
+                            Swal.fire({
+                                icon: 'success',
+                                timer: 1000,
+                                timerProgressBar: true,
+                                title: result.msg
+                            })
+                            setStore({ abrirCaja: true })
+                            setTimeout(() => props.history.push("/venta-usuario"), 1000)
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salió mal.',
+                                text: result.msg
+                            })
+                        }
 
-                } catch (error) {
-                    console.log(error);
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             }
 
