@@ -7,24 +7,6 @@ const EditarFactura = (props) => {
 
     const { store, actions } = useContext(Context)
 
-    useEffect(() => {
-        actions.validaLogin(props)
-        const idUsuario = !!store.usuarioActivo ? store.usuarioActivo.id : null;
-        setUsuarioId(idUsuario)
-        actions.getFetchID("/facturas-compras/" + props.match.params.index, setState, "factura")
-
-    }, [])
-
-    const setUsuarioId = (idUsuario) => {
-        const detalleEntrada = state.detalleEntrada;
-
-        detalleEntrada['usuario_id'] = idUsuario
-
-        setState(prevState => {
-            return { ...prevState, detalleEntrada }
-        })
-    }
-
     const [state, setState] = useState({
         factura: {
             folio: "",
@@ -46,15 +28,115 @@ const EditarFactura = (props) => {
         }
     });
 
-    const getDatosFactura = e => {
-        const factura = state.factura;
+    const [msg, setMsg] = useState({
+        msg: null
+    })
 
+    useEffect(() => {
+        actions.validaLogin(props)
+        const idUsuario = !!store.usuarioActivo ? store.usuarioActivo.id : null;
+        setUsuarioId(idUsuario)
+        //actions.getFetchID("/facturas-compras/" + props.match.params.index, setState, "factura")
+
+        getFetchID("/facturas-compras/" + props.match.params.index)
+    }, [])
+
+    const getFetchID = async (urlPag) => {
+
+        try {
+            let headersContent = { 'Content-Type': 'application/json' };
+            const token = sessionStorage.getItem('access_token');
+            if (token) {
+                headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+            }
+            let requestOptions = {
+                method: 'GET',
+                headers: headersContent
+            };
+            const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+            const result = await resp.json();
+            result.fecha_emision = new Date(result.fecha_emision).toISOString().slice(0, 10);
+            result.fecha_recepcion = new Date(result.fecha_recepcion).toISOString().slice(0, 10);
+            result.monto_otros_impuestos = result.monto_otros_impuestos.toString()
+
+            setState({
+                factura: result,
+                detalleEntrada: {
+                    cantidad: null,
+                    precio_costo_unitario: null,
+                    costo_total: null,
+                    usuario_id: null,
+                    producto_id: null
+                }
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const putFetch = async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
+        try {
+            let headersContent = { 'Content-Type': 'application/json' };
+            const token = sessionStorage.getItem('access_token');
+            if (token) {
+                headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+            }
+            let requestOptions = {
+                method: 'PUT',
+                headers: headersContent,
+                body: JSON.stringify(data_a_enviar)
+            };
+            const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+            const result = await resp.json();
+            if (resp.status == 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: mensajeAlerta + ' modificada exitosamente.'
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo salió mal.',
+                    text: result.msg
+                })
+            }
+            setInfo({
+                "msg": result.msg,
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const postData = e => {
+        e.preventDefault();
+        console.log(state)
+        putFetch("/facturas-compras/" + props.match.params.index, setMsg, state.factura, "Factura")
+    }
+
+    const setUsuarioId = (idUsuario) => {
+        const detalleEntrada = state.detalleEntrada;
+
+        detalleEntrada['usuario_id'] = idUsuario
+
+        setState(prevState => {
+            return { ...prevState, detalleEntrada }
+        })
+    }
+
+    const getDatosFactura = e => {
+        const { factura } = state;
         factura[e.target.name] = e.target.value
+        factura.monto_iva = factura.monto_neto * (19 / 100)
+        factura.monto_total = parseInt(factura.monto_neto) + factura.monto_iva + parseInt(factura.monto_otros_impuestos)
 
         setState(prevState => {
             return { ...prevState, factura }
         })
     }
+
     let multiplicacion = 0;
     const getDetalleEntrada = e => {
         const detalleEntrada = state.detalleEntrada;
@@ -91,11 +173,6 @@ const EditarFactura = (props) => {
         }
     }
 
-    const postData = e => {
-        e.preventDefault();
-        //actions.postFetch("/facturas-compras", state, setState, "Factura", "factura")
-    }
-
     const deleteProducto = e => {
         let data = state.factura.entradas_inventario;
         data.splice(e.target.id, 1);
@@ -110,7 +187,7 @@ const EditarFactura = (props) => {
             <>
                 <div className="panel-header panel-header-md">
                     <h1 className="text-warning text-center">Stock</h1>
-                    <h3 className="text-info text-center">Ingresar Nueva Factura</h3>
+                    <h3 className="text-info text-center">Modificar Factura</h3>
                 </div>
                 <div className="content mt-2">
                     <div className="row">
@@ -197,15 +274,16 @@ const EditarFactura = (props) => {
                                                         <tr>
                                                             <td className="align-middle text-center">
                                                                 <input type="number" min="0" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
+
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
+                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
                                                                 <input type="number" min="0" className="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
+                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
                                                             </td>
                                                         </tr>
                                                     </>
@@ -243,7 +321,7 @@ const EditarFactura = (props) => {
                                                     <>
                                                         <tr>
                                                             <td className="align-middle text-center">
-                                                                <select className="form-control" name="producto_id" /* value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} */ onChange={getDetalleEntrada} >
+                                                                <select className="form-control" name="producto_id" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} >
                                                                     <option value="" disabled>Seleccionar</option>
                                                                     {
                                                                         !!store.productos &&
@@ -255,13 +333,13 @@ const EditarFactura = (props) => {
 
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" /* value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""}  */onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" className="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" /* value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} */ onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" /* value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} */ onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
@@ -342,7 +420,7 @@ const EditarFactura = (props) => {
                                                 </table>
                                             </div>
                                             <div className="col-12 d-flex justify-content-end">
-                                                <button className="btn btn-primary" name="Crear_Factura">Ingresar Factura</button>
+                                                <button className="btn btn-primary" name="Crear_Factura">Guardar cambios</button>
                                             </div>
                                         </div>
                                     </div>
