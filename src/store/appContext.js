@@ -26,7 +26,7 @@ const injectContext = PassedComponent => {
 
             /*             state.actions.getFetch("/entradas-inventario", "entradaStock");
                         state.actions.getFetch("/salidas-inventario", "ventaProductos"); */
-        }, [state.store.usuarioActivo]);
+        }, [state.store.usuarioActivo, state.store.abrirCaja]);
 
         useEffect(() => {
             if (state.store.usuarioActivo !== null) {

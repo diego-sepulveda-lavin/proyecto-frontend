@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             facturas: null,
             usuarioActivo: null,
             imageURL: null,
-            abrirCaja: false,
+            abrirCaja: true,
             cerrarCaja: null,
             MensajesRecibidos: []
 

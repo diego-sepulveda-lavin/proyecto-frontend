@@ -34,6 +34,8 @@ const IngresarVenta = (props) => {
         }
     })
 
+    const getDatosVentas = ()=>{}
+
     const getInformacion = (e) => {
         let data = {
             buscador: e.target.value
@@ -47,9 +49,9 @@ const IngresarVenta = (props) => {
         let { detalleProductos } = state
         let ProductoAgregado = {
             descripcion: producto.descripcion,
-            cantidad: 0,
+            cantidad: 1,
             precio_venta_unitario: producto.precio_venta_unitario,
-            total: 0
+            total: producto.precio_venta_unitario
         }
         detalleProductos.push(ProductoAgregado)
 
@@ -171,7 +173,7 @@ const IngresarVenta = (props) => {
                                                         <tr>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
-                                                            <td><input type="text" className="border-0 text-center" onChange={getDatosProductos} value={producto.cantidad} id={index} /></td>
+                                                    <td><input type="text" className="border-0 text-center" onChange={getDatosProductos} id={index} value={state.detalleProductos.length>0?state.detalleProductos.cantidad:""}/></td>
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
                                                             <td className="text-center" >{producto.total}</td>
                                                             <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
@@ -196,11 +198,11 @@ const IngresarVenta = (props) => {
                                     <thead>
                                         <tr className=" table-hover">
                                             <th scope="col">Total Neto</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto Neto"  value={state.datosVenta.monto_neto = state.datosVenta.monto_total/1.19} /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="Monto Neto"  value={state.datosVenta.monto_neto = (state.datosVenta.monto_total/1.19).toFixed(2)} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA"  value={state.datosVenta.monto_iva = state.datosVenta.monto_net*0.19} /></th>
+                                            <th scope="col"><input type="text" aria-label="First name" className="form-control" placeholder="IVA"  value={state.datosVenta.monto_iva = state.datosVenta.monto_neto*(19/100).toFixed(2)} /></th>
                                         </tr>
                                         <tr className=" table-hover">
                                             <th scope="col">Total a pagar</th>

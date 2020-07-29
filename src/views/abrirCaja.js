@@ -20,6 +20,13 @@ const AbrirCaja = props => {
         administrador: "",
         password: ""
     })
+    const [montoI, setMontoI] = useState({
+        monto_inicial: ""
+    })
+
+/*     const getMonto = e=>{
+        setMontoI({[e.target.name]: e.target.value})
+    } */
 
     const getInformacion = (e) => {
         let data = {
@@ -30,15 +37,18 @@ const AbrirCaja = props => {
         })
     }
 
-
-
     const enviarFormulario = (e) => {
         e.preventDefault();
         if (!state.hora_inicio || !state.fecha || !state.monto_inicial)
             actions.validaCaja("/valida-Caja", state, props, false)
-
         else actions.validaCaja("/valida-Caja", state, props)
     }
+
+    var f = new Intl.NumberFormat('es-CL', {  
+        currency: 'CLP',
+        //document.write(f.format(2512300));
+      });
+        
 
     return (
         <>
@@ -47,7 +57,6 @@ const AbrirCaja = props => {
                 <h3 className="text-info text-center">Abrir Caja</h3>
             </div>
             <div className="content mt-2">
-
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
@@ -57,7 +66,6 @@ const AbrirCaja = props => {
                                     <p>Recuerde que al abrir caja logeado con su ID, se hace responsable por el monto inicial y los
                                             movimientos que tenga durante el periodo de trabajo.</p>
                                 </div>
-
 
                             </div>
                             <form onSubmit={enviarFormulario}>
@@ -89,7 +97,6 @@ const AbrirCaja = props => {
                                                 <input type="password" name="password" className="form-control" placeholder="" onChange={getInformacion} />
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="row">
                                         <div className="col-md-3">
@@ -98,7 +105,6 @@ const AbrirCaja = props => {
                                                 <input type="date" name="fecha" className="form-control" onChange={getInformacion} />
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="row">
                                         <div className="col-md-3">
@@ -113,8 +119,6 @@ const AbrirCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div className="card-footer">
                                     <button className="btn btn-success btn-block">Abrir Caja</button>
