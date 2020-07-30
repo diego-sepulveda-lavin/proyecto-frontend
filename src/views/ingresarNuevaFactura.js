@@ -262,10 +262,10 @@ const IngresarNuevaFactura = (props) => {
                                                         Cantidad
                                                     </th>
                                                     <th className="align-middle text-center">
-                                                        Precio Costo Unitario
+                                                        Precio Costo Neto Unitario
                                                     </th>
                                                     <th className="align-middle text-center">
-                                                        Costo Total
+                                                        Costo Neto Total
                                                     </th>
                                                     <th>&nbsp;</th>
                                                 </thead>
@@ -288,10 +288,10 @@ const IngresarNuevaFactura = (props) => {
                                                                 <input type="number" min="0" className="form-control" placeholder="Cantidad" name="cantidad" aria-describedby="basic-addon1" value={state.detalleEntrada.cantidad ? state.detalleEntrada.cantidad : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" className="form-control" placeholder="Precio Costo Neto Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Neto Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
@@ -325,10 +325,10 @@ const IngresarNuevaFactura = (props) => {
                                                             Cantidad
                                                     </th>
                                                         <th className="align-middle text-center">
-                                                            Precio Costo Unitario
+                                                            Precio Costo Neto Unitario
                                                     </th>
                                                         <th className="align-middle text-center">
-                                                            Costo Total
+                                                            Costo Neto Total
                                                     </th>
 
                                                         <th>&nbsp;</th>

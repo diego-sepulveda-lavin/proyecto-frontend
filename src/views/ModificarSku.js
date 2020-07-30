@@ -59,10 +59,10 @@ const ModificarSku = (props) => {
                                                     Unidad de Entrega
                                                     </th>
                                                 <th className="align-middle text-center">
-                                                    Costo Unitario
+                                                    Costo Neto Unitario
                                                     </th>
                                                 <th className="align-middle text-center">
-                                                    Costo Total
+                                                    Costo Neto Total
                                                     </th>
                                                 <th className="align-middle text-center">
                                                     Precio de Venta

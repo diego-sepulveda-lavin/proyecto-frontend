@@ -63,10 +63,10 @@ const GeneralStock = (props) => {
                                                 Unidad de Entrega
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Costo Unitario
+                                                Costo Neto Unitario
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Costo Total
+                                                Costo Neto Total
                                                     </th>
                                             <th className="text-center text-center">
                                                 Precio de Venta
