@@ -124,6 +124,7 @@ const IngresarVenta = (props) => {
                                                 <th className="align-middle text-center font-weight-bold" scope="col">#</th>
                                                 <th className="align-middle text-center font-weight-bold" scope="col">Producto</th>
                                                 <th className="align-middle text-center font-weight-bold" scope="col">Precio Unitario</th>
+                                                <th className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -145,6 +146,7 @@ const IngresarVenta = (props) => {
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
+                                                                    <td className="align-middle text-center">0</td>
                                                                 </tr>
                                                             })
                                                     )
@@ -177,7 +179,7 @@ const IngresarVenta = (props) => {
                                             state.detalleProductos == null ? "" :
                                                 state.detalleProductos.map((producto, index) => {
                                                     return (
-                                                        <tr key={index}>
+                                                        <tr key={producto.descripcion}>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
                                                             <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} defaultValue={producto.cantidad} /></td>
