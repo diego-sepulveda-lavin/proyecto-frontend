@@ -8,31 +8,105 @@ const IngresarVenta = (props) => {
     const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         buscador: "",
-        contadorTotal: 0,
-        contadorIva: 0,
-        contadorNeto: 0,
         detalleProductos: [],
         datosVenta: {
-            total_neto: null,
-            iva: null,
-            total_a_pagar: null
+            monto_neto: null,
+            monto_iva: null,
+            monto_total: null,
+            monto_recibido: null,
+            vuelto: null,
+            tipo_documento: null,
+            numero_documento: null,
+            forma_pago: null
+
         }
     })
     useEffect(() => {
         actions.validaLogin(props)
-        if (sessionStorage.getItem("abrirCaja") == null) {
-            Swal.fire({
-                title: store.usuarioActivo.nombre,
-                text: "Debes abrir caja para poder Iniciar las ventas!",
-                icon: 'info',
-                allowOutsideClick: false,
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ir a abrir Caja!'
-            }).then((result) => {
-                if (result.value) props.history.push("/abrir-caja")
-            })
-        }
+        /*  if (sessionStorage.getItem("abrirCaja") == null) {
+             Swal.fire({
+                 title: store.usuarioActivo.nombre,
+                 text: "Debes abrir caja para poder Iniciar las ventas!",
+                 icon: 'info',
+                 allowOutsideClick: false,
+                 confirmButtonColor: '#3085d6',
+                 confirmButtonText: 'Ir a abrir Caja!'
+             }).then((result) => {
+                 if (result.value) props.history.push("/abrir-caja")
+             })
+         } */
     }, [])
+
+    const postData = e => {
+        e.preventDefault();
+        if (state.detalleProductos.length == 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Debe ingresar productos para generar venta'
+            })
+
+        } else if (state.datosVenta.tipo_documento === null || state.datosVenta.forma_pago === null || state.datosVenta.monto_recibido === null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Faltan campos por completar'
+            })
+        } else if (state.datosVenta.vuelto < 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Verificar monto recibido'
+            })
+        } else {
+            postFetch("/documentos-venta/", state, setState)
+
+        }
+    }
+
+    const postFetch = async (urlPag, data_a_enviar, limpiarInput) => {
+        try {
+            let headersContent = { 'Content-Type': 'application/json' };
+            const token = sessionStorage.getItem('access_token');
+            if (token) {
+                headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+            }
+            let requestOptions = {
+                method: 'POST',
+                headers: headersContent,
+                body: JSON.stringify(data_a_enviar)
+            };
+            const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+            const result = await resp.json();
+            if (resp.status == 200 || resp.status == 201) {
+                Swal.fire({
+                    icon: 'success',
+                    title: result.msg
+                })
+                limpiarInput({
+                    buscador: "",
+                    detalleProductos: [],
+                    datosVenta: {
+                        monto_neto: "",
+                        monto_iva: "",
+                        monto_total: "",
+                        monto_recibido: "",
+                        vuelto: "",
+                        tipo_documento: "",
+                        numero_documento: "",
+                        forma_pago: ""
+                    }
+                })
+
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo salió mal.',
+                    text: result.msg
+                })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     const getInformacion = (e) => {
         let data = {
@@ -41,7 +115,18 @@ const IngresarVenta = (props) => {
         setState(prevState => {
             return { ...prevState, ...data }
         })
+    };
+
+    const getDetallePago = (e) => {
+        const { datosVenta } = state
+        datosVenta[e.target.name] = e.target.value
+        datosVenta.vuelto = datosVenta.monto_recibido - datosVenta.monto_total
+
+        setState(prevState => {
+            return { ...prevState, datosVenta }
+        })
     }
+
 
     const agregarProducto = (producto) => {
         let { detalleProductos } = state
@@ -49,7 +134,8 @@ const IngresarVenta = (props) => {
             descripcion: producto.descripcion,
             cantidad: 1,
             precio_venta_unitario: producto.precio_venta_unitario,
-            total: producto.precio_venta_unitario
+            total: producto.precio_venta_unitario,
+            producto_id: producto.id
         }
         detalleProductos.push(productoAgregado)
         setState(prevState => {
@@ -58,9 +144,9 @@ const IngresarVenta = (props) => {
 
 
         const { datosVenta } = state
-        datosVenta.total_a_pagar = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
-        datosVenta.total_neto = Math.ceil(datosVenta.total_a_pagar / (1.19));
-        datosVenta.iva = Math.ceil(datosVenta.total_neto * (19 / 100));
+        datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
+        datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
+        datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
         setState(prevState => {
             return { ...prevState, datosVenta }
         })
@@ -73,6 +159,14 @@ const IngresarVenta = (props) => {
         setState(prevState => {
             return { ...prevState, detalleProductos: data }
         });
+
+        const { datosVenta } = state
+        datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
+        datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
+        datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
+        setState(prevState => {
+            return { ...prevState, datosVenta }
+        })
     }
 
     const getDatosProductos = e => {
@@ -80,14 +174,24 @@ const IngresarVenta = (props) => {
         detalleProductos[e.target.id].cantidad = parseInt(e.target.value)
         detalleProductos[e.target.id].total = parseInt(detalleProductos[e.target.id].cantidad) * parseInt(detalleProductos[e.target.id].precio_venta_unitario)
 
-        /* Este codigo se repite para que al momento de modificar una cantidad en los detalles de productos, se actualice el monto total, neto e iva */
+        /* Este codigo se repite para que al momento de modificar una cantidad en los detalles de productos, se actualice el monto total, neto e monto_iva */
         const { datosVenta } = state
-        datosVenta.total_a_pagar = detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
-        datosVenta.total_neto = Math.ceil(datosVenta.total_a_pagar / (1.19));
-        datosVenta.iva = Math.ceil(datosVenta.total_neto * (19 / 100));
+        datosVenta.monto_total = detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
+        datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
+        datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
         setState(prevState => {
             return { ...prevState, detalleProductos, datosVenta }
         })
+        getDetallePago(e)
+    }
+
+    const generarFolio = () => {
+        const { datosVenta } = state
+        datosVenta.numero_documento = Math.floor(Math.random() * 9999) + 1
+        setState(prevState => {
+            return {...prevState, datosVenta}
+        })
+        
     }
 
 
@@ -137,7 +241,7 @@ const IngresarVenta = (props) => {
                                                             return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
                                                         })
                                                             .map((producto, index) => {
-                                                                return <tr onClick={() => agregarProducto(producto)}>
+                                                                return <tr onClick={(e) => { agregarProducto(producto); getDetallePago(e) }}>
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
@@ -171,15 +275,15 @@ const IngresarVenta = (props) => {
                                     <tbody>
                                         {
                                             state.detalleProductos == null ? "" :
-                                                state.detalleProductos.map((producto, index) => {
+                                                state.detalleProductos.map((producto, index, arr) => {
                                                     return (
-                                                        <tr>
+                                                        <tr key={producto.id}>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
-                                                            <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} defaultValue={producto.cantidad} /></td>
+                                                            <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} value={producto.cantidad} /></td>
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
                                                             <td className="text-center" >{producto.total}</td>
-                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={() => deleteProducto(index)} id={index}>
+                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={(e) => { deleteProducto(index); getDetallePago(e) }} id={index}>
                                                                 <i id={index} className="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
                                                         </tr>
@@ -195,29 +299,96 @@ const IngresarVenta = (props) => {
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-7 offset-md-5">
-                        <div className="card">
-                            <div className="card-body">
-                                <table className="table">
-                                    <thead>
-                                        <tr className=" table-hover">
-                                            <th scope="col">Total Neto</th>
-                                            <th scope="col"><input type="text" name="total_neto" aria-label="First name" className="form-control" placeholder="Monto Neto" value={state.datosVenta ? state.datosVenta.total_neto : ""} /></th>
-                                        </tr>
-                                        <tr className=" table-hover">
-                                            <th scope="col">IVA 19%</th>
-                                            <th scope="col"><input type="text" name="iva" aria-label="First name" className="form-control" placeholder="IVA" value={state.datosVenta ? state.datosVenta.iva : ""} /></th>
-                                        </tr>
-                                        <tr className=" table-hover">
-                                            <th scope="col">Total a pagar</th>
-                                            <th scope="col"><input type="text" name="total_a_pagar" aria-label="First name" className="form-control" placeholder="Monto a Pagar" value={state.datosVenta ? state.datosVenta.total_a_pagar : ""} /> </th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                <Link to="/cerrar-venta" type="button" className="btn btn-success btn-lg btn-block font-weight-bold">Ir a Pagar</Link>
+                        <form onSubmit={postData}>
+                            <div className="card">
+                                <div className="card-body">
+                                    <table className="table">
+                                        <thead>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Documento
+                                                </th>
+                                                <div className="col-12 d-flex justify-content-start">
+                                                    <div className="form-check m-0 mt-2 pl-0">
+                                                        <label className="form-check-label p-0 align-middle pl-0" for="boleta">Boleta</label>
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="tipo_documento" id="boleta" onChange={getDetallePago} onClick={generarFolio} value="boleta" />
+                                                        <label className="form-check-label p-0 align-middle pl-0" for="fact">Factura</label>
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="tipo_documento" id="fact" onChange={getDetallePago} onClick={generarFolio} value="factura" />
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Forma de Pago
+                                                </th>
+                                                <div className="col-12 d-flex justify-content-start">
+                                                    <div className="form-check m-0 mt-2 pl-0">
+                                                        <label className="form-check-label align-middle pl-0" for="transferencia">Transferencia</label>
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="transferencia" onChange={getDetallePago} value="transferencia" />
+                                                        <label className="form-check-label align-middle pl-0" for="efectivo">Efectivo</label>
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="efectivo" onChange={getDetallePago} value="efectivo" />
+                                                        <label className="form-check-label align-middle pl-0" for="tarjeta">Tarjeta</label>
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="tarjeta" onChange={getDetallePago} value="tarjeta" />
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    N° Documento
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="numero_documento" aria-label="First name" className="form-control" disabled placeholder="N° Documento" value={state.datosVenta ? state.datosVenta.numero_documento : ""} />
+                                                </th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Total Neto
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="monto_neto" aria-label="First name" className="form-control" disabled placeholder="Monto Neto" value={state.datosVenta ? state.datosVenta.monto_neto : ""} />
+                                                </th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    IVA 19%
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="monto_iva" aria-label="First name" className="form-control" disabled placeholder="IVA" value={state.datosVenta ? state.datosVenta.monto_iva : ""} />
+                                                </th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Total a pagar
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="monto_total" aria-label="First name" className="form-control" disabled placeholder="Monto a Pagar" value={state.datosVenta ? state.datosVenta.monto_total : ""} />
+                                                </th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Monto Recibido
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="monto_recibido" aria-label="First name" className="form-control" placeholder="Monto Recibido" onChange={getDetallePago} value={state.datosVenta ? state.datosVenta.monto_recibido : ""} />
+                                                </th>
+                                            </tr>
+                                            <tr className=" table-hover">
+                                                <th scope="col">
+                                                    Vuelto
+                                                </th>
+                                                <th scope="col">
+                                                    <input type="text" name="vuelto" disabled aria-label="First name" className="form-control" placeholder="Vuelto" value={state.datosVenta ? state.datosVenta.vuelto : ""} />
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <button className="btn btn-success btn-lg btn-block font-weight-bold">Generar venta</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </>
     )
