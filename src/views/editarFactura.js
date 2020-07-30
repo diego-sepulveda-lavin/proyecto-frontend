@@ -32,12 +32,19 @@ const EditarFactura = (props) => {
         msg: null
     })
 
+    const [totalDetalle, setTotalDetalle] = useState(0)
+
     useEffect(() => {
         actions.validaLogin(props)
         const idUsuario = !!store.usuarioActivo ? store.usuarioActivo.id : null;
         setUsuarioId(idUsuario)
         getFetchID("/facturas-compras/" + props.match.params.index)
     }, [])
+
+    useEffect(() => {
+        sumaTotalNeto()
+        
+    }, [state])
 
     const getFetchID = async (urlPag) => {
 
@@ -67,6 +74,7 @@ const EditarFactura = (props) => {
                     producto_id: null
                 }
             })
+
 
         } catch (error) {
             console.log(error);
@@ -110,8 +118,15 @@ const EditarFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-        console.log(state)
-        putFetch("/facturas-compras/" + props.match.params.index, setMsg, state.factura, "Factura")
+        if (totalDetalle != state.factura.monto_neto) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Montos de factura no cuadran'
+            })
+        } else {
+            putFetch("/facturas-compras/" + props.match.params.index, setMsg, state.factura, "Factura")
+
+        }
     }
 
     const setUsuarioId = (idUsuario) => {
@@ -175,8 +190,16 @@ const EditarFactura = (props) => {
         let data = state.factura.entradas_inventario;
         data.splice(e.target.id, 1);
         setState(prevState => {
-            return { ...prevState, entradas_inventario: data }
+            return { ...prevState}
         });
+    }
+
+    const sumaTotalNeto = () =>{
+        let total = 0;
+        state.factura.entradas_inventario.map((entrada)=>{
+            total = total + entrada.costo_total
+        })
+        setTotalDetalle(total)
     }
 
     if (state.factura != null || state.detalleEntrada != null) {
@@ -337,7 +360,7 @@ const EditarFactura = (props) => {
                                                                 <input type="number" min="0" className="form-control" placeholder="Precio Costo Unitario" name="precio_costo_unitario" aria-describedby="basic-addon1" value={state.detalleEntrada.precio_costo_unitario ? state.detalleEntrada.precio_costo_unitario : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ? state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
+                                                                <input type="number" min="0" readOnly className="form-control" placeholder="Costo Total" name="costo_total" aria-describedby="basic-addon1" value={state.detalleEntrada.costo_total ?  state.detalleEntrada.costo_total : ""} onChange={getDetalleEntrada} />
                                                             </td>
                                                             <td><button type="button" onClick={addDetalleEntrada} className="btn btn-warning btn-sm"><i className="now-ui-icons ui-1_simple-add"></i></button></td>
 
@@ -397,10 +420,11 @@ const EditarFactura = (props) => {
                                                                                 {producto.cantidad}
                                                                             </td>
                                                                             <td className="align-middle text-center">
-                                                                                {producto.precio_costo_unitario}
+                                                                                $ {new Intl.NumberFormat("de-DE").format(producto.precio_costo_unitario)}
                                                                             </td>
                                                                             <td className="align-middle text-center">
-                                                                                {producto.costo_total}
+                                                                                $ {new Intl.NumberFormat("de-DE").format(producto.costo_total)}
+
                                                                             </td>
                                                                             <td>
                                                                                 <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={deleteProducto} id={index}>
@@ -418,6 +442,7 @@ const EditarFactura = (props) => {
                                                 </table>
                                             </div>
                                             <div className="col-12 d-flex justify-content-end">
+                                                <p className="mr-5 mt-3">Total neto detalle: $ {new Intl.NumberFormat("de-DE").format(totalDetalle)}</p>
                                                 <button className="btn btn-primary" name="Crear_Factura">Guardar cambios</button>
                                             </div>
                                         </div>
