@@ -67,12 +67,16 @@ const IngresarVenta = (props) => {
     }
 
     const deleteProducto = (index) => {
-        let data = state.detalleProductos;
+         let data = state.detalleProductos;
         console.log(data)
         data.splice(index, 1);
         setState(prevState => {
             return { ...prevState, detalleProductos: data }
-        });
+        }); 
+    /*     setState(prevState=>({
+            ...prevState,
+            detalleProductos: prevState.detalleProductos.filter((prod,idx)=>idx!==index)
+            })); */
     }
 
     const getDatosProductos = e => {
@@ -137,7 +141,7 @@ const IngresarVenta = (props) => {
                                                             return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
                                                         })
                                                             .map((producto, index) => {
-                                                                return <tr onClick={() => agregarProducto(producto)}>
+                                                                return <tr key={index} onClick={() => agregarProducto(producto)}>
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
@@ -173,7 +177,7 @@ const IngresarVenta = (props) => {
                                             state.detalleProductos == null ? "" :
                                                 state.detalleProductos.map((producto, index) => {
                                                     return (
-                                                        <tr>
+                                                        <tr key={index}>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
                                                             <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} defaultValue={producto.cantidad} /></td>
