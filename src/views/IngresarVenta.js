@@ -153,12 +153,11 @@ const IngresarVenta = (props) => {
     }
 
     const deleteProducto = (index) => {
-         let data = state.detalleProductos;
+        let data = state.detalleProductos;
         console.log(data)
         data.splice(index, 1);
         setState(prevState => {
             return { ...prevState, detalleProductos: data }
-<<<<<<< HEAD
         });
 
         const { datosVenta } = state
@@ -168,13 +167,6 @@ const IngresarVenta = (props) => {
         setState(prevState => {
             return { ...prevState, datosVenta }
         })
-=======
-        }); 
-    /*     setState(prevState=>({
-            ...prevState,
-            detalleProductos: prevState.detalleProductos.filter((prod,idx)=>idx!==index)
-            })); */
->>>>>>> 22f2de368835c8b467e814b40a1697b5225456f2
     }
 
     const getDatosProductos = e => {
@@ -197,9 +189,9 @@ const IngresarVenta = (props) => {
         const { datosVenta } = state
         datosVenta.numero_documento = Math.floor(Math.random() * 9999) + 1
         setState(prevState => {
-            return {...prevState, datosVenta}
+            return { ...prevState, datosVenta }
         })
-        
+
     }
 
 
@@ -250,11 +242,7 @@ const IngresarVenta = (props) => {
                                                             return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
                                                         })
                                                             .map((producto, index) => {
-<<<<<<< HEAD
-                                                                return <tr onClick={(e) => { agregarProducto(producto); getDetallePago(e) }}>
-=======
-                                                                return <tr key={index} onClick={() => agregarProducto(producto)}>
->>>>>>> 22f2de368835c8b467e814b40a1697b5225456f2
+                                                                return <tr key={index} onClick={(e) => { agregarProducto(producto); getDetallePago(e) }}>
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
@@ -291,11 +279,7 @@ const IngresarVenta = (props) => {
                                             state.detalleProductos == null ? "" :
                                                 state.detalleProductos.map((producto, index, arr) => {
                                                     return (
-<<<<<<< HEAD
                                                         <tr key={producto.id}>
-=======
-                                                        <tr key={producto.descripcion}>
->>>>>>> 22f2de368835c8b467e814b40a1697b5225456f2
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
                                                             <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} value={producto.cantidad} /></td>
