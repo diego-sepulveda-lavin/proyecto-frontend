@@ -94,6 +94,7 @@ const IngresarVenta = (props) => {
                         forma_pago: ""
                     }
                 })
+                
 
             } else {
                 Swal.fire({
