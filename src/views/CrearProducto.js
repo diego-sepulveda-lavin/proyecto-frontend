@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
-const CrearSku = (props) => {
+const CrearProducto = (props) => {
 
     const { store, actions } = useContext(Context)
 
@@ -91,10 +91,11 @@ const CrearSku = (props) => {
                                                             <option value="" disabled>Seleccionar</option>
                                                             {
                                                                 store.categorias === null ?
-                                                                    store.categorias !== null &&
+                                                                    "" :
+                                                                    !store.categorias.msg &&
                                                                     store.categorias.map((categoria) => {
                                                                         return <option value={categoria.id} key={categoria.id}>{categoria.nombre}</option>
-                                                                    }) : ""
+                                                                    })
                                                             }
                                                         </select>
                                                     </td>
@@ -117,4 +118,4 @@ const CrearSku = (props) => {
         </>
     )
 }
-export default withRouter(CrearSku);
+export default withRouter(CrearProducto);

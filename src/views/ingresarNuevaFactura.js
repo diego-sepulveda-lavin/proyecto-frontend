@@ -39,7 +39,7 @@ const IngresarNuevaFactura = (props) => {
 
     useEffect(() => {
         sumaTotalNeto()
-        
+
     }, [state])
 
     const setUsuarioId = (idUsuario) => {
@@ -52,15 +52,15 @@ const IngresarNuevaFactura = (props) => {
         })
     }
 
-     const validaMonedaChilena = num =>{
-         let numberFormat = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' }).format(num)
-         return numberFormat;
-     }
+    const validaMonedaChilena = num => {
+        let numberFormat = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' }).format(num)
+        return numberFormat;
+    }
 
     const getDatosFactura = e => {
-        const {factura} = state;
-        factura[e.target.name] = e.target.value       
-        factura.monto_iva = factura.monto_neto * (19/100)
+        const { factura } = state;
+        factura[e.target.name] = e.target.value
+        factura.monto_iva = factura.monto_neto * (19 / 100)
         factura.monto_total = parseInt(factura.monto_neto) + factura.monto_iva + parseInt(factura.monto_otros_impuestos)
 
         setState(prevState => {
@@ -119,20 +119,20 @@ const IngresarNuevaFactura = (props) => {
         let data = state.factura.entradas_inventario;
         data.splice(e.target.id, 1);
         setState(prevState => {
-            return { ...prevState}
+            return { ...prevState }
         });
     }
 
-    const sumaTotalNeto = () =>{
+    const sumaTotalNeto = () => {
         let total = 0;
-        state.factura.entradas_inventario.map((entrada)=>{
+        state.factura.entradas_inventario.map((entrada) => {
             total = total + entrada.costo_total
         })
         setTotalDetalle(total)
     }
 
 
-   
+
 
     if (state.factura != null || state.detalleEntrada != null) {
 
@@ -192,13 +192,14 @@ const IngresarNuevaFactura = (props) => {
                                                             </td>
                                                             <td className="align-middle text-center">
                                                                 <select className="form-control" name="proveedor_id" value={!state.factura.proveedor_id ? "" : state.factura.proveedor_id} onChange={getDatosFactura}>
-                                                                    <option  value="" disabled="disabled">Seleccionar</option>
+                                                                    <option value="" disabled="disabled">Seleccionar</option>
                                                                     {
-                                                                        !!store.proveedores ?
-                                                                        store.proveedores.map((proveedor) => {
-                                                                            return <option value={proveedor.id} key={proveedor.id}>{proveedor.razon_social}</option>
-                                                                        }):
-                                                                        <option selected="true" value="" disabled="disabled">Seleccionar</option>
+                                                                        store.proveedores === null ?
+                                                                            "" :
+                                                                            !store.proveedores.msg &&
+                                                                            store.proveedores.map((proveedor) => {
+                                                                                return <option value={proveedor.id} key={proveedor.id}>{proveedor.razon_social}</option>
+                                                                            })
                                                                     }
                                                                 </select>
                                                             </td>
@@ -277,10 +278,12 @@ const IngresarNuevaFactura = (props) => {
                                                                 <select className="form-control" name="producto_id" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} >
                                                                     <option value="" disabled>Seleccionar</option>
                                                                     {
-                                                                      /*   !!store.productos &&
-                                                                        store.productos.map((producto) => {
-                                                                            return <option value={producto.id} key={producto.id}>{producto.descripcion}</option>
-                                                                        }) */
+                                                                        store.productos === null ?
+                                                                            "" :
+                                                                            !store.productos.msg &&
+                                                                            store.productos.map((producto) => {
+                                                                                return <option value={producto.id} key={producto.id}>{producto.descripcion}</option>
+                                                                            })
                                                                     }
                                                                 </select>
 

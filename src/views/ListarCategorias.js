@@ -8,7 +8,7 @@ const ListarCategorias = (props) => {
         inputBuscador: "",
         buscarPor: "nombre"
     })
-  
+
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
@@ -44,7 +44,7 @@ const ListarCategorias = (props) => {
 
                     <div className="col-md-12">
                         <div className="card">
-                                                    <div className="card-body">
+                            <div className="card-body">
                                 <div className="table-responsive">
                                     <table className="table table-hover" >
                                         <thead className=" text-primary ">
@@ -65,30 +65,34 @@ const ListarCategorias = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                store.categorias.msg?<p className="text-center">{store.categorias.msg}</p>:
-                                                    store.categorias.filter((categoria) => {
-                                                        if (state.buscarPor === "nombre")
-                                                            return categoria.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
+                                                    store.categorias.msg ?
+                                                        <tr className="align-middle text-center">
+                                                            <th colspan="8">No hay Categorías registradas :(</th>
+                                                        </tr>
+                                                        :
+                                                        store.categorias.filter((categoria) => {
+                                                            if (state.buscarPor === "nombre")
+                                                                return categoria.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
 
-                                                    }).map((categoria, indice) => {
-                                                        return (
-                                                            <tr key={indice}>
-                                                                <td className="align-middle text-center">
-                                                                    {categoria.nombre}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {categoria.id}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-categoria/${categoria.id}`} >
-                                                                        <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                        </button>
-                                                                    </Link>
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    })
+                                                        }).map((categoria, indice) => {
+                                                            return (
+                                                                <tr key={indice}>
+                                                                    <td className="align-middle text-center">
+                                                                        {categoria.nombre}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {categoria.id}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <Link to={`/modificar-categoria/${categoria.id}`} >
+                                                                            <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                                <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                            </button>
+                                                                        </Link>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        })
                                             }
                                         </tbody>
                                     </table>
