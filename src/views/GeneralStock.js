@@ -14,21 +14,25 @@ const GeneralStock = (props) => {
                 acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }
                 return acc
             }, {})
-
-
+            
             store.entradas_inventario.map(entradaI => {
-                saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
+                return saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
             });
             store.salidas_inventario.map(salidaI => {
-                saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
+                return saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
             });
 
-            saldoInventario(saldoInventario)
 
+  
+          
+            saldoInventario[7].diferencia = saldoInventario[7].entradas-saldoInventario[7].salidas
+            console.log("si",saldoInventario[7])
+            return saldoInventario
         }
 
     }
 
+   
     console.log(reduce())
 
 
