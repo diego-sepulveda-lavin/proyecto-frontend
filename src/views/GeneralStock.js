@@ -7,33 +7,33 @@ const GeneralStock = (props) => {
     useEffect(() => {
         actions.validaLogin(props)
     }, [])
-
-    const reduce = () => {
-        if (store.productos != null && store.entradas_inventario != null && store.salidas_inventario) {
-            let saldoInventario = store.productos.reduce((acc, producto) => {
-                acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }
-                return acc
-            }, {})
-            
-            store.entradas_inventario.map(entradaI => {
-                return saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
-            });
-            store.salidas_inventario.map(salidaI => {
-                return saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
-            });
-
-
-  
-          
-            saldoInventario[7].diferencia = saldoInventario[7].entradas-saldoInventario[7].salidas
-            console.log("si",saldoInventario[7])
-            return saldoInventario
+    /* 
+        const reduce = () => {
+            if (store.productos != null && store.entradas_inventario != null && store.salidas_inventario) {
+                let saldoInventario = store.productos.reduce((acc, producto) => {
+                    acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }
+                    return acc
+                }, {})
+                
+                store.entradas_inventario.map(entradaI => {
+                    return saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
+                });
+                store.salidas_inventario.map(salidaI => {
+                    return saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
+                });
+    
+    
+      
+              
+                saldoInventario[7].diferencia = saldoInventario[7].entradas-saldoInventario[7].salidas
+                console.log("si",saldoInventario[7])
+                return saldoInventario
+            }
+    
         }
-
-    }
-
-   
-    console.log(reduce())
+    
+       
+        console.log(reduce()) */
 
 
     return (
@@ -108,42 +108,51 @@ const GeneralStock = (props) => {
                                         </thead>
                                         <tbody>
                                             {
-                                                store.productos ?
-                                                    store.productos.map((producto, index) => {
+                                                store.productos == null ?
+                                                    <tr className="align-middle text-center">
+                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
+                                                    </tr>
+                                                    :
+                                                    store.productos !== null ?
+                                                        <tr className="align-middle text-center">
+                                                            <th colspan="8">No hay Stock :(</th>
+                                                        </tr>
+                                                        :
+                                                        store.productos.map((producto, index) => {
 
-                                                        return (
-                                                            <tr >
-                                                                <td className="align-middle text-center">
-                                                                    {producto.sku}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {producto.descripcion}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {producto.codigo_barra}
-                                                                </td>
-                                                                <td className="align-middle text-center">
+                                                            return (
+                                                                <tr >
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.sku}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.descripcion}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.codigo_barra}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
 
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.unidad_entrega}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.precio_venta_unitario}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        $30.000
                                                                 </td>
-                                                                <td className="align-middle text-center">
-                                                                    {producto.unidad_entrega}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {producto.precio_venta_unitario}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    $30.000
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    $400
+                                                                    <td className="align-middle text-center">
+                                                                        $400
                                                                 </td>
 
-                                                                <td className="align-middle text-center">
-                                                                    {producto.categoria_id}
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    }) : ""
+                                                                    <td className="align-middle text-center">
+                                                                        {producto.categoria_id}
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        })
                                             }
 
 

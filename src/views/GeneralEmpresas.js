@@ -98,15 +98,15 @@ const Empresas = (props) => {
                                         <tbody>
                                             {
                                                 store.empresas === null ?
-                                                    (
-                                                        <Spinner />
-                                                    )
+                                                    (<tr className="align-middle text-center">
+                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
+                                                    </tr>)
                                                     :
                                                     (
-                                                        store.empresas.length === 0 ?
+                                                        store.empresas !== null ?
                                                             (
                                                                 <tr className="align-middle text-center">
-                                                                    <th colspan="6">No hay empresas registradas</th>
+                                                                    <th colspan="6">No hay empresas registradas :(</th>
                                                                 </tr>
                                                             )
                                                             :
@@ -148,15 +148,11 @@ const Empresas = (props) => {
                                                                                         <i className="now-ui-icons ui-1_simple-remove" onClick={() => deleteEmpresas(empresa.id)}></i>
                                                                                     </button>
                                                                                 </td>
-
                                                                             </tr>
                                                                         </>
                                                                     )
                                                                 })
                                                             )
-
-
-
                                                     )
                                             }
                                         </tbody>

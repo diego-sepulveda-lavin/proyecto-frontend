@@ -192,12 +192,13 @@ const IngresarNuevaFactura = (props) => {
                                                             </td>
                                                             <td className="align-middle text-center">
                                                                 <select className="form-control" name="proveedor_id" value={!state.factura.proveedor_id ? "" : state.factura.proveedor_id} onChange={getDatosFactura}>
-                                                                    <option selected="true" value="" disabled="disabled">Seleccionar</option>
+                                                                    <option  value="" disabled="disabled">Seleccionar</option>
                                                                     {
-                                                                        !!store.proveedores &&
+                                                                        !!store.proveedores ?
                                                                         store.proveedores.map((proveedor) => {
                                                                             return <option value={proveedor.id} key={proveedor.id}>{proveedor.razon_social}</option>
-                                                                        })
+                                                                        }):
+                                                                        <option selected="true" value="" disabled="disabled">Seleccionar</option>
                                                                     }
                                                                 </select>
                                                             </td>
@@ -276,10 +277,10 @@ const IngresarNuevaFactura = (props) => {
                                                                 <select className="form-control" name="producto_id" value={state.detalleEntrada.producto_id ? state.detalleEntrada.producto_id : ""} onChange={getDetalleEntrada} >
                                                                     <option value="" disabled>Seleccionar</option>
                                                                     {
-                                                                        !!store.productos &&
+                                                                      /*   !!store.productos &&
                                                                         store.productos.map((producto) => {
                                                                             return <option value={producto.id} key={producto.id}>{producto.descripcion}</option>
-                                                                        })
+                                                                        }) */
                                                                     }
                                                                 </select>
 
