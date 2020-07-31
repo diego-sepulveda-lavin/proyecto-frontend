@@ -15,7 +15,8 @@ const CrearSku = (props) => {
         descripcion: null,
         codigo_barra: null,
         unidad_entrega: null,
-        categoria_id: null
+        categoria_id: null,
+        precio_venta_unitario: null
     })
 
     const getInformacion = (e) => {
@@ -60,6 +61,9 @@ const CrearSku = (props) => {
                                                 <th className="align-middle text-center">
                                                     Unidad de Entrega
                                                     </th>
+                                                    <th className="align-middle text-center">
+                                                   Precio Venta
+                                                    </th>
                                                 <th className="align-middle text-center">
                                                     Categoría
                                                     </th>
@@ -78,6 +82,9 @@ const CrearSku = (props) => {
 
                                                     <td className="align-middle text-center">
                                                         <input type="text" name="unidad_entrega" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" onChange={getInformacion} value={!state.unidad_entrega ? "" : state.unidad_entrega} />
+                                                    </td>
+                                                    <td className="align-middle text-center">
+                                                        <input type="text" name="precio_venta_unitario" className="form-control" aria-describedby="basic-addon1" placeholder="Precio Venta Unitario" onChange={getInformacion} value={!state. precio_venta_unitario ? "" : state. precio_venta_unitario}   />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         <select className="form-control" name="categoria_id" value={!state.categoria_id ? "" : state.categoria_id} onChange={getInformacion}>

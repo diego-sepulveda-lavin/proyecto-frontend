@@ -3,10 +3,35 @@ import "../css/ventaPrincipal.css";
 import { Context } from '../store/appContext';
 import { withRouter } from 'react-router-dom';
 const GeneralStock = (props) => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
     }, [])
+
+    const reduce = () => {
+        if (store.productos != null && store.entradas_inventario != null && store.salidas_inventario) {
+            let saldoInventario = store.productos.reduce((acc, producto) => {
+                acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }
+                return acc
+            }, {})
+
+
+            store.entradas_inventario.map(entradaI => {
+                saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
+            });
+            store.salidas_inventario.map(salidaI => {
+                saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
+            });
+
+            saldoInventario(saldoInventario)
+
+        }
+
+    }
+
+    console.log(reduce())
+
+
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -71,79 +96,53 @@ const GeneralStock = (props) => {
                                             <th className="text-center text-center">
                                                 Precio de Venta
                                                     </th>
-                                            <th className="align-middle text-center">
-                                                Margen de Contribución
-                                                    </th>
+
                                             <th className="align-middle text-center">
                                                 Categoría
                                                     </th>
 
                                         </thead>
                                         <tbody>
-                                            <tr >
-                                                <td className="align-middle text-center">
-                                                    651651
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Super 8
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    6546556
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    100
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Unidad
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $300
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $30.000
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $400
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    33%
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Confites
-                                                        </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="align-middle text-center">
-                                                    454545
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Coca Cola 500cc
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    23443
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    500
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Unidad
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $600
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $360.000
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    $600
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    20%
-                                                        </td>
-                                                <td className="align-middle text-center">
-                                                    Bebidas
-                                                        </td>
-                                            </tr>
+                                            {
+                                                store.productos ?
+                                                    store.productos.map((producto, index) => {
+
+                                                        return (
+                                                            <tr >
+                                                                <td className="align-middle text-center">
+                                                                    {producto.sku}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {producto.descripcion}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {producto.codigo_barra}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {producto.unidad_entrega}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    {producto.precio_venta_unitario}
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    $30.000
+                                                                </td>
+                                                                <td className="align-middle text-center">
+                                                                    $400
+                                                                </td>
+
+                                                                <td className="align-middle text-center">
+                                                                    {producto.categoria_id}
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    }) : ""
+                                            }
+
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -10,10 +10,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             productos: null,
             proveedores: null,
             facturas: null,
+            entradas_inventario: null,
+            salidas_inventario: null,
             usuarioActivo: null,
             imageURL: null,
             abrirCaja: true,
             cerrarCaja: null,
+
             MensajesRecibidos: []
 
         },

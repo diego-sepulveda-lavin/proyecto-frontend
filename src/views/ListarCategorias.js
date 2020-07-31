@@ -65,6 +65,7 @@ const ListarCategorias = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
+                                                store.categorias.msg?<p className="text-center">{store.categorias.msg}</p>:
                                                     store.categorias.filter((categoria) => {
                                                         if (state.buscarPor === "nombre")
                                                             return categoria.nombre.toLowerCase().includes(state.inputBuscador.toLowerCase());
