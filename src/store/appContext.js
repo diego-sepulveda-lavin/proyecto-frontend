@@ -24,8 +24,8 @@ const injectContext = PassedComponent => {
                 state.actions.getFetch("/facturas-compras", "facturas");
                 state.actions.getFetch("/entradas-inventario", "entradas_inventario")
                 state.actions.getFetch("/salidas-inventario", "salidas_inventario");
-            } 
-                         ;
+                state.actions.getFetch("/stock", "InventarioDisponible");
+            };
                      
         }, [state.store.usuarioActivo]);
 

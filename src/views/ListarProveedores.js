@@ -97,7 +97,7 @@ const ListarProveedores = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.proveedores !== null ?
+                                                    store.proveedores.msg ?
                                                         <tr className="align-middle text-center">
                                                             <th colspan="8">No hay proveedores registrados :(</th>
                                                         </tr>

@@ -16,6 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             imageURL: null,
             abrirCaja: true,
             cerrarCaja: null,
+            InventarioDisponible: null,
+
 
             MensajesRecibidos: []
 
@@ -417,7 +419,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                         console.log(error);
                     }
                 }
-            }
+            },
+
+           
+
 
 
 

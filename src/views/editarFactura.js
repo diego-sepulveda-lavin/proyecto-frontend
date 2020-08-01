@@ -457,9 +457,7 @@ const EditarFactura = (props) => {
     } else {
         return (
             <>
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+                <i className="now-ui-icons loader_refresh spin"></i>
 
             </>
         )

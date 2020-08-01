@@ -100,7 +100,7 @@ const ListadoUsuarios = (props) => {
                                                     </tr>)
                                                     :
                                                     (
-                                                        store.usuarios !== null ?
+                                                        store.usuarios.msg?
                                                             <tr className="align-middle text-center">
                                                                 <th colspan="8">No hay usuarios registrados :(</th>
                                                             </tr>

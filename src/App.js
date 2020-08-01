@@ -20,7 +20,6 @@ import CerrarVenta from './views/cerrarVenta';
 import Empresas from './views/GeneralEmpresas';
 import CrearEmpresa from './views/CrearEmpresa';
 import EditarEmpresa from './views/EditarEmpresa';
-import Spinner from './components/spinner';
 import IngresarNuevaFactura from './views/ingresarNuevaFactura';
 import EditarFactura from './views/editarFactura';
 import CrearProveedor from './views/CrearProveedor';
@@ -35,7 +34,6 @@ import RecuperarPassword from './views/RecuperarPassword';
 import NuevaPassword from './views/NuevaPassword';
 import IngresarVenta from './views/IngresarVenta';
 import CrearProducto from './views/CrearProducto';
-import NotFound from './views/NotFound';
 
 
 const App = props => {
@@ -60,7 +58,7 @@ const App = props => {
 
 
             {/* Users Components */}
-            <Route exact path="/spinner" component={Spinner}></Route>
+
             <Route exact path="/cerrar-venta" component={CerrarVenta}></Route>
             <Route exact path='/dashboard' component={Dashboard}></Route>
             <Route exact path="/venta-usuario" component={IngresarVenta}></Route>
@@ -84,8 +82,8 @@ const App = props => {
             <Route exact path="/modificar-proveedor/:index" component={ModificarProveedor}></Route>
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
-            <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>
-            
+            <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>            
+            {/* <Route component={NotFound} /> */}
 
 
             {/* END Users Components */}
@@ -93,7 +91,6 @@ const App = props => {
      
           </div>
         </div>
-            <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   )

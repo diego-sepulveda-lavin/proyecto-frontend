@@ -101,7 +101,7 @@ const ListarFacturas = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.facturas !== null ?
+                                                    store.facturas.msg ?
                                                         <tr className="align-middle text-center">
                                                             <th colspan="8">No hay Facturas registradas :(</th>
                                                         </tr>
