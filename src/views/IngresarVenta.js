@@ -45,7 +45,6 @@ const IngresarVenta = (props) => {
                 icon: 'error',
                 title: 'Debe ingresar productos para generar venta'
             })
-
         } else if (state.datosVenta.tipo_documento === null || state.datosVenta.forma_pago === null || state.datosVenta.monto_recibido === null) {
             Swal.fire({
                 icon: 'error',
@@ -58,6 +57,7 @@ const IngresarVenta = (props) => {
             })
         } else {
             postFetch("/documentos-venta/", state, setState)
+            actions.getFetch("/stock", "InventarioDisponible");
 
         }
     }
@@ -232,15 +232,15 @@ const IngresarVenta = (props) => {
                                         <tbody>
 
                                             {
-                                                store.productos == null ?
+                                                store.InventarioDisponible == null ?
                                                     (<tr className="align-middle text-center">
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     )
                                                     :
                                                     (
-                                                        store.productos.length > 0 &&
-                                                        store.productos.filter(ele => {
+                                                        store.InventarioDisponible.length > 0 &&
+                                                        store.InventarioDisponible.filter(ele => {
                                                             return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
                                                         })
                                                             .map((producto, index) => {
@@ -248,7 +248,7 @@ const IngresarVenta = (props) => {
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
                                                                     <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
-                                                                    <td className="align-middle text-center">0</td>
+                                                                    <td className="align-middle text-center">{producto.inventario_disponible}</td>
                                                                 </tr>
                                                             })
                                                     )
