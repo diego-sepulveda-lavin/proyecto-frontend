@@ -137,19 +137,34 @@ const IngresarVenta = (props) => {
             total: producto.precio_venta_unitario,
             producto_id: producto.id
         }
-        detalleProductos.push(productoAgregado)
-        setState(prevState => {
-            return { ...prevState, detalleProductos }
-        })
 
 
-        const { datosVenta } = state
-        datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
-        datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
-        datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
-        setState(prevState => {
-            return { ...prevState, datosVenta }
+        let validaProductoEnDetalle = detalleProductos.map(e => {
+            return e.producto_id
         })
+        if (validaProductoEnDetalle.includes(productoAgregado.producto_id)) {
+            Swal.fire({
+                icon: 'error',
+                title: "Producto ya se encuentra agregado"
+            })
+        } else {
+
+            detalleProductos.push(productoAgregado)
+            setState(prevState => {
+                return { ...prevState, detalleProductos }
+            })
+
+
+            const { datosVenta } = state
+            datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
+            datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
+            datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
+            setState(prevState => {
+                return { ...prevState, datosVenta }
+            })
+        }
+
+
     }
 
     const deleteProducto = (index) => {
