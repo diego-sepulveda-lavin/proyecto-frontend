@@ -216,7 +216,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     setInfo({
 
                         "msg": result.msg,
-                        "empresa": result
+                        [mensajeAlerta]: result
                     })
 
                 } catch (error) {

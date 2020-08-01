@@ -82,7 +82,7 @@ const App = props => {
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
             <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>
-            <Route exact path="/modificar-producto/:index" component={ModificarProducto}></Route>            
+            <Route exact path="/modificar-producto/" component={ModificarProducto}></Route>            
 
             {/* <Route component={NotFound} /> */}
 
