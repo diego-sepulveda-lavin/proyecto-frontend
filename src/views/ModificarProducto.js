@@ -12,7 +12,12 @@ const ModificarProducto = (props) => {
 
 
     const [state, setState] = useState({
-        productos: []
+        productos: [],
+    })
+
+    const [buscar, setBuscar] = useState({
+        inputBuscador: "",
+        buscarPor: "descripcion",
     })
 
     const getInformacion = (e, index) => {
@@ -21,9 +26,6 @@ const ModificarProducto = (props) => {
 
 
         productos[index][e.target.name] = e.target.value
-
-
-
 
         setState(prevState => {
             return { ...prevState, productos }
@@ -51,12 +53,30 @@ const ModificarProducto = (props) => {
         }
     }
 
-    const enviarFormulario = (e)=>{
+    const enviarFormulario = (e) => {
         e.preventDefault()
-        
-        actions.putFetch("/productos" ,"", state.productos, "productos")
-        
+        console.log(state.productos)
+        actions.putFetch("/productos", "", state.productos, "productos")
+
         //fetchProductos("/stock", "productos");
+    }
+
+    const inputBuscador = e => {
+        let data = {
+            inputBuscador: e.target.value
+        }
+        setBuscar((prevState) => {
+            return { ...prevState, ...data }
+        })
+    }
+
+    const seleccionadorBuscador = e => {
+        let data = {
+            buscarPor: e.target.value
+        }
+        setBuscar((prevState) => {
+            return { ...prevState, ...data }
+        })
     }
 
     return (
@@ -69,7 +89,7 @@ const ModificarProducto = (props) => {
                 <div className="row">
                     <div className="col-6 ">
                         <div className="input-group no-border " >
-                            <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" />
+                            <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" onChange={e => inputBuscador(e)} />
                             <div className="input-group-append">
                                 <div className="input-group-text bg-light">
                                     <i className="now-ui-icons ui-1_zoom-bold"></i>
@@ -79,12 +99,12 @@ const ModificarProducto = (props) => {
                     </div>
                     <div className="col-6 ">
                         <div className="form-check ml-3">
+                            <label className="form-check-label pl-3 pr-2" for="exampleRadios1" >Descripción</label>
+                            <input type="radio" aria-label="Radio button for following text input" name="OpcionBuscador" id="descripcion" value="descripcion" defaultChecked onClick={e => seleccionadorBuscador(e)}></input>
                             <label className="form-check-label pl-3 pr-2" for="exampleRadios1">SKU</label>
-                            <input type="radio" aria-label="Radio button for following text input"></input>
-                            <label className="form-check-label pl-3 pr-2" for="exampleRadios1">Descripción</label>
-                            <input type="radio" aria-label="Radio button for following text input"></input>
+                            <input type="radio" aria-label="Radio button for following text input" name="OpcionBuscador" id="sku" value="sku" onClick={e => seleccionadorBuscador(e)}></input>
                             <label className="form-check-label pl-3 pr-2" for="exampleRadios1">Código de Barras</label>
-                            <input type="radio" aria-label="Radio button for following text input"></input>
+                            <input type="radio" aria-label="Radio button for following text input" name="OpcionBuscador" id="codigo_barra" value="codigo_barra" onClick={e => seleccionadorBuscador(e)}></input>
                         </div>
                     </div>
                     <form onSubmit={enviarFormulario}>
@@ -130,49 +150,59 @@ const ModificarProducto = (props) => {
                                                                 </tr>
                                                                 :
                                                                 state.productos &&
-                                                                state.productos.map((producto, index) => {
+                                                                state.productos.filter((producto) => {
+                                                                /*     if (buscar.buscarPor === "descripcion")
+                                                                        return producto.descripcion.toLowerCase().includes(state.inputBuscador.toLowerCase()); */
 
-                                                                    return (
-                                                                        <tr key={index}>
-                                                                            <td className="align-middle text-center">
-                                                                                <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" disabled value={producto.sku} />
-                                                                            </td>
-                                                                            <td className="align-middle text-center" style={{ "width": "15vw" }}>
-                                                                                <input type="text" name="descripcion" className="form-control" aria-label="Username" aria-describedby="basic-addon1" value={producto.descripcion ? producto.descripcion : ""} onChange={(e) => getInformacion(e, index)} />
-                                                                            </td>
-                                                                            <td className="align-middle text-center" style={{ "width": "13vw" }}>
-                                                                                <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" disabled value={producto.codigo_barra} />
-                                                                            </td>
+                                                                  /*   if (state.buscarPor === "codigo_barra")
+                                                                        return producto.codigo_barra.includes(state.inputBuscador)
 
-                                                                            <td className="align-middle text-center" style={{ "width": "10vw" }}>
-                                                                                <input type="number" name="precio_venta_unitario" className="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" value={producto.precio_venta_unitario ? producto.precio_venta_unitario : ""} onChange={(e) => getInformacion(e, index)} />
-                                                                            </td>
-
-                                                                            <td className="align-middle text-center" >
-                                                                                <select className="form-control" name="unidad_entrega" value={producto ? producto.unidad_entrega : ""}
-                                                                                    onChange={(e) => getInformacion(e, index)}>
-                                                                                    <option value="" disabled>Seleccionar</option>
-                                                                                    <option value="Unidad">Unidad</option>
-                                                                                    <option value="Kg">Kg</option>
-                                                                                    <option value="Litro">Litro</option>
-                                                                                    <option value="Paquete">Paquete</option>
-                                                                                </select>
-                                                                            </td>
-                                                                            <td className="align-middle text-center">
-                                                                                <select className="form-control" name="categoria_id" value={producto ? producto.categoria_id : ""} onChange={(e) => getInformacion(e, index)}>
-                                                                                    <option value="" disabled>Seleccionar</option>
-                                                                                    {
-                                                                                        store.categorias ?
-                                                                                            store.categorias.map((categoria, index) => {
-                                                                                                return <option value={categoria.id}>{categoria.nombre}</option>
-                                                                                            })
-                                                                                            : ""
-                                                                                    }
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                    )
+                                                                    if (state.buscarPor === "sku")
+                                                                        return producto.sku.includes(state.inputBuscador) */
                                                                 })
+                                                                    .map((producto, index) => {
+
+                                                                        return (
+                                                                            <tr key={index}>
+                                                                                <td className="align-middle text-center">
+                                                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="SKU" disabled value={producto.sku} />
+                                                                                </td>
+                                                                                <td className="align-middle text-center" style={{ "width": "15vw" }}>
+                                                                                    <input type="text" name="descripcion" className="form-control" aria-label="Username" aria-describedby="basic-addon1" value={producto.descripcion ? producto.descripcion : ""} onChange={(e) => getInformacion(e, index)} />
+                                                                                </td>
+                                                                                <td className="align-middle text-center" style={{ "width": "13vw" }}>
+                                                                                    <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" disabled value={producto.codigo_barra} />
+                                                                                </td>
+
+                                                                                <td className="align-middle text-center" style={{ "width": "10vw" }}>
+                                                                                    <input type="number" name="precio_venta_unitario" className="form-control" placeholder="Precio Venta" aria-label="Username" aria-describedby="basic-addon1" value={producto.precio_venta_unitario ? producto.precio_venta_unitario : ""} onChange={(e) => getInformacion(e, index)} />
+                                                                                </td>
+
+                                                                                <td className="align-middle text-center" >
+                                                                                    <select className="form-control" name="unidad_entrega" value={producto ? producto.unidad_entrega : ""}
+                                                                                        onChange={(e) => getInformacion(e, index)}>
+                                                                                        <option value="" disabled>Seleccionar</option>
+                                                                                        <option value="Unidad">Unidad</option>
+                                                                                        <option value="Kg">Kg</option>
+                                                                                        <option value="Litro">Litro</option>
+                                                                                        <option value="Paquete">Paquete</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td className="align-middle text-center">
+                                                                                    <select className="form-control" name="categoria_id" value={producto ? producto.categoria_id : ""} onChange={(e) => getInformacion(e, index)}>
+                                                                                        <option value="" disabled>Seleccionar</option>
+                                                                                        {
+                                                                                            store.categorias ?
+                                                                                                store.categorias.map((categoria, index) => {
+                                                                                                    return <option value={categoria.id}>{categoria.nombre}</option>
+                                                                                                })
+                                                                                                : ""
+                                                                                        }
+                                                                                    </select>
+                                                                                </td>
+                                                                            </tr>
+                                                                        )
+                                                                    })
                                                     }
                                                 </tbody>
                                             </table>
