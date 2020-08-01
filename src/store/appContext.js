@@ -22,10 +22,11 @@ const injectContext = PassedComponent => {
                 state.actions.getFetch("/productos", "productos");
                 state.actions.getFetch("/proveedores", "proveedores");
                 state.actions.getFetch("/facturas-compras", "facturas");
-            }
-
-            /*             state.actions.getFetch("/entradas-inventario", "entradaStock");
-                        state.actions.getFetch("/salidas-inventario", "ventaProductos"); */
+                state.actions.getFetch("/entradas-inventario", "entradas_inventario")
+                state.actions.getFetch("/salidas-inventario", "salidas_inventario");
+            } 
+                         ;
+                     
         }, [state.store.usuarioActivo]);
 
         useEffect(() => {

@@ -95,6 +95,7 @@ const IngresarVenta = (props) => {
                         forma_pago: ""
                     }
                 })
+                
 
             } else {
                 Swal.fire({
@@ -154,7 +155,7 @@ const IngresarVenta = (props) => {
     }
 
     const deleteProducto = (index) => {
-         let data = state.detalleProductos;
+        let data = state.detalleProductos;
         console.log(data)
         data.splice(index, 1);
         setState(prevState => {
@@ -190,9 +191,9 @@ const IngresarVenta = (props) => {
         const { datosVenta } = state
         datosVenta.numero_documento = Math.floor(Math.random() * 9999) + 1
         setState(prevState => {
-            return {...prevState, datosVenta}
+            return { ...prevState, datosVenta }
         })
-        
+
     }
 
 

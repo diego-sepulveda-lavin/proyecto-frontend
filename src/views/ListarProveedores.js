@@ -97,45 +97,50 @@ const ListarProveedores = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.proveedores.filter((proveedor) => {
-                                                        if (state.buscarPor === "rut")
-                                                            return proveedor.rut.toLowerCase().includes(state.inputBuscador.toLowerCase())
+                                                    store.proveedores !== null ?
+                                                        <tr className="align-middle text-center">
+                                                            <th colspan="8">No hay proveedores registrados :(</th>
+                                                        </tr>
+                                                        :
+                                                        store.proveedores.filter((proveedor) => {
+                                                            if (state.buscarPor === "rut")
+                                                                return proveedor.rut.toLowerCase().includes(state.inputBuscador.toLowerCase())
 
-                                                        if (state.buscarPor === "razon_social")
-                                                            return proveedor.razon_social.toLowerCase().includes(state.inputBuscador.toLowerCase())
+                                                            if (state.buscarPor === "razon_social")
+                                                                return proveedor.razon_social.toLowerCase().includes(state.inputBuscador.toLowerCase())
 
-                                                    }).map((proveedor, indice) => {
-                                                        return (
-                                                            <tr key={indice}>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.nombre}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.rut}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.razon_social}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.rubro}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.direccion}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.cuenta_corriente}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    {proveedor.banco}
-                                                                </td>
-                                                                <td className="align-middle text-center">
-                                                                    <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                    </Link>
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    })
+                                                        }).map((proveedor, indice) => {
+                                                            return (
+                                                                <tr key={indice}>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.nombre}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.rut}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.razon_social}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.rubro}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.direccion}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.cuenta_corriente}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        {proveedor.banco}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                        </Link>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        })
                                             }
                                         </tbody>
                                     </table>

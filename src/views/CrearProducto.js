@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
-const CrearSku = (props) => {
+const CrearProducto = (props) => {
 
     const { store, actions } = useContext(Context)
 
@@ -15,7 +15,8 @@ const CrearSku = (props) => {
         descripcion: null,
         codigo_barra: null,
         unidad_entrega: null,
-        categoria_id: null
+        categoria_id: null,
+        precio_venta_unitario: null
     })
 
     const getInformacion = (e) => {
@@ -61,6 +62,9 @@ const CrearSku = (props) => {
                                                     Unidad de Entrega
                                                     </th>
                                                 <th className="align-middle text-center">
+                                                    Precio Venta
+                                                    </th>
+                                                <th className="align-middle text-center">
                                                     Categoría
                                                     </th>
                                             </thead>
@@ -80,13 +84,18 @@ const CrearSku = (props) => {
                                                         <input type="text" name="unidad_entrega" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" onChange={getInformacion} value={!state.unidad_entrega ? "" : state.unidad_entrega} />
                                                     </td>
                                                     <td className="align-middle text-center">
+                                                        <input type="text" name="precio_venta_unitario" className="form-control" aria-describedby="basic-addon1" placeholder="Precio Venta Unitario" onChange={getInformacion} value={!state.precio_venta_unitario ? "" : state.precio_venta_unitario} />
+                                                    </td>
+                                                    <td className="align-middle text-center">
                                                         <select className="form-control" name="categoria_id" value={!state.categoria_id ? "" : state.categoria_id} onChange={getInformacion}>
                                                             <option value="" disabled>Seleccionar</option>
                                                             {
-                                                                !!store.categorias &&
-                                                                store.categorias.map((categoria) => {
-                                                                    return <option value={categoria.id} key={categoria.id}>{categoria.nombre}</option>
-                                                                })
+                                                                store.categorias === null ?
+                                                                    "" :
+                                                                    !store.categorias.msg &&
+                                                                    store.categorias.map((categoria) => {
+                                                                        return <option value={categoria.id} key={categoria.id}>{categoria.nombre}</option>
+                                                                    })
                                                             }
                                                         </select>
                                                     </td>
@@ -109,4 +118,4 @@ const CrearSku = (props) => {
         </>
     )
 }
-export default withRouter(CrearSku);
+export default withRouter(CrearProducto);
