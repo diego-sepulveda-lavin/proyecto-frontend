@@ -7,8 +7,8 @@ const GeneralStock = (props) => {
     useEffect(() => {
         actions.validaLogin(props)
     }, [])
-    /* 
-        const reduce = () => {
+    
+        /* const reduce = () => {
             if (store.productos != null && store.entradas_inventario != null && store.salidas_inventario) {
                 let saldoInventario = store.productos.reduce((acc, producto) => {
                     acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }

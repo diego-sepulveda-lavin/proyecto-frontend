@@ -35,6 +35,7 @@ import RecuperarPassword from './views/RecuperarPassword';
 import NuevaPassword from './views/NuevaPassword';
 import IngresarVenta from './views/IngresarVenta';
 import CrearProducto from './views/CrearProducto';
+import NotFound from './views/NotFound';
 
 
 const App = props => {
@@ -84,14 +85,15 @@ const App = props => {
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
             <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>
-            <Route render={() => <h1 className="notfound align-middle text-center">Not found!</h1>} />
-
+            
 
 
             {/* END Users Components */}
             <Footer />
+     
           </div>
         </div>
+            <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   )
