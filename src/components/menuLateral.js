@@ -76,7 +76,7 @@ const MenuLateral = props => {
                         props.location.pathname === "/ingresar-factura" ||
                             props.location.pathname === "/listar-facturas" ? "active" : ""}>
                         <Link to="#">
-                            <i className="now-ui-icons shopping_basket"></i>
+                            <i className="now-ui-icons files_single-copy-04"></i>
                             <p data-toggle="collapse" data-target="#factura">Facturas</p>
                         </Link>
                         <div id="factura" className="collapse">
