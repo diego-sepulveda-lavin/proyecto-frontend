@@ -185,7 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            putFetch: async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
+            putFetch: async (urlPag, setInfo ="", data_a_enviar, mensajeAlerta) => {
                 let store = getStore()
 
                 try {
@@ -199,8 +199,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                         headers: headersContent,
                         body: JSON.stringify(data_a_enviar)
                     };
+                    console.log(requestOptions.body)
+                    console.log(data_a_enviar)
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
+                    
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',

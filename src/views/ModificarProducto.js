@@ -53,8 +53,10 @@ const ModificarProducto = (props) => {
 
     const enviarFormulario = (e)=>{
         e.preventDefault()
-        actions.putFetch("/productos/" ,setState, state.productos, "productos")
-        fetchProductos("/stock", "productos");
+        console.log(state.productos)
+        actions.putFetch("/productos" ,"", state.productos, "productos")
+        
+        //fetchProductos("/stock", "productos");
     }
 
     return (
@@ -127,7 +129,8 @@ const ModificarProducto = (props) => {
                                                                     <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                                 </tr>
                                                                 :
-                                                                state.productos.map((producto, index, arr) => {
+                                                                state.productos &&
+                                                                state.productos.map((producto, index) => {
 
                                                                     return (
                                                                         <tr key={index}>
