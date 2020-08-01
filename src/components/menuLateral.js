@@ -56,8 +56,7 @@ const MenuLateral = props => {
                     {/* --- o --- */}
                     <li className={
                         props.location.pathname === "/general-stock" ||
-                            props.location.pathname === "/crear-sku" ||
-                            props.location.pathname === "/modificar-sku" ? "active" : ""}>
+                            props.location.pathname === "/crear-sku"  ? "active" : "" }>
                         <Link to="#">
                             <i className="now-ui-icons shopping_basket"></i>
                             <p data-toggle="collapse" data-target="#stock">Stock</p>
@@ -66,7 +65,6 @@ const MenuLateral = props => {
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/general-stock"}><p>Ver Inventario</p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/crear-sku"}><p>Crear Producto</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"/modificar-sku"}><p>Modificar Producto</p></Link></li>
 
                             </ul>
                         </div>

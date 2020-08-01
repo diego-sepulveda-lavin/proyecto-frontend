@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import "../css/ventaPrincipal.css";
 import { Context } from '../store/appContext';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
 const GeneralStock = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
@@ -99,6 +100,9 @@ const GeneralStock = (props) => {
                                             <th className="align-middle text-center">
                                                 Categoría
                                                     </th>
+                                            <th className="align-middle text-center">
+                                        &nbsp;
+                                            </th>
 
                                         </thead>
                                         <tbody>
@@ -139,6 +143,11 @@ const GeneralStock = (props) => {
 
                                                                     <td className="align-middle text-center">
                                                                         {producto.categoria_id}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <Link to={`/modificar-producto/${producto.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
+                                                                        </Link>
                                                                     </td>
                                                                 </tr>
                                                             )

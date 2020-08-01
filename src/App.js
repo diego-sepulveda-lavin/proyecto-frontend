@@ -7,7 +7,6 @@ import Dashboard from './views/Dashboard'
 import LandingPage from './views/LandingPage'
 import LoginPage from './views/LoginPage';
 import GeneralStock from './views/GeneralStock'
-import ModificarSku from './views/ModificarSku';
 import CreateUser from './views/CreateUser';
 import AbrirCaja from './views/abrirCaja';
 import ListadoUsuarios from './views/ListadoUsuarios';
@@ -34,6 +33,7 @@ import RecuperarPassword from './views/RecuperarPassword';
 import NuevaPassword from './views/NuevaPassword';
 import IngresarVenta from './views/IngresarVenta';
 import CrearProducto from './views/CrearProducto';
+import ModificarProducto from './views/ModificarProducto';
 
 
 const App = props => {
@@ -67,7 +67,6 @@ const App = props => {
             <Route exact path="/anular-venta" component={AnularVentaUsuario}></Route>
             <Route exact path='/general-stock' component={GeneralStock}></Route>
             <Route exact path='/crear-sku' component={CrearProducto}></Route>
-            <Route exact path='/modificar-sku' component={ModificarSku}></Route>
             <Route exact path='/listar-facturas' component={ListarFacturas}></Route>
             <Route exact path='/editar-factura/:index' component={EditarFactura}></Route>
             <Route exact path='/ingresar-factura' component={IngresarNuevaFactura}></Route>
@@ -82,7 +81,9 @@ const App = props => {
             <Route exact path="/modificar-proveedor/:index" component={ModificarProveedor}></Route>
             <Route exact path="/listar-categorias" component={ListarCategorias}></Route>
             <Route exact path="/crear-categoria" component={CrearCategoria}></Route>
-            <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>            
+            <Route exact path="/modificar-categoria/:index" component={ModificarCategoria}></Route>
+            <Route exact path="/modificar-producto/:index" component={ModificarProducto}></Route>            
+
             {/* <Route component={NotFound} /> */}
 
 
