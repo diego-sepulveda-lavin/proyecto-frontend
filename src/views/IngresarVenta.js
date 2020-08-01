@@ -58,7 +58,6 @@ const IngresarVenta = (props) => {
         } else {
             postFetch("/documentos-venta/", state, setState)
             actions.getFetch("/stock", "InventarioDisponible");
-
         }
     }
 
@@ -107,7 +106,6 @@ const IngresarVenta = (props) => {
         }
     };
 
-
     const getInformacion = (e) => {
         let data = {
             buscador: e.target.value
@@ -127,7 +125,6 @@ const IngresarVenta = (props) => {
         })
     }
 
-
     const agregarProducto = (producto) => {
         let { detalleProductos } = state
         let productoAgregado = {
@@ -135,9 +132,9 @@ const IngresarVenta = (props) => {
             cantidad: 1,
             precio_venta_unitario: producto.precio_venta_unitario,
             total: producto.precio_venta_unitario,
-            producto_id: producto.id
+            producto_id: producto.id,
+            cantidad_disponible: producto.inventario_disponible
         }
-
 
         let validaProductoEnDetalle = detalleProductos.map(e => {
             return e.producto_id
@@ -154,7 +151,6 @@ const IngresarVenta = (props) => {
                 return { ...prevState, detalleProductos }
             })
 
-
             const { datosVenta } = state
             datosVenta.monto_total = state.detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
             datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
@@ -163,8 +159,6 @@ const IngresarVenta = (props) => {
                 return { ...prevState, datosVenta }
             })
         }
-
-
     }
 
     const deleteProducto = (index) => {
@@ -187,6 +181,23 @@ const IngresarVenta = (props) => {
     const getDatosProductos = e => {
         const detalleProductos = state.detalleProductos;
         detalleProductos[e.target.id].cantidad = parseInt(e.target.value)
+        if (detalleProductos[e.target.id].cantidad <= 0) {
+            Swal.fire({
+                icon: 'error',
+                title: `Tiene que ingresar una cantidad de ${detalleProductos[e.target.id].descripcion} mayor a 0.`
+            })
+            detalleProductos[e.target.id].cantidad = 1
+
+        } else if (detalleProductos[e.target.id].cantidad > detalleProductos[e.target.id].cantidad_disponible) {
+            Swal.fire({
+                icon: 'error',
+                title: `Inventario disponible de ${detalleProductos[e.target.id].descripcion} es de ${detalleProductos[e.target.id].cantidad_disponible} unidades.`
+            })
+            detalleProductos[e.target.id].cantidad = 1
+        } else {
+            detalleProductos[e.target.id].cantidad = parseInt(e.target.value)
+        }
+
         detalleProductos[e.target.id].total = parseInt(detalleProductos[e.target.id].cantidad) * parseInt(detalleProductos[e.target.id].precio_venta_unitario)
 
         /* Este codigo se repite para que al momento de modificar una cantidad en los detalles de productos, se actualice el monto total, neto e monto_iva */
@@ -194,6 +205,7 @@ const IngresarVenta = (props) => {
         datosVenta.monto_total = detalleProductos.reduce((accumulator, producto) => accumulator + producto.total, 0)
         datosVenta.monto_neto = Math.ceil(datosVenta.monto_total / (1.19));
         datosVenta.monto_iva = Math.ceil(datosVenta.monto_neto * (19 / 100));
+
         setState(prevState => {
             return { ...prevState, detalleProductos, datosVenta }
         })
@@ -206,9 +218,7 @@ const IngresarVenta = (props) => {
         setState(prevState => {
             return { ...prevState, datosVenta }
         })
-
     }
-
 
     return (
         <>
@@ -242,7 +252,7 @@ const IngresarVenta = (props) => {
                                                 <th className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
                                             </tr>
                                         </thead>
-                                        <tbody style={{"cursor":"pointer"}}>
+                                        <tbody style={{ "cursor": "pointer" }}>
 
                                             {
                                                 store.InventarioDisponible == null ?
