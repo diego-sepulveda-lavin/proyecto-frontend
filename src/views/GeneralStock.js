@@ -108,7 +108,7 @@ const GeneralStock = (props) => {
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.InventarioDisponible.length == 0 ?
+                                                    store.InventarioDisponible.length === 0 ?
                                                         <tr className="align-middle text-center">
                                                             <th colspan="8">No hay Stock :(</th>
                                                         </tr>
