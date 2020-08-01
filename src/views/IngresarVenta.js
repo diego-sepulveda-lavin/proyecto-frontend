@@ -15,14 +15,15 @@ const IngresarVenta = (props) => {
             monto_total: null,
             monto_recibido: null,
             vuelto: null,
-            tipo_documento: null,
+            tipo_documento: "boleta",
             numero_documento: null,
-            forma_pago: null
+            forma_pago: "efectivo"
 
         }
     })
     useEffect(() => {
         actions.validaLogin(props)
+        generarFolio()
         /*  if (sessionStorage.getItem("abrirCaja") == null) {
              Swal.fire({
                  title: store.usuarioActivo.nombre,
@@ -313,7 +314,7 @@ const IngresarVenta = (props) => {
                                                 <div className="col-12 d-flex justify-content-start">
                                                     <div className="form-check m-0 mt-2 pl-0">
                                                         <label className="form-check-label p-0 align-middle pl-0" for="boleta">Boleta</label>
-                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="tipo_documento" id="boleta" onChange={getDetallePago} onClick={generarFolio} value="boleta" />
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" defaultChecked name="tipo_documento" id="boleta" onChange={getDetallePago} onClick={generarFolio} value="boleta" />
                                                         <label className="form-check-label p-0 align-middle pl-0" for="fact">Factura</label>
                                                         <input className="ml-1 mr-3 align-middle" type="radio" name="tipo_documento" id="fact" onChange={getDetallePago} onClick={generarFolio} value="factura" />
                                                     </div>
@@ -328,7 +329,7 @@ const IngresarVenta = (props) => {
                                                         <label className="form-check-label align-middle pl-0" for="transferencia">Transferencia</label>
                                                         <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="transferencia" onChange={getDetallePago} value="transferencia" />
                                                         <label className="form-check-label align-middle pl-0" for="efectivo">Efectivo</label>
-                                                        <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="efectivo" onChange={getDetallePago} value="efectivo" />
+                                                        <input className="ml-1 mr-3 align-middle" type="radio" defaultChecked name="forma_pago" id="efectivo" onChange={getDetallePago} value="efectivo" />
                                                         <label className="form-check-label align-middle pl-0" for="tarjeta">Tarjeta</label>
                                                         <input className="ml-1 mr-3 align-middle" type="radio" name="forma_pago" id="tarjeta" onChange={getDetallePago} value="tarjeta" />
                                                     </div>
