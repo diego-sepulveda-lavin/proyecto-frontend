@@ -242,7 +242,7 @@ const IngresarVenta = (props) => {
                                                 <th className="align-middle text-center font-weight-bold" scope="col">Cantidad</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody style={{"cursor":"pointer"}}>
 
                                             {
                                                 store.InventarioDisponible == null ?

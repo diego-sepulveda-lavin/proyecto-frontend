@@ -1,10 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
 
 const ModificarSku = (props) => {
     const { store, actions } = useContext(Context)
+
+    const [state, setState] = useState({
+        categoria: ""
+    })
     useEffect(() => {
         actions.validaLogin(props)
     }, [])
@@ -104,8 +108,16 @@ const ModificarSku = (props) => {
                                                         <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="M. Cont." />
                                                     </td>
                                                     <td className="align-middle text-center" style={{ "width": "143px" }}>
-                                                        <select className="form-control">
-                                                            <option>Seleccionar</option>
+                                                        <select className="form-control" name="producto_id" value={!state.categoria ? "" : state.categoria}>
+                                                            <option value="" disabled="disabled">Seleccionar</option>
+                                                            {
+                                                                store.categorias === null ?
+                                                                    "" :
+                                                                    !store.categorias.msg &&
+                                                                    store.categorias.map((proveedor) => {
+                                                                        return <option value={proveedor.id} key={proveedor.id}>{proveedor.nombre}</option>
+                                                                    })
+                                                            }
                                                         </select>
                                                     </td>
                                                 </tr>

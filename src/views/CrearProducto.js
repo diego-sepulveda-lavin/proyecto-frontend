@@ -80,9 +80,18 @@ const CrearProducto = (props) => {
                                                         <input type="text" name="codigo_barra" className="form-control" aria-describedby="basic-addon1" placeholder="Codigo Barra" onChange={getInformacion} value={!state.codigo_barra ? "" : state.codigo_barra} />
                                                     </td>
 
-                                                    <td className="align-middle text-center">
-                                                        <input type="text" name="unidad_entrega" className="form-control" aria-describedby="basic-addon1" placeholder="Unidad Entrega" onChange={getInformacion} value={!state.unidad_entrega ? "" : state.unidad_entrega} />
+
+                                                    <td>
+                                                        <select className="form-control" name="unidad_entrega" onChange={getInformacion} value={!state.unidad_entrega ? "" : state.unidad_entrega}>
+                                                            <option value="" disabled>Seleccionar</option>
+                                                            <option value="Unidad">Unidad</option>
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Litro">Litro</option>
+                                                            <option value="Paquete">Paquete</option>
+
+                                                        </select>
                                                     </td>
+                                                
                                                     <td className="align-middle text-center">
                                                         <input type="text" name="precio_venta_unitario" className="form-control" aria-describedby="basic-addon1" placeholder="Precio Venta Unitario" onChange={getInformacion} value={!state.precio_venta_unitario ? "" : state.precio_venta_unitario} />
                                                     </td>
