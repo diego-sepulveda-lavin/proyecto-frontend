@@ -60,8 +60,11 @@ const IngresarNuevaFactura = (props) => {
     const getDatosFactura = e => {
         const { factura } = state;
         factura[e.target.name] = e.target.value
-        factura.monto_iva = factura.monto_neto * (19 / 100)
-        factura.monto_total = parseInt(factura.monto_neto) + factura.monto_iva + parseInt(factura.monto_otros_impuestos)
+        factura.monto_otros_impuestos = 0
+        factura.monto_neto = parseInt(factura.monto_total / (1.19))
+        factura.monto_iva = factura.monto_neto * 0.19
+        /*factura.monto_iva = factura.monto_neto * (19 / 100) */
+        /*factura.monto_total = parseInt(factura.monto_neto) + factura.monto_iva + parseInt(factura.monto_otros_impuestos) */
 
         setState(prevState => {
             return { ...prevState, factura }
@@ -105,7 +108,7 @@ const IngresarNuevaFactura = (props) => {
 
     const postData = e => {
         e.preventDefault();
-        if (totalDetalle != state.factura.monto_neto) {
+        if (totalDetalle != state.factura.monto_total) {
             Swal.fire({
                 icon: 'error',
                 title: 'Montos de factura no cuadran'
@@ -216,9 +219,9 @@ const IngresarNuevaFactura = (props) => {
                                                     <th className="align-middle text-center">
                                                         Monto IVA
                                                     </th>
-                                                    <th className="align-middle text-center">
+                                                    {/* <th className="align-middle text-center">
                                                         Monto Otros Impuestos
-                                                    </th>
+                                                    </th> */}
                                                     <th className="align-middle text-center">
                                                         Monto Total
                                                     </th>
@@ -228,16 +231,16 @@ const IngresarNuevaFactura = (props) => {
                                                     <>
                                                         <tr>
                                                             <td className="align-middle text-center">
-                                                                <input type="number" min="0" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
+                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto neto" name="monto_neto" aria-describedby="basic-addon1" value={state.factura.monto_neto ? state.factura.monto_neto : ""} onChange={getDatosFactura} />
                                                             </td>
                                                             <td className="align-middle text-center">
                                                                 <input type="number" readOnly min="0" className="form-control" placeholder="Monto IVA" name="monto_iva" aria-describedby="basic-addon1" value={state.factura.monto_iva ? state.factura.monto_iva : ""} onChange={getDatosFactura} />
                                                             </td>
-                                                            <td className="align-middle text-center">
+                                                            {/* <td className="align-middle text-center">
                                                                 <input type="number" min="0" className="form-control" placeholder="Monto otros impuestos" name="monto_otros_impuestos" aria-describedby="basic-addon1" value={state.factura.monto_otros_impuestos ? state.factura.monto_otros_impuestos : ""} onChange={getDatosFactura} />
-                                                            </td>
+                                                            </td> */}
                                                             <td className="align-middle text-center">
-                                                                <input type="number" readOnly min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
+                                                                <input type="number" min="0" className="form-control" placeholder="Monto Total" name="monto_total" aria-describedby="basic-addon1" value={state.factura.monto_total ? state.factura.monto_total : ""} onChange={getDatosFactura} />
                                                             </td>
                                                         </tr>
                                                     </>
@@ -264,10 +267,10 @@ const IngresarNuevaFactura = (props) => {
                                                         Cantidad
                                                     </th>
                                                     <th className="align-middle text-center">
-                                                        Precio Costo Neto Unitario
+                                                        Precio Costo Unitario
                                                     </th>
                                                     <th className="align-middle text-center">
-                                                        Costo Neto Total
+                                                        Costo Total
                                                     </th>
                                                     <th>&nbsp;</th>
                                                 </thead>
@@ -329,10 +332,10 @@ const IngresarNuevaFactura = (props) => {
                                                             Cantidad
                                                     </th>
                                                         <th className="align-middle text-center">
-                                                            Precio Costo Neto Unitario
+                                                            Precio Costo Unitario
                                                     </th>
                                                         <th className="align-middle text-center">
-                                                            Costo Neto Total
+                                                            Monto Total
                                                     </th>
 
                                                         <th>&nbsp;</th>
@@ -376,7 +379,7 @@ const IngresarNuevaFactura = (props) => {
                                                 </table>
                                             </div>
                                             <div className="col-12 d-flex justify-content-end">
-                                                <p className="mr-5 mt-3">Total neto detalle: $ {new Intl.NumberFormat("de-DE").format(totalDetalle)}</p>
+                                                <p className="mr-5 mt-3">Monto Total Factura: $ {new Intl.NumberFormat("de-DE").format(totalDetalle)}</p>
                                                 <button className="btn btn-primary" name="Crear_Factura">Ingresar Factura</button>
                                             </div>
                                         </div>
@@ -391,7 +394,7 @@ const IngresarNuevaFactura = (props) => {
     } else {
         return (
             <>
-               <i className="now-ui-icons loader_refresh spin"></i>
+                <i className="now-ui-icons loader_refresh spin"></i>
 
             </>
         )

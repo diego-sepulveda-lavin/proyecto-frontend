@@ -86,7 +86,7 @@ const GeneralStock = (props) => {
                                                 Código de Barra
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Cantidad
+                                                Inventario Disponible
                                                     </th>
                                             <th className="align-middle text-center">
                                                 Unidad de Entrega
