@@ -11,6 +11,7 @@ const ModificarCategoria = (props) => {
     }, [])
     const [state, setState] = useState({
         categoria: null,
+ 
     });
 
     const [msg, setMsg] = useState({
