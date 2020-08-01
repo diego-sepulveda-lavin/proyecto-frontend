@@ -95,8 +95,6 @@ const IngresarVenta = (props) => {
                         forma_pago: ""
                     }
                 })
-                
-
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -284,9 +282,9 @@ const IngresarVenta = (props) => {
                                                         <tr key={producto.id}>
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
-                                                            <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} value={producto.cantidad} /></td>
+                                                            <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} value={producto.cantidad ? producto.cantidad : ""} /></td>
                                                             <td className="text-center">{producto.precio_venta_unitario}</td>
-                                                            <td className="text-center" >{producto.total}</td>
+                                                            <td className="text-center" >{producto.total ? producto.total : ""}</td>
                                                             <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={(e) => { deleteProducto(index); getDetallePago(e) }} id={index}>
                                                                 <i id={index} className="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
