@@ -53,7 +53,7 @@ const ModificarProducto = (props) => {
 
     const enviarFormulario = (e)=>{
         e.preventDefault()
-        console.log(state.productos)
+        
         actions.putFetch("/productos" ,"", state.productos, "productos")
         
         //fetchProductos("/stock", "productos");

@@ -7,7 +7,7 @@ const ListarProveedores = (props) => {
 
     const [state, setState] = useState({
         inputBuscador: "",
-        buscarPor: "rut"
+        buscarPor: "razon_social"
     })
 
     const seleccionadorBuscador = e => {
@@ -53,10 +53,12 @@ const ListarProveedores = (props) => {
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
                         <div className="form-check ml-3">
-                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">RUT</label>
-                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
-                            <label className="form-check-label align-middle " for="exampleRadios2">Razon Social</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" value="razon_social" onClick={e => seleccionadorBuscador(e)}></input>
+                       
+
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Razon Social</label>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador"  value="razon_social" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
                         </div>
                     </div>
                     <div className="col-md-12">

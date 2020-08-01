@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../css/ventaPrincipal.css";
 import { Context } from '../store/appContext';
 import { withRouter, Link } from 'react-router-dom';
@@ -9,33 +9,25 @@ const GeneralStock = (props) => {
         actions.validaLogin(props)
     }, [])
 
-    /* const reduce = () => {
-        if (store.productos != null && store.entradas_inventario != null && store.salidas_inventario) {
-            let saldoInventario = store.productos.reduce((acc, producto) => {
-                acc[producto.id] = { descripcion: producto.descripcion, entradas: 0, salidas: 0, diferencia: 0 }
-                return acc
-            }, {})
-            
-            store.entradas_inventario.map(entradaI => {
-                return saldoInventario[entradaI.producto_id].entradas += entradaI.cantidad
-            });
-            store.salidas_inventario.map(salidaI => {
-                return saldoInventario[salidaI.producto_id].salidas += salidaI.cantidad
-            });
- 
- 
-  
-          
-            saldoInventario[7].diferencia = saldoInventario[7].entradas-saldoInventario[7].salidas
-            console.log("si",saldoInventario[7])
-            return saldoInventario
-        }
- 
-    }
- 
-   
-    console.log(reduce()) */
+    const [state, setState] = useState({
+        inputBuscador: "",
+        buscarPor: "descripcion"
+    })
 
+    const inputBuscador = e => {
+        let data = { inputBuscador: e.target.value }
+        setState((prevState) => {
+            return { ...prevState, ...data }
+        })
+    }
+    const seleccionadorBuscador = e => {
+        let data = {
+            buscarPor: e.target.value
+        }
+        setState((prevState) => {
+            return { ...prevState, ...data }
+        })
+    }
 
     return (
         <>
@@ -48,7 +40,7 @@ const GeneralStock = (props) => {
                     <div className="col-md-6">
                         <form>
                             <div className="input-group no-border " >
-                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" />
+                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar producto" onChange={inputBuscador} />
                                 <div className="input-group-append">
                                     <div className="input-group-text bg-light">
                                         <i className="now-ui-icons ui-1_zoom-bold"></i>
@@ -59,12 +51,13 @@ const GeneralStock = (props) => {
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
                         <div className="form-check ml-3">
-                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">SKU</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios1"></input>
-                            <label className="form-check-label align-middle " for="exampleRadios2">Descripción</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios2"></input>
-                            <label className="form-check-label align-middle" for="exampleRadios3">Código de Barras</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="exampleRadios" id="exampleRadios3"></input>
+                            <label className="form-check-label align-middle" for="exampleRadios2">Descripción</label>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="opcionBuscador" id="exampleRadios2" onChange={seleccionadorBuscador} value="descripcion"></input>
+                            <label className="form-check-label align-middle" for="exampleRadios2">Sku</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="opcionBuscador" id="exampleRadios2" onChange={seleccionadorBuscador} value="sku"></input>
+                            <label className="form-check-label align-middle" for="exampleRadios2">Codigo de Barra</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="opcionBuscador" id="exampleRadios2" onChange={seleccionadorBuscador} value="codigo_barra"></input>
+
                         </div>
 
                     </div>
@@ -101,7 +94,7 @@ const GeneralStock = (props) => {
                                                 Categoría
                                                     </th>
                                             <th className="align-middle text-center">
-                                        &nbsp;
+                                                &nbsp;
                                             </th>
 
                                         </thead>
@@ -117,7 +110,17 @@ const GeneralStock = (props) => {
                                                             <th colspan="8">No hay Stock :(</th>
                                                         </tr>
                                                         :
-                                                        store.InventarioDisponible.map((producto, index) => {
+                                                        store.InventarioDisponible.filter((e) => {
+                                                            if (state.buscarPor === "descripcion")
+                                                                return e.descripcion.toLowerCase().includes(state.inputBuscador.toLowerCase())
+                                                            if (state.buscarPor === "sku")
+                                                                return e.sku.includes(state.inputBuscador)
+                                                            if (state.buscarPor === "codigo_barra")
+                                                                return e.codigo_barra.toLowerCase().includes(state.inputBuscador.toLowerCase())
+
+
+
+                                                        }).map((producto) => {
 
                                                             return (
                                                                 <tr >
@@ -142,13 +145,9 @@ const GeneralStock = (props) => {
                                                                     </td>
 
                                                                     <td className="align-middle text-center">
-                                                                        {producto.categoria_id}
+                                                                        {actions.validaCategoria(producto.categoria_id)}
                                                                     </td>
-                                                                    <td className="align-middle text-center">
-                                                                        <Link to={`/modificar-producto/${producto.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
-                                                                            <i className="now-ui-icons ui-2_settings-90"></i>
-                                                                        </Link>
-                                                                    </td>
+                                                                   
                                                                 </tr>
                                                             )
                                                         })
