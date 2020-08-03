@@ -333,10 +333,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona POST */
             /* Zona Valida */
             validaPassword: (password1, password2) => {
+                if ( password1 == undefined || password1.length<=5) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Largo de la contraseña debe ser mayor o igual a 6 caracteres.',
+                    })
+                    return false;
+                }
                 if (password1 !== password2) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Contraseñas deben ser la misma.',
+                        title: 'Contraseñas deben ser iguales.',
                     })
                     return false;
                 }

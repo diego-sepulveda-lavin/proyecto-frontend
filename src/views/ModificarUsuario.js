@@ -46,8 +46,10 @@ const ModificarUsuario = (props) => {
 
     const enviarFormulario = (e) => {
         e.preventDefault();
-        actions.putUsuario("/usuarios/" + state.usuario.id, setState, state.usuario)
-        actions.getFetch("/usuarios", "usuario");
+        if (actions.validaPassword(state.usuario.password, state.usuario.rePassword) !== false) {
+            actions.putUsuario("/usuarios/" + state.usuario.id, setState, state.usuario)
+            actions.getFetch("/usuarios", "usuario");
+        }
     }
 
     if (state.usuario != null) {

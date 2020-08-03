@@ -78,7 +78,7 @@ const CrearProveedor = (props) => {
                                                         <input type="text" name="nombre" className="form-control" aria-describedby="basic-addon1" placeholder="Nombre" onChange={getInformacion} value={!state.nombre ? "" : state.nombre} />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        <input type="text" name="rut" className="form-control" aria-describedby="basic-addon1" placeholder="RUT" onChange={getInformacion} value={!state.rut ? "" : state.rut} />
+                                                        <input type="text" name="rut" className="form-control" aria-describedby="basic-addon1" maxLength="13"  placeholder="RUT" onChange={getInformacion} value={!state.rut ? "" : state.rut} />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" name="razon_social" className="form-control" aria-describedby="basic-addon1" placeholder="Razón Social" onChange={getInformacion} value={!state.razon_social ? "" : state.razon_social} />
