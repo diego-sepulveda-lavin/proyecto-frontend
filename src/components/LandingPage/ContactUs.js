@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ContactUs = () => {
 
@@ -7,6 +7,10 @@ const ContactUs = () => {
         email: "",
         consulta: ""
     })
+
+    useEffect(() => {
+        setMensaje({ msg: null })
+    }, [])
     const [mensaje, setMensaje] = useState({
         msg: null,
     })
@@ -29,6 +33,7 @@ const ContactUs = () => {
 
     const enviarMail = async () => {
         setFlag(true)
+
         try {
             let bodyContent = JSON.stringify(datosAEnviar);
 
@@ -51,6 +56,9 @@ const ContactUs = () => {
                     email: "",
                     consulta: ""
                 })
+                setFlag(false)
+            } else {
+                setFlag(false)
             }
 
         } catch (error) {
@@ -91,12 +99,12 @@ const ContactUs = () => {
                                     {
                                         //1.- Pregunto si flag esta en true
                                         //2.- Pregunto si mensaje.msg es null, si es asi muestro el icono, sino muestro mensaje.msg
-                                        flag ? mensaje.msg === null ?
+                                        flag ?
                                             (<i className="now-ui-icons loader_refresh spin"></i>)
-                                            :
-                                            (<p>{mensaje.msg}</p>)
-                                            :
-                                            ("")
+                                            : mensaje.msg !== null ?
+                                                (<p>{mensaje.msg}</p>)
+                                                :
+                                                ("")
                                     }
                                 </div>
                             </form>

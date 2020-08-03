@@ -13,7 +13,7 @@ const MenuLateral = props => {
                     <li className={props.location.pathname === "/dashboard" ? "active" : ""}>
                         <Link to={"/dashboard"}>
                             <i className="now-ui-icons business_chart-bar-32"></i>
-                            <p>Dashboard<p style={{ "color": "green", "fontSize": "10px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold" }}>Soon</p></p>
+                            <p>Dashboard<p style={{ "color": "green", "fontSize": "12px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold", "position":"absolute", "transform":"rotate(45deg)" }}>Soon</p></p>
                         </Link>
                     </li>
                     {/* --- o --- */}
@@ -30,9 +30,9 @@ const MenuLateral = props => {
                         <div id="ventas" className="collapse">
                             <ul className="p-0" style={{ "listStyleType": "none" }}>
                                 <li className="ml-5 mt-2"><Link to={"/venta-usuario"}><p>Ingresar Ventas</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"#"}><p>Anular Venta<p style={{ "color": "green", "fontSize": "10px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold" }}>Soon</p></p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"#"}><p>Anular Venta<p style={{ "color": "green", "fontSize": "12px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold", "position":"absolute", "transform":"rotate(45deg)" }}>Soon</p></p></Link></li>
                                 <li className="ml-5 mt-2"><Link to={"/abrir-caja"}><p>Abrir Caja</p></Link></li>
-                                <li className="ml-5 mt-2"><Link to={"#"}><p>Cierre de Caja<p style={{ "color": "green", "fontSize": "10px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold" }}>Soon</p></p></Link></li>
+                                <li className="ml-5 mt-2"><Link to={"#"}><p>Cierre de Caja<p style={{ "color": "green", "fontSize": "12px", "display": "inline-block", "marginLeft": "5px", "fontWeight": "bold", "position":"absolute", "transform":"rotate(45deg)" }}>Soon</p></p></Link></li>
                             </ul>
                         </div>
                     </li>
