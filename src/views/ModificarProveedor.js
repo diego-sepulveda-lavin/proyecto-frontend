@@ -32,7 +32,7 @@ const ModificarProveedor = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        actions.putFetch("/proveedores/" + props.match.params.index, setMsg, state.proveedor, "proveedor")
+        actions.putFetch("/proveedores/" + props.match.params.index, setMsg, state.proveedor, "Proveedor")
         actions.getFetch("/proveedores", "proveedor");
     }
 

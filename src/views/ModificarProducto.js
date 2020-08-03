@@ -54,7 +54,7 @@ const ModificarProducto = (props) => {
 
     const enviarFormulario = (e) => {
         e.preventDefault()
-        actions.putFetch("/productos", "", state.productos, "productos")
+        actions.putFetch("/productos", "", state.productos, "Producto(s)")
     }
 
     const inputBuscador = e => {
@@ -203,7 +203,7 @@ const ModificarProducto = (props) => {
                                 </div>
                                 <div className="card-footer">
                                     <div className="col-12 pr-0 d-flex justify-content-end">
-                                        <button type="submit" className="btn btn-primary">Modificar SKU</button>
+                                        <button type="submit" className="btn btn-primary">Modificar Producto(s)</button>
                                     </div>
 
                                 </div>

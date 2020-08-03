@@ -117,9 +117,6 @@ const GeneralStock = (props) => {
                                                                 return e.sku.includes(state.inputBuscador)
                                                             if (state.buscarPor === "codigo_barra")
                                                                 return e.codigo_barra.toLowerCase().includes(state.inputBuscador.toLowerCase())
-
-
-
                                                         }).map((producto) => {
 
                                                             return (
@@ -141,13 +138,13 @@ const GeneralStock = (props) => {
                                                                     </td>
 
                                                                     <td className="align-middle text-center">
-                                                                        {producto.precio_venta_unitario}
+                                                                        {`${new Intl.NumberFormat("de-DE").format(`${producto.precio_venta_unitario} `)}`}
                                                                     </td>
 
                                                                     <td className="align-middle text-center">
                                                                         {actions.validaCategoria(producto.categoria_id)}
                                                                     </td>
-                                                                   
+
                                                                 </tr>
                                                             )
                                                         })
