@@ -24,18 +24,18 @@ const IngresarVenta = (props) => {
     useEffect(() => {
         actions.validaLogin(props)
         generarFolio()
-        /*  if (sessionStorage.getItem("abrirCaja") == null) {
-             Swal.fire({
-                 title: store.usuarioActivo.nombre,
-                 text: "Debes abrir caja para poder Iniciar las ventas!",
-                 icon: 'info',
-                 allowOutsideClick: false,
-                 confirmButtonColor: '#3085d6',
-                 confirmButtonText: 'Ir a abrir Caja!'
-             }).then((result) => {
-                 if (result.value) props.history.push("/abrir-caja")
-             })
-         } */
+        if (sessionStorage.getItem("abrirCaja") == null) {
+            Swal.fire({
+                title: store.usuarioActivo.nombre,
+                text: "Debes abrir caja para poder Iniciar las ventas!",
+                icon: 'info',
+                allowOutsideClick: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ir a abrir Caja!'
+            }).then((result) => {
+                if (result.value) props.history.push("/abrir-caja")
+            })
+        }
     }, [])
 
     const postData = e => {

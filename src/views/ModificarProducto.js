@@ -31,7 +31,6 @@ const ModificarProducto = (props) => {
             return { ...prevState, productos }
         })
     }
-
     const fetchProductos = async (urlPag, data) => {
         try {
             let headersContent = { 'Content-Type': 'application/json' };
@@ -55,10 +54,7 @@ const ModificarProducto = (props) => {
 
     const enviarFormulario = (e) => {
         e.preventDefault()
-        console.log(state.productos)
         actions.putFetch("/productos", "", state.productos, "productos")
-
-        //fetchProductos("/stock", "productos");
     }
 
     const inputBuscador = e => {
@@ -137,7 +133,6 @@ const ModificarProducto = (props) => {
                                                     </th>
                                                 </thead>
                                                 <tbody>
-
                                                     {
                                                         state.productos == null ?
                                                             <tr className="align-middle text-center">
@@ -153,15 +148,10 @@ const ModificarProducto = (props) => {
                                                                 state.productos.filter((producto) => {
                                                                     if (buscar.buscarPor == "descripcion")
                                                                         return producto.descripcion.toLowerCase().includes(buscar.inputBuscador.toLowerCase())
-                                                                    if(buscar.buscarPor =="sku")
-                                                                    return producto.sku.toLowerCase().includes(buscar.inputBuscador.toLowerCase())
-                                                                    if(buscar.buscarPor =="codigo_barra")
-                                                                    return producto.codigo_barra.toLowerCase().includes(buscar.inputBuscador.toLowerCase())
-
-
-                                                                   
-
-
+                                                                    if (buscar.buscarPor == "sku")
+                                                                        return producto.sku.toLowerCase().includes(buscar.inputBuscador.toLowerCase())
+                                                                    if (buscar.buscarPor == "codigo_barra")
+                                                                        return producto.codigo_barra.toLowerCase().includes(buscar.inputBuscador.toLowerCase())
                                                                 }).map((producto, index) => {
 
                                                                     return (
