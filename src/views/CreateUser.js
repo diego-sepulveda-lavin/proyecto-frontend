@@ -74,7 +74,7 @@ const CreateUser = (props) => {
                                                         <div className="input-group-prepend">
                                                             <span className="input-group-text">Nombre</span>
                                                         </div>
-                                                        <input type="text" name="nombre" className="form-control" value={`${!state.nombre ? "" : state.nombre}`} onChange={getInformacion} />
+                                                        <input type="text" name="nombre" style={{"text-transform":"capitalize"}} className="form-control" value={`${!state.nombre ? "" : state.nombre}`} onChange={getInformacion} />
                                                     </div>
                                                     <div className="input-group col-md-12">
 
