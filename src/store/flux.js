@@ -10,37 +10,32 @@ const getState = ({ getStore, getActions, setStore }) => {
             productos: null,
             proveedores: null,
             facturas: null,
+            entradas_inventario: null,
+            salidas_inventario: null,
             usuarioActivo: null,
-            creacionUsuario: {
-                nombre: "",
-                apellido: "",
-                rut: "",
-                email: "",
-                rol: "",
-                password: "",
-                repassword: "",
-                foto: "",
-            },
             imageURL: null,
+            abrirCaja: true,
+            cerrarCaja: null,
+            InventarioDisponible: null,
+
+
             MensajesRecibidos: []
 
         },
         actions: {
             validaLogin: (props) => {
-                if (!localStorage.getItem('access_token')) {
+                if (!sessionStorage.getItem('access_token')) {
                     props.history.push("/login");
                 }
-                setStore({ usuarioActivo: JSON.parse(localStorage.getItem('user')) })
+                setStore({ usuarioActivo: JSON.parse(sessionStorage.getItem('user')) })
             },
-
-
 
             /* Zona GET */
             getFetchID: async (urlPag, setInfo, data) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -62,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -73,8 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
                     setStore({
-                        [data]: result,
-                        msg: result.msg
+                        [data]: result
                     })
                 } catch (error) {
                     console.log(error);
@@ -96,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     try {
                         let headersContent = ""
-                        const token = localStorage.getItem('access_token');
+                        const token = sessionStorage.getItem('access_token');
                         if (token) {
                             headersContent = { 'Authorization': 'Bearer ' + token }
                         }
@@ -147,6 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 formData.append("nombre", data_a_enviar.nombre);
                 formData.append("apellido", data_a_enviar.apellido);
                 formData.append("rut", data_a_enviar.rut);
+                formData.append("status", data_a_enviar.status);
                 formData.append("rol", data_a_enviar.rol);
                 formData.append("email", data_a_enviar.email);
                 formData.append("password", data_a_enviar.password);
@@ -154,7 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 try {
                     let headersContent = ""
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = {
                             "Access-Control-Allow-Origin": "*",
@@ -184,19 +179,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                             title: "Algo salió mal",
                             text: result.msg
                         })
-
                     }
-
                 } catch (error) {
                     console.log(error);
                 }
             },
-            putFetch: async (urlPag, setInfo, data_a_enviar, mensajeAlerta) => {
+
+            putFetch: async (urlPag, setInfo ="", data_a_enviar, mensajeAlerta) => {
                 let store = getStore()
 
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -204,9 +198,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                         method: 'PUT',
                         headers: headersContent,
                         body: JSON.stringify(data_a_enviar)
-                    };
+                    };                   
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
+                    
                     if (resp.status == 200) {
                         Swal.fire({
                             icon: 'success',
@@ -222,7 +217,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     setInfo({
 
                         "msg": result.msg,
-                        "empresa": result
+                        [mensajeAlerta]: result
                     })
 
                 } catch (error) {
@@ -237,7 +232,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -248,7 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const resp = await fetch(`${store.urlBase}${urlPag}/${id}`, requestOptions)
 
                     const result = await resp.json();
-                    if (resp.status == 200) {
+                    if (resp.status === 200) {
                         Swal.fire({
                             icon: 'success',
                             title: mensajeAlerta + ' eliminada exitosamente.'
@@ -272,11 +267,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona DELETE */
 
             /* Zona POST*/
-            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta) => {
+
+
+
+            postFetch: async (urlPag, data_a_enviar, limpiarInput, mensajeAlerta, param1 = "") => {
                 let store = getStore()
                 try {
                     let headersContent = { 'Content-Type': 'application/json' };
-                    const token = localStorage.getItem('access_token');
+                    const token = sessionStorage.getItem('access_token');
                     if (token) {
                         headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
                     }
@@ -287,14 +285,39 @@ const getState = ({ getStore, getActions, setStore }) => {
                     };
                     const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
                     const result = await resp.json();
-                    console.log(resp)
-                    if (!result.msg) {
+                    if (resp.status == 200 || resp.status == 201) {
                         Swal.fire({
                             icon: 'success',
-                            title: mensajeAlerta + ' creada exitosamente.'
+                            title: mensajeAlerta + ' creado exitosamente.'
                         })
-                        data_a_enviar = ""
-                        limpiarInput(data_a_enviar)
+
+                        if (param1) {
+                            param1 = ""
+                            limpiarInput({
+                                factura: {
+                                    folio: "",
+                                    fecha_emision: "",
+                                    fecha_recepcion: "",
+                                    monto_neto: "",
+                                    monto_iva: "",
+                                    monto_otros_impuestos: "",
+                                    monto_total: "",
+                                    proveedor_id: "",
+                                    entradas_inventario: []
+                                },
+                                detalleEntrada: {
+                                    cantidad: null,
+                                    precio_costo_unitario: null,
+                                    costo_total: null,
+                                    usuario_id: null,
+                                    producto_id: null
+                                }
+                            })
+
+                        } else {
+                            data_a_enviar = ""
+                            limpiarInput(data_a_enviar)
+                        }
                         //getActions().getFetch()
                     } else {
                         Swal.fire({
@@ -310,10 +333,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             /* /Zona POST */
             /* Zona Valida */
             validaPassword: (password1, password2) => {
+                if ( password1 == undefined || password1.length<=5) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Largo de la contraseña debe ser mayor o igual a 6 caracteres.',
+                    })
+                    return false;
+                }
                 if (password1 !== password2) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Contraseñas deben ser la misma.',
+                        title: 'Contraseñas deben ser iguales.',
                     })
                     return false;
                 }
@@ -352,6 +382,56 @@ const getState = ({ getStore, getActions, setStore }) => {
             usuarioAuth: (usuario) => {
                 setStore({ usuarioActivo: usuario })
             },
+
+            validaCaja: async (urlPag, data, props, camposCompletos = true) => {
+                console.log(camposCompletos)
+                if (camposCompletos == false) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Faltan campos por llenar"
+                    })
+                } else {
+                    let store = getStore();
+                    try {
+                        let headersContent = { 'Content-Type': 'application/json' };
+                        const token = sessionStorage.getItem('access_token');
+                        if (token) {
+                            headersContent = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+                        }
+                        let requestOptions = {
+                            method: 'POST',
+                            headers: headersContent,
+                            body: JSON.stringify(data)
+                        };
+                        const resp = await fetch(`${store.urlBase}${urlPag}`, requestOptions)
+                        const result = await resp.json();
+                        if (resp.status == 200) {
+                            Swal.fire({
+                                icon: 'success',
+                                timer: 1000,
+                                timerProgressBar: true,
+                                title: result.msg
+                            })
+                            setStore({ abrirCaja: true })
+                            sessionStorage.setItem("abrirCaja", true)
+                            setTimeout(() => props.history.push("/venta-usuario"), 1000)
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Algo salió mal.',
+                                text: result.msg
+                            })
+                        }
+
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            },
+
+           
+
+
 
 
             /* /Zona Valida */

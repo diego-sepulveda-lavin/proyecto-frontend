@@ -19,7 +19,6 @@ const EditarEmpresa = (props) => {
         msg: ""
     })
 
-
     const valorInput = e => {
         let update = {
             [e.target.name]: e.target.value
@@ -74,7 +73,7 @@ const EditarEmpresa = (props) => {
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text"
-                                                                class="form-control"
+                                                                className="form-control"
                                                                 value={state.empresa.nombre}
                                                                 name="nombre"
                                                                 aria-describedby="basic-addon1"
@@ -84,7 +83,7 @@ const EditarEmpresa = (props) => {
                                                         <td className="align-middle text-center">
                                                             <input
 
-                                                                type="text" class="form-control"
+                                                                type="text" className="form-control"
                                                                 value={state.empresa.rut}
                                                                 name="rut"
                                                                 aria-describedby="basic-addon1"
@@ -94,7 +93,7 @@ const EditarEmpresa = (props) => {
                                                         <td className="align-middle text-center">
                                                             <input
                                                                 type="text"
-                                                                class="form-control"
+                                                                className="form-control"
                                                                 value={state.empresa.razon_social}
                                                                 name="razon_social"
                                                                 aria-describedby="basic-addon1"
@@ -102,7 +101,7 @@ const EditarEmpresa = (props) => {
                                                         </td>
                                                         <td className="align-middle text-center">
                                                             <input
-                                                                type="text" class="form-control"
+                                                                type="text" className="form-control"
                                                                 value={state.empresa.rubro}
                                                                 name="rubro"
                                                                 aria-describedby="basic-addon1"
@@ -111,8 +110,8 @@ const EditarEmpresa = (props) => {
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div className="col-12 d-flex justify-content-end">
-                                                <button class="btn btn-primary" name="Editar_Empresa">Editar Empresa</button>
+                                            <div className="col-12 pr-0 d-flex justify-content-end">
+                                                <button className="btn btn-primary" name="Editar_Empresa">Editar Empresa</button>
                                             </div>
                                         </div>
                                     </div>
@@ -129,9 +128,7 @@ const EditarEmpresa = (props) => {
 
         return (
             <>
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+               <i className="now-ui-icons loader_refresh spin"></i>
 
             </>
         )

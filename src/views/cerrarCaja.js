@@ -20,13 +20,13 @@ const CerrarCaja = props => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-1">
-                                <label className="font-weight-bold"><u>Nombre</u></label>
+                                <label className="font-weight-bold"><u>Nombre de usuario</u></label>
                             </div>
                             <div className="col-md-2">
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" value={store.usuarioActivo ? store.usuarioActivo.codigo : ""} />
                             </div>
                             <div className="col-md-1">
-                                <label className="font-weight-bold"><u>Hora Inicio</u></label>
+                                <label className="font-weight-bold"><u>Hora Cierre</u></label>
                             </div>
                             <div className="col-md-2">
                                 <input type="time" className="form-control" />
@@ -34,7 +34,7 @@ const CerrarCaja = props => {
                             <div className="col-md-1">
                                 <label className="font-weight-bold"><u>Fecha</u></label>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-3">
                                 <input type="date" className="form-control" />
                             </div>
                         </div>
@@ -43,15 +43,15 @@ const CerrarCaja = props => {
                                 <div className="col-md-5 m-1 text-center border pb-3">
                                     <h3>Cierre por Sistema</h3>
                                     <div className="row">
-                                        <div className="col-12 ">
+                                        <div className="col">
                                             <label className="font-weight-bold mt-2">Ventas por transferencia</label>
                                         </div>
                                         <div className="col-md-5">
                                             <div className="input-group">
-                                                <div className="input-group-prepend ">
-                                                    <span className="input-group-text text-center" id="basic-addon1">$</span>
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" value="100.000" />
+                                                <input type="text" defaultValue="150.000" className="form-control" aria-describedby="basic-addon1" />
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@ const CerrarCaja = props => {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text text-center" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" value="150.000" />
+                                                <input type="text" className="form-control" aria-describedby="basic-addon1" value="150.000" />
                                             </div>
                                         </div>
                                     </div>
@@ -77,11 +77,11 @@ const CerrarCaja = props => {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" value="50.000" />
+                                                <input type="text" className="form-control" aria-describedby="basic-addon1" value="50.000" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div className="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>
@@ -91,7 +91,7 @@ const CerrarCaja = props => {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" value="300.000" />
+                                                <input type="text" className="form-control" aria-describedby="basic-addon1" value="300.000" />
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@ const CerrarCaja = props => {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text text-center" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" />
+                                                <input type="text" className="form-control" aria-describedby="basic-addon1" />
                                             </div>
                                         </div>
                                     </div>
@@ -135,11 +135,11 @@ const CerrarCaja = props => {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="text" className="form-control text-center" aria-describedby="basic-addon1" />
+                                                <input type="text" className="form-control" aria-describedby="basic-addon1" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div className="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>
@@ -147,7 +147,7 @@ const CerrarCaja = props => {
                                         <div className="col-md-5">
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
-                                                    <span className="input-group-text text-center" id="basic-addon1">$</span>
+                                                    <span className="input-group-text" id="basic-addon1">$</span>
                                                 </div>
                                                 <input type="text" className="form-control text-center" aria-describedby="basic-addon1" />
                                             </div>
@@ -204,7 +204,7 @@ const CerrarCaja = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown-divider"></div>
+                                    <div className="dropdown-divider"></div>
                                     <div className="row">
                                         <div className="col">
                                             <label className="font-weight-bold mt-2">Total ventas del turno</label>

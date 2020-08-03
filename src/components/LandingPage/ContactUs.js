@@ -92,7 +92,7 @@ const ContactUs = () => {
                                         //1.- Pregunto si flag esta en true
                                         //2.- Pregunto si mensaje.msg es null, si es asi muestro el icono, sino muestro mensaje.msg
                                         flag ? mensaje.msg === null ?
-                                            (<i class="now-ui-icons loader_refresh spin"></i>)
+                                            (<i className="now-ui-icons loader_refresh spin"></i>)
                                             :
                                             (<p>{mensaje.msg}</p>)
                                             :

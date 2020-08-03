@@ -21,7 +21,19 @@ const ModificarUsuario = (props) => {
         setState(data)
     }
 
-    const getInformacionFoto = e => {
+    const getInformacionOption = e => {
+        let update;
+        if (e.target.value === "true") {
+            update = { status: true }
+        } else {
+            update = { status: false }
+        }
+
+        let data = { usuario: Object.assign(state.usuario, update) }
+        setState(data)
+    }
+
+    /* const getInformacionFoto = e => {
         state.usuario.foto = e.target.files[0]
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
@@ -30,19 +42,20 @@ const ModificarUsuario = (props) => {
             let data = { usuario: Object.assign(state.usuario, update) }
             setState(data)
         }
-    };
+    }; */
 
     const enviarFormulario = (e) => {
         e.preventDefault();
-        actions.putUsuario("/usuarios/" + state.usuario.id, setState, state.usuario)
-        actions.getFetch("/usuarios", "usuario");
+        if (actions.validaPassword(state.usuario.password, state.usuario.rePassword) !== false) {
+            actions.putUsuario("/usuarios/" + state.usuario.id, setState, state.usuario)
+            actions.getFetch("/usuarios", "usuario");
+        }
     }
 
     if (state.usuario != null) {
         return (
             <>
                 <div className="panel-header panel-header-md">
-                    {/* <canvas id="bigDashboardChart"></canvas> */}
                     <h1 className="text-warning text-center">Administracion</h1>
                     <h3 className="text-info text-center">Modificar Usuario</h3>
                 </div>
@@ -52,7 +65,6 @@ const ModificarUsuario = (props) => {
                             <div className="col-md-11 offset-md">
                                 <div className="card card-chart">
                                     <div className="card-header">
-
                                         <div className="row d-flex justify-content-around">
                                             <div className="input-group col-md-6 ">
                                                 <div className="input-group-prepend">
@@ -66,7 +78,6 @@ const ModificarUsuario = (props) => {
                                                 </div>
                                                 <input name="codUser" type="text" aria-label="First name" className="form-control" placeholder="aqui va el user ID" value={state.usuario.codigo} disabled />
                                             </div>
-
                                             <div className="dropdown">
                                                 <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                                     <i className="now-ui-icons loader_gear"></i>
@@ -81,16 +92,16 @@ const ModificarUsuario = (props) => {
                                         </div>
                                         <div className="row d-flex justify-content-center">
                                             <div className="input-group col-md-3">
-
-                                                <select className="form-control">  {/* corregir */}
-                                                    {/*  <option value="1" defaultValue>{state.usuario.status == true ? "Activo" : "Inactivo"}</option>
-                                                    <option value="2">{!state.usuario.status ? "Activo" : "Inactivo"}</option> */}
+                                                {/* problemas para registra cambio de status en PUT */}
+                                                <select className="form-control" name="status" value={state.usuario.status === true ? "true" : "false"} onChange={getInformacionOption}>
+                                                    <option value="true">Activo</option>
+                                                    <option value="false">Inactivo</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div className="row">
-                                            <div className="col-md-4 d-flex justify-content-center">
+                                            {/* <div className="col-md-4 d-flex justify-content-center">
                                                 {!!state.usuario.foto ?
                                                     (
                                                         <img className="rounded-circle img-fluid img-raised" style={{ height: "350px" }}
@@ -102,8 +113,8 @@ const ModificarUsuario = (props) => {
                                                             src={"../user-icon-vector.jpg"} />
                                                     )
                                                 }
-                                            </div>
-                                            <div className="col-md-8">
+                                            </div> */}
+                                            <div className="offset-md-2 col-md-8">
                                                 <div className="row">
                                                     <div className="input-group col-md-12">
                                                         <div className="input-group-prepend">
@@ -156,12 +167,12 @@ const ModificarUsuario = (props) => {
 
                                                 </div>
                                             </div>
-                                            <div className="col-md-4 ">
+                                            {/* <div className="col-md-4 ">
                                                 <div className="custom-file">
                                                     <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" name="foto" onChange={getInformacionFoto} />
-                                                    <label class="custom-file-label" for="inputGroupFile03">Actualizar foto de perfil?</label>
+                                                    <label className="custom-file-label" for="inputGroupFile03">Actualizar foto de perfil?</label>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                     </div>
@@ -186,7 +197,7 @@ const ModificarUsuario = (props) => {
                 <div className="content">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-11 offset-md">
-                            <i class="now-ui-icons loader_refresh spin"></i>
+                            <i className="now-ui-icons loader_refresh spin"></i>
                         </div>
                     </div>
                 </div>

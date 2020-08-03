@@ -144,9 +144,9 @@ const Dashboard = (props) => {
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                 datasets: [{
-                    label: "Data",
+                    label: "Ventas Mensuales",
                     borderColor: chartColor,
                     pointBorderColor: chartColor,
                     pointBackgroundColor: "#1e3d60",
@@ -238,9 +238,9 @@ const Dashboard = (props) => {
             type: 'line',
             responsive: true,
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                 datasets: [{
-                    label: "Active Users",
+                    label: "Productos Enviados",
                     borderColor: "#f96332",
                     pointBorderColor: "#FFF",
                     pointBackgroundColor: "#f96332",
@@ -254,7 +254,7 @@ const Dashboard = (props) => {
                     data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
                 }]
             },
-            options: gradientChartOptionsConfiguration
+            options: gradientChartOptionsConfigurationWithNumbersAndGrid
         });
 
 
@@ -272,9 +272,9 @@ const Dashboard = (props) => {
             type: 'line',
             responsive: true,
             data: {
-                labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                 datasets: [{
-                    label: "Email Stats",
+                    label: "Nivel de Stock",
                     borderColor: "#18ce0f",
                     pointBorderColor: "#FFF",
                     pointBackgroundColor: "#18ce0f",
@@ -285,7 +285,7 @@ const Dashboard = (props) => {
                     fill: true,
                     backgroundColor: gradientFill,
                     borderWidth: 2,
-                    data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
+                    data: [40, 500, 650, 700, 950, 1200, 750, 1200, 1250, 1300, 1900, 1800]
                 }]
             },
             options: gradientChartOptionsConfigurationWithNumbersAndGrid
@@ -300,9 +300,9 @@ const Dashboard = (props) => {
         var a = {
             type: "bar",
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                labels: ["Lun","Mar","Mie", "Jue", "Vie", "Sab", "Dom"],
                 datasets: [{
-                    label: "Active Countries",
+                    label: "Ventas últimos 7 días",
                     backgroundColor: gradientFill,
                     borderColor: "#2CA8FF",
                     pointBorderColor: "#FFF",
@@ -313,7 +313,7 @@ const Dashboard = (props) => {
                     pointRadius: 4,
                     fill: true,
                     borderWidth: 1,
-                    data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
+                    data: [80, 99, 86, 96, 123, 85, 100]
                 }]
             },
             options: {
@@ -379,7 +379,7 @@ const Dashboard = (props) => {
                     <div className="col-lg-4">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">Ventas totales</h5>
+                                <h5 className="card-category">Año 2020</h5>
                                 <h4 className="card-title">Productos enviados</h4>
                                 <div className="dropdown">
                                     <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
@@ -408,8 +408,8 @@ const Dashboard = (props) => {
                     <div className="col-lg-4 col-md-6">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">Ventas 2020</h5>
-                                <h4 className="card-title">Todos los productos</h4>
+                                <h5 className="card-category">Año 2020</h5>
+                                <h4 className="card-title">Nivel de stock</h4>
                                 <div className="dropdown">
                                     <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                                         <i className="now-ui-icons loader_gear"></i>
@@ -437,8 +437,19 @@ const Dashboard = (props) => {
                     <div className="col-lg-4 col-md-6">
                         <div className="card card-chart">
                             <div className="card-header">
-                                <h5 className="card-category">Estadísticas</h5>
-                                <h4 className="card-title">Performance 24 horas</h4>
+                                <h5 className="card-category">Ventas Semanales</h5>
+                                <h4 className="card-title">Últimos 7 días</h4>
+                                <div className="dropdown">
+                                    <button type="button" className="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                                        <i className="now-ui-icons loader_gear"></i>
+                                    </button>
+                                    <div className="dropdown-menu dropdown-menu-right">
+                                        <a className="dropdown-item" href="#">Acción</a>
+                                        <a className="dropdown-item" href="#">Otra acción</a>
+                                        <a className="dropdown-item" href="#">Algo más aquí</a>
+                                        <a className="dropdown-item text-danger" href="#">Remover Data</a>
+                                    </div>
+                                </div>
                             </div>
                             <div className="card-body">
                                 <div className="chart-area">
@@ -457,7 +468,7 @@ const Dashboard = (props) => {
                     <div className="col-md-6">
                         <div className="card  card-tasks">
                             <div className="card-header ">
-                                <h5 className="card-category">Backend development</h5>
+                                <h5 className="card-category">Planificación</h5>
                                 <h4 className="card-title">Tareas</h4>
                             </div>
                             <div className="card-body ">
@@ -473,7 +484,7 @@ const Dashboard = (props) => {
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td className="text-left">Sign contract for "What are conference organizers afraid of?"</td>
+                                                <td className="text-left">Contactar a proveedor para consultar por último envio</td>
                                                 <td className="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
@@ -492,7 +503,7 @@ const Dashboard = (props) => {
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td className="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                                <td className="text-left">Revisar stock de SKU 3422 en bodega central</td>
                                                 <td className="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
@@ -511,8 +522,7 @@ const Dashboard = (props) => {
                                                         </label>
                                                     </div>
                                                 </td>
-                                                <td className="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
+                                                <td className="text-left">Revisar caducidad de bodega temporal</td>
                                                 <td className="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
@@ -537,8 +547,8 @@ const Dashboard = (props) => {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h5 className="card-category">Lista de todas las personas</h5>
-                                <h4 className="card-title">Estadísticas de los empleados</h4>
+                                <h5 className="card-category">Estadísticas</h5>
+                                <h4 className="card-title">Ventas por vendedor</h4>
                             </div>
                             <div className="card-body">
                                 <div className="table-responsive">
@@ -546,41 +556,41 @@ const Dashboard = (props) => {
                                         <thead className=" text-primary">
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Pais</th>
+                                                <th>Sucursal</th>
                                                 <th>Ciudad</th>
-                                                <th className="text-right">Salario</th>
+                                                <th className="text-right">Venta Acumulada</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Dakota Rice</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                                <td className="text-right">$36,738</td>
+                                                <td>Pedro del Olmo</td>
+                                                <td>Macul</td>
+                                                <td>Santiago</td>
+                                                <td className="text-right">$360.738</td>
                                             </tr>
                                             <tr>
-                                                <td>Minerva Hooper</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                                <td className="text-right">$23,789</td>
+                                                <td>Isabel Peñalver</td>
+                                                <td>Concepción</td>
+                                                <td>Concepción</td>
+                                                <td className="text-right">$230.789</td>
                                             </tr>
                                             <tr>
-                                                <td>Sage Rodriguez</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                                <td className="text-right">$56,142</td>
+                                                <td>Fabio Candela</td>
+                                                <td>Temuco</td>
+                                                <td>Temuco</td>
+                                                <td className="text-right">$562.142</td>
                                             </tr>
                                             <tr>
-                                                <td>Doris Greene</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                                <td className="text-right">$63,542</td>
+                                                <td>Melanie Chavez</td>
+                                                <td>Valparaíso</td>
+                                                <td>Valparaíso</td>
+                                                <td className="text-right">$633.542</td>
                                             </tr>
                                             <tr>
                                                 <td>Luis J. Rodriguez Z.</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                                <td className="text-right">$78,615</td>
+                                                <td>Providencia</td>
+                                                <td>Santiago</td>
+                                                <td className="text-right">$781.615</td>
                                             </tr>
                                         </tbody>
                                     </table>

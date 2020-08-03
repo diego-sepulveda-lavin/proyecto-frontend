@@ -2,21 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
-
-
 const CrearProveedor = (props) => {
 
     const { store, actions } = useContext(Context)
 
     useEffect(() => {
         actions.validaLogin(props)
-
     }, [])
 
-
-
     const [state, setState] = useState({
-
         nombre: null,
         rut: null,
         razon_social: null,
@@ -24,7 +18,6 @@ const CrearProveedor = (props) => {
         direccion: null,
         cuenta_corriente: null,
         banco: null,
-
     })
 
     const getInformacion = (e) => {
@@ -32,7 +25,6 @@ const CrearProveedor = (props) => {
             [e.target.name]: e.target.value
         }
         setState(prevState => {
-
             return { ...prevState, ...infoCapturada };
         });
     }
@@ -40,9 +32,8 @@ const CrearProveedor = (props) => {
     const handleSubmit = e => {
         e.preventDefault()
         actions.postFetch("/proveedores", state, setState, "Proveedor")
-
+        actions.getFetch("/proveedores", "proveedores");
     }
-
 
     return (
         <>
@@ -87,7 +78,7 @@ const CrearProveedor = (props) => {
                                                         <input type="text" name="nombre" className="form-control" aria-describedby="basic-addon1" placeholder="Nombre" onChange={getInformacion} value={!state.nombre ? "" : state.nombre} />
                                                     </td>
                                                     <td className="align-middle text-center">
-                                                        <input type="text" name="rut" className="form-control" aria-describedby="basic-addon1" placeholder="RUT" onChange={getInformacion} value={!state.rut ? "" : state.rut} />
+                                                        <input type="text" name="rut" className="form-control" aria-describedby="basic-addon1" maxLength="13"  placeholder="RUT" onChange={getInformacion} value={!state.rut ? "" : state.rut} />
                                                     </td>
                                                     <td className="align-middle text-center">
                                                         <input type="text" name="razon_social" className="form-control" aria-describedby="basic-addon1" placeholder="Razón Social" onChange={getInformacion} value={!state.razon_social ? "" : state.razon_social} />
@@ -106,10 +97,11 @@ const CrearProveedor = (props) => {
                                                     <td className="align-middle text-center">
                                                         <select className="form-control" name="banco" value={!state.banco ? "" : state.banco} onChange={getInformacion}>
                                                             <option value="" disabled>Seleccionar</option>
-                                                            <option value="Banco De Chile">Banco De Chile</option>
+                                                            <option value="Banco de Chile">Banco de Chile</option>
+                                                            <option value="Banco Estado">Banco Estado</option>
                                                             <option value="Banco Internacional">Banco Internacional</option>
                                                             <option value="Scotiabank Chile">Scotiabank Chile</option>
-                                                            <option value="Banco De Credito e Inversiones">Banco De Credito e Inversiones</option> 
+                                                            <option value="Banco De Credito e Inversiones">Banco de Credito e Inversiones</option> 
                                                             <option value="Banco BICE">Banco BICE</option>
                                                             <option value="HSBC BANK">HSBC BANK</option>
                                                             <option value="Banco Santander Chile">Banco Santander Chile</option>
@@ -129,7 +121,7 @@ const CrearProveedor = (props) => {
                                     </div>
                                 </div>
                                 <div className="card-footer">
-                                    <div className="col-12 d-flex justify-content-end">
+                                    <div className="col-12 pr-0 d-flex justify-content-end">
                                         <button className="btn btn-success">Crear Proveedor</button>
                                     </div>
                                 </div>

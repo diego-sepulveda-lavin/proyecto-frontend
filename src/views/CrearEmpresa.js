@@ -64,23 +64,23 @@ const CrearEmpresa = (props) => {
                                                 <>
                                                     <tr>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Nombre" name="nombre" aria-describedby="basic-addon1" value={state.nombre ? state.nombre : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" maxlength="13" value={state.rut ? state.rut : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Rut" name="rut" aria-describedby="basic-addon1" maxlength="13" value={state.rut ? state.rut : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Razón Social" name="razon_social" aria-describedby="basic-addon1" value={state.razon_social ? state.razon_social : ""} onChange={getDatos} />
                                                         </td>
                                                         <td className="align-middle text-center">
-                                                            <input type="text" class="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
+                                                            <input type="text" className="form-control" placeholder="Rubro" name="rubro" aria-describedby="basic-addon1" value={state.rubro ? state.rubro : ""} onChange={getDatos} />
                                                         </td>
                                                     </tr>
                                                 </>
                                             </tbody>
                                         </table>
                                         <div className="col-12 d-flex justify-content-end">
-                                            <button class="btn btn-primary" name="Crear_Empresa">Crear Empresa</button>
+                                            <button className="btn btn-primary" name="Crear_Empresa">Crear Empresa</button>
                                         </div>
                                     </div>
                                 </div>

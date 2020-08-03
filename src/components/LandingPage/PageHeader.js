@@ -8,7 +8,7 @@ const PageHeader = () => {
                 </div>
                 <div className="content-center">
                     <div className="container">
-                        <h1 className="title">DHSL - Software Control de Stock y Punto de Venta</h1>
+                        <h1 className="title">DSHL - Software Control de Stock y Punto de Venta</h1>
                         <h2 className="title">Soluciones para tu PYME</h2>
                     </div>
                 </div>

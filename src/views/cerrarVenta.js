@@ -4,9 +4,9 @@ import { Context } from "../store/appContext";
 
 
 const CerrarVenta = props => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     useEffect(() => {
-        actions.validaLogin(props)     
+        actions.validaLogin(props)
     }, [])
     return (
         <>
@@ -26,26 +26,26 @@ const CerrarVenta = props => {
                                     <h6>Forma de Pago</h6>
                                 </div>
                                 <div className="col-5 d-flex justify-content-center align-middle text-center">
-                                    <div class="form-check m-0 mt-2">
-                                        <label class="form-check-label align-middle" for="exampleRadios3">Transferencia</label>
-                                        <input class="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios3"></input>
+                                    <div className="form-check m-0 mt-2">
+                                        <label className="form-check-label align-middle" for="exampleRadios3">Transferencia</label>
+                                        <input className="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios3"></input>
 
-                                        <label class="form-check-label align-middle " for="exampleRadios1">Efectivo</label>
-                                        <input class="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios1"></input>
+                                        <label className="form-check-label align-middle " for="exampleRadios1">Efectivo</label>
+                                        <input className="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios1"></input>
 
-                                        <label class="form-check-label align-middle " for="exampleRadios2">Tarjeta</label>
-                                        <input class="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios2"></input>
+                                        <label className="form-check-label align-middle " for="exampleRadios2">Tarjeta</label>
+                                        <input className="align-middle ml-1" type="radio" name="formaPago" id="exampleRadios2"></input>
                                     </div>
                                 </div>
                                 <div className="col-2  d-flex justify-content-center mt-3">
                                     <h6>Documento</h6>
                                 </div>
                                 <div className="col-3   d-flex justify-content-center">
-                                    <div class="form-check m-0 mt-2 pl-0">
-                                        <label class="form-check-label p-0 align-middle pl-0" for="exampleRadios1">Boleta</label>
-                                        <input class="ml-1 mr-3 align-middle" type="radio" name="documento" id="exampleRadios1"></input>
-                                        <label class="form-check-label align-middle pl-0" for="exampleRadios2">Factura</label>
-                                        <input class="ml-1 mr-3 align-middle" type="radio" name="documento" id="exampleRadios2"></input>
+                                    <div className="form-check m-0 mt-2 pl-0">
+                                        <label className="form-check-label p-0 align-middle pl-0" for="exampleRadios1">Boleta</label>
+                                        <input className="ml-1 mr-3 align-middle" type="radio" name="documento" id="exampleRadios1"></input>
+                                        <label className="form-check-label align-middle pl-0" for="exampleRadios2">Factura</label>
+                                        <input className="ml-1 mr-3 align-middle" type="radio" name="documento" id="exampleRadios2"></input>
                                     </div>
                                 </div>
 
@@ -55,13 +55,13 @@ const CerrarVenta = props => {
                                             <h5 className="mb-0">Documento N°</h5>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border">
-                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº documento" disabled/>
+                                            <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº documento" disabled />
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border ">
                                             <h5 className="mb-0">Total Venta</h5>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border ">
-                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Total Venta" disabled/>
+                                            <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Total Venta" disabled />
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border ">
                                             <h5 className="mb-0">Monto recibido</h5>
@@ -78,7 +78,7 @@ const CerrarVenta = props => {
                                             <h5 className="mb-0">Vuelto</h5>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border ">
-                                        <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº documento" disabled/>
+                                            <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Nº documento" disabled />
                                         </div>
                                         <div className="col-6 d-flex justify-content-center pt-2 pb-2 border ">
                                             <h5 className="mb-0">¿Envío de documento a correo electrónico?</h5>
@@ -91,14 +91,11 @@ const CerrarVenta = props => {
                                                 <input type="text" className="form-control" aria-describedby="basic-addon1" placeholder="Ingreso de correo opcional" />
                                             </div>
                                         </div>
-                                        <div className="col-4 d-flex justify-content-center pt-2 pb-2">
-                                            <Link to="venta-usuario" type="submit" class="btn btn-warning btn-lg btn-block font-weight-bold">Regresar a registro de productos</Link>
+                                        <div className="col-6 d-flex justify-content-center pt-2 pb-2">
+                                            <Link to="venta-usuario" type="button" className="btn font-weight-bold">Cancelar Venta</Link>
                                         </div>
-                                        <div className="col-4 d-flex justify-content-center pt-2 pb-2">
-                                            <button type="submit" class="btn btn-lg btn-block font-weight-bold">Cancelar venta</button>
-                                        </div>
-                                        <div className="col-4 d-flex justify-content-center pt-2 pb-2">
-                                            <button type="submit" class="btn btn-success btn-lg btn-block font-weight-bold">Efectuar pago</button>
+                                        <div className="col-6 d-flex justify-content-center pt-2 pb-2">
+                                            <button type="submit" className="btn btn-success font-weight-bold">Efectuar pago</button>
                                         </div>
 
                                     </div>

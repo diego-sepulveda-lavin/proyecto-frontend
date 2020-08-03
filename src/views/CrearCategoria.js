@@ -29,11 +29,10 @@ const CrearCategoria = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        actions.postFetch("/categorias", state, setState, "Categoria")
+        actions.postFetch("/categorias", state, setState, "Categoria");
+        actions.getFetch("/categorias", "categorias");
 
     }
-
-
     return (
         <>
             <div className="panel-header panel-header-md">
@@ -49,8 +48,8 @@ const CrearCategoria = (props) => {
                                     <div className="table-responsive">
                                         <table className="table">
                                             <thead className=" text-primary">
-                                                    <th className="align-middle text-center">
-                                                        Nombre Categoria
+                                                <th className="align-middle text-center">
+                                                    Nombre Categoria
                                                     </th>
                                             </thead>
                                             <tbody>

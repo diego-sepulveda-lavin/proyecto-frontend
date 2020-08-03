@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import { Link, withRouter } from 'react-router-dom';
-import Spinner from '../components/spinner';
 
 const Empresas = (props) => {
 
@@ -98,66 +97,62 @@ const Empresas = (props) => {
                                         <tbody>
                                             {
                                                 store.empresas === null ?
-                                                    (
-                                                        <Spinner />
-                                                    )
+                                                    (<tr className="align-middle text-center">
+                                                        <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
+                                                    </tr>)
                                                     :
-                                                    (
-                                                        store.empresas.length === 0 ?
-                                                            (
-                                                                <tr className="align-middle text-center">
-                                                                    <th colspan="6">No hay empresas registradas</th>
-                                                                </tr>
-                                                            )
-                                                            :
-                                                            (
-                                                                store.empresas.filter((empresa) => {
-                                                                    if (state.buscarPor === "nombre")
-                                                                        return empresa.nombre.toLowerCase().includes(state.buscador)
-
-                                                                    if (state.buscarPor === "rut")
-                                                                        return empresa.rut.includes(state.buscador)
-
-                                                                }).map((empresa, indice,) => {
-                                                                    return (
-                                                                        <>
-                                                                            <tr key={indice}>
-                                                                                <td className="align-middle text-center">
-                                                                                    {empresa.nombre}
-                                                                                </td>
-                                                                                <td className="align-middle text-center">
-                                                                                    {empresa.rut}
-                                                                                </td>
-                                                                                <td className="align-middle text-center">
-                                                                                    {empresa.razon_social}
-                                                                                </td>
-                                                                                <td className="align-middle text-center">
-                                                                                    {empresa.rubro}
-                                                                                </td>
-
-                                                                                <td className="align-middle text-center">
-
-                                                                                    <Link to={`/empresas/${empresa.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
-                                                                                        <i className="now-ui-icons ui-2_settings-90"></i>
-
-                                                                                    </Link>
-                                                                                </td>
-                                                                                <td className="align-middle text-center">
-
-                                                                                    <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
-                                                                                        <i className="now-ui-icons ui-1_simple-remove" onClick={() => deleteEmpresas(empresa.id)}></i>
-                                                                                    </button>
-                                                                                </td>
-
-                                                                            </tr>
-                                                                        </>
-                                                                    )
-                                                                })
-                                                            )
 
 
+                                                    
+                                                    store.empresas.msg ?
+                                                        (<tr className="align-middle text-center">
+                                                            <th colspan="6">No hay empresas registradas :(</th>
+                                                        </tr>)
+                                                        :
+                                                        (
+                                                            store.empresas.filter((empresa) => {
+                                                                if (state.buscarPor === "nombre")
+                                                                    return empresa.nombre.toLowerCase().includes(state.buscador)
 
-                                                    )
+                                                                if (state.buscarPor === "rut")
+                                                                    return empresa.rut.includes(state.buscador)
+
+                                                            }).map((empresa, indice,) => {
+                                                                return (
+                                                                    <>
+                                                                        <tr key={indice}>
+                                                                            <td className="align-middle text-center">
+                                                                                {empresa.nombre}
+                                                                            </td>
+                                                                            <td className="align-middle text-center">
+                                                                                {empresa.rut}
+                                                                            </td>
+                                                                            <td className="align-middle text-center">
+                                                                                {empresa.razon_social}
+                                                                            </td>
+                                                                            <td className="align-middle text-center">
+                                                                                {empresa.rubro}
+                                                                            </td>
+
+                                                                            <td className="align-middle text-center">
+
+                                                                                <Link to={`/empresas/${empresa.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                                                                    <i className="now-ui-icons ui-2_settings-90"></i>
+
+                                                                                </Link>
+                                                                            </td>
+                                                                            <td className="align-middle text-center">
+
+                                                                                <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?">
+                                                                                    <i className="now-ui-icons ui-1_simple-remove" onClick={() => deleteEmpresas(empresa.id)}></i>
+                                                                                </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </>
+                                                                )
+                                                            })
+                                                        )
+
                                             }
                                         </tbody>
                                     </table>

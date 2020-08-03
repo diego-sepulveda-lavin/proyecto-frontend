@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../store/appContext';
 import { withRouter, Link } from 'react-router-dom';
 
-const ListarProveedores = (props) => {
-    const { store, actions } = useContext(Context)
 
+const ListarFacturas = (props) => {
+    const { store, actions } = useContext(Context)
     const [state, setState] = useState({
         inputBuscador: "",
-        buscarPor: "razon_social"
+        buscarPor: "folio"
     })
-
     const seleccionadorBuscador = e => {
         let data = {
             buscarPor: e.target.value
@@ -18,7 +17,6 @@ const ListarProveedores = (props) => {
             return { ...prevState, ...data }
         })
     }
-
     const inputBuscador = e => {
         let data = { inputBuscador: e.target.value }
         setState((prevState) => {
@@ -28,21 +26,20 @@ const ListarProveedores = (props) => {
 
     useEffect(() => {
         actions.validaLogin(props)
-        actions.getFetch("/proveedores", "proveedores");
     }, [])
 
     return (
         <>
             <div className="panel-header panel-header-md">
-                <h1 className="text-warning text-center">Proveedor</h1>
-                <h3 className="text-info text-center">Ver Proveedores</h3>
+                <h1 className="text-warning text-center">Stock</h1>
+                <h3 className="text-info text-center">Ver Facturas</h3>
             </div>
             <div className="content mt-2">
                 <div className="row">
                     <div className="col-md-6">
                         <form>
                             <div className="input-group no-border " >
-                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Usuario" onChange={e => inputBuscador(e)} />
+                                <input type="text" defaultValue="" className="form-control bg-light" placeholder="Buscar Factura" onChange={e => inputBuscador(e)} />
                                 <div className="input-group-append">
                                     <div className="input-group-text bg-light">
                                         <i className="now-ui-icons ui-1_zoom-bold"></i>
@@ -53,13 +50,12 @@ const ListarProveedores = (props) => {
                     </div>
                     <div className=" col-md-6 p-0 mb-1">
                         <div className="form-check ml-3">
-                       
-
-                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Razon Social</label>
-                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador"  value="razon_social" onClick={e => seleccionadorBuscador(e)}></input>
-                            <label className="form-check-label align-middle " for="exampleRadios2">RUT</label>
-                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" value="rut" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label p-0 align-middle " for="exampleRadios1">Folio</label>
+                            <input className="ml-1 mr-3 align-middle" defaultChecked type="radio" name="OpcionBuscador" id="rFolio" value="folio" onClick={e => seleccionadorBuscador(e)}></input>
+                            <label className="form-check-label align-middle " for="exampleRadios2">Proveedor</label>
+                            <input className="ml-1 mr-3 align-middle" type="radio" name="OpcionBuscador" id="rProveedor" value="proveedor" onClick={e => seleccionadorBuscador(e)}></input>
                         </div>
+
                     </div>
                     <div className="col-md-12">
                         <div className="card">
@@ -68,75 +64,93 @@ const ListarProveedores = (props) => {
                                     <table className="table table-hover" >
                                         <thead className=" text-primary ">
                                             <th className="align-middle text-center">
-                                                Nombre
+                                                Folio
                                                     </th>
                                             <th className="align-middle text-center">
-                                                RUT
+                                                Fecha de emisión
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Razon Social
+                                                Fecha de recepción
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Rubro
+                                                Monto Neto
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Dirección
+                                                IVA
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Cuenta Corriente
+                                                Otros Impuestos
                                                     </th>
                                             <th className="align-middle text-center">
-                                                Banco
+                                                Monto Total
+                                                    </th>
+                                            <th className="align-middle text-center">
+                                                Proveedor
                                                     </th>
                                             <th className="align-middle text-center">
                                                 &nbsp;
-                                            </th>
+                                                    </th>
                                         </thead>
                                         <tbody>
+
+                                            {/* 1.- En caso que facturas sea nulo, muestra un spinner, ya que esta cargando la info del back
+                                                2.- En caso de que lo que traiga del back sea mayor a 0 lo mapea, sino, no muestra nada porque significa que no hay facturas en la bd*/}
                                             {
-                                                store.proveedores == null ?
+                                                store.facturas == null ?
                                                     <tr className="align-middle text-center">
                                                         <th colspan="8"><i className="now-ui-icons loader_refresh spin"></i></th>
                                                     </tr>
                                                     :
-                                                    store.proveedores.msg ?
+                                                    store.facturas.msg ?
                                                         <tr className="align-middle text-center">
-                                                            <th colspan="8">No hay proveedores registrados :(</th>
+                                                            <th colspan="8">No hay Facturas registradas :(</th>
                                                         </tr>
                                                         :
-                                                        store.proveedores.filter((proveedor) => {
-                                                            if (state.buscarPor === "rut")
-                                                                return proveedor.rut.toLowerCase().includes(state.inputBuscador.toLowerCase())
-
-                                                            if (state.buscarPor === "razon_social")
-                                                                return proveedor.razon_social.toLowerCase().includes(state.inputBuscador.toLowerCase())
-
-                                                        }).map((proveedor, indice) => {
+                                                        /* Toda esta zona  */
+                                                       
+                                                        store.facturas.filter((factura) => {
+                                                            if (state.buscarPor == "folio") {
+                                                                if (state.inputBuscador == "") return factura.folio
+                                                                else {
+                                                                    //Busco por el folio en concreto o parecidos?
+                                                                    return factura.folio >= state.inputBuscador
+                                                                }
+                                                            }
+                                                            if (state.buscarPor == "proveedor") {
+                                                                let [valor] = actions.validaFactura(factura.proveedor_id)
+                                                                return valor.toLowerCase().includes(state.inputBuscador.toLowerCase())
+                                                            }
+                                                        }).map((factura, indice) => {
                                                             return (
                                                                 <tr key={indice}>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.nombre}
+                                                                        {factura.folio}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.rut}
+                                                                        {new Date(factura.fecha_emision).toLocaleString("es-CL", { dateStyle: 'short' })}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.razon_social}
+                                                                        {new Date(factura.fecha_recepcion).toLocaleString("es-CL", { dateStyle: 'short' })}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.rubro}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_neto}`)}`}
+                                                                        
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.direccion}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_iva}`)}`}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.cuenta_corriente}
+                                                                        {factura.monto_otros_impuestos}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {proveedor.banco}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_total}`)}`}
+                                                                        
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        <Link to={`/modificar-proveedor/${proveedor.id}`} type="button" rel="tooltip" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
+                                                                        {actions.validaFactura(factura.proveedor_id)}
+                                                                    </td>
+                                                                    <td className="align-middle text-center">
+                                                                        <Link to={`/editar-factura/${factura.id}`} type="button" rel="tooltip" title="" className="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Editar?">
                                                                             <i className="now-ui-icons ui-2_settings-90"></i>
                                                                         </Link>
                                                                     </td>
@@ -155,4 +169,4 @@ const ListarProveedores = (props) => {
         </>
     )
 }
-export default withRouter(ListarProveedores);
+export default withRouter(ListarFacturas);
