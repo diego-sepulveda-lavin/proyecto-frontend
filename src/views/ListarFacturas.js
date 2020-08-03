@@ -133,16 +133,18 @@ const ListarFacturas = (props) => {
                                                                         {new Date(factura.fecha_recepcion).toLocaleString("es-CL", { dateStyle: 'short' })}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {factura.monto_neto}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_neto}`)}`}
+                                                                        
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {factura.monto_iva}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_iva}`)}`}
                                                                     </td>
                                                                     <td className="align-middle text-center">
                                                                         {factura.monto_otros_impuestos}
                                                                     </td>
                                                                     <td className="align-middle text-center">
-                                                                        {factura.monto_total}
+                                                                    {`${new Intl.NumberFormat("de-DE").format(`${factura.monto_total}`)}`}
+                                                                        
                                                                     </td>
                                                                     <td className="align-middle text-center">
                                                                         {actions.validaFactura(factura.proveedor_id)}

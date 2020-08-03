@@ -288,7 +288,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.status == 200 || resp.status == 201) {
                         Swal.fire({
                             icon: 'success',
-                            title: mensajeAlerta + ' creada exitosamente.'
+                            title: mensajeAlerta + ' creado exitosamente.'
                         })
 
                         if (param1) {

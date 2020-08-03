@@ -264,13 +264,13 @@ const IngresarVenta = (props) => {
                                                     (
                                                         store.InventarioDisponible.length > 0 &&
                                                         store.InventarioDisponible.filter(ele => {
-                                                            return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase())
+                                                            return ele.descripcion.toLowerCase().includes(state.buscador.toLowerCase()) && ele.inventario_disponible > 0
                                                         })
                                                             .map((producto, index) => {
                                                                 return <tr key={index} onClick={(e) => { agregarProducto(producto); getDetallePago(e) }}>
                                                                     <th className="align-middle text-center" scope="row">{index + 1}</th>
                                                                     <td className="align-middle text-center">{producto.descripcion}</td>
-                                                                    <td className="align-middle text-center">{producto.precio_venta_unitario}</td>
+                                                                    <td className="align-middle text-center">{`${new Intl.NumberFormat("de-DE").format(`${producto.precio_venta_unitario} `)}`}</td>
                                                                     <td className="align-middle text-center">{producto.inventario_disponible}</td>
                                                                 </tr>
                                                             })
@@ -308,9 +308,9 @@ const IngresarVenta = (props) => {
                                                             <th scope="row">{index + 1}</th>
                                                             <td className="text-center">{producto.descripcion}</td>
                                                             <td className="text-center"><input type="text" className="border-0 text-center " onChange={getDatosProductos} id={index} value={producto.cantidad ? producto.cantidad : 0} /></td>
-                                                            <td className="text-center">{producto.precio_venta_unitario}</td>
-                                                            <td className="text-center" >{producto.total ? producto.total : 0}</td>
-                                                            <td className="text-center"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={(e) => { deleteProducto(index); getDetallePago(e) }} id={index}>
+                                                            <td className="text-center">{`${new Intl.NumberFormat("de-DE").format(`${producto.precio_venta_unitario} `)}`}</td>
+                                                            <td className="text-center" > {`${new Intl.NumberFormat("de-DE").format(`${producto.total ? producto.total : 0}`)}`}</td>
+                                                            <td className="text-center m-0 p-0"> <button type="button" rel="tooltip" title="" className="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Eliminar?" onClick={(e) => { deleteProducto(index); getDetallePago(e) }} id={index}>
                                                                 <i id={index} className="now-ui-icons ui-1_simple-remove"></i>
                                                             </button></td>
                                                         </tr>
@@ -364,7 +364,7 @@ const IngresarVenta = (props) => {
                                                     N° Documento
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="numero_documento" aria-label="First name" className="form-control" disabled placeholder="N° Documento" value={state.datosVenta ? state.datosVenta.numero_documento : ""} />
+                                                    <input type="text" name="numero_documento" aria-label="First name" className="form-control text-right pr-5" disabled value={state.datosVenta ? state.datosVenta.numero_documento : ""} value={`${new Intl.NumberFormat("de-DE").format(`${state.datosVenta ? state.datosVenta.numero_documento : ""}`)}`}/>
                                                 </th>
                                             </tr>
                                             <tr className=" table-hover">
@@ -372,7 +372,7 @@ const IngresarVenta = (props) => {
                                                     Total Neto
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="monto_neto" aria-label="First name" className="form-control" disabled placeholder="Monto Neto" value={state.datosVenta.monto_neto ? state.datosVenta.monto_neto : ""} />
+                                                    <input type="text" name="monto_neto" aria-label="First name" className="form-control text-right pr-5" disabled value={`$ ${new Intl.NumberFormat("de-DE").format(`${state.datosVenta.monto_neto ? state.datosVenta.monto_neto : ""}`)}`}/>
                                                 </th>
                                             </tr>
                                             <tr className=" table-hover">
@@ -380,7 +380,7 @@ const IngresarVenta = (props) => {
                                                     IVA 19%
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="monto_iva" aria-label="First name" className="form-control" disabled placeholder="IVA" value={state.datosVenta.monto_iva ? state.datosVenta.monto_iva : ""} />
+                                                    <input type="text" name="monto_iva" aria-label="First name" className="form-control text-right pr-5" disabled value={`$ ${new Intl.NumberFormat("de-DE").format(`${state.datosVenta.monto_iva ? state.datosVenta.monto_iva : ""}`)}`}/>
                                                 </th>
                                             </tr>
                                             <tr className=" table-hover">
@@ -388,7 +388,7 @@ const IngresarVenta = (props) => {
                                                     Total a pagar
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="monto_total" aria-label="First name" className="form-control" disabled placeholder="Monto a Pagar" value={state.datosVenta.monto_total ? state.datosVenta.monto_total : ""} />
+                                                    <input type="text" name="monto_total" aria-label="First name" className="form-control text-right pr-5" disabled placeholder="Monto a Pagar" value={`$ ${new Intl.NumberFormat("de-DE").format(`${state.datosVenta.monto_total ? state.datosVenta.monto_total : ""} `)}`}/>
                                                 </th>
                                             </tr>
                                             <tr className=" table-hover">
@@ -396,7 +396,7 @@ const IngresarVenta = (props) => {
                                                     Monto Recibido
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="monto_recibido" aria-label="First name" className="form-control" placeholder="Monto Recibido" onChange={getDetallePago} value={state.datosVenta ? state.datosVenta.monto_recibido : ""} />
+                                                    <input type="text" name="monto_recibido" aria-label="First name" className="form-control text-right pr-5"  onChange={getDetallePago} value={state.datosVenta ? state.datosVenta.monto_recibido : ""} />
                                                 </th>
                                             </tr>
                                             <tr className=" table-hover">
@@ -404,7 +404,7 @@ const IngresarVenta = (props) => {
                                                     Vuelto
                                                 </th>
                                                 <th scope="col">
-                                                    <input type="text" name="vuelto" disabled aria-label="First name" className="form-control" placeholder="Vuelto" value={state.datosVenta.vuelto ? state.datosVenta.vuelto : ""} />
+                                                    <input type="text" name="vuelto" disabled aria-label="First name" className="form-control text-right pr-5" placeholder="Vuelto" value={`$ ${new Intl.NumberFormat("de-DE").format(`${state.datosVenta.vuelto ? state.datosVenta.vuelto : ""}`)}`} />
                                                 </th>
                                             </tr>
                                         </thead>
