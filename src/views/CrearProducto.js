@@ -30,7 +30,7 @@ const CrearProducto = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        actions.postFetch("/productos", state, setState, "SKU")
+        actions.postFetch("/productos", state, setState, "Producto")
     }
 
     return (
